@@ -1,0 +1,22 @@
+[
+  {
+    "category": "新手常见",
+    "question": "什么是机场？它和普通 VPN 有什么区别？",
+    "answer": "“机场”是中文互联网对基于 Shadowsocks / VLESS / Trojan 等协议提供多节点网络代理转发服务的俗称。相比传统单点 VPN，机场通常具备多入口 BGP 智能分流、IPLC/IEPL 内网专线加速以及客户端规则智能路由，能实现访问国内直连、海外加速且不影响本地网速的效果。"
+  },
+  {
+    "category": "线路与质量",
+    "question": "IEPL 专线和普通中继节点相比，优势在哪里？",
+    "answer": "IEPL（国际以太网专线）采用运营商内部二层点对点光纤内网传输，不过公网 GFW 审查，具备几乎为 0 的丢包率、极低抖动和免受特殊时期公网波动的特点；而普通中继仍走公网隧道，在网络高峰期或晚高峰易产生丢包和限速。"
+  },
+  {
+    "category": "排错与使用",
+    "question": "Clash 开启后显示有节点延迟，但为什么浏览器打不开任何网页？",
+    "answer": "这是典型 DNS 污染或系统代理未正确接管导致。通常可通过三步快速排查：1. 检查 Clash 是否开启了【System Proxy (系统代理)】；2. 检查节点模式是否被误设为 Direct (直连)；3. 开启 TUN 虚拟网卡模式彻底绕过 Windows/macOS 注册表代理冲突。"
+  },
+  {
+    "category": "AI 访问",
+    "question": "为什么访问 ChatGPT 或 Claude 会报 1020 / Access Denied 错误？",
+    "answer": "OpenAI 与 Anthropic 对访问出口 IP 实施严格的风控策略（检测 IP 是否为机房 IDC 广播段、历史滥用率及 Cloudflare 欺诈分）。解决办法是切换至具备原生住宅/家宽 IP 出口的专线节点，并在客户端规则中将 openai.com / anthropic.com 设为强制代理。"
+  }
+]

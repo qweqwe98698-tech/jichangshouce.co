@@ -1,0 +1,70 @@
+---
+import { formatPageTitle, formatMetaDescription, buildCanonicalUrl } from '../../utils/seo';
+import siteData from '../../data/site/site.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  pubDate?: Date | string;
+  updatedDate?: Date | string;
+  author?: string;
+  noindex?: boolean;
+  schema?: object | object[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  image = '/og/default.png',
+  type = 'website',
+  pubDate,
+  updatedDate,
+  author = siteData.author,
+  noindex = false,
+  schema,
+} = Astro.props;
+
+const formattedTitle = formatPageTitle(title);
+const formattedDesc = formatMetaDescription(description);
+const canonicalUrl = canonical || buildCanonicalUrl(Astro.url.pathname);
+const ogImage = image.startsWith('http') ? image : `${siteData.url}${image}`;
+---
+
+<!-- Primary Meta Tags -->
+<title>{formattedTitle}</title>
+<meta name="title" content={formattedTitle} />
+<meta name="description" content={formattedDesc} />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={canonicalUrl} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={formattedTitle} />
+<meta property="og:description" content={formattedDesc} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content={siteData.name} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalUrl} />
+<meta property="twitter:title" content={formattedTitle} />
+<meta property="twitter:description" content={formattedDesc} />
+<meta property="twitter:image" content={ogImage} />
+
+<!-- Structured Data (JSON-LD) -->
+{schema && (
+  Array.isArray(schema) ? (
+    schema.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))
+  ) : (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  )
+)}

@@ -1,0 +1,121 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/seo/Breadcrumb.astro';
+import NextStep from '../components/article/NextStep.astro';
+import FAQAccordion from '../components/article/FAQAccordion.astro';
+
+interface ComparisonDimension {
+  dimension: string;
+  itemAValue: string;
+  itemBValue: string;
+  note?: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  itemA: string;
+  itemB: string;
+  verdict: string;
+  comparisonTable: ComparisonDimension[];
+  pubDate: Date | string;
+  updatedDate?: Date | string;
+  faq?: Array<{ q: string; a: string }>;
+}
+
+const {
+  title,
+  description,
+  itemA,
+  itemB,
+  verdict,
+  comparisonTable,
+  pubDate,
+  updatedDate,
+  faq = [],
+} = Astro.props;
+
+const breadcrumbs = [
+  { name: '对比分析', url: '/compare/' },
+  { name: `${itemA} vs ${itemB}`, url: Astro.url.pathname },
+];
+---
+
+<BaseLayout
+  title={`${title} - 核心区别与选型对比`}
+  description={description}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="mb-8">
+      <span class="badge-tag badge-purple mb-3">
+        横向深度对比
+      </span>
+
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-fg mb-4">
+        {title}
+      </h1>
+
+      <p class="text-base text-fg-muted leading-relaxed">
+        {description}
+      </p>
+    </header>
+
+    <!-- Quick Verdict Banner -->
+    <div class="card-base p-6 rounded-xl bg-gradient-to-r from-bg-subtle to-surface border-l-4 border-l-brand mb-8 shadow-sm">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-lg">⚖️</span>
+        <h2 class="text-sm font-bold text-fg uppercase tracking-wider">30 秒速览结论</h2>
+      </div>
+      <p class="text-sm sm:text-base text-fg font-medium leading-relaxed">
+        {verdict}
+      </p>
+    </div>
+
+    <!-- Comparison Table -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-fg mb-4 flex items-center gap-2">
+        <span>📊</span>
+        核心维度全景对比
+      </h2>
+
+      <div class="table-wrapper">
+        <table class="w-full text-xs sm:text-sm">
+          <thead>
+            <tr>
+              <th class="w-1/4">对比维度</th>
+              <th class="w-3/8 text-brand font-bold">{itemA}</th>
+              <th class="w-3/8 text-purple-600 dark:text-purple-400 font-bold">{itemB}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonTable.map((row) => (
+              <tr>
+                <td class="font-bold text-fg bg-bg-subtle/50">{row.dimension}</td>
+                <td class="text-fg">{row.itemAValue}</td>
+                <td class="text-fg">{row.itemBValue}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Detailed Prose Content -->
+    <article class="prose-custom">
+      <slot />
+    </article>
+
+    <!-- FAQ Section -->
+    {faq.length > 0 && <FAQAccordion faqs={faq} />}
+
+    <!-- Next Step -->
+    <NextStep
+      title="如何根据自身需求进行选择？"
+      description="建议结合自身使用的设备、预算以及主要应用场景（如 AI、4K 视频或低延迟游戏）进行综合选型。"
+      link="/recommend/#selector"
+      linkText="使用智能选择指南匹配 →"
+    />
+  </div>
+</BaseLayout>

@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import siteData from '../../data/site/site.json';
+
+const breadcrumbs = [
+  { name: '隐私政策', url: '/privacy/' },
+];
+---
+
+<BaseLayout
+  title="隐私政策 (Privacy Policy)"
+  description="《机场手册》用户隐私保护声明与数据安全说明。"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="mb-8">
+      <h1 class="text-3xl font-black text-fg mb-3">
+        隐私政策
+      </h1>
+      <p class="text-sm text-fg-muted">
+        生效日期：2026年08月18日
+      </p>
+    </header>
+
+    <div class="card-base p-6 sm:p-8 rounded-2xl text-sm text-fg-muted space-y-4 leading-relaxed">
+      <p>
+        1. <strong>不收集敏感个人信息</strong>：{siteData.name} 作为纯静态内容站，不要求用户注册账号，不收集姓名、身份证号或手机号等任何个人敏感隐私。
+      </p>
+      <p>
+        2. <strong>本地偏好设置</strong>：网站使用浏览器的 `localStorage` 仅用于保存明暗主题切换偏好（Light/Dark），不向任何外部服务器上传追踪数据。
+      </p>
+      <p>
+        3. <strong>外部链接说明</strong>：本站包含指向第三方官网或外部文档的超链接，访问第三方网站时其隐私权政策由该第三方自行负责。
+      </p>
+    </div>
+  </div>
+</BaseLayout>

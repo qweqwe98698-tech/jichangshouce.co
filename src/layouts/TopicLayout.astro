@@ -1,0 +1,135 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/seo/Breadcrumb.astro';
+import ArticleCard from '../components/cards/ArticleCard.astro';
+import AnswerCard from '../components/cards/AnswerCard.astro';
+import type { ContentItem } from '../utils/related';
+
+interface Props {
+  name: string;
+  tagline: string;
+  description: string;
+  subtopics: string[];
+  articles: ContentItem[];
+  answers: ContentItem[];
+  updatedDate: Date | string;
+}
+
+const {
+  name,
+  tagline,
+  description,
+  subtopics,
+  articles,
+  answers,
+  updatedDate,
+} = Astro.props;
+
+const breadcrumbs = [
+  { name: '专题百科', url: '/topics/' },
+  { name: name, url: Astro.url.pathname },
+];
+---
+
+<BaseLayout
+  title={`${name} - 知识体系与实战手册`}
+  description={description}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Topic Hero Header -->
+    <header class="card-bento-hero p-8 sm:p-12 mb-12 relative overflow-hidden">
+      <div class="max-w-3xl">
+        <span class="badge-tag badge-topic mb-3">
+          专题 Topic Pillar Hub
+        </span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight">
+          {name}
+        </h1>
+        <p class="text-lg text-fg-muted font-medium mb-4">
+          {tagline}
+        </p>
+        <p class="text-sm text-fg-subtle leading-relaxed mb-6">
+          {description}
+        </p>
+
+        <!-- Subtopics badges -->
+        <div class="flex flex-wrap gap-2 pt-4 border-t border-border-subtle">
+          <span class="text-xs font-bold text-fg self-center mr-2">核心子模块：</span>
+          {subtopics.map((sub) => (
+            <span class="px-2.5 py-1 text-xs bg-surface text-fg rounded-md border border-border-default font-medium">
+              {sub}
+            </span>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <!-- Articles Section -->
+    <section class="mb-16">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-2xl font-bold text-fg flex items-center gap-2">
+            <span>📖</span>
+            系统教程与深度解读
+          </h2>
+          <p class="text-xs text-fg-muted mt-1">涵盖下载、配置、分流与高阶技巧</p>
+        </div>
+        <span class="text-xs font-mono text-fg-subtle">{articles.length} 篇内容</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {articles.map((item) => {
+          const itemHref = item.collection === 'tutorials'
+            ? `/tutorials/${item.id}/`
+            : item.collection === 'glossary'
+            ? `/glossary/${item.id}/`
+            : item.collection === 'comparisons'
+            ? `/compare/${item.id}/`
+            : `/guides/${item.id}/`;
+          return (
+            <ArticleCard
+              title={item.data.title}
+              description={item.data.description}
+              href={itemHref}
+              category={item.data.category}
+              pubDate={item.data.pubDate}
+              updatedDate={item.data.updatedDate}
+              tags={item.data.tags}
+              cover={item.data.cover}
+            />
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- Answers / Troubleshooting Section -->
+    {answers.length > 0 && (
+      <section class="mb-16">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="text-2xl font-bold text-fg flex items-center gap-2">
+              <span>🔧</span>
+              常见问题与排错指南
+            </h2>
+            <p class="text-xs text-fg-muted mt-1">快速定位连不上、无网速与报错原因</p>
+          </div>
+          <span class="text-xs font-mono text-fg-subtle">{answers.length} 个解答</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {answers.map((ans) => (
+            <AnswerCard
+              question={ans.data.title}
+              answerPreview={ans.data.answer || ans.data.description}
+              href={`/answers/${ans.slug || ans.id}/`}
+              category={ans.data.category}
+              symptom={ans.data.symptom}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</BaseLayout>

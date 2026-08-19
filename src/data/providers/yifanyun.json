@@ -1,0 +1,56 @@
+{
+  "id": "yifanyun",
+  "slug": "yifanyun",
+  "name": "一翻云",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "20元档大流量旗舰，150GB 满血 VLESS+IEPL 专线体验",
+  "pricing": {
+    "minPrice": "20.0",
+    "cycle": "月 (真实月付)",
+    "priceType": "真实月付价",
+    "traffic": "150GB",
+    "plans": [
+      { "name": "大流量月付", "price": 20, "cycle": "月付", "traffic": "150GB/月" },
+      { "name": "超能季付", "price": 55, "cycle": "季付", "traffic": "200GB/月" }
+    ]
+  },
+  "routes": "IEPL 专线",
+  "protocols": ["VLESS", "Shadowsocks"],
+  "clients": ["Clash", "Shadowrocket", "v2rayN", "Sing-box"],
+  "aiSupport": "品牌资料显示兼顾 AI 工具使用场景，实际能力以节点测试为准。",
+  "streamingSupport": "品牌资料显示覆盖常见流媒体场景，实际解锁状态以节点为准。",
+  "suitableFor": [
+    "每月流量需求超过 100GB、希望在 20 元预算内获得最多流量的用户",
+    "习惯使用第三方客户端（Clash/小火箭/v2rayN）的用户"
+  ],
+  "unsuitableFor": [
+    "坚持要求自研客户端的小白用户"
+  ],
+  "pros": [
+    "20 元月付即可获得 150GB 专线月流量，性价比突出",
+    "全专线 IEPL + 现代 VLESS 协议",
+    "支持多客户端订阅一键转换与智能分流"
+  ],
+  "cons": [
+    "暂不提供自研客户端，需配合第三方客户端使用"
+  ],
+  "coupon": {
+    "code": "yfy6666",
+    "desc": "新用户专项优惠码"
+  },
+  "affiliateUrl": "https://guangs.1flyunaff.cc/#/register?code=Yr7FhB7r",
+  "website": "https://guangs.1flyunaff.cc/#/register?code=Yr7FhB7r",
+  "speedtestImage": "/images/benchmarks/一翻云-节点测速实测.png",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "IEPL 专线千兆实测满速，Shadowsocks/VLESS 延迟稳定性好。"
+  },
+  "faq": [
+    {
+      "q": "一翻云如何导入小火箭？",
+      "a": "登录一翻云后台，复制通用订阅链接，打开 Shadowrocket 并在首页点击右上角加号，类型选择 Subscribe 粘贴即可。"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+
+const authors = [
+  {
+    name: '机场手册编辑部',
+    role: '核心技术与网络架构组',
+    bio: '由长期从事企业级网络运维、BGP/IPLC 路由架构与开源代理客户端研究的工程师组成，负责全站教程的实机验证与服务商资费真实性核查。',
+    articlesCount: '40+',
+    avatar: '👨‍💻',
+  },
+  {
+    name: 'Linus.W (网络工程师)',
+    role: '专线与协议研究员',
+    bio: '专注 Shadowsocks、VLESS+Reality、Hysteria2 协议底层机理与 TUN 虚拟网卡开发，擅长 DNS 污染与网络排障分析。',
+    articlesCount: '15+',
+    avatar: '🛰️',
+  },
+  {
+    name: 'Alex.K (AI应用架构师)',
+    role: 'AI 出口与风控顾问',
+    bio: '专注 OpenAI / Anthropic 节点风控对抗、原生住宅 IP 欺诈分探测与多平台客户端分流规则体系设计。',
+    articlesCount: '12+',
+    avatar: '🤖',
+  },
+];
+
+const breadcrumbs = [
+  { name: '作者团队', url: '/authors/' },
+];
+---
+
+<BaseLayout
+  title="作者团队与专业背景 (E-E-A-T 权威背书)"
+  description="机场手册作者团队拥有多年网络工程、跨国专线运维与开源客户端开发实战经验，确保全站输出专业严谨的技术内容。"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="mb-10">
+      <span class="badge-tag badge-topic mb-3">
+        👥 专业技术团队
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-black text-fg mb-4">
+        作者团队与技术委员会
+      </h1>
+      <p class="text-base text-fg-muted leading-relaxed">
+        每一篇发布在《机场手册》的文章与排错指南均由拥有多年网络工程实战背景的专业人员撰写并经过同行交叉评审。
+      </p>
+    </header>
+
+    <div class="space-y-6">
+      {authors.map((author) => (
+        <div class="card-base p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center gap-6">
+          <div class="w-16 h-16 rounded-2xl bg-bg-subtle flex items-center justify-center text-3xl flex-shrink-0 shadow-sm border border-border-subtle">
+            {author.avatar}
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-1">
+              <h2 class="text-lg font-bold text-fg">{author.name}</h2>
+              <span class="text-xs text-brand font-medium bg-brand-primary-subtle px-2 py-0.5 rounded">{author.role}</span>
+            </div>
+            <p class="text-xs sm:text-sm text-fg-muted leading-relaxed mb-3">
+              {author.bio}
+            </p>
+            <div class="text-xs text-fg-subtle">
+              已发布/核验内容：<span class="font-mono text-fg font-bold">{author.articlesCount}</span> 篇
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

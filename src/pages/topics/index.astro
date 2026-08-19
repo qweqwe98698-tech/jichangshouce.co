@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import TopicCard from '../../components/cards/TopicCard.astro';
+import { getTopicsWithStats } from '../../utils/topicStats';
+
+const topics = await getTopicsWithStats();
+
+const breadcrumbs = [
+  { name: '专题百科', url: '/topics/' },
+];
+---
+
+<BaseLayout
+  title="专题知识库与 Pillar Hub 聚合中心 - 6 大核心主题全景"
+  description="全景式专题知识库体系：以主题 Pillar 为核心，聚合系统教程、排错解答与术语百科。涵盖 Clash、Shadowrocket、v2rayN、机场选择与避坑、AI 访问排查及协议线路百科。"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="max-w-3xl mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-900/30 text-brand mb-3 border border-brand-200 dark:border-brand-800">
+        <span>📑 主题知识图谱 (Topic Clusters)</span>
+        <span class="w-1 h-1 rounded-full bg-brand"></span>
+        <span>6 大核心主题</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight">
+        核心专题聚合中心
+      </h1>
+      <p class="text-base sm:text-lg text-fg-muted leading-relaxed">
+        以主题 Pillar 为核心，聚合系统教程、排错解答与术语百科，助你由浅入深掌握网络工具全链路技能。
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {topics.map((topic) => (
+        <TopicCard
+          name={topic.name}
+          tagline={topic.tagline}
+          href={`/topics/${topic.slug}/`}
+          articleCount={topic.articleCount}
+          answersCount={topic.answersCount}
+          tags={topic.tags}
+          subtopics={topic.subtopics}
+          footerDesc={topic.footerDesc}
+          icon={topic.icon}
+          iconBg={topic.iconBg}
+          updatedDate={topic.updatedDate}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

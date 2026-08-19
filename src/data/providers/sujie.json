@@ -1,0 +1,56 @@
+{
+  "id": "sujie",
+  "slug": "sujie",
+  "name": "速界",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "AI 工具场景专研型专线，重点支持 ChatGPT/Claude 与 150GB 专线带宽",
+  "pricing": {
+    "minPrice": "25.0",
+    "cycle": "月 (真实月付)",
+    "priceType": "真实月付价",
+    "traffic": "150GB",
+    "plans": [
+      { "name": "AI 专属月付", "price": 25, "cycle": "月付", "traffic": "150GB/月" },
+      { "name": "团队尊享季付", "price": 70, "cycle": "季付", "traffic": "300GB/月" }
+    ]
+  },
+  "routes": "IEPL 专线 / 原生 IP 节点",
+  "protocols": ["VLESS", "Shadowsocks"],
+  "clients": ["自研客户端", "Clash", "Shadowrocket", "v2rayN", "Sing-box"],
+  "aiSupport": "品牌资料重点强调 ChatGPT、Claude、Gemini、Midjourney 等 AI 访问场景，配备低风控原生出口。",
+  "streamingSupport": "当前重点偏向 AI，流媒体能力建议结合节点测试。",
+  "suitableFor": [
+    "重度依赖海外 AI（ChatGPT / Claude / Cursor / Gemini）的开发者与职场人",
+    "需要专线低延迟与 150GB 充足月流量的高频用户"
+  ],
+  "unsuitableFor": [
+    "主要用途为重度观看非主流国家小众流媒体的用户"
+  ],
+  "pros": [
+    "25 元档 150GB 专线，原生出口减少 AI 1020 报错与风控拦截",
+    "提供全平台自研一键登录客户端与 VLESS 协议",
+    "节点针对 OpenAI / Anthropic 域名有分流优化"
+  ],
+  "cons": [
+    "价格定位在 25 元档，非低价入门型"
+  ],
+  "coupon": {
+    "code": "sss1111",
+    "desc": "新用户专享优惠码"
+  },
+  "affiliateUrl": "https://guangs.speedworldaff.cc/#/register?code=xgXzEfZB",
+  "website": "https://guangs.speedworldaff.cc/#/register?code=xgXzEfZB",
+  "speedtestImage": "/images/benchmarks/速界-节点测速实测.png",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "OpenAI / Claude 网页端与 API 连接通畅，IEPL 专线测速平稳。"
+  },
+  "faq": [
+    {
+      "q": "速界如何避免 ChatGPT 报错？",
+      "a": "速界在出口处配置了原生住宅/纯净机房 IP，并在客户端规则中对 chatgpt.com 等域名执行直达路由，避免触发风控。"
+    }
+  ]
+}

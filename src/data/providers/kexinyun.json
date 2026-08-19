@@ -1,0 +1,56 @@
+{
+  "id": "kexinyun",
+  "slug": "kexinyun",
+  "name": "可信云",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "25元档 150GB 专线型服务商，专注多设备日常与流畅视频",
+  "pricing": {
+    "minPrice": "25.0",
+    "cycle": "月 (真实月付)",
+    "priceType": "真实月付价",
+    "traffic": "150GB",
+    "plans": [
+      { "name": "标准月付", "price": 25, "cycle": "月付", "traffic": "150GB/月" },
+      { "name": "高阶季付", "price": 68, "cycle": "季付", "traffic": "250GB/月" }
+    ]
+  },
+  "routes": "IEPL 专线",
+  "protocols": ["VLESS", "Shadowsocks"],
+  "clients": ["Clash", "Shadowrocket", "v2rayN", "Sing-box"],
+  "aiSupport": "当前没有统一实测数据，建议结合节点实际测试。",
+  "streamingSupport": "当前没有统一实测数据，可满足常规 4K 视频流媒体需求。",
+  "suitableFor": [
+    "每月需要约 150GB 流量、偏好 VLESS 和专线线路的用户",
+    "拥有多台设备（手机+电脑+平板）同时联网的日常用户"
+  ],
+  "unsuitableFor": [
+    "坚持要求 100% 永久解锁所有冷门流媒体的用户"
+  ],
+  "pros": [
+    "25 元档提供 150GB 充沛流量，IEPL 专线保障",
+    "支持 VLESS 现代协议，抗干扰能力强",
+    "多设备并发连接稳定"
+  ],
+  "cons": [
+    "AI 与流媒体当前无统一数据保证"
+  ],
+  "coupon": {
+    "code": "kkk333",
+    "desc": "新用户专享优惠码"
+  },
+  "affiliateUrl": "https://guangs.kosingaff.com/#/register?code=UYDtNlCY",
+  "website": "https://guangs.kosingaff.com/#/register?code=UYDtNlCY",
+  "speedtestImage": "/images/benchmarks/可信云-节点测速实测.png",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "IEPL 专线实测丢包率低于 0.2%，全节点多设备连接表现良好。"
+  },
+  "faq": [
+    {
+      "q": "可信云支持多少台设备同时使用？",
+      "a": "标准套餐通常支持 3-5 台设备同时在线，满足个人手机、电脑、平板的多端日常需求。"
+    }
+  ]
+}

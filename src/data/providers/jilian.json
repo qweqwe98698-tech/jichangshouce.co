@@ -1,0 +1,56 @@
+{
+  "id": "jilian",
+  "slug": "jilian",
+  "name": "极连云",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "18元档均衡型 IEPL 专线，兼顾 AI 对话与流媒体解锁",
+  "pricing": {
+    "minPrice": "18.0",
+    "cycle": "月 (真实月付)",
+    "priceType": "真实月付价",
+    "traffic": "100GB",
+    "plans": [
+      { "name": "标准月付", "price": 18, "cycle": "月付", "traffic": "100GB/月" },
+      { "name": "旗舰月付", "price": 32, "cycle": "月付", "traffic": "200GB/月" }
+    ]
+  },
+  "routes": "IEPL 专线",
+  "protocols": ["Shadowsocks", "VLESS"],
+  "clients": ["自研客户端", "Clash", "Shadowrocket", "v2rayN", "Sing-box"],
+  "aiSupport": "品牌资料显示覆盖 ChatGPT、Claude、Gemini 等 AI 访问，具体以实际节点测试为准。",
+  "streamingSupport": "品牌资料显示覆盖常见流媒体使用场景，具体解锁能力以实测为准。",
+  "suitableFor": [
+    "希望把月度支出控制在 20 元以内，同时兼顾 AI 与视频的综合型用户",
+    "重视自研客户端易用性的新手"
+  ],
+  "unsuitableFor": [
+    "追求极端低价（<10元）的用户"
+  ],
+  "pros": [
+    "18 元真实月付，无捆绑压力",
+    "IEPL 专线保障，节点延迟表现优秀",
+    "提供全平台自研客户端"
+  ],
+  "cons": [
+    "2024 年新兴品牌，运营时间尚短"
+  ],
+  "coupon": {
+    "code": "ji8888",
+    "desc": "新用户专项优惠码"
+  },
+  "affiliateUrl": "https://guangs.jlyvipaff.com/#/?code=VM1rKGUu",
+  "website": "https://guangs.jlyvipaff.com/#/?code=VM1rKGUu",
+  "speedtestImage": "/images/benchmarks/极连云-节点测速实测.png",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "IEPL 专线延迟稳定在 35-50ms 之间，AI 与流媒体节点可用。"
+  },
+  "faq": [
+    {
+      "q": "极连云适合新手吗？",
+      "a": "非常适合，极连云提供自研一键登录客户端，无需复杂配置即可直接连接使用。"
+    }
+  ]
+}

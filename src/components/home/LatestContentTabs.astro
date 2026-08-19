@@ -1,0 +1,174 @@
+---
+import ArticleCard from '../cards/ArticleCard.astro';
+import AnswerCard from '../cards/AnswerCard.astro';
+import ComparisonCard from '../cards/ComparisonCard.astro';
+
+// Sample curated items for tabs
+const latestTutorials = [
+  {
+    title: 'Clash Verge Rev 进阶分流与 DNS 防污染配置完全手册',
+    description: '深入解析 Fake-IP 与 Redir-Host 机制，配置 Meta 核心内建 DNS 分流规则，彻底消除国内应用访问卡顿与海外 DNS 污染。',
+    href: '/tutorials/clash/dns-leak-prevention/',
+    category: '客户端教程',
+    pubDate: '2026-08-18',
+    tags: ['Clash', 'DNS防污染'],
+  },
+  {
+    title: 'Shadowrocket (小火箭) 自动化订阅更新与场景规则设置',
+    description: '教你如何在 iOS 上配置定时后台自动拉取最新节点列表，并按 Wi-Fi/蜂窝移动网络自动切换不同代理分流策略。',
+    href: '/tutorials/shadowrocket/auto-update-rules/',
+    category: '客户端教程',
+    pubDate: '2026-08-17',
+    tags: ['Shadowrocket', 'iOS'],
+  },
+  {
+    title: 'v2rayN 启用 Sing-box 核心与 Hysteria2 协议实操教程',
+    description: '在 Windows 上为 v2rayN 挂载 Sing-box 核心，体验基于 UDP 拥塞控制的高速抗丢包新一代传输协议。',
+    href: '/tutorials/v2rayn/singbox-hysteria2-guide/',
+    category: '客户端教程',
+    pubDate: '2026-08-15',
+    tags: ['v2rayN', 'Hysteria2'],
+  },
+];
+
+const latestAnswers = [
+  {
+    question: 'Clash 节点测速显示 Timeout 但节点在其他设备可用？',
+    answerPreview: '多为本地防火墙拦截或代理端口（如 7890）冲突导致。可尝试在设置中更改 Mixed Port 为其他端口（如 10808）后重试。',
+    href: '/answers/clash-timeout-port-conflict/',
+    category: '排错解答',
+    symptom: '节点单设备 Timeout',
+  },
+  {
+    question: '苹果手机开启 Shadowrocket 后热点共享给电脑无法上网？',
+    answerPreview: '在小火箭设置中找到【代理共享】并开启【启用共享】，然后在电脑 Wi-Fi 代理设置中填入手机局域网 IP 与对应端口即可。',
+    href: '/answers/shadowrocket-hotspot-sharing/',
+    category: '排错解答',
+    symptom: '热点共享无网络',
+  },
+  {
+    question: 'IEPL 专线在晚高峰期间出现少量丢包是什么原因？',
+    answerPreview: 'IEPL 内网段通常 0 丢包，但若用户本地宽带到机场国内入口（如深圳/上海 BGP 节点）公网段拥堵，仍会造成端到端轻微丢包。',
+    href: '/answers/iepl-bgp-ingress-jitter/',
+    category: '排错解答',
+    symptom: '专线入口公网抖动',
+  },
+];
+
+const latestComparisons = [
+  {
+    title: 'IEPL 专线 vs IPLC 专线：传输机制、稳定性与性价比全景对比',
+    itemA: 'IEPL 国际专线',
+    itemB: 'IPLC 跨国专线',
+    verdict: '两者在抗封锁与低延迟上几乎相同，IPLC 属于更底层的物理二层电路，而 IEPL 性价比更高、扩展性更强。普通用户选 IEPL 专线性价比最优。',
+    href: '/compare/iepl-vs-iplc/',
+  },
+  {
+    title: 'Clash Verge Rev vs Clash Nyanpasu：新一代开源客户端怎么选？',
+    itemA: 'Clash Verge Rev',
+    itemB: 'Clash Nyanpasu',
+    verdict: 'Verge Rev 维护活跃、界面直观且 TUN 模式支持极佳；Nyanpasu 界面更现代但配置学习曲线稍高。日常主力推荐 Verge Rev。',
+    href: '/compare/clash-verge-vs-clash-nyanpasu/',
+  },
+];
+---
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+    <div>
+      <h2 class="text-xl sm:text-2xl font-black text-fg flex items-center gap-2">
+        <span>🆕</span>
+        最新内容动态
+      </h2>
+      <p class="text-xs text-fg-muted mt-0.5">持续更新的实用教程、故障排错与对比分析</p>
+    </div>
+
+    <!-- Category Tabs Filter -->
+    <div class="flex items-center gap-1.5 p-1 bg-surface rounded-xl border border-border-default self-start sm:self-auto" id="latest-tabs">
+      <button class="tab-btn active px-3 py-1.5 text-xs font-bold rounded-lg transition-all" data-tab="tutorials">
+        最新教程
+      </button>
+      <button class="tab-btn px-3 py-1.5 text-xs font-medium text-fg-muted hover:text-fg rounded-lg transition-all" data-tab="answers">
+        最新排障
+      </button>
+      <button class="tab-btn px-3 py-1.5 text-xs font-medium text-fg-muted hover:text-fg rounded-lg transition-all" data-tab="comparisons">
+        最新对比
+      </button>
+    </div>
+  </div>
+
+  <!-- Tab Panels -->
+  <div id="tab-panel-tutorials" class="tab-panel grid grid-cols-1 md:grid-cols-3 gap-6">
+    {latestTutorials.map((item) => (
+      <ArticleCard
+        title={item.title}
+        description={item.description}
+        href={item.href}
+        category={item.category}
+        pubDate={item.pubDate}
+        tags={item.tags}
+      />
+    ))}
+  </div>
+
+  <div id="tab-panel-answers" class="tab-panel hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+    {latestAnswers.map((item) => (
+      <AnswerCard
+        question={item.question}
+        answerPreview={item.answerPreview}
+        href={item.href}
+        category={item.category}
+        symptom={item.symptom}
+      />
+    ))}
+  </div>
+
+  <div id="tab-panel-comparisons" class="tab-panel hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+    {latestComparisons.map((item) => (
+      <ComparisonCard
+        title={item.title}
+        itemA={item.itemA}
+        itemB={item.itemB}
+        verdict={item.verdict}
+        href={item.href}
+      />
+    ))}
+  </div>
+</section>
+
+<script is:inline>
+  const tabBtns = document.querySelectorAll('#latest-tabs .tab-btn');
+  const panels = {
+    tutorials: document.getElementById('tab-panel-tutorials'),
+    answers: document.getElementById('tab-panel-answers'),
+    comparisons: document.getElementById('tab-panel-comparisons'),
+  };
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabName = btn.getAttribute('data-tab');
+      
+      tabBtns.forEach(b => {
+        b.classList.remove('active', 'bg-brand', 'text-text-inverse', 'font-bold');
+        b.classList.add('text-fg-muted', 'font-medium');
+      });
+      btn.classList.add('active', 'bg-brand', 'text-text-inverse', 'font-bold');
+      btn.classList.remove('text-fg-muted', 'font-medium');
+
+      Object.keys(panels).forEach(key => {
+        if (key === tabName) {
+          panels[key]?.classList.remove('hidden');
+        } else {
+          panels[key]?.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Set initial active style
+  const activeBtn = document.querySelector('#latest-tabs .tab-btn.active');
+  if (activeBtn) {
+    activeBtn.classList.add('bg-brand', 'text-text-inverse', 'font-bold');
+    activeBtn.classList.remove('text-fg-muted', 'font-medium');
+  }
+</script>

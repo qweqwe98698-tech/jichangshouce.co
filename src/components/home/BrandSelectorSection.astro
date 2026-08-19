@@ -1,0 +1,148 @@
+---
+import { getAllProviders } from '../../data/providers';
+
+const all = getAllProviders();
+const featuredBrands = [
+  { ...all.find(p => p.slug === 'guangsuyun') || all[0], icon: '⚡', iconBg: 'bg-black text-white dark:bg-white dark:text-black' },
+  { ...all.find(p => p.slug === 'u1s1') || all[3], icon: '🚀', iconBg: 'bg-[#EFF4FF] text-[#3554D1] dark:bg-[#4F6BFF]/20 dark:text-[#818CF8]' },
+  { ...all.find(p => p.slug === 'ermaoyun') || all[10], icon: '🐱', iconBg: 'bg-[#FFF4ED] text-[#C44D08] dark:bg-[#EA580C]/20 dark:text-[#FB923C]' },
+  { ...all.find(p => p.slug === 'yuzhouyun') || all[7], icon: '🪐', iconBg: 'bg-[#F3EFFF] text-[#6A3CD4] dark:bg-[#A855F7]/20 dark:text-[#C084FC]' }
+];
+---
+
+<section class="max-w-[1280px] mx-auto px-4 sm:px-8 py-8">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+    
+    <!-- LEFT: 机场选择参考 (9 cols on lg) -->
+    <div class="lg:col-span-9">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="section-title text-fg flex items-center gap-2">
+            机场选择参考
+          </h2>
+          <p class="text-xs text-fg-subtle mt-0.5 font-normal">
+            基于 2026-08-11 实机测速与套餐核验
+          </p>
+        </div>
+        <a href="/brands/" class="text-xs text-fg-subtle hover:text-primary transition-colors flex items-center gap-0.5 font-medium mb-0.5">
+          查看全部 16 家品牌 →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3.5">
+        {featuredBrands.map((b) => (
+          <div class="card-base card-hover p-4 flex flex-col justify-between group">
+            <div>
+              <!-- Header: Logo, Name, Verification badge -->
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <div class={`w-7 h-7 rounded-lg ${b.iconBg} flex items-center justify-center text-xs font-bold`}>
+                    {b.icon}
+                  </div>
+                  <h3 class="text-xs font-bold text-fg group-hover:text-primary transition-colors">
+                    {b.name}
+                  </h3>
+                </div>
+                <span class={`badge-tag ${b.verification.status === 'verified' ? 'badge-verified' : 'badge-pending'} text-[10px]`}>
+                  {b.verification.status === 'verified' ? '已核验' : '待核验'}
+                </span>
+              </div>
+
+              <div class="text-[11px] text-fg-subtle mb-1 truncate">
+                {b.routes}
+              </div>
+
+              <div class="text-xs font-extrabold text-primary mb-2.5 font-mono">
+                ¥{b.pricing.minPrice} <span class="text-[10px] font-normal text-fg-subtle">/{b.pricing.cycle}</span>
+              </div>
+
+              <!-- Feature tags -->
+              <div class="flex flex-wrap gap-1 mb-3">
+                <span class="text-[9.5px] px-1.5 py-0.5 rounded bg-bg-subtle text-fg-muted font-medium">
+                  {b.protocols[0] || 'VLESS'}
+                </span>
+                <span class="text-[9.5px] px-1.5 py-0.5 rounded bg-bg-subtle text-fg-muted font-medium">
+                  {b.pricing.traffic}/月
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <div class="text-[10px] text-fg-subtle mb-2.5">
+                核验时间 {b.verification.verifiedAt}
+              </div>
+              <div class="flex items-center gap-1.5">
+                <a
+                  href={`/brands/${b.slug}/`}
+                  class="flex-1 py-1 text-center text-[11px] font-semibold bg-bg-subtle hover:bg-border text-fg rounded-[6px] transition-colors"
+                >
+                  查看档案
+                </a>
+                <a
+                  href={b.affiliateUrl || b.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex-1 py-1 text-center text-[11px] font-semibold bg-[#16A37A] hover:bg-[#128764] text-text-inverse rounded-[6px] transition-colors"
+                >
+                  官网
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- RIGHT: 选择指南 (3 cols on lg) -->
+    <div class="lg:col-span-3">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="section-title text-fg">
+            选择指南
+          </h2>
+          <p class="text-xs text-fg-subtle mt-0.5 font-normal">
+            智能决策系统
+          </p>
+        </div>
+      </div>
+
+      <div class="card-base p-5 flex flex-col justify-between group min-h-[265px]">
+        <div>
+          <h3 class="text-xs font-bold text-fg mb-1">
+            不知道怎么选？
+          </h3>
+          <p class="text-[11px] text-fg-muted mb-4">
+            简单几步找到适合你的服务
+          </p>
+
+          <ul class="space-y-2 text-[11px] text-fg-muted mb-5">
+            <li class="flex items-center gap-1.5">
+              <span class="text-primary font-bold">✓</span>
+              <span>接着看稳定，速度还是价格？</span>
+            </li>
+            <li class="flex items-center gap-1.5">
+              <span class="text-primary font-bold">✓</span>
+              <span>你的预算是多少？</span>
+            </li>
+            <li class="flex items-center gap-1.5">
+              <span class="text-primary font-bold">✓</span>
+              <span>主要使用哪些设备？</span>
+            </li>
+            <li class="flex items-center gap-1.5">
+              <span class="text-primary font-bold">✓</span>
+              <span>你需要 AI 或流媒体解锁吗？</span>
+            </li>
+          </ul>
+        </div>
+
+        <a
+          href="/recommend/#selector"
+          class="w-full py-2 text-center text-xs font-bold text-text-inverse bg-[#16A37A] hover:bg-[#128764] rounded-[8px] transition-colors shadow-sm block"
+        >
+          开始智能推荐
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

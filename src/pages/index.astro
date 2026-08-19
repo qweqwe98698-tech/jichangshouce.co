@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroBentoSection from '../components/home/HeroBentoSection.astro';
+import EditorHotProblemsSection from '../components/home/EditorHotProblemsSection.astro';
+import TopicGrid from '../components/home/TopicGrid.astro';
+import BrandSelectorSection from '../components/home/BrandSelectorSection.astro';
+import LatestJourneySection from '../components/home/LatestJourneySection.astro';
+import siteData from '../data/site/site.json';
+---
+
+<BaseLayout
+  title={`${siteData.name} - ${siteData.tagline} | 专业网络工具与机场知识库`}
+  description={siteData.description}
+>
+  <!-- 02. First Fold: Hero + Core Bento Grid -->
+  <HeroBentoSection />
+
+  <!-- 03. Second Fold: Editor's Picks (Left 7 cols) + Hot Problems (Right 5 cols) -->
+  <EditorHotProblemsSection />
+
+  <!-- 04. Third Fold: Topic Hub (6 Pillars Grid) -->
+  <TopicGrid />
+
+  <!-- 05. Fourth Fold: Airport Recommendation (Left 9 cols) + Selection Guide (Right 3 cols) -->
+  <BrandSelectorSection />
+
+  <!-- 06. Fifth Fold: Latest Content (Left 7 cols) + User Journey Steps (Right 5 cols) -->
+  <LatestJourneySection />
+</BaseLayout>

@@ -1,0 +1,75 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+
+export async function getStaticPaths() {
+  const terms = await getCollection('glossary');
+  return terms.map((item) => ({
+    params: { slug: item.id },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+
+const title = `${item.data.term} 是什么意思？网络技术与机场专线协议深度百科`;
+const description = item.data.shortDefinition || `${item.data.term} 详细百科释义、技术原理、优缺点分析及在出海代理网络中的应用场景。`;
+
+const breadcrumbs = [
+  { name: '网络术语百科', url: '/glossary/' },
+  { name: item.data.term, url: `/glossary/${item.id}/` },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": item.data.term,
+  "description": item.data.shortDefinition,
+  "inDefinedTermSet": "https://jichangshouce.co/glossary/"
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema}>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="mb-8 pb-6 border-b border-border-subtle">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="badge-tag badge-verified">
+          {item.data.category || '网络架构'}
+        </span>
+        <span class="text-xs font-mono text-fg-subtle">
+          百科术语
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl font-black text-fg mb-4">
+        {item.data.term}
+      </h1>
+
+      <div class="p-4 rounded-xl bg-bg-surface dark:bg-bg-subtle border border-border-subtle text-sm text-fg leading-relaxed">
+        <strong>⚡ 快速定义：</strong>{item.data.shortDefinition}
+      </div>
+    </header>
+
+    <article class="prose-custom">
+      <Content />
+    </article>
+
+    <!-- Bottom Actions -->
+    <div class="mt-12 p-6 rounded-2xl bg-bg-subtle border border-border-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div>
+        <h4 class="font-bold text-fg text-sm">想了解具体服务商的 {item.data.term} 线路表现？</h4>
+        <p class="text-xs text-fg-muted mt-0.5">查看经人工核验与实机测速的服务商档案库</p>
+      </div>
+      <a
+        href="/recommend/#measurements"
+        class="px-4 py-2 text-xs font-bold text-text-inverse bg-brand hover:bg-brand-600 rounded-lg transition-colors shadow-sm text-center flex-shrink-0"
+      >
+        查看线路实测对比 →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import type { ProviderData } from '../../utils/recommendations';
+
+interface Props {
+  provider: ProviderData;
+  highlightBadge?: string;
+  className?: string;
+}
+
+const { provider, highlightBadge = '推荐之选', className = '' } = Astro.props;
+---
+
+<div class={`card-base card-hover p-6 flex flex-col justify-between border-t-4 border-t-brand ${className}`}>
+  <div>
+    <div class="flex items-center justify-between gap-2 mb-3">
+      <span class="badge-tag badge-verified">
+        {highlightBadge}
+      </span>
+      <span class="text-xs text-fg-subtle">
+        核验状态: {provider.verification.status}
+      </span>
+    </div>
+
+    <h3 class="text-xl font-extrabold text-fg mb-1">
+      <a href={`/brands/${provider.slug}/`} class="hover:text-brand transition-colors">
+        {provider.name}
+      </a>
+    </h3>
+
+    <p class="text-xs text-fg-muted mb-4">{provider.positioning}</p>
+
+    <div class="space-y-2 mb-5 text-xs">
+      <div class="flex items-center justify-between p-2 bg-bg-subtle rounded">
+        <span class="text-fg-subtle">起步价格</span>
+        <span class="font-bold text-brand">¥{provider.pricing.minPrice} /{provider.pricing.cycle}</span>
+      </div>
+      <div class="flex items-center justify-between p-2 bg-bg-subtle rounded">
+        <span class="text-fg-subtle">线路特点</span>
+        <span class="font-medium text-fg">{provider.routes}</span>
+      </div>
+      <div class="flex items-center justify-between p-2 bg-bg-subtle rounded">
+        <span class="text-fg-subtle">优惠码</span>
+        <span class="font-mono font-bold text-amber-600 dark:text-amber-400">{provider.coupon || '暂无'}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-2 pt-3 border-t border-border-subtle">
+    <a
+      href={`/brands/${provider.slug}/`}
+      class="flex-1 text-center py-2 text-xs font-semibold bg-bg-subtle hover:bg-border-subtle text-fg rounded transition-colors"
+    >
+      查看详情
+    </a>
+    <a
+      href={provider.affiliateUrl || provider.website}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex-1 text-center py-2 text-xs font-semibold bg-brand hover:bg-brand-600 text-text-inverse rounded transition-colors"
+    >
+      访问官网 →
+    </a>
+  </div>
+</div>

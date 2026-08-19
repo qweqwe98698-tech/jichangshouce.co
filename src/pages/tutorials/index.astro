@@ -1,0 +1,282 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import ArticleCard from '../../components/cards/ArticleCard.astro';
+import AnswerBox from '../../components/article/AnswerBox.astro';
+
+const allTutorials = await getCollection('tutorials', ({ data }) => !data.draft);
+allTutorials.sort((a, b) => (b.data.pubDate?.getTime() || 0) - (a.data.pubDate?.getTime() || 0));
+
+const breadcrumbs = [
+  { name: '客户端中心', url: '/tutorials/' },
+];
+
+const topAnswer = "不同设备适合的客户端生态截然不同：1. Windows 电脑：首选「Clash Verge Rev」（极低内存，一键 TUN 全系统接管），备选「v2rayN」；2. macOS 苹果电脑：首选「Clash Verge Rev (ARM64)」；3. iPhone/iPad：首选「Shadowrocket (小火箭)」（仅需 $2.99 买断，全协议硬件加速）；4. Android 安卓：首选「Clash Meta for Android」或「Sing-box (SFA)」。请先按设备选择客户端，再进入对应专题查看安装与分流教程。";
+
+const devices = [
+  { name: 'Windows 电脑', icon: '🪟', href: '/guides/windows-client-selection-guide/', desc: 'Clash Verge / v2rayN 选型', badge: '推荐 Verge Rev' },
+  { name: 'macOS 苹果电脑', icon: '🍎', href: '/guides/how-to-use-airport-clients/', desc: 'M系列芯片原生适配', badge: '原生 ARM64' },
+  { name: 'iPhone / iPad', icon: '📱', href: '/guides/iphone-ios-client-selection-guide/', desc: '小火箭 / Stash / Surge', badge: '$2.99 小火箭' },
+  { name: 'Android 安卓手机', icon: '🤖', href: '/guides/android-client-selection-guide/', desc: 'Clash Meta / SFA 分流', badge: '免 Root 一键用' },
+];
+
+const clientHubs = [
+  {
+    name: 'Clash / Clash Verge',
+    slug: 'clash',
+    desc: '跨平台全能分流标杆，基于 Tauri 架构，内置最新 Mihomo (Meta) 内核，支持一键 TUN 虚拟网卡与智能策略组。',
+    icon: '💻',
+    tag: 'Win / Mac / Linux',
+    href: '/tutorials/clash/',
+    highlight: '全网教程最全',
+  },
+  {
+    name: 'Shadowrocket (小火箭)',
+    slug: 'shadowrocket',
+    desc: 'iOS 移动端统治级神器，调用苹果官方 Network Extension 框架，仅需 $2.99 一次性买断，极省电且支持远程规则集。',
+    icon: '🚀',
+    tag: 'iOS / iPadOS',
+    href: '/tutorials/shadowrocket/',
+    highlight: '苹果出海标配',
+  },
+  {
+    name: 'v2rayN',
+    slug: 'v2rayn',
+    desc: 'Windows 经典极客工作站，基于 .NET 8 与 Xray 核心，支持直接测试真实下载带宽（MB/s），原生多协议深度调试。',
+    icon: '⚙️',
+    tag: 'Windows 专属',
+    href: '/tutorials/v2rayn/',
+    highlight: '真实下载测速',
+  },
+  {
+    name: 'Sing-box',
+    slug: 'singbox',
+    desc: '第四代下一代通用代理引擎，采用 SRS 二进制预编译规则集与全异步 Go 架构，内存低至 20MB，原生集成 Hysteria 2。',
+    icon: '⚡',
+    tag: '全平台现代核心',
+    href: '/tutorials/singbox/',
+    highlight: '微秒级匹配',
+  },
+];
+
+const troubleshootingLinks = [
+  { title: 'Clash 有节点但无法上网', desc: '系统代理残留与时钟同步排查', link: '/answers/clash-connected-no-internet/' },
+  { title: 'v2rayN 节点全部超时 -1', desc: '时钟偏差与 Core 内核排错', link: '/answers/v2rayn-connection-timeout/' },
+  { title: '小火箭订阅更新失败 404', desc: 'DNS 污染与 URL 格式修复', link: '/answers/shadowrocket-subscription-error/' },
+  { title: 'ChatGPT 1020 / Access Denied', desc: '原生住宅 IP 与 AI 规则补全', link: '/answers/chatgpt-blocked-solution/' },
+  { title: '晚高峰延迟高、跳 ping 丢包', desc: '避开拥挤节点与专线加速', link: '/answers/peak-hours-lag-troubleshoot/' },
+  { title: '网络突然中断 5 步排查', desc: '漏斗式自救恢复网络访问', link: '/guides/what-to-do-when-airport-stops-working/' },
+];
+
+const roadmapSteps = [
+  { step: '01', title: '选对设备客户端', desc: 'Win选Verge / iOS选小火箭', link: '/guides/how-to-use-airport-clients/' },
+  { step: '02', title: '安装正版环境', desc: '认准官方 GitHub / 外区商店', link: '/tutorials/clash/clash-verge-starter-guide/#二前置条件与下载准备' },
+  { step: '03', title: '导入机场订阅', desc: '一键拉取节点与策略组', link: '/guides/first-time-setup-flow/#第-4-步在客户端中导入订阅链接' },
+  { step: '04', title: '批量测真延迟', desc: '选择 30-50ms 绿色专线', link: '/guides/what-is-airport-node/' },
+  { step: '05', title: '开启规则分流', desc: '国内直连 / 国外代理加速', link: '/tutorials/clash/clash-rules-and-modes-guide/' },
+  { step: '06', title: '遇到报错自查', desc: '时钟校准与端口排查', link: '/answers/' },
+];
+---
+
+<BaseLayout
+  title="代理客户端选择与使用中心：Clash / 小火箭 / v2rayN / Sing-box 全景知识矩阵"
+  description="机场手册官方客户端知识中心：涵盖 Windows、macOS、iOS、Android 端 Clash Verge Rev、Shadowrocket、v2rayN 与 Sing-box 选型指南、订阅导入、分流规则与全流程故障排查。"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Hero Header -->
+    <header class="mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-900/30 text-brand mb-3 border border-brand-200 dark:border-brand-800">
+        <span>🛠️ 客户端知识矩阵</span>
+        <span class="w-1 h-1 rounded-full bg-brand"></span>
+        <span>4 大主流专题 + 全平台实战教程</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight">
+        代理客户端选择与使用中心
+      </h1>
+      <p class="text-base sm:text-lg text-fg-muted max-w-3xl leading-relaxed">
+        告别无头苍蝇式折腾：从按设备选型、官方正版下载、一键订阅导入，到系统级 TUN 模式配置与全流程故障自救。
+      </p>
+    </header>
+
+    <!-- Top Answer Box -->
+    <AnswerBox answer={topAnswer} />
+
+    <!-- Section 1: 按设备快速选型入口 (By Device) -->
+    <section class="my-12">
+      <div class="flex items-center justify-between gap-4 mb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-brand">By Platform</span>
+          <h2 class="text-xl sm:text-2xl font-black text-fg flex items-center gap-2">
+            💻 第一步：按你的设备选择客户端指南
+          </h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {devices.map((d) => (
+          <a
+            href={d.href}
+            class="group p-5 rounded-2xl border border-border-subtle bg-bg-surface dark:bg-card-bg hover:border-brand hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-3xl">{d.icon}</span>
+                <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-brand-50 dark:bg-brand-900/30 text-brand border border-brand-200 dark:border-brand-800">
+                  {d.badge}
+                </span>
+              </div>
+              <h3 class="text-base font-bold text-fg group-hover:text-brand transition-colors mb-1">
+                {d.name}
+              </h3>
+              <p class="text-xs text-fg-muted">{d.desc}</p>
+            </div>
+            <span class="text-xs font-bold text-brand mt-4 inline-flex items-center gap-1">
+              查看选型指南 ➔
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 2: 4 大核心客户端专题中心 (4 Core Client Hubs) -->
+    <section class="my-14">
+      <div class="flex items-center justify-between gap-4 mb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-brand">Core Clients</span>
+          <h2 class="text-xl sm:text-2xl font-black text-fg flex items-center gap-2">
+            ⭐ 4 大主流客户端深度专题中心
+          </h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {clientHubs.map((c) => (
+          <div class="p-6 rounded-2xl border-2 border-border-subtle hover:border-brand bg-bg-surface dark:bg-card-bg shadow-sm transition-all duration-200 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <div class="flex items-center gap-3">
+                  <span class="text-3xl">{c.icon}</span>
+                  <div>
+                    <h3 class="text-lg font-black text-fg group-hover:text-brand transition-colors">
+                      {c.name}
+                    </h3>
+                    <span class="text-xs font-semibold text-brand">{c.tag}</span>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+                  {c.highlight}
+                </span>
+              </div>
+              <p class="text-xs sm:text-sm text-fg-muted leading-relaxed mb-4">
+                {c.desc}
+              </p>
+            </div>
+            <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+              <span class="text-xs text-fg-subtle">教程 · 导入 · 分流 · 排障</span>
+              <a
+                href={c.href}
+                class="inline-flex items-center gap-1 px-4 py-2 rounded-xl text-xs font-bold bg-brand text-text-inverse hover:bg-brand-600 transition-colors shadow-sm"
+              >
+                进入 {c.name.split(' ')[0]} 专题 ➔
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 3: 客户端新手通关路径 (Roadmap) -->
+    <section class="my-14 bg-bg-surface dark:bg-card-bg border border-border-subtle rounded-2xl p-6 sm:p-8 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-border-subtle">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-brand">Workflow</span>
+          <h2 class="text-xl sm:text-2xl font-black text-fg">
+            🧭 客户端通关实战路径（从零到精通）
+          </h2>
+        </div>
+        <a
+          href="/guides/first-time-setup-flow/"
+          class="inline-flex items-center gap-1 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand text-text-inverse hover:bg-brand-600 transition-colors shadow-sm self-start sm:self-auto"
+        >
+          查看 6 步图文流程 ➔
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {roadmapSteps.map((s) => (
+          <a
+            href={s.link}
+            class="group p-4 rounded-xl border border-border-subtle bg-bg-base hover:border-brand hover:shadow-md transition-all duration-200 flex items-start gap-3"
+          >
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-brand-50 dark:bg-brand-900/30 text-brand font-black text-xs flex items-center justify-center border border-brand-200 dark:border-brand-800">
+              {s.step}
+            </span>
+            <div>
+              <h3 class="text-sm font-bold text-fg group-hover:text-brand transition-colors">
+                {s.title}
+              </h3>
+              <p class="text-xs text-fg-muted mt-1">{s.desc}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 4: 客户端高频排障直达通道 (Troubleshooting Shortcuts) -->
+    <section class="my-14">
+      <div class="flex items-center justify-between gap-4 mb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Troubleshooting</span>
+          <h2 class="text-xl sm:text-2xl font-black text-fg flex items-center gap-2">
+            🚨 客户端常见故障自救直达通道
+          </h2>
+        </div>
+        <a href="/answers/" class="text-xs font-bold text-brand hover:underline">
+          查看全部排障中心 ➔
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {troubleshootingLinks.map((t) => (
+          <a
+            href={t.link}
+            class="p-4 rounded-xl border border-border-subtle bg-bg-surface dark:bg-card-bg hover:border-amber-500 hover:shadow-sm transition-all duration-200 group"
+          >
+            <h3 class="text-sm font-bold text-fg group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors mb-1">
+              ⚡ {t.title}
+            </h3>
+            <p class="text-xs text-fg-muted">{t.desc}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 5: 全部实战教程列表 (All Tutorials) -->
+    <section class="my-14">
+      <div class="flex items-center gap-2 mb-6">
+        <span class="w-2 h-6 rounded-full bg-brand"></span>
+        <h2 class="text-xl sm:text-2xl font-black text-fg">
+          📖 客户端全部实战教程库
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {allTutorials.map((tut) => (
+          <ArticleCard
+            title={tut.data.title}
+            description={tut.data.description}
+            href={`/tutorials/${tut.id}/`}
+            category={tut.data.category}
+            pubDate={tut.data.pubDate}
+            updatedDate={tut.data.updatedDate}
+            tags={tut.data.tags}
+            cover={tut.data.cover}
+          />
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

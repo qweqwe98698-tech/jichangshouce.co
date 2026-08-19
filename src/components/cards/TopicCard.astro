@@ -1,0 +1,83 @@
+---
+interface Props {
+  name: string;
+  tagline: string;
+  href: string;
+  articleCount?: number;
+  answersCount?: number;
+  tags?: string[];
+  subtopics?: string[];
+  footerDesc?: string;
+  icon?: string;
+  iconBg?: string;
+  className?: string;
+}
+
+const {
+  name,
+  tagline,
+  href,
+  articleCount = 10,
+  answersCount = 4,
+  tags = [],
+  subtopics = [],
+  footerDesc = '从基础概念到进阶排查',
+  icon = '📑',
+  iconBg = 'bg-brand-50 dark:bg-brand-900/30 text-brand',
+  className = '',
+} = Astro.props;
+
+const displayTags = tags.length > 0 ? tags : subtopics.slice(0, 4);
+---
+
+<div class={`card-base p-6 flex flex-col justify-between group border border-border-subtle hover:border-brand/50 dark:hover:border-brand/60 transition-all duration-200 bg-bg-surface dark:bg-card-bg shadow-sm hover:shadow-md ${className}`}>
+  <div>
+    <!-- Card Header with Dynamic Stats -->
+    <div class="flex items-center justify-between gap-2 mb-3">
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-brand-50 dark:bg-brand-900/30 text-brand border border-brand-200 dark:border-brand-800">
+        <span>{icon}</span>
+        <span>专题 Topic Hub</span>
+      </span>
+      <span class="text-xs font-mono text-fg-subtle">
+        {articleCount} 篇内容 · {answersCount} 个排错
+      </span>
+    </div>
+
+    <!-- Title -->
+    <h3 class="text-xl font-bold text-fg group-hover:text-brand transition-colors mb-2">
+      <a href={href} class="focus:outline-none">
+        {name}
+      </a>
+    </h3>
+
+    <!-- Tagline / Subtitle -->
+    <p class="text-xs sm:text-sm text-fg-muted mb-4 leading-relaxed line-clamp-2">
+      {tagline}
+    </p>
+
+    <!-- User Intent Tags -->
+    {displayTags.length > 0 && (
+      <div class="flex flex-wrap gap-1.5 mb-5">
+        {displayTags.map((tag) => (
+          <span class="text-xs bg-bg-subtle text-fg-muted px-2 py-0.5 rounded-md border border-border-subtle group-hover:border-brand/20 transition-colors">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <!-- Custom Value Footer with Subtle Hover Arrow -->
+  <div class="pt-3.5 border-t border-border-subtle flex items-center justify-between gap-2">
+    <span class="text-xs text-fg-subtle line-clamp-1">
+      {footerDesc}
+    </span>
+    <a
+      href={href}
+      class="text-xs font-bold text-brand flex items-center gap-1 flex-shrink-0"
+    >
+      <span>进入专题</span>
+      <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+    </a>
+  </div>
+</div>

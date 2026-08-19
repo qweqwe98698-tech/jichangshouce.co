@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+---
+
+<BaseLayout
+  title="404 - 页面未找到"
+  description="抱歉，您访问的页面不存在或已被迁移。您可以通过搜索或下方快捷导航找到所需教程与排错指南。"
+  noindex={true}
+>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-brand-primary-subtle text-brand text-4xl mb-6 shadow-sm">
+      🧭
+    </div>
+
+    <h1 class="text-3xl sm:text-4xl font-black text-fg mb-3">
+      404 - 页面未找到
+    </h1>
+
+    <p class="text-base text-fg-muted mb-8 leading-relaxed max-w-md mx-auto">
+      你访问的页面可能已更新更名或移动至新专题。请尝试通过下方搜索框或常用入口继续浏览：
+    </p>
+
+    <!-- Quick Search Form -->
+    <div class="max-w-md mx-auto mb-10">
+      <form action="/search/" method="GET" class="relative flex items-center shadow-md rounded-2xl bg-surface border-2 border-border-default focus-within:border-brand transition-all p-1">
+        <input
+          type="search"
+          name="q"
+          placeholder="搜索 Clash、Shadowrocket、排错…"
+          class="w-full py-2.5 px-3 text-sm text-fg bg-transparent focus:outline-none placeholder:text-fg-subtle"
+        />
+        <button
+          type="submit"
+          class="px-4 py-2 bg-brand hover:bg-brand-600 text-text-inverse font-bold text-xs rounded-xl transition-colors"
+        >
+          搜索
+        </button>
+      </form>
+    </div>
+
+    <!-- Helpful Quick Destination Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl mx-auto text-left">
+      <a
+        href="/recommend/"
+        class="card-base card-hover p-4 rounded-xl block group"
+      >
+        <div class="text-xl mb-1">🧭</div>
+        <div class="text-sm font-bold text-fg group-hover:text-brand transition-colors">机场推荐参考</div>
+        <div class="text-xs text-fg-subtle mt-0.5">查看实机核验档案</div>
+      </a>
+
+      <a
+        href="/tutorials/"
+        class="card-base card-hover p-4 rounded-xl block group"
+      >
+        <div class="text-xl mb-1">💻</div>
+        <div class="text-sm font-bold text-fg group-hover:text-brand transition-colors">客户端配置</div>
+        <div class="text-xs text-fg-subtle mt-0.5">Clash / 小火箭教程</div>
+      </a>
+
+      <a
+        href="/answers/"
+        class="card-base card-hover p-4 rounded-xl block group"
+      >
+        <div class="text-xl mb-1">🔧</div>
+        <div class="text-sm font-bold text-fg group-hover:text-brand transition-colors">网络排错中心</div>
+        <div class="text-xs text-fg-subtle mt-0.5">30 秒定位故障</div>
+      </a>
+    </div>
+
+    <div class="mt-10">
+      <a href="/" class="text-xs font-bold text-brand hover:underline">
+        ← 返回网站首页
+      </a>
+    </div>
+  </div>
+</BaseLayout>

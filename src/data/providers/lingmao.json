@@ -1,0 +1,57 @@
+{
+  "id": "lingmao",
+  "slug": "lingmao",
+  "name": "灵猫网络",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "19元档月付大流量先锋，150GB 企业级专线与丰富套餐",
+  "pricing": {
+    "minPrice": "19.0",
+    "cycle": "月 (真实月付)",
+    "priceType": "真实月付价",
+    "traffic": "150GB",
+    "plans": [
+      { "name": "大流量月付", "price": 19, "cycle": "月付", "traffic": "150GB/月" },
+      { "name": "极速季付", "price": 52, "cycle": "季付", "traffic": "200GB/月" },
+      { "name": "不限时永久流量包", "price": 60, "cycle": "一次性", "traffic": "300GB" }
+    ]
+  },
+  "routes": "企业级内网专线",
+  "protocols": ["Shadowsocks", "VLESS"],
+  "clients": ["Clash", "Shadowrocket", "v2rayN", "Sing-box"],
+  "aiSupport": "当前资料未提供统一实测结果，建议结合节点实际测试。",
+  "streamingSupport": "可满足常规网页及 4K 视频类使用场景，具体平台支持以实际测试为准。",
+  "suitableFor": [
+    "每月流量需求较高（150GB+）、坚持按月付款的用户",
+    "不希望被长期年付绑定的重度视频/下载用户"
+  ],
+  "unsuitableFor": [
+    "每月仅消耗数 GB 的极轻度用户"
+  ],
+  "pros": [
+    "19 元月付即享 150GB 专线流量，同档位流量规格遥遥领先",
+    "提供不限时永久流量包，选择极度灵活",
+    "全内网专线传输，晚高峰无拥堵"
+  ],
+  "cons": [
+    "2024 年开业品牌，运营时间尚需积累"
+  ],
+  "coupon": {
+    "code": "lmao888",
+    "desc": "新人注册 9 折优惠码"
+  },
+  "affiliateUrl": "https://vip01.civetnet.com/#/?code=8MIAyxak",
+  "website": "https://vip01.civetnet.com/#/?code=8MIAyxak",
+  "speedtestImage": "/images/benchmarks/灵猫网络-节点测速实测.png",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "企业级内网专线千兆实测达标，150GB 流量配额充足。"
+  },
+  "faq": [
+    {
+      "q": "灵猫网络 19 元 150GB 套餐是否会限速？",
+      "a": "不会，灵猫网络全专线节点不设置人为单线程限速，千兆宽带下晚高峰测速可跑满带宽。"
+    }
+  ]
+}

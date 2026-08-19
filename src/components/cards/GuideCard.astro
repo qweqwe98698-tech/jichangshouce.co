@@ -1,0 +1,52 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  step: string;
+  href: string;
+  category?: string;
+  timeToComplete?: string;
+  className?: string;
+}
+
+const {
+  title,
+  description,
+  step,
+  href,
+  category = '新手指南',
+  timeToComplete = '5分钟',
+  className = '',
+} = Astro.props;
+---
+
+<div class={`card-base card-hover p-5 flex flex-col justify-between group ${className}`}>
+  <div>
+    <div class="flex items-center justify-between mb-3">
+      <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-brand-primary-subtle text-brand text-xs font-bold font-mono">
+        {step}
+      </span>
+      <span class="badge-tag badge-topic">
+        {category}
+      </span>
+    </div>
+
+    <h3 class="text-base font-bold text-fg group-hover:text-brand transition-colors mb-2 leading-snug">
+      <a href={href}>{title}</a>
+    </h3>
+
+    <p class="text-xs text-fg-muted leading-relaxed line-clamp-2 mb-4">
+      {description}
+    </p>
+  </div>
+
+  <div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs text-fg-subtle">
+    <span>耗时约 {timeToComplete}</span>
+    <a href={href} class="font-bold text-brand hover:underline inline-flex items-center gap-1">
+      开始阅读
+      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</div>

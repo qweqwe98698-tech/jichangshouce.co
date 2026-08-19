@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+
+const breadcrumbs = [
+  { name: '编辑与核验规范', url: '/editorial-policy/' },
+];
+---
+
+<BaseLayout
+  title="编辑与核验规范 (Editorial & Verification Policy)"
+  description="《机场手册》严格遵循客观透明的数据采集、实机测试与核验规范。明确说明事实数据来源、测试环境与更新机制。"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="mb-10">
+      <span class="badge-tag badge-verified mb-3">
+        🛡️ 内容质量与数据准则
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-black text-fg mb-4">
+        编辑与数据核验规范
+      </h1>
+      <p class="text-base text-fg-muted leading-relaxed">
+        本规范定义了全站所有教程、品牌档案、实测数据与排障步骤的撰写、审核、复测与修正流程。
+      </p>
+    </header>
+
+    <div class="prose-custom space-y-8">
+      <section class="card-base p-6 sm:p-8 rounded-2xl">
+        <h2 class="text-xl font-bold text-fg mb-3">1. 事实数据单一数据源原则 (Single Source of Truth)</h2>
+        <p class="text-sm text-fg-muted leading-relaxed">
+          全站所有服务商资费、线路规格、节点协议等数据均统一保存在 `src/data/providers/`，并通过程序化注入至首页、推荐页与品牌详情页，杜绝多处数据冲突或过时。
+        </p>
+      </section>
+
+      <section class="card-base p-6 sm:p-8 rounded-2xl">
+        <h2 class="text-xl font-bold text-fg mb-3">2. 严禁虚构测速与在线率</h2>
+        <p class="text-sm text-fg-muted leading-relaxed">
+          所有测速与延迟数据均必须记录真实的测试环境（如：广州电信 1000M FTTH、测试时间段 20:30-22:30、客户端版本与测试工具）。未测试项目明确标注“待核验”，绝不填充 99.99% 或 999Mbps 等伪造数值。
+        </p>
+      </section>
+
+      <section class="card-base p-6 sm:p-8 rounded-2xl">
+        <h2 class="text-xl font-bold text-fg mb-3">3. 教程实机验证要求</h2>
+        <p class="text-sm text-fg-muted leading-relaxed">
+          所有客户端配置与排障教程，必须在真实物理设备上执行并截图。对于失效的客户端版本或废弃协议（如已停更的早版客户端），一律提示迁移或归档。
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

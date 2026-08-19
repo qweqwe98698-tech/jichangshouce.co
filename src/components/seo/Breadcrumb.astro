@@ -1,0 +1,43 @@
+---
+import { generateBreadcrumbSchema } from '../../utils/schema';
+
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+  includeSchema?: boolean;
+}
+
+const { items, includeSchema = true } = Astro.props;
+const allItems = [{ name: '首页', url: '/' }, ...items];
+const schema = includeSchema ? generateBreadcrumbSchema(allItems) : null;
+---
+
+{schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+
+<nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-xs text-fg-subtle mb-6 overflow-x-auto py-1">
+  {allItems.map((item, index) => {
+    const isLast = index === allItems.length - 1;
+    return (
+      <div class="flex items-center space-x-2 flex-shrink-0">
+        {index > 0 && (
+          <svg class="w-3.5 h-3.5 text-border-strong flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        )}
+        {isLast ? (
+          <span class="font-semibold text-fg truncate max-w-xs" aria-current="page">
+            {item.name}
+          </span>
+        ) : (
+          <a href={item.url} class="hover:text-brand transition-colors">
+            {item.name}
+          </a>
+        )}
+      </div>
+    );
+  })}
+</nav>

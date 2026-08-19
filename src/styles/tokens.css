@@ -1,0 +1,132 @@
+/* ==========================================================================
+   Design Tokens - Astro Content Matrix 5.0 Locked Spec
+   Editorial Magazine × Technology Dashboard × Bento Content Portal
+   Domain: jichangshouce.co | Brand: 机场手册
+   ========================================================================== */
+
+:root {
+  /* Light Theme */
+  --bg: #F6F7F9;
+  --bg-default: #F6F7F9;
+  --bg-subtle: #F0F2F5;
+  --bg-muted: #E5E7EB;
+  
+  --surface: #FFFFFF;
+  --surface-default: #FFFFFF;
+  --surface-soft: #F8F9FA;
+  --surface-hover: #FAFBFC;
+  --surface-active: #F0F2F5;
+  --surface-elevated: #FFFFFF;
+
+  --border: #E5E7EB;
+  --border-default: #E5E7EB;
+  --border-subtle: #EEF0F3;
+  --border-strong: #D1D5DB;
+
+  --text: #111318;
+  --text-default: #111318;
+  --text-secondary: #5F6673;
+  --text-muted: #5F6673;
+  --text-subtle: #8C93A1;
+  --text-inverse: #FFFFFF;
+
+  /* Accents */
+  --primary: #16A37A;         /* Teal/Emerald Primary Accent */
+  --primary-hover: #128764;
+  --primary-subtle: #E8F7F2;
+  --brand-primary: #16A37A;
+  --brand-primary-hover: #128764;
+  --brand-primary-subtle: #E8F7F2;
+  --brand-accent: #4F6BFF;    /* Secondary Blue Accent */
+
+  /* Badges */
+  --badge-green-bg: #E6F7F0;
+  --badge-green-text: #0E7856;
+  --badge-blue-bg: #EFF4FF;
+  --badge-blue-text: #3554D1;
+  --badge-purple-bg: #F3EFFF;
+  --badge-purple-text: #6A3CD4;
+  --badge-orange-bg: #FFF4ED;
+  --badge-orange-text: #C44D08;
+  --badge-red-bg: #FEF2F2;
+  --badge-red-text: #DC2626;
+  --badge-amber-bg: #FFFBEB;
+  --badge-amber-text: #B45309;
+
+  /* Exact Radius System */
+  --radius-btn: 10px;
+  --radius-sm: 10px;
+  --radius-card-sm: 12px;
+  --radius-md: 12px;
+  --radius-input: 14px;
+  --radius-card: 16px;
+  --radius-lg: 16px;
+  --radius-card-lg: 18px;
+  --radius-xl: 18px;
+  --radius-2xl: 18px;
+  --radius-full: 9999px;
+
+  /* Shadows - Crisp & Non-blurry */
+  --shadow-sm: none;
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.06);
+  --shadow-card: none;
+  --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.06);
+
+  /* Transitions */
+  --transition-normal: 180ms ease;
+}
+
+/* Dark Theme */
+html.dark {
+  --bg: #0D0F12;
+  --bg-default: #0D0F12;
+  --bg-subtle: #15181D;
+  --bg-muted: #1B1F25;
+
+  --surface: #15181D;
+  --surface-default: #15181D;
+  --surface-soft: #1B1F25;
+  --surface-hover: #1F242C;
+  --surface-active: #252B35;
+  --surface-elevated: #1B1F25;
+
+  --border: #292E36;
+  --border-default: #292E36;
+  --border-subtle: #22262E;
+  --border-strong: #363D47;
+
+  --text: #F5F7FA;
+  --text-default: #F5F7FA;
+  --text-secondary: #9DA5B2;
+  --text-muted: #9DA5B2;
+  --text-subtle: #6D7686;
+  --text-inverse: #0D0F12;
+
+  --primary: #19B88B;
+  --primary-hover: #16A37A;
+  --primary-subtle: rgba(22, 163, 122, 0.15);
+  --brand-primary: #19B88B;
+  --brand-primary-hover: #16A37A;
+  --brand-primary-subtle: rgba(22, 163, 122, 0.15);
+  --brand-accent: #637DFF;
+
+  --badge-green-bg: rgba(22, 163, 122, 0.16);
+  --badge-green-text: #34D399;
+  --badge-blue-bg: rgba(79, 107, 255, 0.16);
+  --badge-blue-text: #818CF8;
+  --badge-purple-bg: rgba(168, 85, 247, 0.16);
+  --badge-purple-text: #C084FC;
+  --badge-orange-bg: rgba(249, 115, 22, 0.16);
+  --badge-orange-text: #FB923C;
+  --badge-red-bg: rgba(239, 68, 68, 0.16);
+  --badge-red-text: #F87171;
+  --badge-amber-bg: rgba(245, 158, 11, 0.16);
+  --badge-amber-text: #FBBF24;
+
+  --shadow-sm: none;
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --shadow-card: none;
+  --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
+}

@@ -1,0 +1,271 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/seo/Breadcrumb.astro';
+import AnswerBox from '../components/article/AnswerBox.astro';
+import TableOfContents from '../components/article/TableOfContents.astro';
+import NextStep from '../components/article/NextStep.astro';
+import FAQAccordion from '../components/article/FAQAccordion.astro';
+import ArticleCard from '../components/cards/ArticleCard.astro';
+import { formatDate, estimateReadingTime } from '../utils/dates';
+import { generateArticleSchema, generateFAQSchema, generateHowToSchema } from '../utils/schema';
+import type { ContentItem } from '../utils/related';
+
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  pubDate: Date | string;
+  updatedDate?: Date | string;
+  author?: string;
+  cover?: { src: string; alt: string };
+  tags?: string[];
+  answer?: string;
+  faq?: Array<{ q: string; a: string }>;
+  nextStep?: {
+    title: string;
+    description: string;
+    link: string;
+    linkText: string;
+  };
+  headings?: Array<{ depth: number; slug: string; text: string }>;
+  relatedArticles?: ContentItem[];
+  breadcrumbItems?: Array<{ name: string; url: string }>;
+}
+
+const {
+  title,
+  description,
+  category,
+  pubDate,
+  updatedDate,
+  author = '机场手册编辑部',
+  cover,
+  tags = [],
+  answer,
+  faq = [],
+  nextStep,
+  headings = [],
+  relatedArticles = [],
+  breadcrumbItems = [{ name: category, url: '/guides/' }, { name: title, url: Astro.url.pathname }],
+} = Astro.props;
+
+const dateFormatted = formatDate(pubDate);
+const updateFormatted = updatedDate ? formatDate(updatedDate) : null;
+const readingTime = estimateReadingTime(description + title);
+
+const articleSchema = generateArticleSchema({
+  title,
+  description,
+  pathname: Astro.url.pathname,
+  pubDate,
+  updatedDate,
+  author,
+  image: cover?.src,
+});
+
+const faqSchema = generateFAQSchema(faq);
+
+// Generate HowTo Schema for tutorial pages with clear actionable steps
+const stepHeadings = headings.filter(h => 
+  (h.depth === 2 || h.depth === 3) && 
+  (h.text.includes('步') || h.text.includes('Step') || h.text.includes('步骤') || h.text.includes('一、') || h.text.includes('二、') || h.text.includes('三、'))
+);
+
+let howToSchema = null;
+if (Astro.url.pathname.includes('/tutorials/') && stepHeadings.length >= 2) {
+  howToSchema = generateHowToSchema({
+    name: title,
+    description: description,
+    steps: stepHeadings.slice(0, 6).map(h => ({
+      name: h.text,
+      text: `按照指引完成 ${h.text} 环节的标准配置与核验。`
+    }))
+  });
+}
+
+const schemas = [
+  articleSchema,
+  ...(faqSchema ? [faqSchema] : []),
+  ...(howToSchema ? [howToSchema] : []),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  type="article"
+  pubDate={pubDate}
+  updatedDate={updatedDate}
+  author={author}
+  image={cover?.src}
+  schema={schemas}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <!-- Article Header -->
+    <header class="max-w-4xl mb-8">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="badge-tag badge-topic">
+          {category}
+        </span>
+        {tags.length > 0 && (
+          <span class="text-xs text-fg-subtle">
+            #{tags[0]}
+          </span>
+        )}
+      </div>
+
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-fg tracking-tight mb-4 leading-tight">
+        {title}
+      </h1>
+
+      <p class="text-base sm:text-lg text-fg-muted leading-relaxed mb-4">
+        {description}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 text-xs text-fg-subtle pt-4 border-t border-border-subtle">
+        <div class="flex items-center gap-1.5 font-medium text-fg">
+          <span>✍️ {author}</span>
+        </div>
+        <div>发布于: <time class="font-mono">{dateFormatted}</time></div>
+        {updateFormatted && (
+          <div>最后更新: <time class="font-mono text-brand font-semibold">{updateFormatted}</time></div>
+        )}
+        <div>⏱️ {readingTime} 分钟阅读</div>
+      </div>
+    </header>
+
+    {cover && (
+      <div class="max-w-4xl mb-10 overflow-hidden rounded-xl border border-border-default shadow-sm bg-bg-subtle">
+        <img
+          src={cover.src}
+          alt={cover.alt || title}
+          class="w-full h-auto max-h-96 object-cover"
+          loading="eager"
+        />
+      </div>
+    )}
+
+    <!-- 3-Column Desktop Grid Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+      <!-- Left Column: Table of Contents (Sticky on desktop) -->
+      <aside class="hidden lg:block lg:col-span-3 sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
+        <TableOfContents headings={headings} />
+      </aside>
+
+      <!-- Center Column: Main Content -->
+      <article class="lg:col-span-6 min-w-0">
+        <!-- Mobile TOC accordion if headings present -->
+        {headings.length > 0 && (
+          <div class="block lg:hidden mb-6 card-base p-4 rounded-xl">
+            <details>
+              <summary class="font-bold text-xs text-fg cursor-pointer flex items-center justify-between">
+                <span>📑 展开文章目录</span>
+                <span class="text-brand text-xs">点击查看</span>
+              </summary>
+              <div class="mt-3 pt-3 border-t border-border-subtle">
+                <TableOfContents headings={headings} />
+              </div>
+            </details>
+          </div>
+        )}
+
+        <!-- Top Answer Box (if available) -->
+        {answer && <AnswerBox answer={answer} />}
+
+        <!-- Markdown / MDX Body -->
+        <div class="prose-custom">
+          <slot />
+        </div>
+
+        <!-- FAQ Section -->
+        {faq.length > 0 && <FAQAccordion faqs={faq} />}
+
+        <!-- Next Step Card -->
+        {nextStep ? (
+          <NextStep
+            title={nextStep.title}
+            description={nextStep.description}
+            link={nextStep.link}
+            linkText={nextStep.linkText}
+          />
+        ) : (
+          <NextStep />
+        )}
+      </article>
+
+      <!-- Right Column: Sidebar (Topic hub link & Quick Actions) -->
+      <aside class="lg:col-span-3 space-y-6 sticky top-24">
+        <!-- Quick Decision Widget -->
+        <div class="card-base p-5 rounded-xl bg-gradient-to-br from-surface to-bg-subtle border border-border-default">
+          <div class="flex items-center gap-1.5 mb-2">
+            <span class="text-base">🧭</span>
+            <h4 class="text-xs font-bold text-fg uppercase tracking-wider">选择参考</h4>
+          </div>
+          <p class="text-xs text-fg-muted mb-4 leading-relaxed">
+            不知道哪个节点或服务商更适合你的设备？使用智能选择指南一键筛选。
+          </p>
+          <a
+            href="/recommend/#selector"
+            class="block w-full py-2 text-center text-xs font-bold text-text-inverse bg-brand hover:bg-brand-600 rounded-lg transition-colors shadow-sm"
+          >
+            开始智能选型 →
+          </a>
+        </div>
+
+        <!-- Editorial Policy Widget -->
+        <div class="card-base p-4 rounded-xl text-xs text-fg-subtle space-y-2">
+          <div class="font-bold text-fg">🛡️ 真实性与核验规范</div>
+          <p class="leading-relaxed">
+            本站所有教程均在实机环境测试通过，所有品牌信息均标注核验日期与来源，拒绝虚假评分。
+          </p>
+          <a href="/editorial-policy/" class="text-brand hover:underline block pt-1 font-medium">
+            查看我们的编辑规范 →
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom Related Articles -->
+    {relatedArticles.length > 0 && (
+      <section class="mt-16 pt-12 border-t border-border-default">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-bold text-fg flex items-center gap-2">
+            <span>📚</span>
+            相关专题与推荐阅读
+          </h2>
+          <a href="/guides/" class="text-xs font-bold text-brand hover:underline">
+            浏览全部内容 →
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {relatedArticles.slice(0, 3).map((item) => {
+            const itemHref = item.collection === 'tutorials'
+              ? `/tutorials/${item.slug || item.id}/`
+              : item.collection === 'comparisons'
+              ? `/compare/${item.slug || item.id}/`
+              : item.collection === 'answers'
+              ? `/answers/${item.slug || item.id}/`
+              : item.collection === 'glossary'
+              ? `/glossary/${item.slug || item.id}/`
+              : `/guides/${item.slug || item.id}/`;
+
+            return (
+              <ArticleCard
+                title={item.data.title || item.data.term}
+                description={item.data.description || item.data.definition}
+                href={itemHref}
+                category={item.data.category || '网络百科'}
+                pubDate={item.data.pubDate}
+                updatedDate={item.data.updatedDate}
+                tags={item.data.tags || []}
+                cover={item.data.cover}
+              />
+            );
+          })}
+        </div>
+      </section>
+    )}
+  </div>
+</BaseLayout>

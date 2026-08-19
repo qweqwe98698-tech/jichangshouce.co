@@ -1,0 +1,29 @@
+---
+import { getCollection, render } from 'astro:content';
+import AnswerLayout from '../../layouts/AnswerLayout.astro';
+
+export async function getStaticPaths() {
+  const answers = await getCollection('answers');
+  return answers.map((ans) => ({
+    params: { slug: ans.id },
+    props: { ans },
+  }));
+}
+
+const { ans } = Astro.props;
+const { Content } = await render(ans);
+---
+
+<AnswerLayout
+  title={ans.data.title}
+  description={ans.data.description}
+  category={ans.data.category}
+  symptom={ans.data.symptom}
+  answer={ans.data.answer || ans.data.description}
+  pubDate={ans.data.pubDate}
+  updatedDate={ans.data.updatedDate}
+  faq={ans.data.faq}
+  nextStep={ans.data.nextStep}
+>
+  <Content />
+</AnswerLayout>

@@ -1,0 +1,43 @@
+---
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  faqs: FAQItem[];
+  title?: string;
+  className?: string;
+}
+
+const { faqs, title = '常见问题与深度解答 (FAQ)', className = '' } = Astro.props;
+---
+
+{faqs.length > 0 && (
+  <div class={`my-12 ${className}`}>
+    <h2 class="text-xl font-bold text-fg mb-4 flex items-center gap-2">
+      <span>❓</span>
+      {title}
+    </h2>
+
+    <div class="space-y-3">
+      {faqs.map((faq) => (
+        <details class="group card-base p-4 rounded-xl border border-border-default open:bg-bg-subtle/50 transition-colors">
+          <summary class="flex items-center justify-between font-bold text-sm text-fg cursor-pointer list-none focus:outline-none select-none">
+            <span class="flex items-center gap-2">
+              <span class="text-brand font-mono">Q.</span>
+              {faq.q}
+            </span>
+            <svg class="w-4 h-4 text-fg-subtle group-open:rotate-180 transition-transform flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-border-subtle text-xs sm:text-sm text-fg-muted leading-relaxed">
+            <span class="font-bold text-brand font-mono mr-1">A.</span>
+            {faq.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+)}

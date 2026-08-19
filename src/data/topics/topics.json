@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "clash",
+    "name": "Clash 专题",
+    "tagline": "从下载安装到订阅、规则、DNS、TUN 与常见故障完整掌握 Clash",
+    "description": "系统化解析 Clash 及现代分支（Clash Verge Rev、Clash Nyanpasu、Mihomo）的核心机制、配置技巧与常见网络阻断处理。",
+    "footerDesc": "从安装、订阅到 TUN 与故障排查",
+    "tags": ["下载安装", "导入订阅", "连不上网", "TUN模式"],
+    "subtopics": ["下载安装", "导入订阅", "连不上网", "TUN模式", "DNS防污染", "规则分流"],
+    "icon": "⚡",
+    "iconBg": "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800",
+    "updatedDate": "2026-08-19"
+  },
+  {
+    "slug": "shadowrocket",
+    "name": "Shadowrocket 专题",
+    "tagline": "覆盖小火箭订阅导入、节点选择、分流规则、DNS 与连接故障",
+    "description": "专为 iPhone / iPad 用户打造的小火箭实战教程，涵盖节点导入、按需求连接、证书安装与 HTTPS 解密排障。",
+    "footerDesc": "从订阅导入到规则与连接排查",
+    "tags": ["添加订阅", "扫码导入", "节点超时", "分流规则"],
+    "subtopics": ["正版辨别", "添加订阅", "扫码导入", "节点超时", "分流规则", "广告拦截"],
+    "icon": "🚀",
+    "iconBg": "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800",
+    "updatedDate": "2026-08-19"
+  },
+  {
+    "slug": "v2rayn",
+    "name": "v2rayN 专题",
+    "tagline": "Windows 经典轻量客户端，涵盖安装、节点测速、路由分流与系统代理",
+    "description": "针对 Windows 用户的经典开源代理客户端指南，涵盖 Xray 核心、Sing-box 核心、自定义路由与系统代理切换。",
+    "footerDesc": "从安装配置到路由与常见故障",
+    "tags": ["下载安装", "导入订阅", "无法联网", "路由设置"],
+    "subtopics": ["核心下载", "导入订阅", "真连接测速", "无法联网", "路由设置", "PAC分流"],
+    "icon": "🪟",
+    "iconBg": "bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-800",
+    "updatedDate": "2026-08-19"
+  },
+  {
+    "slug": "airport-selection",
+    "name": "机场选择与避坑",
+    "tagline": "从预算、线路、套餐到稳定性与风险防范，系统建立客观选型标准",
+    "description": "拆解 IPLC、IEPL、中继与直连的本质区别，建立按需选型体系，杜绝信息不对称。",
+    "footerDesc": "从预算、线路到风险判断",
+    "tags": ["机场怎么选", "线路区别", "套餐选择", "避坑指南"],
+    "subtopics": ["机场怎么选", "线路区别", "套餐选择", "避坑指南", "防跑路清单", "稳定性测试"],
+    "icon": "🧭",
+    "iconBg": "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800",
+    "updatedDate": "2026-08-19"
+  },
+  {
+    "slug": "ai-tools",
+    "name": "AI 访问与问题排查",
+    "tagline": "聚合 ChatGPT、Claude、Gemini 等 AI 工具的访问问题、网络诊断与常见故障解决方案",
+    "description": "解析大语言模型（LLM）反欺诈与 IP 质量检测机制，指导如何挑选低风控纯净节点与配置特定分流规则。",
+    "footerDesc": "从访问问题到网络故障诊断",
+    "tags": ["ChatGPT打不开", "Claude访问", "Gemini问题", "IP与网络"],
+    "subtopics": ["ChatGPT打不开", "Claude访问", "Gemini问题", "IP与网络", "1020报错", "住宅IP"],
+    "icon": "🤖",
+    "iconBg": "bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800",
+    "updatedDate": "2026-08-19"
+  },
+  {
+    "slug": "protocols",
+    "name": "协议与线路百科",
+    "tagline": "深入底层剖析 Shadowsocks、VLESS、Trojan、IEPL 与 IPLC 的运行机理与技术对比",
+    "description": "用通俗易懂的语言讲透网络底层转发与加密协议，厘清概念误区。",
+    "footerDesc": "从基础概念到线路与协议对比",
+    "tags": ["IEPL/IPLC", "VLESS", "Trojan", "中转线路"],
+    "subtopics": ["IEPL/IPLC", "VLESS", "Trojan", "中转线路", "原生IP", "测速解读"],
+    "icon": "⚡",
+    "iconBg": "bg-cyan-50 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-800",
+    "updatedDate": "2026-08-19"
+  }
+]

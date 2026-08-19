@@ -1,0 +1,105 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  category: string;
+  href: string;
+  icon?: string;
+  status?: string;
+  statusType?: 'online' | 'updated' | 'beta';
+  actionText?: string;
+  modalId?: string;
+  className?: string;
+}
+
+const {
+  name,
+  description,
+  category,
+  href,
+  icon = '🛠️',
+  status = '可立即使用',
+  statusType = 'online',
+  actionText = '开始使用',
+  modalId,
+  className = '',
+} = Astro.props;
+
+const statusColor = 
+  statusType === 'updated' ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800' :
+  statusType === 'beta' ? 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30 border-purple-200 dark:border-purple-800' :
+  'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 border-emerald-200 dark:border-emerald-800';
+
+const dotColor = 
+  statusType === 'updated' ? 'bg-blue-500' :
+  statusType === 'beta' ? 'bg-purple-500' :
+  'bg-emerald-500 animate-pulse';
+---
+
+<div
+  class={`card-base p-6 flex flex-col justify-between group border border-border-subtle hover:border-brand/50 dark:hover:border-brand/60 transition-all duration-200 bg-bg-surface dark:bg-card-bg shadow-sm hover:shadow-md ${className}`}
+  data-category={category}
+>
+  <div>
+    <!-- Layer 1: Icon + Category + Status Badge -->
+    <div class="flex items-center justify-between gap-2 mb-3.5">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">{icon}</span>
+        <span class="text-[11px] font-bold text-fg-subtle uppercase tracking-wider bg-bg-subtle px-2 py-0.5 rounded-md border border-border-subtle">
+          {category}
+        </span>
+      </div>
+      <span class={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10.5px] font-semibold border ${statusColor}`}>
+        <span class={`w-1.5 h-1.5 rounded-full ${dotColor}`}></span>
+        <span>{status}</span>
+      </span>
+    </div>
+
+    <!-- Layer 2: Tool Name -->
+    <h3 class="text-lg font-bold text-fg group-hover:text-brand transition-colors mb-2 leading-snug">
+      {modalId ? (
+        <button
+          type="button"
+          class="text-left focus:outline-none tool-trigger-btn hover:text-brand"
+          data-target-modal={modalId}
+        >
+          {name}
+        </button>
+      ) : (
+        <a href={href} class="focus:outline-none">
+          {name}
+        </a>
+      )}
+    </h3>
+
+    <!-- Layer 3: Function Description (1-2 lines) -->
+    <p class="text-xs sm:text-sm text-fg-muted leading-relaxed line-clamp-2 mb-4">
+      {description}
+    </p>
+  </div>
+
+  <!-- Layer 4: Bottom Action CTA with subtle hover movement -->
+  <div class="pt-3.5 border-t border-border-subtle flex items-center justify-between gap-2">
+    <span class="text-[11px] text-fg-subtle">
+      纯前端安全交互
+    </span>
+    {modalId ? (
+      <button
+        type="button"
+        class="text-xs font-bold text-brand flex items-center gap-1 flex-shrink-0 tool-trigger-btn hover:underline cursor-pointer"
+        data-target-modal={modalId}
+      >
+        <span>{actionText}</span>
+        <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+      </button>
+    ) : (
+      <a
+        href={href}
+        class="text-xs font-bold text-brand flex items-center gap-1 flex-shrink-0"
+      >
+        <span>{actionText}</span>
+        <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+      </a>
+    )}
+  </div>
+</div>

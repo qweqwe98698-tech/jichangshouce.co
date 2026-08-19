@@ -1,0 +1,42 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  link?: string;
+  linkText?: string;
+  className?: string;
+}
+
+const {
+  title = '下一步：进阶决策与相关配置',
+  description = '你已掌握当前模块核心要点，建议继续了解客户端分流设置或查看经过实机核验的机场服务商资料。',
+  link = '/recommend/',
+  linkText = '查看机场选择参考 →',
+  className = '',
+} = Astro.props;
+---
+
+<div class={`my-12 p-6 rounded-xl bg-gradient-to-br from-brand-50 to-bg-subtle dark:from-brand-900/20 dark:to-bg-subtle border border-brand/20 shadow-sm ${className}`}>
+  <div class="flex items-center gap-2 mb-2">
+    <span class="badge-tag badge-topic">
+      🎯 下一步建议 (Next Step)
+    </span>
+  </div>
+
+  <h3 class="text-lg font-bold text-fg mb-2">
+    {title}
+  </h3>
+
+  <p class="text-sm text-fg-muted mb-4 leading-relaxed">
+    {description}
+  </p>
+
+  <div>
+    <a
+      href={link}
+      class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-text-inverse bg-brand hover:bg-brand-600 rounded-lg transition-colors shadow-sm"
+    >
+      {linkText}
+    </a>
+  </div>
+</div>

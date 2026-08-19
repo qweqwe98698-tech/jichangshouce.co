@@ -1,0 +1,237 @@
+---
+const compactArticles = [
+  {
+    title: 'Clash 连不上怎么办',
+    desc: '有节点但无网速 / DNS 与 TUN 模式深度排查',
+    date: '08-19 · 8分钟',
+    tag: '排障',
+    tagClass: 'badge-blue',
+    href: '/answers/clash-connected-no-internet/'
+  },
+  {
+    title: 'IEPL 与 IPLC 全面对比',
+    desc: '专线原理、延迟稳定性、成本与适用场景分析',
+    date: '08-19 · 10分钟',
+    tag: '对比',
+    tagClass: 'badge-orange',
+    href: '/compare/iepl-vs-iplc/'
+  },
+  {
+    title: '小火箭订阅配置教程',
+    desc: 'iOS Shadowrocket 节点导入与分流规则指南',
+    date: '08-19 · 9分钟',
+    tag: '教程',
+    tagClass: 'badge-blue',
+    href: '/tutorials/shadowrocket/import-subscription/'
+  }
+];
+
+const hotProblems = [
+  {
+    category: 'AI 访问',
+    title: 'ChatGPT 提示 1020 / Access Denied 怎么办？',
+    cause: 'IP 风控、Cloudflare 验证或浏览器状态异常。',
+    checkpoints: ['更换网络', '无痕模式', '原生IP'],
+    meta: '4 步诊断 · 6 分钟',
+    href: '/answers/chatgpt-blocked-solution/'
+  },
+  {
+    category: '客户端',
+    title: 'Clash 有节点但无法上网怎么办？',
+    cause: '系统代理未生效、DNS 异常、规则模式或 TUN 冲突。',
+    checkpoints: ['系统代理', 'DNS', 'TUN', '规则'],
+    meta: '4 步诊断 · 8 分钟',
+    href: '/answers/clash-connected-no-internet/'
+  },
+  {
+    category: '客户端',
+    title: 'v2rayN 节点全部超时怎么办？',
+    cause: '本地系统时钟偏差、Core 核心未启动或防火墙拦截。',
+    checkpoints: ['系统时间', '核心状态', '防火墙'],
+    meta: '4 步诊断 · 7 分钟',
+    href: '/answers/v2rayn-connection-timeout/'
+  },
+  {
+    category: '客户端',
+    title: 'Shadowrocket 订阅更新失败怎么办？',
+    cause: '订阅链接复制不全、本地 Wi-Fi DNS 污染或格式错误。',
+    checkpoints: ['核对URL', '切5G热点', '更新配置'],
+    meta: '3 步诊断 · 5 分钟',
+    href: '/answers/shadowrocket-subscription-error/'
+  },
+  {
+    category: '网络排障',
+    title: '机场晚高峰延迟高、跳 ping 怎么办？',
+    cause: '公网直连中继拥挤、节点超售或国际出口拥堵。',
+    checkpoints: ['IEPL专线', '切换小众区', '测丢包'],
+    meta: '4 步诊断 · 6 分钟',
+    href: '/answers/peak-hours-lag-troubleshoot/'
+  },
+  {
+    category: '订阅排障',
+    title: '机场订阅导入后没有节点怎么办？',
+    cause: '链接格式复制错误、账户未激活到期或本地拦截。',
+    checkpoints: ['核对链接', '官网账户', '切5G热点'],
+    meta: '4 步诊断 · 5 分钟',
+    href: '/answers/subscription-no-nodes/'
+  }
+];
+---
+
+<section class="max-w-[1280px] mx-auto px-4 sm:px-8 py-8">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+    
+    <!-- LEFT: 本周精选指南 (6 cols on lg) -->
+    <div class="lg:col-span-6 flex flex-col justify-between">
+      <!-- Section Header with Subtitle -->
+      <div class="flex items-end justify-between mb-4">
+        <div>
+          <h2 class="section-title text-fg tracking-tight">
+            本周精选指南
+          </h2>
+          <p class="text-xs text-fg-subtle mt-0.5 font-normal">
+            编辑精选的深度内容与实用指南
+          </p>
+        </div>
+        <a href="/guides/" class="text-xs text-fg-subtle hover:text-primary transition-colors flex items-center gap-0.5 font-medium mb-0.5">
+          查看全部 →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 flex-1">
+        <!-- Main Big Featured Card (Dark Flagship Card) -->
+        <a
+          href="/guides/how-to-choose-airport/"
+          class="sm:col-span-7 card-base p-6 sm:p-7 pt-8 sm:pt-9 flex flex-col justify-between group relative overflow-hidden text-white min-h-[340px] bg-[#0A0D14] border border-white/10 hover:border-white/20 hover:-translate-y-1 hover:shadow-xl transition-all duration-200"
+        >
+          <!-- Dynamic Background Graphic -->
+          <div
+            class="absolute inset-0 bg-cover bg-[center_32%] transition-transform duration-500 group-hover:scale-105 opacity-85"
+            style="background-image: url('/images/featured-guide.jpg');"
+          ></div>
+          
+          <!-- Smooth Dark Gradients for Crisp Text Readability -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0A0D14] via-[#0A0D14]/55 to-[#0A0D14]/30 z-0"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#0A0D14]/75 via-transparent to-transparent z-0"></div>
+
+          <!-- Card Content Top -->
+          <div class="relative z-10">
+            <span class="inline-flex items-center h-[22px] px-2.5 rounded-full bg-[#16A37A] text-white text-[10.5px] font-bold mb-3 shadow-xs tracking-wide">
+              精选指南
+            </span>
+
+            <h3 class="text-[26px] sm:text-[29px] font-[800] text-white group-hover:text-[#34D399] transition-colors mb-2.5 leading-[1.15] drop-shadow-sm tracking-tight">
+              2026 机场选择终极指南
+            </h3>
+
+            <p class="text-[13px] text-gray-200/90 leading-[1.55] line-clamp-2 font-normal drop-shadow-xs max-w-[95%]">
+              从线路、协议、稳定性和性价比出发，系统讲清不同需求该怎么选择。
+            </p>
+          </div>
+
+          <!-- Card Content Bottom -->
+          <div class="relative z-10 pt-4">
+            <div class="w-[80%] border-t border-white/15 mb-3"></div>
+
+            <div class="flex items-center justify-between text-xs text-gray-300">
+              <span class="font-medium text-[12px] text-gray-300/90">
+                更新于 08-19 · 12 分钟阅读
+              </span>
+              <div class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center font-bold text-xs group-hover:bg-[#16A37A] group-hover:text-white transition-all duration-200 shadow-md group-hover:translate-x-1">
+                →
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- 3 Compact Light Cards -->
+        <div class="sm:col-span-5 flex flex-col justify-between gap-2.5">
+          {compactArticles.map((item) => (
+            <a
+              href={item.href}
+              class="card-base card-hover p-3.5 flex flex-col justify-between group flex-1 bg-surface border border-border"
+            >
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="text-[13px] font-bold text-fg group-hover:text-primary transition-colors line-clamp-1">
+                  {item.title}
+                </h4>
+                <span class={`badge-tag ${item.tagClass} text-[10px] flex-shrink-0`}>
+                  {item.tag}
+                </span>
+              </div>
+              <p class="text-[11px] text-fg-muted line-clamp-1 mb-2">
+                {item.desc}
+              </p>
+              <div class="text-[10px] text-fg-subtle">
+                {item.date}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: 大家正在解决的问题 / 网络排错与极速解答中心 (6 cols on lg) -->
+    <div class="lg:col-span-6 flex flex-col justify-between">
+      <div class="flex items-end justify-between mb-4">
+        <div>
+          <h2 class="section-title text-fg tracking-tight">
+            大家正在解决的问题
+          </h2>
+          <p class="text-xs text-fg-subtle mt-0.5 font-normal">
+            常见故障先快速判断，再进入完整排查教程
+          </p>
+        </div>
+        <a href="/answers/" class="text-xs text-fg-subtle hover:text-primary transition-colors flex items-center gap-0.5 font-medium mb-0.5">
+          查看全部排障 →
+        </a>
+      </div>
+
+      <!-- 6 Clean Diagnostic Cards in 2 Cols x 3 Rows -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1">
+        {hotProblems.map((p) => (
+          <a
+            href={p.href}
+            class="card-base p-3.5 flex flex-col justify-between group bg-surface border border-border-subtle hover:border-brand/40 transition-all duration-200"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[10px] font-bold text-brand bg-brand-50 dark:bg-brand-900/30 px-1.5 py-0.2 rounded border border-brand-200 dark:border-brand-800">
+                  {p.category}
+                </span>
+                <span class="text-[10px] text-amber-600 dark:text-amber-400 font-mono">
+                  30秒诊断
+                </span>
+              </div>
+
+              <h3 class="text-[12.5px] font-bold text-fg group-hover:text-primary transition-colors line-clamp-1 mb-1">
+                {p.title}
+              </h3>
+
+              <p class="text-[11px] text-fg-muted leading-relaxed line-clamp-1 mb-2">
+                {p.cause}
+              </p>
+
+              <div class="flex flex-wrap gap-1 mb-2">
+                {p.checkpoints.map((cp) => (
+                  <span class="text-[9.5px] bg-bg-subtle text-fg-subtle px-1.5 py-0.2 rounded">
+                    {cp}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-border-subtle flex items-center justify-between text-[10px]">
+              <span class="text-fg-subtle">{p.meta}</span>
+              <span class="text-primary font-bold flex items-center gap-0.5">
+                开始排查
+                <span class="inline-block transition-transform duration-150 group-hover:translate-x-0.5">→</span>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>

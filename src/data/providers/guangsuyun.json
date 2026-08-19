@@ -1,0 +1,63 @@
+{
+  "id": "guangsuyun",
+  "slug": "guangsuyun",
+  "name": "光速云",
+  "founded": 2020,
+  "status": "active",
+  "tagline": "老牌综合型 IEPL 专线服务商，兼顾晚高峰稳定性与 AI 解锁",
+  "pricing": {
+    "minPrice": "7.5",
+    "cycle": "月 (年付折算)",
+    "priceType": "年付折算价",
+    "traffic": "59GB",
+    "plans": [
+      { "name": "基础入门 (年付折算)", "price": 90, "cycle": "年付 (约 7.5 元/月)", "traffic": "59GB/月" },
+      { "name": "标准套餐", "price": 28, "cycle": "月付", "traffic": "150GB/月" },
+      { "name": "高级旗舰", "price": 48, "cycle": "月付", "traffic": "300GB/月" }
+    ]
+  },
+  "routes": "全专线 IEPL / 企业级内网专线",
+  "protocols": ["VLESS", "Shadowsocks"],
+  "clients": ["自研客户端 (Windows/macOS/Android)", "Clash", "Shadowrocket", "v2rayN", "Sing-box"],
+  "aiSupport": "品牌资料显示覆盖 ChatGPT、Claude、Gemini 等主流 AI 工具访问场景，具体可用性结合节点测试。",
+  "streamingSupport": "品牌资料显示覆盖 Netflix、Disney+、YouTube 4K 等常见流媒体使用场景。",
+  "suitableFor": [
+    "注重晚高峰专线稳定性、AI 工具访问与流媒体使用的综合型用户",
+    "偏好运营时间较长（2020 年至今）老牌服务商的用户",
+    "习惯使用自研客户端一键登录或第三方订阅导入的用户"
+  ],
+  "unsuitableFor": [
+    "坚持只接受超低价月付（<10元月付）的用户",
+    "仅需极小流量（<10GB）的极低频用户"
+  ],
+  "pros": [
+    "2020 年运营至今，线路架构成熟，支持企业级内网专线",
+    "提供 VLESS 协议与原生纯净住宅出口",
+    "提供自研全平台客户端与第三方订阅双重支持"
+  ],
+  "cons": [
+    "入门低价主要基于年付折算，单月购买价格略高于普通中继机场"
+  ],
+  "coupon": {
+    "code": "AMM",
+    "desc": "新人注册 8 折优惠"
+  },
+  "affiliateUrl": "https://sahude.gsyvipaff.com/#/?code=keqgvT5Y",
+  "website": "https://sahude.gsyvipaff.com/#/?code=keqgvT5Y",
+  "speedtestImage": "/images/benchmarks/光速云-节点测速实测.png",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "广州电信千兆宽带实测，Shadowsocks / VLESS 协议延迟与丢包表现稳定。"
+  },
+  "faq": [
+    {
+      "q": "光速云 7.5 元/月是真实月付价格吗？",
+      "a": "不是。7.5 元/月属于年付套餐折算后的平均每月成本（90元/年），购买时需一次性支付年费。"
+    },
+    {
+      "q": "光速云是否支持第三方客户端？",
+      "a": "支持。不仅提供 Windows、Android 和 macOS 自研一键客户端，也完整支持 Clash、Shadowrocket、v2rayN 等订阅导入。"
+    }
+  ]
+}

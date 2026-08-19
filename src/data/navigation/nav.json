@@ -1,0 +1,76 @@
+{
+  "mainNav": [
+    { "label": "机场推荐", "href": "/recommend/" },
+    { "label": "新手指南", "href": "/guides/" },
+    {
+      "label": "客户端",
+      "href": "/tutorials/",
+      "children": [
+        { "label": "Clash / Clash Verge", "href": "/tutorials/clash/", "desc": "Windows/macOS 全功能分流客户端" },
+        { "label": "Shadowrocket (小火箭)", "href": "/tutorials/shadowrocket/", "desc": "iOS 最受欢迎的网络工具" },
+        { "label": "v2rayN", "href": "/tutorials/v2rayn/", "desc": "Windows 经典轻量级代理核心" },
+        { "label": "Sing-box", "href": "/tutorials/singbox/", "desc": "新一代高性能通用代理平台" }
+      ]
+    },
+    { "label": "网络排错", "href": "/answers/" },
+    { "label": "专题百科", "href": "/topics/" },
+    { "label": "品牌库", "href": "/brands/" }
+  ],
+  "hotSearches": [
+    { "keyword": "机场怎么选", "href": "/guides/how-to-choose-airport/" },
+    { "keyword": "Clash连不上", "href": "/answers/clash-connected-no-internet/" },
+    { "keyword": "小火箭订阅", "href": "/tutorials/shadowrocket/import-subscription/" },
+    { "keyword": "v2rayN教程", "href": "/tutorials/v2rayn/starter-guide/" },
+    { "keyword": "IEPL与IPLC", "href": "/compare/iepl-vs-iplc/" },
+    { "keyword": "ChatGPT打不开", "href": "/answers/chatgpt-blocked-solution/" }
+  ],
+  "footerColumns": [
+    {
+      "title": "核心内容",
+      "links": [
+        { "label": "机场推荐参考", "href": "/recommend/" },
+        { "label": "新手入门指南", "href": "/guides/" },
+        { "label": "故障排查中心", "href": "/answers/" },
+        { "label": "实用工具箱", "href": "/tools/" }
+      ]
+    },
+    {
+      "title": "客户端教程",
+      "links": [
+        { "label": "Clash Verge 配置", "href": "/tutorials/clash/" },
+        { "label": "Shadowrocket 教程", "href": "/tutorials/shadowrocket/" },
+        { "label": "v2rayN 使用指南", "href": "/tutorials/v2rayn/" },
+        { "label": "客户端横向对比", "href": "/compare/clash-vs-shadowrocket/" }
+      ]
+    },
+    {
+      "title": "专题与百科",
+      "links": [
+        { "label": "IEPL / IPLC 专线", "href": "/glossary/iepl/" },
+        { "label": "VLESS 协议详解", "href": "/glossary/vless/" },
+        { "label": "TUN 虚拟网卡模式", "href": "/glossary/tun-mode/" },
+        { "label": "全站术语百科", "href": "/topics/protocols/" }
+      ]
+    },
+    {
+      "title": "品牌与对比",
+      "links": [
+        { "label": "品牌资料库", "href": "/brands/" },
+        { "label": "对比分析中心", "href": "/compare/" },
+        { "label": "真实测速基准", "href": "/recommend/#measurements" }
+      ]
+    },
+    {
+      "title": "网站与规范",
+      "links": [
+        { "label": "关于我们", "href": "/about/" },
+        { "label": "编辑与核验规范", "href": "/editorial-policy/" },
+        { "label": "作者团队", "href": "/authors/" },
+        { "label": "免责声明", "href": "/disclaimer/" },
+        { "label": "隐私政策", "href": "/privacy/" },
+        { "label": "RSS 订阅", "href": "/rss.xml" },
+        { "label": "HTML 站点地图", "href": "/sitemap/" }
+      ]
+    }
+  ]
+}

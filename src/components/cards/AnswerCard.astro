@@ -1,0 +1,122 @@
+---
+interface Props {
+  question: string;
+  shortTitle?: string;
+  cause?: string;
+  checkpoints?: string[];
+  steps?: string;
+  href: string;
+  category?: string;
+  answerPreview?: string;
+  className?: string;
+}
+
+const {
+  question,
+  shortTitle,
+  cause,
+  checkpoints = [],
+  steps = '4 步排查 · 约 6 分钟',
+  href,
+  category = '故障排查',
+  answerPreview = '',
+  className = '',
+} = Astro.props;
+
+// Smart fallback for short title
+const displayTitle = shortTitle || (
+  question.includes('1020') ? 'ChatGPT 提示 1020 / Access Denied 怎么办？' :
+  question.includes('Clash') && question.includes('不能上网') ? 'Clash 有节点但无法上网怎么办？' :
+  question.includes('v2rayN') ? 'v2rayN 节点全部超时怎么办？' :
+  question.includes('Shadowrocket') || question.includes('小火箭') ? 'Shadowrocket 订阅更新失败怎么办？' :
+  question.includes('晚高峰') ? '机场晚高峰延迟高、跳 ping 怎么办？' :
+  question.includes('没有节点') || question.includes('节点为空') ? '机场订阅导入后没有节点怎么办？' :
+  question.split('？')[0] + '？'
+);
+
+// Smart fallback for cause summary (2 lines)
+const displayCause = cause || (
+  question.includes('1020') ? '常见原因包括 IP 风控、Cloudflare 验证或浏览器状态异常。' :
+  question.includes('Clash') ? '常见原因包括系统代理未生效、DNS 异常、规则模式或 TUN 配置冲突。' :
+  question.includes('v2rayN') ? '常见原因包括本地系统时间偏差、Core 核心未启动或防火墙拦截。' :
+  question.includes('Shadowrocket') ? '常见原因包括订阅 URL 复制不全、本地 Wi-Fi DNS 污染或格式不兼容。' :
+  question.includes('晚高峰') ? '常见原因包括公网直连中继拥挤、节点超售或运营商国际出口拥堵。' :
+  question.includes('没有节点') ? '常见原因包括链接格式复制错误、账户未激活到期或本地网络拦截。' :
+  answerPreview.slice(0, 48) + '...'
+);
+
+// Smart fallback for priority checkpoints
+const displayCheckpoints = checkpoints.length > 0 ? checkpoints : (
+  question.includes('1020') ? ['更换网络', '无痕模式', '原生IP'] :
+  question.includes('Clash') ? ['系统代理', '本地DNS', 'TUN模式', '规则'] :
+  question.includes('v2rayN') ? ['系统时间', '核心状态', '防火墙', '节点'] :
+  question.includes('Shadowrocket') ? ['核对URL', '切5G热点', '更新配置'] :
+  question.includes('晚高峰') ? ['IEPL专线', '切换小众区', '测丢包'] :
+  question.includes('没有节点') ? ['核对链接', '官网账户', '切5G热点'] :
+  ['核对配置', '检查网络', '切换节点']
+);
+
+// Smart fallback for steps time
+const displaySteps = steps || (
+  question.includes('Clash') ? '4 步诊断 · 约 8 分钟' :
+  question.includes('v2rayN') ? '4 步诊断 · 约 7 分钟' :
+  question.includes('Shadowrocket') ? '3 步诊断 · 约 5 分钟' :
+  '4 步诊断 · 约 6 分钟'
+);
+---
+
+<div class={`card-base p-6 flex flex-col justify-between group border border-border-subtle hover:border-brand/50 dark:hover:border-brand/60 transition-all duration-200 bg-bg-surface dark:bg-card-bg shadow-sm hover:shadow-md ${className}`}>
+  <div>
+    <!-- Layer 1: Category Badge + Status Icon -->
+    <div class="flex items-center justify-between gap-2 mb-3">
+      <span class="inline-flex items-center gap-1 text-[11px] font-bold text-brand uppercase tracking-wider bg-brand-50 dark:bg-brand-900/30 border border-brand-200 dark:border-brand-800 px-2 py-0.5 rounded-md">
+        <span>⚡</span>
+        <span>{category}</span>
+      </span>
+      <span class="text-xs text-amber-600 dark:text-amber-400 font-mono font-semibold">
+        30秒快速诊断
+      </span>
+    </div>
+
+    <!-- Layer 2: Short Question Title -->
+    <h3 class="text-base sm:text-lg font-bold text-fg group-hover:text-brand transition-colors mb-2.5 leading-snug">
+      <a href={href} class="focus:outline-none">
+        {displayTitle}
+      </a>
+    </h3>
+
+    <!-- Layer 3: Brief Cause (2 Lines) -->
+    <div class="mb-3.5">
+      <span class="text-[11px] font-bold text-fg-subtle uppercase tracking-wider block mb-1">常见原因</span>
+      <p class="text-xs text-fg-muted leading-relaxed line-clamp-2">
+        {displayCause}
+      </p>
+    </div>
+
+    <!-- Layer 4: Priority Checkpoints Pills -->
+    <div class="mb-4">
+      <span class="text-[11px] font-bold text-fg-subtle uppercase tracking-wider block mb-1.5">优先检查</span>
+      <div class="flex flex-wrap gap-1.5">
+        {displayCheckpoints.map((cp) => (
+          <span class="text-xs bg-bg-subtle text-fg-muted px-2 py-0.5 rounded-md border border-border-subtle group-hover:border-brand/20 transition-colors">
+            {cp}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Layer 5 & 6: Steps / Time & Action CTA -->
+  <div class="pt-3.5 border-t border-border-subtle flex items-center justify-between gap-2">
+    <span class="text-xs text-fg-subtle font-medium">
+      {displaySteps}
+    </span>
+    <a
+      href={href}
+      class="text-xs font-bold text-brand flex items-center gap-1 flex-shrink-0"
+    >
+      <span>开始排查</span>
+      <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,131 @@
+---
+interface Props {
+  title: string;
+  shortTitle?: string;
+  itemA: string;
+  itemB: string;
+  verdict: string;
+  description?: string;
+  category?: string;
+  tags?: string[];
+  dimensionsCount?: number;
+  href: string;
+  className?: string;
+}
+
+const {
+  title,
+  shortTitle,
+  itemA,
+  itemB,
+  verdict,
+  description,
+  category = '对比分析',
+  tags = [],
+  dimensionsCount = 8,
+  href,
+  className = '',
+} = Astro.props;
+
+// Compute clean short title: "A vs B"
+const displayShortTitle = shortTitle || (
+  title.includes('Clash Verge Rev vs Clash Nyanpasu') ? 'Clash Verge Rev vs Clash Nyanpasu' :
+  title.includes('Clash Verge Rev vs v2rayN') ? 'Clash Verge Rev vs v2rayN' :
+  title.includes('Shadowrocket vs Stash') ? 'Shadowrocket (小火箭) vs Stash' :
+  title.includes('v2rayN vs Sing-box') ? 'v2rayN vs Sing-box' :
+  title.includes('IEPL') && title.includes('IPLC') ? 'IEPL 商业专线 vs IPLC 物理专线' :
+  title.includes('中转') && title.includes('直连') ? '国内 BGP 中转 vs 公网直连线路' :
+  title.includes('香港') && title.includes('日本') ? '香港节点 (HK) vs 日本节点 (JP)' :
+  title.includes('VLESS') && title.includes('Trojan') ? 'VLESS (含 Reality) vs Trojan' :
+  title.includes('Hysteria 2') || title.includes('Hysteria2') ? 'Hysteria 2 vs VLESS Reality' :
+  title.includes('Shadowsocks') && title.includes('VLESS') ? 'Shadowsocks (SS 2022) vs VLESS' :
+  title.includes('月付') && title.includes('年付') ? '按月付费 (Monthly) vs 按年付费 (Yearly)' :
+  title.includes('按月重置') || title.includes('不限时') ? '按月重置套餐 vs 不限时按量流量包' :
+  `${itemA} vs ${itemB}`
+);
+
+// Compute 2-line crisp summary (50-80 chars)
+const displayDesc = description || (
+  title.includes('Nyanpasu') ? '从安装难度、界面体验、订阅管理、TUN 模式、规则和平台支持全面比较。' :
+  title.includes('v2rayn') && title.includes('Verge') ? '从现代 Tauri 界面、全自动策略组分流到真实下载测速与多协议调试深度选型。' :
+  title.includes('Stash') ? '对比 iOS 平台 $2.99 买断小火箭与原生 Clash YAML 规则引擎生态差异。' :
+  title.includes('v2rayn') && title.includes('Sing-box') ? '对比经典多协议下载测速工作站与下一代全异步 SRS 二进制规则集架构。' :
+  title.includes('IEPL') ? '从二层以太网专用光纤、物理裸光缆、晚高峰抗丢包表现与价格成本比较。' :
+  title.includes('中转') ? '剖析国内 BGP 入口中继与公网直连的晚高峰丢包、延迟抖动与建造成本。' :
+  title.includes('香港') ? '比较两区地理物理延迟、ChatGPT/Claude AI 访问支持与流媒体版权差异。' :
+  title.includes('Trojan') ? '深度比较无状态轻量 Reality 借牌伪装与标准 HTTPS 证书拟真技术。' :
+  title.includes('Hysteria') ? '比较 UDP 暴力拥塞控制抗丢包与标准 TCP 拟真防运营商 QoS 限速。' :
+  title.includes('Shadowsocks') ? '比较商业专线内网硬件 AES 高速转发与公网抗主动探测伪装能力。' :
+  title.includes('月付') ? '从资金安全、跑路止损防范、折扣性价比与双轨容灾策略系统对比。' :
+  title.includes('重置') ? '从每 GB 单价成本、闲置损耗、高频主力使用与低频备用场景系统测算。' :
+  verdict.slice(0, 60) + '...'
+);
+
+// Fallback Dimension Pills
+const displayPills = tags.length > 0 ? tags.slice(0, 4) : (
+  title.includes('客户端') || title.includes('Verge') || title.includes('Shadowrocket') || title.includes('v2rayN')
+    ? ['上手门槛', '订阅管理', 'TUN模式', '适合人群']
+    : title.includes('专线') || title.includes('中转') || title.includes('节点') || title.includes('IEPL')
+    ? ['物理延迟', '晚高峰丢包', '采购成本', '场景适配']
+    : title.includes('协议') || title.includes('VLESS') || title.includes('Hysteria') || title.includes('Trojan')
+    ? ['加解密开销', '抗主动探测', '弱网加速', '多端兼容']
+    : ['资金安全', '单价性价比', '清零机制', '容灾策略']
+);
+---
+
+<div class={`card-base p-6 flex flex-col justify-between group border border-border-subtle hover:border-brand/50 dark:hover:border-brand/60 transition-all duration-200 bg-bg-surface dark:bg-card-bg shadow-sm hover:shadow-md ${className}`}>
+  <div>
+    <!-- Layer 1: Category Badge + VS Badge -->
+    <div class="flex items-center justify-between gap-2 mb-3">
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-800">
+        <span>⚖️</span>
+        <span>{category}</span>
+      </span>
+      <span class="text-xs font-mono text-fg-subtle">
+        {dimensionsCount} 项维度横评
+      </span>
+    </div>
+
+    <!-- Layer 2: A vs B Pill Comparison Banner -->
+    <div class="flex items-center justify-between gap-2 p-2.5 bg-bg-subtle rounded-xl border border-border-subtle mb-3 text-xs">
+      <span class="font-bold text-fg truncate flex-1">{itemA}</span>
+      <span class="font-black text-brand text-[11px] px-1.5 py-0.5 rounded bg-brand-50 dark:bg-brand-900/40">VS</span>
+      <span class="font-bold text-fg truncate flex-1 text-right">{itemB}</span>
+    </div>
+
+    <!-- Layer 3: Short Title -->
+    <h3 class="text-lg font-bold text-fg group-hover:text-brand transition-colors mb-2 leading-snug">
+      <a href={href} class="focus:outline-none">
+        {displayShortTitle}
+      </a>
+    </h3>
+
+    <!-- Layer 4: 2-Line Crisp Summary -->
+    <p class="text-xs sm:text-sm text-fg-muted mb-4 leading-relaxed line-clamp-2">
+      {displayDesc}
+    </p>
+
+    <!-- Layer 5: Dimension Pills -->
+    <div class="flex flex-wrap gap-1.5 mb-5">
+      {displayPills.map((pill) => (
+        <span class="text-xs bg-bg-subtle text-fg-muted px-2 py-0.5 rounded-md border border-border-subtle group-hover:border-brand/20 transition-colors">
+          {pill}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Layer 6: Meta & Action CTA -->
+  <div class="pt-3.5 border-t border-border-subtle flex items-center justify-between gap-2">
+    <span class="text-xs text-fg-subtle font-medium">
+      客观中立选型建议
+    </span>
+    <a
+      href={href}
+      class="text-xs font-bold text-brand flex items-center gap-1 flex-shrink-0"
+    >
+      <span>查看完整报告</span>
+      <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+    </a>
+  </div>
+</div>

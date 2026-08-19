@@ -1,0 +1,88 @@
+---
+const journeys = [
+  {
+    icon: '🌱',
+    tag: '新手启程',
+    title: '我是第一次使用',
+    desc: '从基础概念、节点选择到首个客户端安装，5 分钟建立清晰认知。',
+    href: '/guides/how-to-choose-airport/',
+    cta: '新手入门路径 →',
+  },
+  {
+    icon: '⚙️',
+    tag: '客户端配置',
+    title: '我已经有机场订阅',
+    desc: '直接查看 Clash Verge、Shadowrocket 或 v2rayN 订阅导入与分流配置。',
+    href: '/tutorials/',
+    cta: '查看客户端教程 →',
+  },
+  {
+    icon: '🚨',
+    tag: '故障急救',
+    title: '我的节点连不上/打不开',
+    desc: '按症状精准诊断：有延迟无网页、DNS 污染、TUN 虚拟网卡冲突。',
+    href: '/answers/',
+    cta: '开始网络排错 →',
+  },
+  {
+    icon: '🤖',
+    tag: 'AI 访问',
+    title: '我主要使用 AI 工具',
+    desc: '解决 ChatGPT, Claude, Midjourney 区域拦截与住宅 IP 解锁。',
+    href: '/topics/ai-tools/',
+    cta: '进入 AI 专题 →',
+  },
+  {
+    icon: '🔄',
+    tag: '服务换代',
+    title: '我准备更换更稳定的机场',
+    desc: '根据晚高峰丢包实测与全 IPLC 专线配置，挑选不踩坑的参考档案。',
+    href: '/recommend/',
+    cta: '查看机场参考 →',
+  },
+];
+---
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="card-base p-6 sm:p-10 rounded-2xl bg-gradient-to-br from-bg-subtle to-surface border border-border-default">
+    <div class="text-center max-w-xl mx-auto mb-8">
+      <span class="text-xs font-bold text-brand uppercase tracking-wider">定位你的当前阶段</span>
+      <h2 class="text-2xl sm:text-3xl font-black text-fg mt-1 mb-2">
+        不知道从哪里开始？
+      </h2>
+      <p class="text-xs sm:text-sm text-fg-muted">
+        根据你当前的实际网络场景，选择专属解决路径：
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      {journeys.map((j) => (
+        <div class="card-base card-hover p-4 flex flex-col justify-between group bg-surface">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-2xl">{j.icon}</span>
+              <span class="text-[10px] font-semibold text-brand bg-brand-primary-subtle px-2 py-0.5 rounded">
+                {j.tag}
+              </span>
+            </div>
+
+            <h3 class="text-sm font-bold text-fg group-hover:text-brand transition-colors mb-2 leading-snug">
+              {j.title}
+            </h3>
+
+            <p class="text-xs text-fg-muted leading-relaxed line-clamp-3 mb-4">
+              {j.desc}
+            </p>
+          </div>
+
+          <a
+            href={j.href}
+            class="pt-3 border-t border-border-subtle text-xs font-bold text-brand hover:underline inline-flex items-center gap-1"
+          >
+            {j.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

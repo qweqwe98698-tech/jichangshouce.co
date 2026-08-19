@@ -1,0 +1,56 @@
+{
+  "id": "ermaoyun",
+  "slug": "ermaoyun",
+  "name": "二猫云",
+  "founded": 2023,
+  "status": "active",
+  "tagline": "20元档深港专线，130GB 均衡流量与低延迟内网体验",
+  "pricing": {
+    "minPrice": "20.0",
+    "cycle": "月 (真实月付)",
+    "priceType": "真实月付价",
+    "traffic": "130GB",
+    "plans": [
+      { "name": "标准月付", "price": 20, "cycle": "月付", "traffic": "130GB/月" },
+      { "name": "旗舰月付", "price": 38, "cycle": "月付", "traffic": "260GB/月" }
+    ]
+  },
+  "routes": "深港专线 / 沪日 IPLC / IEPL",
+  "protocols": ["VLESS", "Shadowsocks"],
+  "clients": ["Clash", "Shadowrocket", "v2rayN", "Sing-box"],
+  "aiSupport": "品牌资料显示支持 ChatGPT、Claude 访问，具体能力建议结合实际节点测试。",
+  "streamingSupport": "品牌资料显示支持常见流媒体，具体能力建议结合实际节点测试。",
+  "suitableFor": [
+    "每月拥有中等流量需求（130GB）、希望在 20 元档兼顾专线质量的用户",
+    "对深港与沪日专线低延迟有要求的沿海地区用户"
+  ],
+  "unsuitableFor": [
+    "追求极端低价（<10元）的用户"
+  ],
+  "pros": [
+    "20 元月付配比 130GB 流量，处于 120GB 与 150GB 之间的黄金平衡点",
+    "提供深港/沪日专线，物理延迟极低",
+    "支持 VLESS 协议"
+  ],
+  "cons": [
+    "无官方自研桌面客户端"
+  ],
+  "coupon": {
+    "code": "ermao5555",
+    "desc": "新用户专属优惠码"
+  },
+  "affiliateUrl": "https://guangs.2maoyunaff.cc/#/?code=7mjvgGbW",
+  "website": "https://guangs.2maoyunaff.cc/#/?code=7mjvgGbW",
+  "speedtestImage": "/images/benchmarks/二猫云-节点测速实测.png",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "深港专线实测延迟 18ms，丢包率 < 0.1%，连接极其顺畅。"
+  },
+  "faq": [
+    {
+      "q": "二猫云深港专线有什么优势？",
+      "a": "深港专线物理距离极短，从广东地区出发过境仅需数毫秒，对于游戏外服和高频 API 交互响应极快。"
+    }
+  ]
+}

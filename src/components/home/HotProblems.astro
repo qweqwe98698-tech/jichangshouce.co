@@ -1,0 +1,75 @@
+---
+import AnswerCard from '../cards/AnswerCard.astro';
+
+const defaultProblems = [
+  {
+    question: 'Clash 有节点且测速正常，为什么浏览器打不开任何海外网站？',
+    answerPreview: '多为【系统代理未开启】或【端口被其他软件占用】。先检查底部状态栏 System Proxy 开关，若仍无效可开启 TUN 模式接管系统流量。',
+    href: '/answers/clash-connected-no-internet/',
+    category: 'Clash 排错',
+    symptom: '有节点延迟但网页全挂',
+  },
+  {
+    question: '机场订阅链接导入 Shadowrocket 提示 Format Error 怎么处理？',
+    answerPreview: '通常为订阅链接末尾携带了换行符或特殊字符，或者机场下发了未经 base64 编码的 v2ray 节点。可尝试复制到文本编辑器去除多余空格再手动添加。',
+    href: '/answers/shadowrocket-subscription-error/',
+    category: '小火箭排错',
+    symptom: '导入订阅解析失败',
+  },
+  {
+    question: 'v2rayN 启动后提示 PAC 模式错误或连接超时？',
+    answerPreview: '点击底部托盘图标，将【系统代理】切换为【自动配置系统代理】，并在核心设置中检查 Xray 核心是否已下载解压完整。',
+    href: '/answers/v2rayn-connection-timeout/',
+    category: 'v2rayN 排错',
+    symptom: '系统代理不生效',
+  },
+  {
+    question: '访问 ChatGPT / Claude 提示 1020 Access Denied 报错？',
+    answerPreview: '说明当前节点出口 IP 被 Cloudflare 识别为高风险数据中心机房 IP。切换至住宅原生 IP 节点，或在客户端中将相关域名加入专线代理规则。',
+    href: '/answers/chatgpt-blocked-solution/',
+    category: 'AI 访问排障',
+    symptom: 'Cloudflare 403/1020',
+  },
+  {
+    question: '为什么晚高峰（20:00 - 23:00）看视频频繁卡顿缓冲？',
+    answerPreview: '公网中继或直连线路在晚高峰国际出口拥堵丢包严重。如果对晚高峰有较高要求，建议选用全 IPLC/IEPL 内网专线服务商。',
+    href: '/answers/peak-hours-lag-troubleshoot/',
+    category: '速度与丢包',
+    symptom: '晚高峰丢包跳 ping',
+  },
+  {
+    question: '电脑开启代理后微信 / 飞书 / 钉钉消息无法接收或收发延迟？',
+    answerPreview: '将客户端路由模式由【Global (全局)】切换为【Rule (规则分流)】，确保国内直连规则生效，避免企业内网流量误走海外节点。',
+    href: '/answers/domestic-apps-routing-conflict/',
+    category: '分流规则',
+    symptom: '国内应用断网/缓慢',
+  },
+];
+---
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <h2 class="text-xl sm:text-2xl font-black text-fg flex items-center gap-2">
+        <span>🔧</span>
+        大家正在解决的问题
+      </h2>
+      <p class="text-xs text-fg-muted mt-0.5">高频网络故障与客户端使用痛点直答</p>
+    </div>
+    <a href="/answers/" class="text-xs font-bold text-brand hover:underline">
+      进入问题中心 →
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {defaultProblems.map((prob) => (
+      <AnswerCard
+        question={prob.question}
+        answerPreview={prob.answerPreview}
+        href={prob.href}
+        category={prob.category}
+        symptom={prob.symptom}
+      />
+    ))}
+  </div>
+</section>

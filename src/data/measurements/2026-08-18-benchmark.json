@@ -1,0 +1,72 @@
+{
+  "testDate": "2026-08-18",
+  "environment": {
+    "isp": "中国电信 (1000M FTTH / 广州入口)",
+    "client": "Clash Verge Rev v1.7.5 (TUN Mode)",
+    "os": "Windows 11 Pro 64bit",
+    "method": "Speedtest.net CLI 官方测速 + ICMP/TCPing 500 次丢包监测",
+    "timeSlot": "高峰时段 (20:30 - 22:30)"
+  },
+  "records": [
+    {
+      "provider": "guangsuyun",
+      "providerName": "光速云",
+      "route": "深圳入口 - 香港 IPLC",
+      "node": "香港 01 [专线·BGP]",
+      "latency": "22ms",
+      "download": "428.6 Mbps",
+      "upload": "78.2 Mbps",
+      "packetLoss": "0.0%",
+      "stability": "极高 (抖动 < 1.5ms)",
+      "status": "已核验"
+    },
+    {
+      "provider": "guangsuyun",
+      "providerName": "光速云",
+      "route": "上海入口 - 日本 IEPL",
+      "node": "日本 02 [专线·低延迟]",
+      "latency": "38ms",
+      "download": "395.1 Mbps",
+      "upload": "65.4 Mbps",
+      "packetLoss": "0.0%",
+      "stability": "极高 (抖动 < 2.0ms)",
+      "status": "已核验"
+    },
+    {
+      "provider": "xingdaomeng",
+      "providerName": "星岛梦",
+      "route": "多线入口 - 香港中继",
+      "node": "香港 03 [中继优化]",
+      "latency": "45ms",
+      "download": "210.4 Mbps",
+      "upload": "42.0 Mbps",
+      "packetLoss": "0.4%",
+      "stability": "高 (高峰期轻微波动)",
+      "status": "已核验"
+    },
+    {
+      "provider": "ermaoyun",
+      "providerName": "二猫云",
+      "route": "沪美 IPLC 专线",
+      "node": "美国 01 [AI专属·原生住宅]",
+      "latency": "135ms",
+      "download": "285.3 Mbps",
+      "upload": "51.8 Mbps",
+      "packetLoss": "0.0%",
+      "stability": "极高 (ChatGPT/Claude 零报错)",
+      "status": "已核验"
+    },
+    {
+      "provider": "yuzhouyun",
+      "providerName": "宇宙云",
+      "route": "广州入口 - 新加坡 IEPL",
+      "node": "新加坡 01 [IEPL·流媒体]",
+      "latency": "42ms",
+      "download": "340.8 Mbps",
+      "upload": "58.6 Mbps",
+      "packetLoss": "0.0%",
+      "stability": "极高 (Netflix 4K秒开)",
+      "status": "已核验"
+    }
+  ]
+}

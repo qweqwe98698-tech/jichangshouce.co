@@ -1,0 +1,160 @@
+---
+const latestArticles = [
+  {
+    title: 'Clash TUN 模式详解',
+    desc: '系统级代理配置与无感自动路由',
+    date: '08-18 · 6分钟',
+    href: '/tutorials/clash/clash-verge-starter-guide/',
+    bgGradient: 'from-blue-900/60 to-purple-900/60'
+  },
+  {
+    title: 'ChatGPT 打不开怎么办？',
+    desc: '全面排查与解决方案',
+    date: '08-18 · 5分钟',
+    href: '/answers/chatgpt-blocked-solution/',
+    bgGradient: 'from-emerald-900/60 to-teal-900/60'
+  },
+  {
+    title: 'VLESS 协议是什么？',
+    desc: '原理、优点与适用场景',
+    date: '08-17 · 7分钟',
+    href: '/glossary/vless/',
+    bgGradient: 'from-indigo-900/60 to-purple-900/60'
+  },
+  {
+    title: '2026 机场推荐清单',
+    desc: '高性价比机场整理',
+    date: '08-17 · 9分钟',
+    href: '/recommend/',
+    bgGradient: 'from-cyan-900/60 to-blue-900/60'
+  },
+  {
+    title: 'Clash 规则配置详解',
+    desc: '规则语法与实战示例',
+    date: '08-16 · 8分钟',
+    href: '/tutorials/clash/',
+    bgGradient: 'from-slate-900/60 to-zinc-900/60'
+  },
+  {
+    title: 'DNS 解析失败解决',
+    desc: '常见 DNS 问题处理',
+    date: '08-16 · 4分钟',
+    href: '/answers/clash-connected-no-internet/',
+    bgGradient: 'from-blue-900/60 to-indigo-900/60'
+  }
+];
+
+const journeys = [
+  {
+    step: '01',
+    title: '我是第一次使用',
+    desc: '从零开始学习网络工具使用',
+    cta: '新手入门 →',
+    href: '/guides/how-to-choose-airport/'
+  },
+  {
+    step: '02',
+    title: '我已有机场',
+    desc: '客户端安装与订阅配置教程',
+    cta: '配置教程 →',
+    href: '/tutorials/'
+  },
+  {
+    step: '03',
+    title: '现在连接失败',
+    desc: '网络问题排查快速解决方案',
+    cta: '故障排查 →',
+    href: '/answers/'
+  },
+  {
+    step: '04',
+    title: '准备换一个服务',
+    desc: '如何选择稳定合适的服务',
+    cta: '选择指南 →',
+    href: '/recommend/'
+  }
+];
+---
+
+<section class="max-w-[1280px] mx-auto px-4 sm:px-8 py-8">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+    
+    <!-- LEFT: 最新内容 (7 cols on lg) -->
+    <div class="lg:col-span-7">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+        <h2 class="section-title text-fg">
+          最新内容
+        </h2>
+        <!-- Tabs -->
+        <div class="flex items-center gap-1 text-xs">
+          <button class="px-2.5 py-1 rounded-[6px] bg-primary text-text-inverse font-bold">最新</button>
+          <button class="px-2.5 py-1 rounded-[6px] bg-bg-subtle text-fg-muted hover:text-fg">教程</button>
+          <button class="px-2.5 py-1 rounded-[6px] bg-bg-subtle text-fg-muted hover:text-fg">问题</button>
+          <button class="px-2.5 py-1 rounded-[6px] bg-bg-subtle text-fg-muted hover:text-fg">百科</button>
+          <button class="px-2.5 py-1 rounded-[6px] bg-bg-subtle text-fg-muted hover:text-fg">评测</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+        {latestArticles.map((art) => (
+          <a
+            href={art.href}
+            class="card-base card-hover flex flex-col justify-between group overflow-hidden"
+          >
+            <!-- Thumbnail cover -->
+            <div class={`w-full h-24 bg-gradient-to-br ${art.bgGradient} relative flex items-center justify-center p-3 text-center border-b border-border-subtle`}>
+              <span class="text-xs font-bold text-white/90 drop-shadow-sm">
+                {art.title}
+              </span>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs font-bold text-fg group-hover:text-primary transition-colors line-clamp-1 mb-1">
+                {art.title}
+              </h3>
+              <p class="text-[10.5px] text-fg-muted line-clamp-1 mb-2">
+                {art.desc}
+              </p>
+              <div class="text-[10px] text-fg-subtle">
+                {art.date}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- RIGHT: 不知道从哪里开始？ (5 cols on lg) -->
+    <div class="lg:col-span-5">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="section-title text-fg">
+          不知道从哪里开始？
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {journeys.map((j) => (
+          <a
+            href={j.href}
+            class="card-base card-hover p-4 flex flex-col justify-between group min-h-[145px]"
+          >
+            <div>
+              <div class="w-6 h-6 rounded-full bg-[#E6F7F0] text-[#0E7856] dark:bg-[#16A37A]/20 dark:text-[#34D399] flex items-center justify-center text-xs font-bold font-mono mb-2.5">
+                {j.step}
+              </div>
+              <h3 class="text-xs font-bold text-fg group-hover:text-primary transition-colors mb-1">
+                {j.title}
+              </h3>
+              <p class="text-[11px] text-fg-muted line-clamp-2">
+                {j.desc}
+              </p>
+            </div>
+            <div class="pt-2 text-[11px] font-bold text-primary inline-flex items-center gap-0.5">
+              {j.cta}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>

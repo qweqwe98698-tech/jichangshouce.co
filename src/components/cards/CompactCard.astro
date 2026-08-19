@@ -1,0 +1,41 @@
+---
+import { formatDate } from '../../utils/dates';
+
+interface Props {
+  title: string;
+  href: string;
+  category?: string;
+  date?: string | Date;
+  tag?: string;
+  className?: string;
+}
+
+const { title, href, category = '精选', date, tag, className = '' } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`card-base card-hover p-4 flex items-center justify-between gap-3 group ${className}`}
+>
+  <div class="min-w-0 flex-1">
+    <div class="flex items-center gap-2 mb-1">
+      <span class="text-[11px] font-medium text-brand">
+        {category}
+      </span>
+      {tag && (
+        <span class="text-[11px] text-fg-subtle">
+          #{tag}
+        </span>
+      )}
+    </div>
+    <h4 class="text-sm font-bold text-fg group-hover:text-brand transition-colors truncate">
+      {title}
+    </h4>
+  </div>
+
+  {date && (
+    <time class="text-xs text-fg-subtle font-mono flex-shrink-0">
+      {formatDate(date)}
+    </time>
+  )}
+</a>

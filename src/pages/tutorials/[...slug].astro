@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { getRelatedContent } from '../../utils/related';
+
+export async function getStaticPaths() {
+  const tutorials = await getCollection('tutorials');
+  return tutorials.map((tut) => ({
+    params: { slug: tut.id },
+    props: { tut },
+  }));
+}
+
+const { tut } = Astro.props;
+const { Content, headings } = await render(tut);
+
+const allTutorials = await getCollection('tutorials');
+const related = getRelatedContent(tut, allTutorials, 3);
+---
+
+<ArticleLayout
+  title={tut.data.title}
+  description={tut.data.description}
+  category={tut.data.category}
+  pubDate={tut.data.pubDate}
+  updatedDate={tut.data.updatedDate}
+  author={tut.data.author}
+  cover={tut.data.cover}
+  tags={tut.data.tags}
+  answer={tut.data.answer}
+  faq={tut.data.faq}
+  nextStep={tut.data.nextStep}
+  headings={headings}
+  relatedArticles={related}
+  breadcrumbItems={[
+    { name: '客户端教程', url: '/tutorials/' },
+    { name: tut.data.title, url: Astro.url.pathname },
+  ]}
+>
+  <Content />
+</ArticleLayout>

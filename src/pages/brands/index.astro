@@ -1,0 +1,370 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import BrandCard from '../../components/cards/BrandCard.astro';
+import { getAllProviders } from '../../data/providers';
+
+const providers = getAllProviders();
+
+const breadcrumbs = [
+  { name: '品牌资料库', url: '/brands/' },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "机场服务商品牌资料库与客观核验档案",
+  "description": "收录主流 16 家机场服务商真实档案、实机测速截屏、资费明细与协议支持。",
+  "numberOfItems": providers.length,
+  "itemListElement": providers.map((p, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": p.name,
+    "url": `https://jichangshouce.co/brands/${p.slug}/`
+  }))
+};
+---
+
+<BaseLayout
+  title="机场服务商品牌资料库 (16家客观核验档案与测速)"
+  description="汇总已收录服务商的套餐价格、线路类型、流量、协议、运营资料与核验记录。品牌公开资料、人工核验与真实测速分别标注，无法确认的信息不作为已验证事实展示。"
+  schema={schema}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Page Header -->
+    <header class="max-w-3xl mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 mb-3 border border-emerald-200 dark:border-emerald-800">
+        <span>🛡️ 16 家服务商事实核验数据库</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight leading-[1.12]">
+        机场服务商品牌资料库
+      </h1>
+      <p class="text-base sm:text-lg text-fg-muted leading-relaxed">
+        所有收录品牌均标注最近资料核验日期、价格类型、线路与协议资料；存在真实测速记录的品牌单独展示测试日期与测试报告。拒绝虚构评级，只呈现客观核验数据。
+      </p>
+    </header>
+
+    <!-- Search & Multi-Dimensional Filter Controls Hub -->
+    <div class="card-base p-6 rounded-2xl mb-8 space-y-4">
+      <!-- Search Row + Live Count -->
+      <div class="flex flex-col sm:flex-row gap-3 items-center justify-between pb-4 border-b border-border-subtle">
+        <div class="relative w-full sm:w-96">
+          <input
+            type="text"
+            id="brand-search"
+            placeholder="搜索品牌名称（如 光速云、U1S1）..."
+            class="w-full pl-9 pr-4 py-2.5 text-xs sm:text-sm bg-bg-surface dark:bg-bg-subtle border border-border-subtle rounded-xl focus:outline-none focus:ring-2 focus:ring-brand/20 text-fg"
+          />
+          <svg class="w-4 h-4 text-fg-subtle absolute left-3 top-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+
+        <div class="text-xs text-fg-muted flex items-center gap-2">
+          <span>当前筛选结果：</span>
+          <span id="result-counter" class="font-bold text-brand font-mono text-sm">16</span>
+          <span>家服务商</span>
+          <button id="reset-filters-btn" class="ml-2 text-xs text-brand hover:underline cursor-pointer hidden">
+            重置全部筛选
+          </button>
+        </div>
+      </div>
+
+      <!-- Multi-Dimensional Filters Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
+        <!-- 1. Price Filter -->
+        <div class="space-y-1.5">
+          <span class="font-bold text-fg block text-[11px] uppercase tracking-wider text-fg-subtle">月资费区间</span>
+          <div class="flex flex-wrap gap-1" id="filter-price-group">
+            <button type="button" class="filter-opt active px-2.5 py-1 rounded-lg border text-xs" data-group="price" data-val="all">全部</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="price" data-val="under10">≤10元</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="price" data-val="10to20">10–20元</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="price" data-val="20to30">20–30元</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="price" data-val="above30">30元+</button>
+          </div>
+        </div>
+
+        <!-- 2. Billing Type -->
+        <div class="space-y-1.5">
+          <span class="font-bold text-fg block text-[11px] uppercase tracking-wider text-fg-subtle">付款周期</span>
+          <div class="flex flex-wrap gap-1" id="filter-billing-group">
+            <button type="button" class="filter-opt active px-2.5 py-1 rounded-lg border text-xs" data-group="billing" data-val="all">全部</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="billing" data-val="monthly">真实月付</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="billing" data-val="yearly">年付折算</button>
+          </div>
+        </div>
+
+        <!-- 3. Routes Type -->
+        <div class="space-y-1.5">
+          <span class="font-bold text-fg block text-[11px] uppercase tracking-wider text-fg-subtle">线路特征</span>
+          <div class="flex flex-wrap gap-1" id="filter-routes-group">
+            <button type="button" class="filter-opt active px-2.5 py-1 rounded-lg border text-xs" data-group="routes" data-val="all">全部</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="routes" data-val="iepl">IEPL 专线</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="routes" data-val="iplc">IPLC 专线</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="routes" data-val="bgp">BGP 中转</button>
+          </div>
+        </div>
+
+        <!-- 4. Traffic Volume -->
+        <div class="space-y-1.5">
+          <span class="font-bold text-fg block text-[11px] uppercase tracking-wider text-fg-subtle">包含流量</span>
+          <div class="flex flex-wrap gap-1" id="filter-traffic-group">
+            <button type="button" class="filter-opt active px-2.5 py-1 rounded-lg border text-xs" data-group="traffic" data-val="all">全部</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="traffic" data-val="under100">≤100GB</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="traffic" data-val="100to200">100–200GB</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="traffic" data-val="above200">200GB+</button>
+          </div>
+        </div>
+
+        <!-- 5. Verification Status -->
+        <div class="space-y-1.5">
+          <span class="font-bold text-fg block text-[11px] uppercase tracking-wider text-fg-subtle">核验状态</span>
+          <div class="flex flex-wrap gap-1" id="filter-status-group">
+            <button type="button" class="filter-opt active px-2.5 py-1 rounded-lg border text-xs" data-group="status" data-val="all">全部</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="status" data-val="verified">资料已核验</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="status" data-val="speedtest">有实测记录</button>
+            <button type="button" class="filter-opt px-2.5 py-1 rounded-lg border text-xs" data-group="status" data-val="pending">待复核</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brands Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="brands-grid">
+      {providers.map((brand) => (
+        <BrandCard brand={brand} />
+      ))}
+    </div>
+
+    <!-- Empty State -->
+    <div id="no-results" class="hidden text-center py-16 card-base rounded-2xl mt-4">
+      <div class="text-3xl mb-2">🔍</div>
+      <h3 class="text-base font-bold text-fg mb-1">未找到匹配的服务商</h3>
+      <p class="text-xs text-fg-muted">请尝试放宽筛选条件，或输入其他品牌关键词。</p>
+      <button id="reset-empty-btn" class="mt-4 px-4 py-2 text-xs font-bold bg-brand text-text-inverse rounded-lg">
+        重置筛选条件
+      </button>
+    </div>
+
+    <!-- Bottom: Methodology & Standards -->
+    <section class="mt-16 p-6 sm:p-8 rounded-2xl card-base space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border-subtle">
+        <div>
+          <h2 class="text-xl font-bold text-fg flex items-center gap-2">
+            <span>⚖️</span>
+            <span>我们的核验标准与收录机制</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-fg-muted mt-1">坚持客观独立原则，四态数据解耦透明呈现</p>
+        </div>
+        <a href="/recommend/#measurements" class="text-xs font-bold text-brand hover:underline inline-flex items-center gap-1">
+          <span>查看数据方法与测速基准</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+        <div class="p-4 rounded-xl bg-bg-surface dark:bg-bg-subtle border border-border-subtle space-y-1.5">
+          <span class="font-bold text-fg text-sm block">1. 公开资料查验</span>
+          <p class="text-fg-muted leading-relaxed">
+            定期对服务商官网、售卖套餐页及客户中心进行静态信息比对，记录真实价格与流量规则。
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-bg-surface dark:bg-bg-subtle border border-border-subtle space-y-1.5">
+          <span class="font-bold text-fg text-sm block">2. 人工周期复核</span>
+          <p class="text-fg-muted leading-relaxed">
+            明确区分真实单月付与年付折算价格。年付折算项强制标注 `*`，防止价格认知误导。
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-bg-surface dark:bg-bg-subtle border border-border-subtle space-y-1.5">
+          <span class="font-bold text-fg text-sm block">3. 晚高峰实机测速</span>
+          <p class="text-fg-muted leading-relaxed">
+            在 20:30–22:30 晚高峰通过骨干网探针抓取延迟、抖动与丢包图谱，仅真实测过项标注「有实测」。
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-bg-surface dark:bg-bg-subtle border border-border-subtle space-y-1.5">
+          <span class="font-bold text-fg text-sm block">4. 动态问题修正</span>
+          <p class="text-fg-muted leading-relaxed">
+            如遇服务商跑路、改线或套餐变更，在收到反馈 24 小时内更新档案并降级核验状态。
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  const searchInput = document.getElementById('brand-search');
+  const cards = document.querySelectorAll('[data-brand-card]');
+  const counterEl = document.getElementById('result-counter');
+  const noResults = document.getElementById('no-results');
+  const resetBtn = document.getElementById('reset-filters-btn');
+  const resetEmptyBtn = document.getElementById('reset-empty-btn');
+
+  let filterState = {
+    search: '',
+    price: 'all',
+    billing: 'all',
+    routes: 'all',
+    traffic: 'all',
+    status: 'all'
+  };
+
+  function applyFilters() {
+    let visibleCount = 0;
+    const isFiltered = filterState.search || 
+      filterState.price !== 'all' || 
+      filterState.billing !== 'all' || 
+      filterState.routes !== 'all' || 
+      filterState.traffic !== 'all' || 
+      filterState.status !== 'all';
+
+    if (resetBtn) {
+      if (isFiltered) {
+        resetBtn.classList.remove('hidden');
+      } else {
+        resetBtn.classList.add('hidden');
+      }
+    }
+
+    cards.forEach(card => {
+      const name = (card.getAttribute('data-name') || '').toLowerCase();
+      const slug = (card.getAttribute('data-slug') || '').toLowerCase();
+      const price = parseFloat(card.getAttribute('data-price') || '0');
+      const isYearly = card.getAttribute('data-is-yearly') === 'true';
+      const routes = (card.getAttribute('data-routes') || '').toLowerCase();
+      const traffic = parseInt(card.getAttribute('data-traffic') || '0', 10);
+      const status = card.getAttribute('data-status') || 'pending';
+      const hasSpeedtest = card.getAttribute('data-has-speedtest') === 'true';
+
+      // 1. Search
+      const matchesSearch = !filterState.search || name.includes(filterState.search) || slug.includes(filterState.search);
+
+      // 2. Price
+      let matchesPrice = true;
+      if (filterState.price === 'under10') matchesPrice = price <= 10;
+      else if (filterState.price === '10to20') matchesPrice = price > 10 && price <= 20;
+      else if (filterState.price === '20to30') matchesPrice = price > 20 && price <= 30;
+      else if (filterState.price === 'above30') matchesPrice = price > 30;
+
+      // 3. Billing
+      let matchesBilling = true;
+      if (filterState.billing === 'monthly') matchesBilling = !isYearly;
+      else if (filterState.billing === 'yearly') matchesBilling = isYearly;
+
+      // 4. Routes
+      let matchesRoutes = true;
+      if (filterState.routes === 'iepl') matchesRoutes = routes.includes('iepl');
+      else if (filterState.routes === 'iplc') matchesRoutes = routes.includes('iplc');
+      else if (filterState.routes === 'bgp') matchesRoutes = routes.includes('bgp') || routes.includes('中转') || routes.includes('中继');
+
+      // 5. Traffic
+      let matchesTraffic = true;
+      if (filterState.traffic === 'under100') matchesTraffic = traffic <= 100;
+      else if (filterState.traffic === '100to200') matchesTraffic = traffic > 100 && traffic <= 200;
+      else if (filterState.traffic === 'above200') matchesTraffic = traffic > 200;
+
+      // 6. Status
+      let matchesStatus = true;
+      if (filterState.status === 'verified') matchesStatus = status === 'verified';
+      else if (filterState.status === 'speedtest') matchesStatus = hasSpeedtest;
+      else if (filterState.status === 'pending') matchesStatus = status !== 'verified';
+
+      if (matchesSearch && matchesPrice && matchesBilling && matchesRoutes && matchesTraffic && matchesStatus) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    if (counterEl) counterEl.textContent = String(visibleCount);
+
+    if (visibleCount === 0) {
+      noResults?.classList.remove('hidden');
+    } else {
+      noResults?.classList.add('hidden');
+    }
+  }
+
+  // Setup click listeners for filter pills
+  function setupFilterGroup(groupId, groupKey) {
+    const container = document.getElementById(groupId);
+    if (!container) return;
+    const btns = container.querySelectorAll('.filter-opt');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => {
+          b.classList.remove('active', 'bg-brand', 'text-text-inverse', 'font-bold');
+          b.classList.add('border-border-subtle', 'bg-bg-surface', 'dark:bg-bg-subtle', 'text-fg-muted');
+        });
+        btn.classList.add('active', 'bg-brand', 'text-text-inverse', 'font-bold');
+        btn.classList.remove('border-border-subtle', 'bg-bg-surface', 'dark:bg-bg-subtle', 'text-fg-muted');
+        filterState[groupKey] = btn.getAttribute('data-val') || 'all';
+        applyFilters();
+      });
+    });
+  }
+
+  setupFilterGroup('filter-price-group', 'price');
+  setupFilterGroup('filter-billing-group', 'billing');
+  setupFilterGroup('filter-routes-group', 'routes');
+  setupFilterGroup('filter-traffic-group', 'traffic');
+  setupFilterGroup('filter-status-group', 'status');
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      filterState.search = e.target.value.toLowerCase().trim();
+      applyFilters();
+    });
+  }
+
+  function resetAllFilters() {
+    filterState = {
+      search: '',
+      price: 'all',
+      billing: 'all',
+      routes: 'all',
+      traffic: 'all',
+      status: 'all'
+    };
+    if (searchInput) searchInput.value = '';
+
+    document.querySelectorAll('.filter-opt').forEach(btn => {
+      if (btn.getAttribute('data-val') === 'all') {
+        btn.classList.add('active', 'bg-brand', 'text-text-inverse', 'font-bold');
+        btn.classList.remove('border-border-subtle', 'bg-bg-surface', 'dark:bg-bg-subtle', 'text-fg-muted');
+      } else {
+        btn.classList.remove('active', 'bg-brand', 'text-text-inverse', 'font-bold');
+        btn.classList.add('border-border-subtle', 'bg-bg-surface', 'dark:bg-bg-subtle', 'text-fg-muted');
+      }
+    });
+
+    applyFilters();
+  }
+
+  resetBtn?.addEventListener('click', resetAllFilters);
+  resetEmptyBtn?.addEventListener('click', resetAllFilters);
+</script>
+
+<style>
+  .filter-opt.active {
+    background-color: var(--color-brand, #16a34a);
+    color: #ffffff;
+    border-color: var(--color-brand, #16a34a);
+    font-weight: 700;
+  }
+  .filter-opt:not(.active) {
+    border-color: var(--color-border-subtle, #e5e7eb);
+    background-color: var(--color-bg-surface, #ffffff);
+    color: var(--color-text-muted, #64748b);
+  }
+  .filter-opt:not(.active):hover {
+    border-color: var(--color-brand, #16a34a);
+    color: var(--color-text-default, #0f172a);
+  }
+</style>

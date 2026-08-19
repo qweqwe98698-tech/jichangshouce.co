@@ -1,0 +1,139 @@
+---
+import type { Provider } from '../../data/providers';
+
+interface Props {
+  brand: Provider;
+  className?: string;
+}
+
+const { brand, className = '' } = Astro.props;
+
+const isYearly = brand.pricing?.priceType?.includes('年付') || brand.pricing?.cycle?.includes('年付');
+const hasSpeedtest = !!brand.speedtestImage;
+
+let statusLabel = '待复核';
+let statusBadgeClass = 'badge-pending';
+if (brand.verification?.status === 'verified') {
+  statusLabel = '✓ 资料已核验';
+  statusBadgeClass = 'badge-verified';
+} else if (brand.verification?.status === 'partial') {
+  statusLabel = '✓ 部分核验';
+  statusBadgeClass = 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 border-blue-200 dark:border-blue-800';
+} else {
+  statusLabel = '⏳ 待复核';
+}
+
+let actionText = '查看品牌档案';
+if (hasSpeedtest) {
+  actionText = '查看档案与实测';
+} else if (brand.verification?.status !== 'verified') {
+  actionText = '查看待核验资料';
+}
+
+const minPrice = parseFloat(brand.pricing?.minPrice || '0');
+const trafficNum = parseInt(brand.pricing?.traffic || '100', 10);
+const routeText = brand.routes || '商业专线';
+---
+
+<div
+  class={`card-base card-hover p-6 flex flex-col justify-between group rounded-2xl border border-border-subtle ${className}`}
+  data-brand-card
+  data-name={brand.name}
+  data-slug={brand.slug}
+  data-price={minPrice}
+  data-is-yearly={isYearly ? 'true' : 'false'}
+  data-routes={routeText}
+  data-traffic={trafficNum}
+  data-status={brand.verification?.status || 'pending'}
+  data-has-speedtest={hasSpeedtest ? 'true' : 'false'}
+>
+  <div class="space-y-4">
+    <!-- Top Row: Name, Verification Badge, Pricing -->
+    <div class="flex items-start justify-between gap-3 pb-3 border-b border-border-subtle">
+      <div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <h3 class="text-lg font-black text-fg group-hover:text-brand transition-colors">
+            <a href={`/brands/${brand.slug}/`}>{brand.name}</a>
+          </h3>
+          <span class={`badge-tag ${statusBadgeClass} text-[11px] font-medium`}>
+            {statusLabel}
+          </span>
+        </div>
+        <p class="text-xs text-fg-muted mt-1 leading-snug">
+          {brand.tagline || (brand.suitableFor && brand.suitableFor[0]) || '提供稳定跨境网络连接服务'}
+        </p>
+      </div>
+
+      <div class="text-right flex-shrink-0">
+        <div class="text-base font-black text-brand font-mono">
+          ¥{brand.pricing?.minPrice || '—'}/月{isYearly ? '*' : ''}
+        </div>
+        <span class={`text-[10px] ${isYearly ? 'text-fg-subtle' : 'text-emerald-600 dark:text-emerald-400 font-semibold'} block mt-0.5`}>
+          {isYearly ? '年付套餐折算' : '真实月付'}
+        </span>
+      </div>
+    </div>
+
+    <!-- Parameter Badges Grid -->
+    <div class="grid grid-cols-3 gap-2 p-3 bg-bg-surface dark:bg-bg-subtle rounded-xl border border-border-subtle text-xs">
+      <div>
+        <span class="text-fg-subtle block text-[10px] mb-0.5">线路资料*</span>
+        <span class="font-bold text-fg truncate block text-xs" title={brand.routes}>
+          {brand.routes || '—'}*
+        </span>
+      </div>
+      <div>
+        <span class="text-fg-subtle block text-[10px] mb-0.5">基础流量</span>
+        <span class="font-bold text-fg truncate block text-xs">
+          {brand.pricing?.traffic || '—'}/月
+        </span>
+      </div>
+      <div>
+        <span class="text-fg-subtle block text-[10px] mb-0.5">支持协议</span>
+        <span class="font-bold text-fg truncate block text-xs" title={brand.protocols?.join(', ')}>
+          {brand.protocols?.slice(0, 2).join(', ') || '—'}
+        </span>
+      </div>
+    </div>
+
+    <!-- Safe Operating History Statement -->
+    <div class="text-xs text-fg-muted space-y-1">
+      <div class="flex items-center gap-1.5 text-[11px] text-fg-subtle">
+        <span>🕒</span>
+        <span>
+          {brand.founded ? `公开资料显示：${brand.founded} 年开始运营` : '运营时间：资料待核验'}
+        </span>
+      </div>
+      <p class="text-xs text-fg-muted line-clamp-2 leading-relaxed">
+        {brand.pros && brand.pros[0] ? `✓ ${brand.pros[0]}` : brand.tagline}
+      </p>
+    </div>
+  </div>
+
+  <!-- Bottom Bar: Verified Date & Data-Driven Actions -->
+  <div class="mt-4 pt-3 border-t border-border-subtle flex items-center justify-between gap-2">
+    <span class="text-[10px] text-fg-subtle font-mono">
+      核验: {brand.verification?.verifiedAt || '2026-08-11'}
+    </span>
+
+    <div class="flex items-center gap-2">
+      <!-- Main Action (Data-driven) -->
+      <a
+        href={`/brands/${brand.slug}/`}
+        class="px-3 py-1.5 text-xs font-bold text-text-inverse bg-brand hover:bg-brand-600 rounded-lg transition-colors shadow-sm"
+      >
+        {actionText}
+      </a>
+      <!-- Secondary Action (Official Website) -->
+      <a
+        href={brand.affiliateUrl || brand.website}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-2.5 py-1.5 text-xs font-medium bg-surface border border-border-subtle hover:bg-bg-hover text-fg rounded-lg transition-colors inline-flex items-center gap-0.5"
+      >
+        <span>官网</span>
+        <span class="text-[10px]">↗</span>
+      </a>
+    </div>
+  </div>
+</div>

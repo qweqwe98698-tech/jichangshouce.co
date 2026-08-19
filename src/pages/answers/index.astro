@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import AnswerCard from '../../components/cards/AnswerCard.astro';
+
+const allAnswers = await getCollection('answers', ({ data }) => !data.draft);
+allAnswers.sort((a, b) => (b.data.pubDate?.getTime() || 0) - (a.data.pubDate?.getTime() || 0));
+
+const breadcrumbs = [
+  { name: '网络排错与极速诊断中心', url: '/answers/' },
+];
+
+const categories = [
+  { id: 'all', name: '全部故障' },
+  { id: 'clash', name: 'Clash 排错' },
+  { id: 'shadowrocket', name: '小火箭排错' },
+  { id: 'v2rayn', name: 'v2rayN 排错' },
+  { id: 'ai', name: 'ChatGPT / AI 访问' },
+  { id: 'network', name: '延迟与丢包' },
+  { id: 'subscription', name: '订阅与节点' },
+];
+---
+
+<BaseLayout
+  title="网络排错与极速解答中心 - 30 秒快速诊断与保姆级修复指南"
+  description="高频网络代理故障 30 秒极速诊断中心：常见故障先快速判断症状与原因，再进入完整排查教程。精准解决 Clash 有节点不能上网、小火箭订阅 404、v2rayN 超时与 ChatGPT 1020 报错。"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Page Header -->
+    <header class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 mb-3 border border-amber-200 dark:border-amber-800">
+        <span>⚡ 30 秒诊断决策树</span>
+        <span class="w-1 h-1 rounded-full bg-amber-500"></span>
+        <span>收录高频故障与保姆级自救步骤</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight">
+        网络排错与极速解答中心
+      </h1>
+      <p class="text-base sm:text-lg text-fg-muted max-w-3xl leading-relaxed">
+        常见故障先快速判断，再进入完整排查教程。系统建立「症状判断 ➔ 优先检查 ➔ 分步排障」的诊断闭环。
+      </p>
+    </header>
+
+    <!-- 6-Grid Diagnostic Cards -->
+    <section>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {allAnswers.map((ans) => (
+          <AnswerCard
+            question={ans.data.title}
+            answerPreview={ans.data.answer || ans.data.description}
+            href={`/answers/${ans.id}/`}
+            category={ans.data.category || '故障排查'}
+          />
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

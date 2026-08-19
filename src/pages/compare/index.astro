@@ -1,0 +1,211 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import ComparisonCard from '../../components/cards/ComparisonCard.astro';
+
+const allComparisons = await getCollection('comparisons', ({ data }) => !data.draft);
+allComparisons.sort((a, b) => (b.data.pubDate?.getTime() || 0) - (a.data.pubDate?.getTime() || 0));
+
+const breadcrumbs = [
+  { name: '技术与服务对比分析中心', url: '/compare/' },
+];
+
+const categories = [
+  { id: 'all', name: '全部对比', icon: '⚖️' },
+  { id: '客户端对比', name: '客户端对比', icon: '💻' },
+  { id: '线路对比', name: '线路与节点', icon: '⚡' },
+  { id: '协议对比', name: '加密协议', icon: '🔒' },
+  { id: '套餐对比', name: '套餐与选型', icon: '💳' },
+];
+
+// Featured Top 3 High-Impact Comparisons
+const topPicksSlugs = ['clash-verge-vs-v2rayn', 'iepl-vs-iplc', 'vless-vs-trojan'];
+const featuredPicks = allComparisons.filter(c => topPicksSlugs.includes(c.id));
+
+const clusterStats = [
+  {
+    title: '客户端对比集群',
+    count: allComparisons.filter(c => c.data.category === '客户端对比' || c.id.includes('vs') && (c.id.includes('clash') || c.id.includes('shadowrocket') || c.id.includes('v2rayn'))).length,
+    desc: '从安装难度、UI 交互、分流规则、TUN 到真实下载测速',
+    icon: '💻',
+    targetCategory: '客户端对比'
+  },
+  {
+    title: '线路与节点对比',
+    count: allComparisons.filter(c => c.data.category === '线路对比' || c.id.includes('iepl') || c.id.includes('relay') || c.id.includes('hongkong')).length,
+    desc: 'IEPL/IPLC 专线、BGP 中转、公网直连与各区延迟测算',
+    icon: '⚡',
+    targetCategory: '线路对比'
+  },
+  {
+    title: '协议技术对比',
+    count: allComparisons.filter(c => c.data.category === '协议对比' || c.id.includes('vless') || c.id.includes('hysteria') || c.id.includes('shadowsocks')).length,
+    desc: 'VLESS Reality、Hysteria 2、Trojan 与 SS 性能开销剖析',
+    icon: '🔒',
+    targetCategory: '协议对比'
+  },
+  {
+    title: '套餐与周期选型',
+    count: allComparisons.filter(c => c.data.category === '套餐对比' || c.id.includes('monthly') || c.id.includes('traffic')).length,
+    desc: '月付防跑路、不限时流量包与高频主力双轨容灾方案',
+    icon: '💳',
+    targetCategory: '套餐对比'
+  }
+];
+---
+
+<BaseLayout
+  title="技术与服务对比分析中心 - 客户端/线路/协议/套餐全维度深度横评"
+  description="客观中立的技术对比分析专栏：涵盖 Clash Verge vs v2rayN、IEPL vs IPLC、VLESS vs Trojan、月付 vs 年付等 10+ 篇深度多维横评与选择决策树。"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Page Header -->
+    <header class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 mb-3 border border-purple-200 dark:border-purple-800">
+        <span>⚖️ 8 维参数矩阵横评</span>
+        <span class="w-1 h-1 rounded-full bg-purple-500"></span>
+        <span>已收录 10+ 篇客观选型报告</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight">
+        技术与服务对比分析中心
+      </h1>
+      <p class="text-base sm:text-lg text-fg-muted max-w-3xl leading-relaxed">
+        拒绝空泛概念与主观臆断。通过底层技术拓扑、性能实测矩阵、适用人群画像与「怎么选」决策树，为你提供专业、客观且可验证的选型依据。
+      </p>
+    </header>
+
+    <!-- Top: 4 大对比集群概览卡片 (4 Clusters Overview) -->
+    <section class="mb-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {clusterStats.map((cs) => (
+          <div class="p-5 rounded-2xl border border-border-subtle bg-bg-surface dark:bg-card-bg shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-2xl">{cs.icon}</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-mono font-bold bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-800">
+                  {cs.count} 篇报告
+                </span>
+              </div>
+              <h3 class="text-base font-bold text-fg mb-1">
+                {cs.title}
+              </h3>
+              <p class="text-xs text-fg-muted leading-relaxed">
+                {cs.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Featured Top 3 High-Impact Comparison Picks -->
+    <section class="mb-14">
+      <div class="flex items-center gap-2 mb-6">
+        <span class="w-2 h-6 rounded-full bg-purple-600"></span>
+        <h2 class="text-xl sm:text-2xl font-black text-fg">
+          🔥 热门高频对比评测 (Top Picks)
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {featuredPicks.map((item) => (
+          <ComparisonCard
+            title={item.data.title}
+            itemA={item.data.itemA}
+            itemB={item.data.itemB}
+            verdict={item.data.verdict}
+            category={item.data.category}
+            tags={item.data.tags}
+            href={`/compare/${item.id}/`}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- Main Comparison Matrix with Instant Tabs Filter -->
+    <section id="all-comparisons" class="mb-12">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-fg flex items-center gap-2">
+            📖 完整对比报告库
+          </h2>
+          <p class="text-xs sm:text-sm text-fg-muted mt-1">按分类快速定位客户端、线路、协议与套餐决策</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap gap-1.5 p-1 bg-bg-surface dark:bg-card-bg border border-border-subtle rounded-xl" id="compare-filter-container">
+          {categories.map((cat, idx) => (
+            <button
+              class={`compare-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${idx === 0 ? 'bg-purple-600 text-white shadow-sm' : 'text-fg-muted hover:text-fg hover:bg-bg-hover'}`}
+              data-category={cat.id}
+            >
+              <span class="mr-1">{cat.icon}</span>
+              <span>{cat.name}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Comparison Grid (3 Cols x N Rows) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="compare-grid">
+        {allComparisons.map((item) => (
+          <div class="compare-item" data-category={item.data.category}>
+            <ComparisonCard
+              title={item.data.title}
+              itemA={item.data.itemA}
+              itemB={item.data.itemB}
+              verdict={item.data.verdict}
+              category={item.data.category}
+              tags={item.data.tags}
+              href={`/compare/${item.id}/`}
+            />
+          </div>
+        ))}
+      </div>
+
+      <!-- Empty State -->
+      <div id="no-compare-results" class="hidden text-center py-12">
+        <p class="text-sm text-fg-muted">该分类下暂无对比报告</p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.compare-tab');
+    const items = document.querySelectorAll('.compare-item');
+    const noResults = document.getElementById('no-compare-results');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('bg-purple-600', 'text-white', 'shadow-sm');
+          t.classList.add('text-fg-muted');
+        });
+        tab.classList.add('bg-purple-600', 'text-white', 'shadow-sm');
+        tab.classList.remove('text-fg-muted');
+
+        const selectedCat = tab.getAttribute('data-category');
+        let count = 0;
+
+        items.forEach(item => {
+          const itemCat = item.getAttribute('data-category');
+          if (selectedCat === 'all' || itemCat === selectedCat) {
+            item.style.display = 'block';
+            count++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        if (noResults) {
+          noResults.classList.toggle('hidden', count > 0);
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,59 @@
+{
+  "id": "xingdaomeng",
+  "slug": "xingdaomeng",
+  "name": "星岛梦",
+  "founded": 2020,
+  "status": "active",
+  "tagline": "老牌内网专线机场，主打低价年付与不限时按量套餐",
+  "pricing": {
+    "minPrice": "8.0",
+    "cycle": "月 (年付折算)",
+    "priceType": "年付折算价",
+    "traffic": "60GB",
+    "plans": [
+      { "name": "轻量年付 (年付折算)", "price": 96, "cycle": "年付 (约 8 元/月)", "traffic": "60GB/月" },
+      { "name": "不限时流量包", "price": 50, "cycle": "一次性计费", "traffic": "200GB (永久有效)" },
+      { "name": "标准季付", "price": 45, "cycle": "季付", "traffic": "120GB/月" }
+    ]
+  },
+  "routes": "企业级内网专线",
+  "protocols": ["Shadowsocks", "VMess"],
+  "clients": ["Clash", "Shadowrocket", "v2rayN", "Sing-box"],
+  "aiSupport": "当前资料未提供统一实测结果，具体能力以节点实际测试为准。",
+  "streamingSupport": "当前资料未提供统一实测结果，具体解锁情况以实际测试为准。",
+  "suitableFor": [
+    "预算有限、每月流量需求较低（<60GB）的轻度用户",
+    "希望购买长期套餐或按量计费不限时套餐的备用机用户"
+  ],
+  "unsuitableFor": [
+    "重度视频/下载用户（每月需要数百 GB）",
+    "坚持要求纯月付（按月扣款）的用户"
+  ],
+  "pros": [
+    "2020 年运营至今，套餐种类丰富，包含不限时永久流量包",
+    "年付均价仅约 8 元/月，长期使用成本极低",
+    "全节点部署企业级内网专线"
+  ],
+  "cons": [
+    "最低价需年付购买，非普通单月订阅",
+    "AI 与流媒体解锁未提供永久统一承诺"
+  ],
+  "coupon": {
+    "code": "nmw888",
+    "desc": "新人注册 9 折优惠"
+  },
+  "affiliateUrl": "https://guangs.xingdaomeng.com/#/?code=1TynBYnR",
+  "website": "https://guangs.xingdaomeng.com/#/?code=1TynBYnR",
+  "speedtestImage": "/images/benchmarks/星岛梦-节点测速实测.png",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-08-11",
+    "notes": "内网专线测试稳定，延迟低，部分流媒体解锁需根据具体节点测试。"
+  },
+  "faq": [
+    {
+      "q": "星岛梦的不限时套餐如何计费？",
+      "a": "不限时套餐为一次性购买固定流量（如 200GB），没有到期时间限制，用完为止，非常适合作为备用网络。"
+    }
+  ]
+}

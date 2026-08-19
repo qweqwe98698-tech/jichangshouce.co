@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+
+const terms = await getCollection('glossary');
+
+const breadcrumbs = [
+  { name: '网络术语百科', url: '/glossary/' },
+];
+
+const title = '网络代理与跨境线路术语百科 (IEPL/IPLC/VLESS/Hysteria2)';
+const description = '系统解析 IEPL 专线、IPLC 专线、VLESS、Trojan、Shadowsocks、Hysteria 2、原生住宅 IP 等网络加速与代理核心技术术语。';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "网络代理与跨境线路术语百科",
+  "description": description,
+  "hasDefinedTerm": terms.map((t) => ({
+    "@type": "DefinedTerm",
+    "name": t.data.term,
+    "description": t.data.shortDefinition,
+    "url": `https://jichangshouce.co/glossary/${t.id}/`
+  }))
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="max-w-3xl mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 mb-3 border border-emerald-200 dark:border-emerald-800">
+        <span>📖 网络技术词典</span>
+        <span class="w-1 h-1 rounded-full bg-emerald-500"></span>
+        <span>共收录 {terms.length} 个核心术语</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight leading-[1.12]">
+        网络代理与跨境线路术语百科
+      </h1>
+      <p class="text-base sm:text-lg text-fg-muted leading-relaxed">
+        系统解析 IEPL 专线、IPLC 专线、VLESS、Trojan、Shadowsocks、Hysteria 2、原生住宅 IP 等网络加速与出海代理核心技术原理。
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {terms.map((item) => (
+        <a
+          href={`/glossary/${item.id}/`}
+          class="card-base card-hover p-6 rounded-2xl border border-border-subtle flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <h2 class="text-xl font-black text-fg group-hover:text-brand transition-colors">
+                {item.data.term}
+              </h2>
+              <span class="badge-tag badge-topic text-[10px]">
+                {item.data.category || '核心协议'}
+              </span>
+            </div>
+            <p class="text-xs text-fg-muted leading-relaxed line-clamp-3 mb-4">
+              {item.data.shortDefinition}
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs text-brand font-bold">
+            <span>查看完整技术解析</span>
+            <span>→</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

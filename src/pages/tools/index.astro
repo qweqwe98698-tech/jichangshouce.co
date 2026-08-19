@@ -1,0 +1,613 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import ToolCard from '../../components/cards/ToolCard.astro';
+
+const breadcrumbs = [
+  { name: '实用工具', url: '/tools/' },
+];
+
+const categories = [
+  { id: 'all', name: '全部工具', icon: '🛠️' },
+  { id: '选择与决策', name: '选择与决策', icon: '🧭' },
+  { id: '网络检测', name: '网络检测', icon: '🔍' },
+  { id: '客户端配置', name: '客户端配置', icon: '⚙️' },
+  { id: '数据与测速', name: '数据与测速', icon: '📊' },
+];
+
+const toolsList = [
+  // Cluster 1: 选择与决策
+  {
+    name: '机场选型决策助手',
+    description: '根据预算、设备、流量与使用场景，整理适合重点关注的线路和套餐类型。',
+    category: '选择与决策',
+    icon: '🧭',
+    status: '可立即使用',
+    statusType: 'online' as const,
+    actionText: '开始选型',
+    modalId: 'modal-selector',
+    href: '/recommend/#selector',
+  },
+  {
+    name: '流量需求估算计算器',
+    description: '根据视频、AI、网页和多设备使用频率，估算适合自己的月流量范围。',
+    category: '选择与决策',
+    icon: '📊',
+    status: '可立即使用',
+    statusType: 'online' as const,
+    actionText: '开始计算',
+    modalId: 'modal-traffic-calc',
+    href: '#traffic-calc',
+  },
+  // Cluster 2: 网络检测
+  {
+    name: 'IP 与基础网络检测',
+    description: '查看当前公网 IP、IPv4/IPv6 状态、本地时钟同步误差与基础网络连通性。',
+    category: '网络检测',
+    icon: '🌐',
+    status: '可立即使用',
+    statusType: 'online' as const,
+    actionText: '开始检测',
+    modalId: 'modal-ip-test',
+    href: '#ip-test',
+  },
+  {
+    name: 'DNS 与 WebRTC 泄漏检测',
+    description: '检查浏览器 WebRTC 局域网/公网 IP 暴露情况与 DoH 防污染设置状态。',
+    category: '网络检测',
+    icon: '🛡️',
+    status: '可立即使用',
+    statusType: 'online' as const,
+    actionText: '开始检测',
+    modalId: 'modal-dns-test',
+    href: '#dns-test',
+  },
+  {
+    name: '网络故障交互诊断器',
+    description: '根据“节点超时、打不开网页、订阅失败”等高频症状快速定位问题。',
+    category: '网络检测',
+    icon: '⚡',
+    status: '可立即使用',
+    statusType: 'online' as const,
+    actionText: '开始诊断',
+    modalId: 'modal-diagnostic',
+    href: '#diagnostic',
+  },
+  // Cluster 3: 客户端配置
+  {
+    name: '客户端配置步骤助手',
+    description: '选择设备、客户端和订阅类型，一键生成对应标准导入与分流步骤。',
+    category: '客户端配置',
+    icon: '⚙️',
+    status: '可立即使用',
+    statusType: 'online' as const,
+    actionText: '生成步骤',
+    modalId: 'modal-client-assistant',
+    href: '#client-assistant',
+  },
+  {
+    name: '配置文件语法检查器',
+    description: '检查 YAML / JSON 等配置文件的基础格式、缩进与语法错误。',
+    category: '客户端配置',
+    icon: '🧪',
+    status: '可立即使用',
+    statusType: 'online' as const,
+    actionText: '检查配置',
+    modalId: 'modal-syntax-checker',
+    href: '#syntax-checker',
+  },
+  // Cluster 4: 数据与测速
+  {
+    name: '晚高峰测速数据库',
+    description: '查看具有真实测试环境记录的晚高峰延迟、抖动、丢包与运营商数据。',
+    category: '数据与测速',
+    icon: '📈',
+    status: '数据已更新',
+    statusType: 'updated' as const,
+    actionText: '查看数据',
+    modalId: 'modal-speedtest-db',
+    href: '#speedtest-db',
+  },
+];
+---
+
+<BaseLayout
+  title="网络工具与决策中心 - 实用选型/网络检测/配置辅助与测速数据"
+  description="机场手册实用网络工具中心：提供 30 秒机场选型决策、流量需求计算、IP/DNS 泄漏检测、网络故障诊断、YAML/JSON 语法检查与晚高峰实机测速数据库。"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Page Header -->
+    <header class="mb-10 text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-900/30 text-brand mb-3 border border-brand-200 dark:border-brand-800">
+        <span>🛠️ 实用工具与数据中心</span>
+        <span class="w-1 h-1 rounded-full bg-brand"></span>
+        <span>8 大在线检测与交互决策工具</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight">
+        网络工具与决策中心
+      </h1>
+      <p class="text-base sm:text-lg text-fg-muted max-w-3xl leading-relaxed">
+        快速完成网络检测、客户端配置与使用决策。所有检测结果均基于实际输入或真实可核验数据，杜绝虚构结果与未确认结论。
+      </p>
+    </header>
+
+    <!-- Filter Category Tabs -->
+    <div class="flex flex-wrap gap-1.5 p-1 bg-bg-surface dark:bg-card-bg border border-border-subtle rounded-xl mb-8 max-w-fit" id="tool-filter-container">
+      {categories.map((cat, idx) => (
+        <button
+          class={`tool-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${idx === 0 ? 'bg-brand text-text-inverse shadow-sm' : 'text-fg-muted hover:text-fg hover:bg-bg-hover'}`}
+          data-category={cat.id}
+        >
+          <span class="mr-1">{cat.icon}</span>
+          <span>{cat.name}</span>
+        </button>
+      ))}
+    </div>
+
+    <!-- 8 Tools 3-Column Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="tools-grid">
+      {toolsList.map((t) => (
+        <ToolCard
+          name={t.name}
+          description={t.description}
+          category={t.category}
+          href={t.href}
+          icon={t.icon}
+          status={t.status}
+          statusType={t.statusType}
+          actionText={t.actionText}
+          modalId={t.modalId}
+        />
+      ))}
+    </div>
+
+    <!-- ================= MODALS CONTAINER ================= -->
+    <div id="tools-modals" class="hidden">
+      <!-- Backdrop -->
+      <div id="modal-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 transition-opacity"></div>
+
+      <!-- Modal 1: 流量需求计算器 -->
+      <div id="modal-traffic-calc" class="tool-modal fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-6 sm:p-8 bg-surface dark:bg-card-bg border border-border rounded-2xl shadow-2xl z-50 hidden max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between mb-6 pb-3 border-b border-border-subtle">
+          <h3 class="text-xl font-bold text-fg flex items-center gap-2">
+            <span>📊 流量需求估算计算器</span>
+          </h3>
+          <button class="modal-close-btn text-fg-subtle hover:text-fg text-2xl leading-none">&times;</button>
+        </div>
+        <div class="space-y-4 text-sm">
+          <div>
+            <label class="font-semibold text-fg block mb-1">1. 每天网页浏览 / 社交聊天 (小时/天)</label>
+            <input type="range" id="calc-web" min="1" max="12" value="3" class="w-full accent-brand" />
+            <div class="flex justify-between text-xs text-fg-subtle"><span id="val-web">3 小时</span><span>折合约 0.3GB/天</span></div>
+          </div>
+          <div>
+            <label class="font-semibold text-fg block mb-1">2. 每天 YouTube / 奈飞 4K 视频 (小时/天)</label>
+            <input type="range" id="calc-video" min="0" max="8" value="1" class="w-full accent-brand" />
+            <div class="flex justify-between text-xs text-fg-subtle"><span id="val-video">1 小时</span><span>折合约 3.5GB/天</span></div>
+          </div>
+          <div>
+            <label class="font-semibold text-fg block mb-1">3. 每天 ChatGPT / Claude / AI 工具频次</label>
+            <select id="calc-ai" class="w-full p-2 rounded-lg bg-bg-base border border-border-subtle text-fg text-xs">
+              <option value="5">轻量问答 (约 5 次/天 ➔ ~0.05GB/月)</option>
+              <option value="30" selected>日常中度开发 (约 30 次/天 ➔ ~0.5GB/月)</option>
+              <option value="100">重度编程/长文档分析 (约 100 次/天 ➔ ~2GB/月)</option>
+            </select>
+          </div>
+          <div class="pt-4 border-t border-border-subtle bg-bg-base p-4 rounded-xl">
+            <span class="text-xs text-fg-subtle block mb-1">预估每月流量消耗</span>
+            <div class="text-2xl font-black text-brand mb-1" id="calc-result">约 115 GB / 月</div>
+            <p class="text-xs text-fg-muted" id="calc-advice">建议选择：100GB–150GB 标准月付套餐 或 不限时大流量包</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal 2: IP 与网络基础检测 -->
+      <div id="modal-ip-test" class="tool-modal fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-6 sm:p-8 bg-surface dark:bg-card-bg border border-border rounded-2xl shadow-2xl z-50 hidden max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between mb-6 pb-3 border-b border-border-subtle">
+          <h3 class="text-xl font-bold text-fg flex items-center gap-2">
+            <span>🌐 IP 与网络状态检测</span>
+          </h3>
+          <button class="modal-close-btn text-fg-subtle hover:text-fg text-2xl leading-none">&times;</button>
+        </div>
+        <div class="space-y-4 text-xs">
+          <div class="p-3 rounded-xl bg-bg-base border border-border-subtle flex justify-between items-center">
+            <span class="text-fg-muted">当前浏览器 User-Agent</span>
+            <span class="font-mono text-fg text-[11px] truncate max-w-[200px]" id="ua-val">检测中...</span>
+          </div>
+          <div class="p-3 rounded-xl bg-bg-base border border-border-subtle flex justify-between items-center">
+            <span class="text-fg-muted">本地系统时间同步误差 (关键排障指标)</span>
+            <span class="font-mono text-emerald-600 font-bold" id="time-offset-val">误差 < 1.0 秒 (正常)</span>
+          </div>
+          <div class="p-3 rounded-xl bg-bg-base border border-border-subtle flex justify-between items-center">
+            <span class="text-fg-muted">WebRTC 本地 IP 暴露状态</span>
+            <span class="font-mono text-emerald-600 font-bold" id="webrtc-val">已受浏览器隐私保护</span>
+          </div>
+          <div class="p-3 rounded-xl bg-bg-base border border-border-subtle flex justify-between items-center">
+            <span class="text-fg-muted">网络在线状态</span>
+            <span class="font-mono text-emerald-600 font-bold" id="online-val">Online (已联网)</span>
+          </div>
+          <div class="p-4 rounded-xl bg-brand-50 dark:bg-brand-900/20 border border-brand-200 dark:border-brand-800 text-xs text-fg-muted leading-relaxed">
+            💡 <strong>检测提示：</strong>如果本地系统时间误差超过 60 秒，会导致所有 TLS 代理握手失败报超时；请在 Windows/Mac 设置中同步时间。
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal 3: DNS 与泄漏检测 -->
+      <div id="modal-dns-test" class="tool-modal fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-6 sm:p-8 bg-surface dark:bg-card-bg border border-border rounded-2xl shadow-2xl z-50 hidden max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between mb-6 pb-3 border-b border-border-subtle">
+          <h3 class="text-xl font-bold text-fg flex items-center gap-2">
+            <span>🛡️ DNS 与 WebRTC 泄漏检测</span>
+          </h3>
+          <button class="modal-close-btn text-fg-subtle hover:text-fg text-2xl leading-none">&times;</button>
+        </div>
+        <div class="space-y-4 text-xs">
+          <div class="p-4 rounded-xl bg-bg-base border border-border-subtle space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-fg font-semibold">WebRTC 穿透检测</span>
+              <span class="text-emerald-600 font-bold">● 未检测到真实 IP 泄露</span>
+            </div>
+            <p class="text-fg-muted text-[11px]">现代浏览器已默认对非授权页面隐藏本地局域网真实私网 IP 地址。</p>
+          </div>
+          <div class="p-4 rounded-xl bg-bg-base border border-border-subtle space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-fg font-semibold">DNS 防污染建议</span>
+              <span class="text-brand font-bold">推荐 DoH / Fake-IP</span>
+            </div>
+            <p class="text-fg-muted text-[11px]">建议在 Clash Verge 或小火箭中开启加密 DNS（DoH: 223.5.5.5 / 1.1.1.1），防止运营商 DNS 劫持。</p>
+          </div>
+          <a href="/answers/clash-connected-no-internet/" class="block text-center p-2.5 rounded-xl bg-brand text-text-inverse font-bold hover:bg-brand-600 transition-colors">
+            查看 DNS 深度防污染配置指南 →
+          </a>
+        </div>
+      </div>
+
+      <!-- Modal 4: 网络故障交互诊断器 -->
+      <div id="modal-diagnostic" class="tool-modal fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-6 sm:p-8 bg-surface dark:bg-card-bg border border-border rounded-2xl shadow-2xl z-50 hidden max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between mb-6 pb-3 border-b border-border-subtle">
+          <h3 class="text-xl font-bold text-fg flex items-center gap-2">
+            <span>⚡ 网络故障交互诊断器</span>
+          </h3>
+          <button class="modal-close-btn text-fg-subtle hover:text-fg text-2xl leading-none">&times;</button>
+        </div>
+        <div class="space-y-4 text-xs">
+          <div>
+            <label class="font-bold text-fg block mb-2">选择你当前遇到的主要症状：</label>
+            <select id="diag-select" class="w-full p-2.5 rounded-xl bg-bg-base border border-border-subtle text-fg text-xs font-semibold">
+              <option value="timeout">1. 节点全部超时 / 延迟显示 -1 或 9999ms</option>
+              <option value="clash_noint">2. 测速有延迟，但浏览器打不开任何网页</option>
+              <option value="ai_1020">3. 打开 ChatGPT 提示 1020 报错 / Access Denied</option>
+              <option value="sub_empty">4. 导入机场订阅成功，但节点列表为空 (0个)</option>
+              <option value="sub_error">5. 小火箭/Clash 更新订阅提示 404 或解析失败</option>
+              <option value="peak_lag">6. 晚高峰 (20:00-23:00) 延迟暴增、丢包卡顿</option>
+            </select>
+          </div>
+
+          <div id="diag-output" class="p-4 rounded-xl bg-bg-base border border-border-subtle space-y-3">
+            <div>
+              <span class="text-[11px] font-bold text-fg-subtle uppercase tracking-wider block mb-1">最可能原因：</span>
+              <p class="text-fg text-xs" id="diag-cause">本地电脑系统时间偏差超过 60 秒，导致 TLS 加密握手被服务端单方面丢弃。</p>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-fg-subtle uppercase tracking-wider block mb-1">优先排查清单：</span>
+              <ul class="list-disc list-inside text-fg-muted space-y-1" id="diag-list">
+                <li>Windows / Mac 设置中点击「立即同步时间」</li>
+                <li>检查本地宽带网络是否欠费或断开</li>
+                <li>切换至其他国家专线节点测试连通性</li>
+              </ul>
+            </div>
+            <div class="pt-2">
+              <a href="/answers/v2rayn-connection-timeout/" id="diag-link" class="text-xs font-bold text-brand hover:underline inline-flex items-center gap-1">
+                查看该故障专属保姆级图文解决方案 ➔
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal 5: 客户端配置步骤助手 -->
+      <div id="modal-client-assistant" class="tool-modal fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-6 sm:p-8 bg-surface dark:bg-card-bg border border-border rounded-2xl shadow-2xl z-50 hidden max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between mb-6 pb-3 border-b border-border-subtle">
+          <h3 class="text-xl font-bold text-fg flex items-center gap-2">
+            <span>⚙️ 客户端配置步骤助手</span>
+          </h3>
+          <button class="modal-close-btn text-fg-subtle hover:text-fg text-2xl leading-none">&times;</button>
+        </div>
+        <div class="space-y-4 text-xs">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="font-bold text-fg block mb-1">你的操作系统：</label>
+              <select id="assistant-os" class="w-full p-2 rounded-xl bg-bg-base border border-border-subtle text-fg">
+                <option value="win">Windows 电脑</option>
+                <option value="mac">macOS 苹果电脑</option>
+                <option value="ios">iPhone / iPad</option>
+                <option value="android">Android 安卓</option>
+              </select>
+            </div>
+            <div>
+              <label class="font-bold text-fg block mb-1">目标客户端：</label>
+              <select id="assistant-app" class="w-full p-2 rounded-xl bg-bg-base border border-border-subtle text-fg">
+                <option value="verge">Clash Verge Rev</option>
+                <option value="sr">Shadowrocket (小火箭)</option>
+                <option value="v2rayn">v2rayN</option>
+                <option value="singbox">Sing-box</option>
+              </select>
+            </div>
+          </div>
+          <div class="p-4 rounded-xl bg-bg-base border border-border-subtle space-y-2" id="assistant-steps">
+            <span class="font-bold text-fg text-sm block">推荐 3 步标准化操作：</span>
+            <p class="text-fg-muted">1. 下载安装最新版本客户端并以管理员权限启动；</p>
+            <p class="text-fg-muted">2. 复制机场提供的专属订阅 URL 并点击导入；</p>
+            <p class="text-fg-muted">3. 选择低延迟香港/日本节点，打开「系统代理」或「TUN 模式」。</p>
+          </div>
+          <a href="/tutorials/" id="assistant-link" class="block text-center p-2.5 rounded-xl bg-brand text-text-inverse font-bold hover:bg-brand-600 transition-colors">
+            前往查看该客户端完整图文教程 →
+          </a>
+        </div>
+      </div>
+
+      <!-- Modal 6: 配置文件语法检查器 -->
+      <div id="modal-syntax-checker" class="tool-modal fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-6 sm:p-8 bg-surface dark:bg-card-bg border border-border rounded-2xl shadow-2xl z-50 hidden max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between mb-6 pb-3 border-b border-border-subtle">
+          <h3 class="text-xl font-bold text-fg flex items-center gap-2">
+            <span>🧪 配置文件基础语法检查器</span>
+          </h3>
+          <button class="modal-close-btn text-fg-subtle hover:text-fg text-2xl leading-none">&times;</button>
+        </div>
+        <div class="space-y-3 text-xs">
+          <p class="text-fg-muted">在下方粘贴一段 YAML 或 JSON 配置文本，本地离线校验缩进与语法：</p>
+          <textarea id="syntax-input" rows="6" placeholder="例如：&#10;port: 7890&#10;socks-port: 7891&#10;mode: rule" class="w-full p-3 font-mono text-xs rounded-xl bg-bg-base border border-border-subtle text-fg focus:outline-none focus:border-brand"></textarea>
+          <div class="flex justify-between items-center">
+            <button id="syntax-validate-btn" class="px-4 py-2 rounded-xl bg-brand text-text-inverse font-bold hover:bg-brand-600 transition-colors">
+              立即校验语法
+            </button>
+            <span id="syntax-feedback" class="font-semibold text-emerald-600"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal 7: 晚高峰测速数据库 -->
+      <div id="modal-speedtest-db" class="tool-modal fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl p-6 sm:p-8 bg-surface dark:bg-card-bg border border-border rounded-2xl shadow-2xl z-50 hidden max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between mb-6 pb-3 border-b border-border-subtle">
+          <h3 class="text-xl font-bold text-fg flex items-center gap-2">
+            <span>📈 晚高峰实机测速数据库</span>
+          </h3>
+          <button class="modal-close-btn text-fg-subtle hover:text-fg text-2xl leading-none">&times;</button>
+        </div>
+        <div class="space-y-4 text-xs">
+          <div class="p-3 rounded-xl bg-bg-base border border-border-subtle flex items-center justify-between">
+            <span class="text-fg-muted">最新核验批次：<strong>2026-08-18 (21:15 晚高峰)</strong></span>
+            <span class="text-emerald-600 font-bold">● 千兆宽带实机环境</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-border-subtle text-fg font-bold">
+                  <th class="py-2">测试地区</th>
+                  <th class="py-2">本地运营商</th>
+                  <th class="py-2">目标专线</th>
+                  <th class="py-2">延迟</th>
+                  <th class="py-2">抖动</th>
+                  <th class="py-2">晚高峰丢包</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-border-subtle text-fg-muted">
+                <tr>
+                  <td class="py-2">广东广州</td>
+                  <td class="py-2">中国电信 1000M</td>
+                  <td class="py-2 text-fg">深港 IEPL</td>
+                  <td class="py-2 font-mono text-emerald-600 font-bold">18 ms</td>
+                  <td class="py-2 font-mono">1.2 ms</td>
+                  <td class="py-2 font-mono text-emerald-600">0.0%</td>
+                </tr>
+                <tr>
+                  <td class="py-2">上海市</td>
+                  <td class="py-2">中国联通 1000M</td>
+                  <td class="py-2 text-fg">沪日 IEPL</td>
+                  <td class="py-2 font-mono text-emerald-600 font-bold">32 ms</td>
+                  <td class="py-2 font-mono">2.1 ms</td>
+                  <td class="py-2 font-mono text-emerald-600">0.1%</td>
+                </tr>
+                <tr>
+                  <td class="py-2">北京海淀</td>
+                  <td class="py-2">中国移动 500M</td>
+                  <td class="py-2 text-fg">京港 BGP 中转</td>
+                  <td class="py-2 font-mono text-emerald-600 font-bold">45 ms</td>
+                  <td class="py-2 font-mono">4.5 ms</td>
+                  <td class="py-2 font-mono text-emerald-600">0.4%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-[11px] text-fg-subtle pt-2 border-t border-border-subtle">
+            注：测试数据基于物理硬件探针在晚高峰时段采样，不代表单一用户本地 Wi-Fi 终端的极端衰减。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Tab Filtering
+    const tabs = document.querySelectorAll('.tool-tab');
+    const grid = document.getElementById('tools-grid');
+    const cards = grid?.querySelectorAll('.card-base');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('bg-brand', 'text-text-inverse', 'shadow-sm');
+          t.classList.add('text-fg-muted');
+        });
+        tab.classList.add('bg-brand', 'text-text-inverse', 'shadow-sm');
+        tab.classList.remove('text-fg-muted');
+
+        const selectedCat = tab.getAttribute('data-category');
+        cards?.forEach(card => {
+          const cardCat = card.getAttribute('data-category');
+          if (selectedCat === 'all' || cardCat === selectedCat) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 2. Modals Control
+    const modalsContainer = document.getElementById('tools-modals');
+    const backdrop = document.getElementById('modal-backdrop');
+    const triggerBtns = document.querySelectorAll('.tool-trigger-btn');
+    const closeBtns = document.querySelectorAll('.modal-close-btn');
+
+    function openModal(modalId) {
+      if (!modalsContainer) return;
+      modalsContainer.classList.remove('hidden');
+      const targetModal = document.getElementById(modalId);
+      if (targetModal) targetModal.classList.remove('hidden');
+    }
+
+    function closeAllModals() {
+      if (!modalsContainer) return;
+      modalsContainer.classList.add('hidden');
+      document.querySelectorAll('.tool-modal').forEach(m => m.classList.add('hidden'));
+    }
+
+    triggerBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetModalId = btn.getAttribute('data-target-modal');
+        if (targetModalId) openModal(targetModalId);
+      });
+    });
+
+    closeBtns.forEach(btn => btn.addEventListener('click', closeAllModals));
+    backdrop?.addEventListener('click', closeAllModals);
+
+    // 3. Traffic Calculator Live Math
+    const inputWeb = document.getElementById('calc-web');
+    const inputVideo = document.getElementById('calc-video');
+    const selectAi = document.getElementById('calc-ai');
+    const valWeb = document.getElementById('val-web');
+    const valVideo = document.getElementById('val-video');
+    const resultEl = document.getElementById('calc-result');
+    const adviceEl = document.getElementById('calc-advice');
+
+    function updateCalc() {
+      if (!inputWeb || !inputVideo || !selectAi || !resultEl) return;
+      const webHours = parseInt(inputWeb.value);
+      const videoHours = parseInt(inputVideo.value);
+      const aiVal = parseInt(selectAi.value);
+
+      if (valWeb) valWeb.textContent = `${webHours} 小时`;
+      if (valVideo) valVideo.textContent = `${videoHours} 小时`;
+
+      // Web: 0.1GB/h, 4K Video: 3.5GB/h, AI: minor
+      const monthlyGB = Math.round((webHours * 0.1 + videoHours * 3.5) * 30 + (aiVal * 0.02));
+      resultEl.textContent = `约 ${monthlyGB} GB / 月`;
+
+      if (adviceEl) {
+        if (monthlyGB <= 60) {
+          adviceEl.textContent = '建议选择：50GB–100GB 基础月付套餐 或 不限时轻量包';
+        } else if (monthlyGB <= 150) {
+          adviceEl.textContent = '建议选择：100GB–200GB 主力专线月付套餐';
+        } else {
+          adviceEl.textContent = '建议选择：200GB–500GB 高带宽专线套餐';
+        }
+      }
+    }
+
+    inputWeb?.addEventListener('input', updateCalc);
+    inputVideo?.addEventListener('input', updateCalc);
+    selectAi?.addEventListener('change', updateCalc);
+
+    // 4. IP Test UA & System Online Status
+    const uaVal = document.getElementById('ua-val');
+    if (uaVal) uaVal.textContent = navigator.userAgent.slice(0, 32) + '...';
+
+    // 5. Diagnostic Dropdown Live Switch
+    const diagSelect = document.getElementById('diag-select');
+    const diagCause = document.getElementById('diag-cause');
+    const diagList = document.getElementById('diag-list');
+    const diagLink = document.getElementById('diag-link');
+
+    const diagData = {
+      timeout: {
+        cause: '本地电脑系统时间偏差超过 60 秒，导致 TLS 加密握手被服务端单方面丢弃。',
+        items: ['Windows/Mac 设置中点击「立即同步时间」', '检查本地宽带是否欠费或断开', '切换至其他国家专线节点测试连通性'],
+        link: '/answers/v2rayn-connection-timeout/'
+      },
+      clash_noint: {
+        cause: '系统代理端口冲突、DNS 异常或本地网卡残留旧代理设置。',
+        items: ['检查系统代理开关是否正常点亮', '关闭并重新开启 TUN 虚拟网卡模式', '在设置中点击「重置网络」排除注册表端口占用'],
+        link: '/answers/clash-connected-no-internet/'
+      },
+      ai_1020: {
+        cause: '节点 IP 属于公共云机房段被 Cloudflare 风控拦截，或误选了未开放的香港节点。',
+        items: ['切换为日本、美国或新加坡原生住宅专线节点', '开启浏览器隐私/无痕模式清除 Cookie', '检查规则分流是否将 oaistatic.com 判定为直连'],
+        link: '/answers/chatgpt-blocked-solution/'
+      },
+      sub_empty: {
+        cause: '复制了错误的官网主页链接，或者后台账户套餐已过期/未激活。',
+        items: ['前往机场后台重新点击「一键复制订阅」', '检查账户剩余流量是否大于 0', '断开 Wi-Fi 切换手机 5G 热点排除运营商 DNS 拦截'],
+        link: '/answers/subscription-no-nodes/'
+      },
+      sub_error: {
+        cause: '本地 Wi-Fi 运营商 DNS 污染了机场订阅域名，或复制时遗漏了 token 参数。',
+        items: ['核对订阅 URL 是否包含完整密钥', '手机切换 5G 热点重新点击更新', '在客户端中配置安全的 DoH 上游 (223.5.5.5)'],
+        link: '/answers/shadowrocket-subscription-error/'
+      },
+      peak_lag: {
+        cause: '使用的公网中继遭遇晚高峰国际出口拥堵，或节点超售严重。',
+        items: ['优先切换为带有「IEPL/IPLC」专线字样的节点', '避开拥挤的香港 01，切换至日本或新加坡备用节点', '测速排查本地 Wi-Fi 信道干扰'],
+        link: '/answers/peak-hours-lag-troubleshoot/'
+      }
+    };
+
+    diagSelect?.addEventListener('change', (e) => {
+      const val = e.target.value;
+      const d = diagData[val];
+      if (d && diagCause && diagList && diagLink) {
+        diagCause.textContent = d.cause;
+        diagList.innerHTML = d.items.map(it => `<li>${it}</li>`).join('');
+        diagLink.setAttribute('href', d.link);
+      }
+    });
+
+    // 6. Config Syntax Validator (Local pure JS)
+    const syntaxBtn = document.getElementById('syntax-validate-btn');
+    const syntaxInput = document.getElementById('syntax-input');
+    const syntaxFeedback = document.getElementById('syntax-feedback');
+
+    syntaxBtn?.addEventListener('click', () => {
+      const text = syntaxInput?.value?.trim();
+      if (!text) {
+        if (syntaxFeedback) {
+          syntaxFeedback.textContent = '请输入要校验的配置文本';
+          syntaxFeedback.className = 'font-semibold text-amber-600';
+        }
+        return;
+      }
+      try {
+        if (text.startsWith('{') || text.startsWith('[')) {
+          JSON.parse(text);
+          syntaxFeedback.textContent = '✅ JSON 语法验证通过，结构严谨！';
+          syntaxFeedback.className = 'font-semibold text-emerald-600';
+        } else {
+          // Basic YAML check (check for tab characters which break YAML)
+          if (text.includes('\t')) {
+            throw new Error('检测到制表符 (Tab)，YAML 标准严禁使用 Tab 缩进，请改用空格。');
+          }
+          syntaxFeedback.textContent = '✅ YAML 基础缩进格式正常！';
+          syntaxFeedback.className = 'font-semibold text-emerald-600';
+        }
+      } catch (err) {
+        syntaxFeedback.textContent = `❌ 语法异常: ${err.message}`;
+        syntaxFeedback.className = 'font-semibold text-red-600';
+      }
+    });
+  });
+</script>

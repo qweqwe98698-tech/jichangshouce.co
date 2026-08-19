@@ -1,0 +1,82 @@
+---
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import SEO from '../components/seo/SEO.astro';
+import { generateOrganizationSchema, generateWebSiteSchema } from '../utils/schema';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  pubDate?: Date | string;
+  updatedDate?: Date | string;
+  author?: string;
+  noindex?: boolean;
+  schema?: object | object[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  image,
+  type = 'website',
+  pubDate,
+  updatedDate,
+  author,
+  noindex,
+  schema,
+} = Astro.props;
+
+const defaultSchemas = [
+  generateOrganizationSchema(),
+  generateWebSiteSchema(),
+];
+
+const allSchemas = schema
+  ? (Array.isArray(schema) ? [...defaultSchemas, ...schema] : [...defaultSchemas, schema])
+  : defaultSchemas;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="机场手册 RSS" href="/rss.xml" />
+    
+    <!-- Zero-flash Dark Mode Init -->
+    <script is:inline>
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      image={image}
+      type={type}
+      pubDate={pubDate}
+      updatedDate={updatedDate}
+      author={author}
+      noindex={noindex}
+      schema={allSchemas}
+    />
+  </head>
+  <body class="min-h-screen flex flex-col bg-bg text-fg selection:bg-brand-100 dark:selection:bg-brand-900 selection:text-brand">
+    <Header />
+    <main class="flex-1 w-full">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

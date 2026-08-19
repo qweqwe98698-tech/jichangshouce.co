@@ -1,0 +1,138 @@
+---
+import CompactCard from '../cards/CompactCard.astro';
+import { formatDate, estimateReadingTime } from '../../utils/dates';
+
+interface MainArticle {
+  title: string;
+  description: string;
+  href: string;
+  category: string;
+  pubDate: string | Date;
+  cover?: { src: string; alt: string };
+  tags?: string[];
+}
+
+interface SecondaryArticle {
+  title: string;
+  href: string;
+  category: string;
+  date: string | Date;
+  tag?: string;
+}
+
+interface Props {
+  mainArticle?: MainArticle;
+  secondaryArticles?: SecondaryArticle[];
+}
+
+const defaultMain: MainArticle = {
+  title: '2026 机场怎么选？从 IPLC 专线、中继到预算定位的客观选型指南',
+  description: '彻底告别玄学测速与水军推介。本文从网络架构底层（专线与公网）、晚高峰丢包机制、协议伪装到资费合理区间，为你建立一套清晰理性的机场选择标准。',
+  href: '/guides/how-to-choose-airport/',
+  category: '深度解析',
+  pubDate: '2026-08-18',
+  tags: ['机场选择', 'IPLC专线', '选型指南'],
+};
+
+const defaultSecondary: SecondaryArticle[] = [
+  {
+    title: 'Clash Verge Rev 完整上手指南：从安装、订阅导入到 TUN 模式',
+    href: '/tutorials/clash/clash-verge-starter-guide/',
+    category: '客户端教程',
+    date: '2026-08-17',
+    tag: 'Clash',
+  },
+  {
+    title: 'IEPL 与 IPLC 到底有什么区别？专线网络底层机制大起底',
+    href: '/compare/iepl-vs-iplc/',
+    category: '技术对比',
+    date: '2026-08-16',
+    tag: '专线百科',
+  },
+  {
+    title: 'Clash 有节点延迟却打不开网页？5 步快速排错定位指南',
+    href: '/answers/clash-connected-no-internet/',
+    category: '故障诊断',
+    date: '2026-08-18',
+    tag: '网络排错',
+  },
+];
+
+const {
+  mainArticle = defaultMain,
+  secondaryArticles = defaultSecondary,
+} = Astro.props;
+
+const readingTime = estimateReadingTime(mainArticle.description + mainArticle.title);
+---
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <h2 class="text-xl sm:text-2xl font-black text-fg flex items-center gap-2">
+        <span>⭐</span>
+        本周值得看
+      </h2>
+      <p class="text-xs text-fg-muted mt-0.5">编辑部精选核心深度内容与高频指南</p>
+    </div>
+    <a href="/guides/" class="text-xs font-bold text-brand hover:underline">
+      全部精选 →
+    </a>
+  </div>
+
+  <!-- 1 Main Card + 3 Secondary Cards Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+    <!-- Main Big Feature Card (Spans 7 cols) -->
+    <div class="lg:col-span-7 card-base card-hover p-6 sm:p-8 flex flex-col justify-between group border-l-4 border-l-brand">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-4">
+          <span class="badge-tag badge-topic">
+            {mainArticle.category}
+          </span>
+          <time class="text-xs font-mono text-fg-subtle">
+            {formatDate(mainArticle.pubDate)}
+          </time>
+        </div>
+
+        <h3 class="text-xl sm:text-2xl font-black text-fg group-hover:text-brand transition-colors mb-3 leading-snug">
+          <a href={mainArticle.href}>
+            {mainArticle.title}
+          </a>
+        </h3>
+
+        <p class="text-sm text-fg-muted leading-relaxed mb-6">
+          {mainArticle.description}
+        </p>
+      </div>
+
+      <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+        <div class="text-xs text-fg-subtle flex items-center gap-3">
+          <span>⏱️ {readingTime} 分钟深度阅读</span>
+          {mainArticle.tags && mainArticle.tags[0] && (
+            <span class="text-fg-muted font-medium">#{mainArticle.tags[0]}</span>
+          )}
+        </div>
+        <a
+          href={mainArticle.href}
+          class="px-4 py-2 bg-brand text-text-inverse font-bold text-xs rounded-lg hover:bg-brand-600 transition-colors shadow-sm inline-flex items-center gap-1"
+        >
+          立即阅读全文 →
+        </a>
+      </div>
+    </div>
+
+    <!-- 3 Secondary Cards (Spans 5 cols) -->
+    <div class="lg:col-span-5 flex flex-col justify-between gap-3">
+      {secondaryArticles.map((art) => (
+        <CompactCard
+          title={art.title}
+          href={art.href}
+          category={art.category}
+          date={art.date}
+          tag={art.tag}
+          className="flex-1"
+        />
+      ))}
+    </div>
+  </div>
+</section>

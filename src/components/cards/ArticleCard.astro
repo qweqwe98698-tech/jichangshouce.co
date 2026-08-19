@@ -1,0 +1,90 @@
+---
+import { formatDate, estimateReadingTime } from '../../utils/dates';
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  category?: string;
+  pubDate?: Date | string;
+  updatedDate?: Date | string;
+  tags?: string[];
+  cover?: {
+    src: string;
+    alt: string;
+  };
+  client?: string;
+  className?: string;
+}
+
+const {
+  title,
+  description,
+  href,
+  category = '教程指南',
+  pubDate,
+  updatedDate,
+  tags = [],
+  cover,
+  className = '',
+} = Astro.props;
+
+const dateToShow = updatedDate || pubDate;
+const readingTime = estimateReadingTime(description + title);
+---
+
+<article class={`card-base card-hover flex flex-col justify-between group ${className}`}>
+  {cover && (
+    <div class="relative w-full h-44 overflow-hidden bg-bg-subtle border-b border-border-subtle">
+      <img
+        src={cover.src}
+        alt={cover.alt || title}
+        loading="lazy"
+        width="600"
+        height="320"
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+      />
+      <span class="absolute top-3 left-3 badge-tag badge-topic shadow-sm">
+        {category}
+      </span>
+    </div>
+  )}
+
+  <div class="p-5 flex-1 flex flex-col justify-between">
+    <div>
+      {!cover && (
+        <div class="flex items-center justify-between gap-2 mb-2.5">
+          <span class="badge-tag badge-topic">
+            {category}
+          </span>
+          {dateToShow && (
+            <time class="text-xs text-fg-subtle font-mono">
+              {formatDate(dateToShow)}
+            </time>
+          )}
+        </div>
+      )}
+
+      <h3 class="text-lg font-bold text-fg group-hover:text-brand transition-colors line-clamp-2 mb-2 leading-snug">
+        <a href={href} class="focus:outline-none">
+          {title}
+        </a>
+      </h3>
+
+      <p class="text-sm text-fg-muted line-clamp-2 mb-4 leading-relaxed">
+        {description}
+      </p>
+    </div>
+
+    <div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs text-fg-subtle">
+      <div class="flex items-center gap-2">
+        <span>⏱️ {readingTime} 分钟阅读</span>
+      </div>
+      {tags.length > 0 && (
+        <span class="text-xs text-fg-muted font-medium">
+          #{tags[0]}
+        </span>
+      )}
+    </div>
+  </div>
+</article>

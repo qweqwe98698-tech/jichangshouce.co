@@ -1,0 +1,287 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/seo/Breadcrumb.astro';
+import type { Provider } from '../data/providers';
+
+interface Props {
+  brand: Provider;
+}
+
+const { brand } = Astro.props;
+
+const breadcrumbs = [
+  { name: '品牌资料库', url: '/brands/' },
+  { name: brand.name, url: Astro.url.pathname },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": brand.name,
+  "description": brand.tagline,
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "CNY",
+    "lowPrice": brand.pricing.minPrice,
+    "offerCount": brand.pricing.plans.length
+  }
+};
+---
+
+<BaseLayout
+  title={`${brand.name} 怎么样？2026 真实评测、测速数据与核验档案`}
+  description={`${brand.name} 详细资料档案与实机测速报告。线路类型：${brand.routes}，协议支持：${brand.protocols.join(', ')}，起步资费 ¥${brand.pricing.minPrice} (${brand.pricing.priceType})。`}
+  schema={schema}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Brand Header -->
+    <header class="card-base p-6 sm:p-8 rounded-2xl mb-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-border-subtle">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <h1 class="text-2xl sm:text-3xl font-black text-fg">{brand.name}</h1>
+            <span class={`badge-tag ${brand.verification.status === 'verified' ? 'badge-verified' : 'badge-pending'}`}>
+              {brand.verification.status === 'verified' ? '✓ 已完成节点实测与档案核验' : '⏳ 待核验'}
+            </span>
+          </div>
+          <p class="text-sm sm:text-base text-fg-muted font-medium">{brand.tagline}</p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="text-right mr-2">
+            <div class="text-xs text-fg-subtle">{brand.pricing.priceType}</div>
+            <div class="text-2xl font-black text-primary font-mono">
+              ¥{brand.pricing.minPrice}<span class="text-xs font-normal text-fg-muted">/{brand.pricing.cycle.includes('年付') ? '月 (年付)' : '月'}</span>
+            </div>
+          </div>
+          <a
+            href={brand.affiliateUrl || brand.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary px-5 py-2.5 text-sm font-bold inline-flex items-center gap-1.5 shadow-sm rounded-xl"
+          >
+            前往官方网站
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Verification Info Bar -->
+      <div class="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-fg-subtle">
+        <div>成立时间：<span class="text-fg font-medium">{brand.founded} 年</span></div>
+        <div>核验日期：<span class="text-fg font-mono font-medium">{brand.verification.verifiedAt}</span></div>
+        <div>测试环境：<span class="text-fg font-medium">千兆宽带实机测速</span></div>
+        {brand.coupon && (
+          <div>优惠码：<span class="font-mono font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30 px-1.5 py-0.5 rounded">{brand.coupon.code} ({brand.coupon.desc})</span></div>
+        )}
+      </div>
+    </header>
+
+    <!-- Main 2-Column Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Left 2 Cols: Details -->
+      <div class="lg:col-span-2 space-y-8">
+        
+        <!-- Speedtest Benchmark Visual Card -->
+        <section class="card-base p-6 rounded-xl">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h2 class="text-lg font-bold text-fg flex items-center gap-2">
+                📊 {brand.name} 真实节点测速图谱
+              </h2>
+              <p class="text-xs text-fg-subtle mt-0.5">
+                测试批次：2026-08-11 实测 · 测试工具：MAI-TEST-BOT
+              </p>
+            </div>
+            <span class="badge-tag badge-blue text-[11px]">实机测试原图</span>
+          </div>
+
+          <div class="rounded-lg overflow-hidden border border-border-subtle bg-black/5 dark:bg-black/40">
+            <img
+              src={brand.speedtestImage}
+              alt={`${brand.name} 节点测速实测报告图`}
+              class="w-full h-auto object-contain max-h-[500px]"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="mt-3 p-3 bg-bg-subtle rounded-lg text-xs text-fg-muted leading-relaxed">
+            <span class="font-bold text-fg">测速说明：</span>
+            {brand.verification.notes}
+            <span class="text-fg-subtle block mt-1">（注：单日节点测速受所在地运营商和网络波动影响，仅作为线路连通性与带宽上限参考，不作为唯一永久指标。）</span>
+          </div>
+        </section>
+
+        <!-- Plans & Pricing Table -->
+        <section class="card-base p-6 rounded-xl">
+          <h2 class="text-lg font-bold text-fg mb-4">💰 套餐与资费详情</h2>
+          <div class="table-wrapper">
+            <table class="w-full text-xs sm:text-sm">
+              <thead>
+                <tr class="border-b border-border text-fg-subtle text-left">
+                  <th class="py-2.5">套餐名称</th>
+                  <th class="py-2.5">结算周期</th>
+                  <th class="py-2.5">包含流量</th>
+                  <th class="py-2.5 text-right">参考价格</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-border-subtle">
+                {brand.pricing.plans.map((plan) => (
+                  <tr>
+                    <td class="py-3 font-bold text-fg">{plan.name}</td>
+                    <td class="py-3 text-fg-muted">{plan.cycle}</td>
+                    <td class="py-3 text-fg">{plan.traffic}</td>
+                    <td class="py-3 text-right font-mono text-primary font-bold">¥{plan.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="text-[11px] text-fg-subtle mt-3">
+            * 提示：价格仅供参考，实际套餐资费与优惠折扣以服务商官方结账页面为准。
+          </p>
+        </section>
+
+        <!-- Pros and Cons -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="card-base p-5 rounded-xl border-l-4 border-l-emerald-500">
+            <h3 class="text-sm font-bold text-fg mb-3 flex items-center gap-1.5">
+              <span class="text-emerald-500 font-bold">✓</span> 优势亮点
+            </h3>
+            <ul class="space-y-2 text-xs text-fg-muted">
+              {brand.pros.map((p) => (
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-500">•</span>
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="card-base p-5 rounded-xl border-l-4 border-l-amber-500">
+            <h3 class="text-sm font-bold text-fg mb-3 flex items-center gap-1.5">
+              <span class="text-amber-500 font-bold">!</span> 注意事项与限制
+            </h3>
+            <ul class="space-y-2 text-xs text-fg-muted">
+              {brand.cons.map((c) => (
+                <li class="flex items-start gap-1.5">
+                  <span class="text-amber-500">•</span>
+                  <span>{c}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <!-- FAQ Section -->
+        {brand.faq && brand.faq.length > 0 && (
+          <section class="card-base p-6 rounded-xl">
+            <h2 class="text-lg font-bold text-fg mb-4">❓ 常见问题解答 (FAQ)</h2>
+            <div class="space-y-4">
+              {brand.faq.map((item) => (
+                <div class="p-3.5 bg-bg-subtle rounded-lg">
+                  <h3 class="text-sm font-bold text-fg mb-1">{item.q}</h3>
+                  <p class="text-xs text-fg-muted leading-relaxed">{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+      </div>
+
+      <!-- Right 1 Col: Key Specs Sidebar & Next Steps -->
+      <div class="space-y-6">
+        <div class="card-base p-5 rounded-xl space-y-4">
+          <h3 class="text-sm font-bold text-fg uppercase tracking-wider pb-2 border-b border-border-subtle">
+            ⚙️ 核心技术参数
+          </h3>
+
+          <div class="space-y-3 text-xs">
+            <div>
+              <span class="text-fg-subtle block">线路类型</span>
+              <span class="font-medium text-fg">{brand.routes}</span>
+            </div>
+            <div>
+              <span class="text-fg-subtle block">支持协议</span>
+              <span class="font-medium text-fg">{brand.protocols.join(' / ')}</span>
+            </div>
+            <div>
+              <span class="text-fg-subtle block">客户端兼容</span>
+              <span class="font-medium text-fg">{brand.clients.join('、')}</span>
+            </div>
+            <div>
+              <span class="text-fg-subtle block">AI 支持情况</span>
+              <span class="font-medium text-fg leading-relaxed">{brand.aiSupport}</span>
+            </div>
+            <div>
+              <span class="text-fg-subtle block">流媒体解锁</span>
+              <span class="font-medium text-fg leading-relaxed">{brand.streamingSupport}</span>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-border-subtle">
+            <a
+              href={brand.affiliateUrl || brand.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary block w-full py-2.5 text-center text-xs font-bold rounded-lg shadow-sm"
+            >
+              前往官网了解更多 →
+            </a>
+          </div>
+        </div>
+
+        <!-- Suitable vs Unsuitable -->
+        <div class="card-base p-5 rounded-xl text-xs space-y-4">
+          <div>
+            <h4 class="font-bold text-fg mb-2">👥 适合人群建议</h4>
+            <ul class="space-y-1.5 text-fg-muted">
+              {brand.suitableFor.map((s) => (
+                <li class="flex items-start gap-1">
+                  <span class="text-primary font-bold">✓</span>
+                  <span>{s}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="pt-3 border-t border-border-subtle">
+            <h4 class="font-bold text-fg mb-2">🚫 不建议选择人群</h4>
+            <ul class="space-y-1.5 text-fg-muted">
+              {brand.unsuitableFor.map((u) => (
+                <li class="flex items-start gap-1">
+                  <span class="text-amber-500 font-bold">✕</span>
+                  <span>{u}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Next Step Hub Navigation -->
+        <div class="card-base p-5 rounded-xl text-xs space-y-3 bg-surface">
+          <h4 class="font-bold text-fg">🧭 下一步指引</h4>
+          <div class="space-y-2">
+            <a href="/recommend/" class="block p-2 rounded bg-bg-subtle hover:bg-primary/10 transition-colors text-fg hover:text-primary font-medium">
+              🎯 智能选型推荐器 →
+            </a>
+            <a href="/tutorials/clash/clash-verge-starter-guide/" class="block p-2 rounded bg-bg-subtle hover:bg-primary/10 transition-colors text-fg hover:text-primary font-medium">
+              📖 Clash Verge 配置教程 →
+            </a>
+            <a href="/tutorials/shadowrocket/import-subscription/" class="block p-2 rounded bg-bg-subtle hover:bg-primary/10 transition-colors text-fg hover:text-primary font-medium">
+              📱 小火箭订阅导入指南 →
+            </a>
+            <a href="/compare/iepl-vs-iplc/" class="block p-2 rounded bg-bg-subtle hover:bg-primary/10 transition-colors text-fg hover:text-primary font-medium">
+              ⚖️ IEPL vs IPLC 专线对比 →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</BaseLayout>

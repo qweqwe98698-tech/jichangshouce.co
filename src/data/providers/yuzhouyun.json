@@ -1,0 +1,56 @@
+{
+  "id": "yuzhouyun",
+  "slug": "yuzhouyun",
+  "name": "宇宙云",
+  "founded": 2023,
+  "status": "active",
+  "tagline": "14.9元高性价比 VLESS 专线，低门槛月付与自研客户端支持",
+  "pricing": {
+    "minPrice": "14.9",
+    "cycle": "月 (真实月付)",
+    "priceType": "真实月付价",
+    "traffic": "100GB",
+    "plans": [
+      { "name": "经济月付", "price": 14.9, "cycle": "月付", "traffic": "100GB/月" },
+      { "name": "标准月付", "price": 25.0, "cycle": "月付", "traffic": "180GB/月" }
+    ]
+  },
+  "routes": "IEPL 专线",
+  "protocols": ["VLESS", "Shadowsocks"],
+  "clients": ["自研客户端", "Clash", "Shadowrocket", "v2rayN", "Sing-box"],
+  "aiSupport": "当前资料未提供统一实测结果，具体能力建议结合节点测试。",
+  "streamingSupport": "品牌资料显示覆盖常见流媒体使用场景，实际能力以具体节点测试为准。",
+  "suitableFor": [
+    "月预算 15 元左右、要求纯月付 + VLESS + IEPL 专线的用户",
+    "重视高性价比与充裕流量配额（100GB）的普通用户"
+  ],
+  "unsuitableFor": [
+    "追求极端低延迟电竞加速的用户"
+  ],
+  "pros": [
+    "14.9 元月付起步，性价比极为突出",
+    "全节点采用现代 VLESS 协议与 IEPL 专线",
+    "提供全平台自研客户端与第三方订阅转换"
+  ],
+  "cons": [
+    "客服响应高峰期偶有排队"
+  ],
+  "coupon": {
+    "code": "YUZHOU553",
+    "desc": "新用户专属优惠码"
+  },
+  "affiliateUrl": "https://guangs.yuzoucloud.cc/#/register?code=yrThwMP1",
+  "website": "https://guangs.yuzoucloud.cc/#/register?code=yrThwMP1",
+  "speedtestImage": "/images/benchmarks/宇宙云-节点测速实测.png",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "VLESS 专线节点延迟低，晚高峰实测下载带宽充足。"
+  },
+  "faq": [
+    {
+      "q": "宇宙云 14.9 元套餐有什么限制吗？",
+      "a": "没有速度限制，月付提供 100GB 高速 IEPL 流量，用完后可按需重置或升级。"
+    }
+  ]
+}

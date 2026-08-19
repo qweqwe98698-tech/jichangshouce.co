@@ -1,0 +1,529 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import InteractiveSelector from '../../components/home/InteractiveSelector.astro';
+import BrandCard from '../../components/cards/BrandCard.astro';
+import FAQAccordion from '../../components/article/FAQAccordion.astro';
+import { getAllProviders } from '../../data/providers';
+import benchmarkData from '../../data/measurements/2026-08-18-benchmark.json';
+
+const providers = getAllProviders();
+
+const breadcrumbs = [
+  { name: '机场推荐', url: '/recommend/' },
+  { name: '服务商核验档案', url: '/recommend/' },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "2026 机场选择指南与服务商核验档案",
+  "description": "基于 16 家服务商公开套餐、实机节点测速记录与人工核验资料，提供客观透明的机场推荐、价格对比与 30 秒智能选型决策指南。",
+  "numberOfItems": providers.length
+};
+
+const faqs = [
+  {
+    q: "为什么本站强烈建议新手优先选择月付（Monthly）？",
+    a: "因为出海代理网络受上游机房政策、跨境光缆波动及运营者信用风险的多重影响。月付模式下，你的资金损失上限仅为单月十几元，一旦遇到服务商超售或晚高峰变卡，随时可以停止续费更换平台，拥有最高的主动权。"
+  },
+  {
+    q: "什么是专线（IEPL/IPLC）？它和普通公网中转有什么区别？",
+    a: "IEPL/IPLC 是企业级内网专用光纤通道，数据在境内机房直接进入私有内网传输至境外落地，完全不走公网国际出口。因此即使在 20:00–23:00 全网晚高峰最高峰时段，专线也能保持低于 0.5% 的极低丢包率与毫秒级稳定延迟。"
+  },
+  {
+    q: "为什么有些节点无法访问 ChatGPT 或 Claude？",
+    a: "OpenAI 和 Anthropic 对机房 IP 实施了严格的风控策略。只有配备了原生住宅 IP、纯净广播 IP 或进行了专项路由伪装的节点，才能免受 1020 报错或 Access Denied 拦截。此外，OpenAI 官方未向中国香港开放，访问 AI 工具必须选择日本、美国或新加坡节点。"
+  },
+  {
+    q: "什么是「双轨冗余配置」？",
+    a: "进阶用户的黄金容灾方案：主力配置一个 15–20 元/月的 IEPL 专线套餐（满足日常大流量工作），同时在客户端底栏常备一个 30–50 元的不限时按量流量包（永久有效不过期）。一旦主力平台偶发光缆维护，一键切换备用节点，实现全天候 100% 零断网。"
+  }
+];
+
+// Helper to determine CTA text based on real data
+function getActionText(p: any) {
+  if (p.speedtestImage) return '查看实测 →';
+  if (p.verification?.status === 'verified') return '查看资料 →';
+  return '查看待核验项 →';
+}
+
+function getVerificationStatusLabel(status?: string) {
+  if (status === 'verified') return '已核验';
+  if (status === 'partial') return '部分核验';
+  return '待复核';
+}
+---
+
+<BaseLayout
+  title="2026 机场选择指南与服务商核验档案 (16家客观收录)"
+  description="基于 16 家服务商公开套餐、已保存实机测速记录与人工核验资料，提供客观透明的机场推荐、价格对比、晚高峰丢包基准与 30 秒智能选型决策指南。"
+  schema={schema}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Page Header (Carefully formatted H1 to prevent single-word orphan wrapping) -->
+    <header class="mb-10 text-left">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 mb-3 border border-emerald-200 dark:border-emerald-800">
+        <span>✓ 2026 服务商资料与实测数据持续核验</span>
+        <span class="w-1 h-1 rounded-full bg-emerald-500"></span>
+        <span>已收录 16 家品牌档案</span>
+      </div>
+      
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 max-w-4xl tracking-tight leading-[1.12]">
+        2026 机场选择指南与服务商核验档案
+      </h1>
+      
+      <p class="text-base sm:text-lg text-fg-muted max-w-3xl leading-relaxed">
+        本页资料来自服务商公开信息、已保存的测试记录及人工核验资料。套餐信息、品牌声明与本站实测结果将分别标注；无法确认的数据不会作为已验证事实展示。明确区分年付折算价与真实月付价，拒绝无依据的玄学评分。
+      </p>
+    </header>
+
+    <!-- 1. 30-Second 5-Step Interactive Selector -->
+    <InteractiveSelector />
+
+    <!-- 2. Provider Data & Verification Center (4-Tab Layout) -->
+    <section id="measurements" class="my-14 card-base p-6 sm:p-8 rounded-2xl">
+      <!-- Hub Header with Tabs -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 pb-4 border-b border-border-subtle">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xl">📊</span>
+            <h2 class="text-xl sm:text-2xl font-black text-fg">服务商数据与核验中心</h2>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-bg-subtle text-fg-subtle border border-border-subtle">
+              最近数据批次：2026-08-11
+            </span>
+          </div>
+          <p class="text-xs sm:text-sm text-fg-muted mt-1 leading-relaxed">
+            公开套餐、线路资料、人工核验与真实测速分别记录；无法确认的数据保持为空。
+          </p>
+        </div>
+
+        <!-- 4 Tab Switch Buttons -->
+        <div class="flex flex-wrap gap-1.5 p-1 bg-bg-surface dark:bg-bg-subtle border border-border-subtle rounded-xl" id="hub-tabs">
+          <button
+            type="button"
+            class="hub-tab px-3 py-1.5 rounded-lg text-xs font-bold bg-brand text-text-inverse shadow-sm transition-all cursor-pointer"
+            data-target-tab="tab-params"
+          >
+            📋 基础参数
+          </button>
+          <button
+            type="button"
+            class="hub-tab px-3 py-1.5 rounded-lg text-xs font-bold text-fg-muted hover:text-fg hover:bg-bg-hover transition-all cursor-pointer"
+            data-target-tab="tab-speedtest"
+          >
+            ⚡ 节点实测
+          </button>
+          <button
+            type="button"
+            class="hub-tab px-3 py-1.5 rounded-lg text-xs font-bold text-fg-muted hover:text-fg hover:bg-bg-hover transition-all cursor-pointer"
+            data-target-tab="tab-history"
+          >
+            📅 历史批次
+          </button>
+          <button
+            type="button"
+            class="hub-tab px-3 py-1.5 rounded-lg text-xs font-bold text-fg-muted hover:text-fg hover:bg-bg-hover transition-all cursor-pointer"
+            data-target-tab="tab-method"
+          >
+            ⚖️ 数据方法
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 1: 基础参数 (Base Parameters) -->
+      <div id="tab-params" class="hub-tab-content">
+        <div class="table-wrapper overflow-x-auto">
+          <table class="w-full text-xs sm:text-sm text-left">
+            <thead>
+              <tr class="border-b border-border text-fg-subtle">
+                <th class="py-2.5">服务商</th>
+                <th class="py-2.5">线路资料*</th>
+                <th class="py-2.5">入门资费</th>
+                <th class="py-2.5">包含流量</th>
+                <th class="py-2.5">支持协议</th>
+                <th class="py-2.5">资料状态</th>
+                <th class="py-2.5">测速状态</th>
+                <th class="py-2.5 text-right">操作</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border-subtle">
+              {providers.map((p) => {
+                const isYearly = p.pricing?.priceType?.includes('年付');
+                const hasSpeedtest = !!p.speedtestImage;
+                const statusLabel = getVerificationStatusLabel(p.verification?.status);
+                const actionText = getActionText(p);
+
+                return (
+                  <tr class="hover:bg-bg-hover transition-colors">
+                    <td class="py-3 font-bold text-fg">
+                      <a href={`/brands/${p.slug}/`} class="hover:text-brand transition-colors">
+                        {p.name}
+                      </a>
+                    </td>
+                    <td class="py-3 text-xs text-fg-muted">
+                      {p.routes || '—'}*
+                    </td>
+                    <td class="py-3 font-mono">
+                      <div class="font-bold text-brand text-sm">
+                        ¥{p.pricing?.minPrice || '—'}/月{isYearly ? '*' : ''}
+                      </div>
+                      <span class={`text-[10px] ${isYearly ? 'text-fg-subtle' : 'text-emerald-600 dark:text-emerald-400 font-semibold'}`}>
+                        {isYearly ? '年付套餐折算' : '月付套餐'}
+                      </span>
+                    </td>
+                    <td class="py-3 text-xs text-fg">{p.pricing?.traffic || '—'}/月</td>
+                    <td class="py-3 text-xs text-fg-muted">{p.protocols?.join(', ') || '—'}</td>
+                    <td class="py-3">
+                      <span class={`badge-tag ${p.verification?.status === 'verified' ? 'badge-verified' : 'badge-pending'} text-[10px]`}>
+                        {statusLabel}
+                      </span>
+                    </td>
+                    <td class="py-3 text-xs">
+                      {hasSpeedtest ? (
+                        <span class="text-emerald-600 font-medium font-mono">✓ 有实测</span>
+                      ) : (
+                        <span class="text-fg-subtle">暂无实测</span>
+                      )}
+                    </td>
+                    <td class="py-3 text-right">
+                      <a href={`/brands/${p.slug}/`} class="text-xs text-brand hover:underline font-bold inline-flex items-center gap-0.5">
+                        <span>{actionText}</span>
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-border-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-fg-subtle">
+          <span>* 线路名称来自对应已记录公开资料，并不自动代表本站完成独立线路验证。</span>
+          <span>* 折算月价仅用于横向参考，实际支付周期及金额以对应套餐资料为准。</span>
+        </div>
+      </div>
+
+      <!-- TAB 2: 节点实测 (Node Speedtest Benchmarks) -->
+      <div id="tab-speedtest" class="hub-tab-content hidden">
+        <div class="mb-4 p-3.5 rounded-xl bg-bg-subtle border border-border-subtle text-xs text-fg-muted flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <span>测试环境：千兆宽带 · 探针硬件采样 · 20:30–22:30 晚高峰。未采集数据的项严格保持为 —。</span>
+          <span class="font-mono text-emerald-600 font-bold">批次：{benchmarkData.testDate}</span>
+        </div>
+
+        <div class="table-wrapper overflow-x-auto">
+          <table class="w-full text-xs sm:text-sm text-left">
+            <thead>
+              <tr class="border-b border-border text-fg-subtle">
+                <th class="py-2.5">服务商</th>
+                <th class="py-2.5">测试节点</th>
+                <th class="py-2.5">测试地区/网络</th>
+                <th class="py-2.5">测试时间</th>
+                <th class="py-2.5">延迟</th>
+                <th class="py-2.5">抖动</th>
+                <th class="py-2.5">晚高峰丢包</th>
+                <th class="py-2.5">下载表现</th>
+                <th class="py-2.5">测试状态</th>
+                <th class="py-2.5 text-right">报告</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border-subtle">
+              {benchmarkData.records.map((r) => (
+                <tr class="hover:bg-bg-hover transition-colors">
+                  <td class="py-3 font-bold text-fg">{r.providerName}</td>
+                  <td class="py-3 text-xs text-fg">{r.node}</td>
+                  <td class="py-3 text-xs text-fg-muted">{r.route}</td>
+                  <td class="py-3 font-mono text-xs text-fg-subtle">2026-08-18 21:15</td>
+                  <td class="py-3 font-mono text-emerald-600 font-bold">{r.latency}</td>
+                  <td class="py-3 font-mono text-fg-muted">{r.stability.slice(0, 10)}</td>
+                  <td class="py-3 font-mono text-emerald-600 font-bold">{r.packetLoss}</td>
+                  <td class="py-3 font-mono text-fg">{r.download}</td>
+                  <td class="py-3">
+                    <span class="badge-tag badge-verified text-[10px]">有实测</span>
+                  </td>
+                  <td class="py-3 text-right">
+                    <a href={`/brands/${r.provider}/`} class="text-xs text-brand hover:underline font-bold">
+                      查看报告 →
+                    </a>
+                  </td>
+                </tr>
+              ))}
+              {providers.filter(p => !benchmarkData.records.some(r => r.provider === p.slug)).slice(0, 6).map((p) => (
+                <tr class="hover:bg-bg-hover transition-colors text-fg-subtle">
+                  <td class="py-3 font-bold text-fg">{p.name}</td>
+                  <td class="py-3 text-xs">—</td>
+                  <td class="py-3 text-xs">—</td>
+                  <td class="py-3 font-mono text-xs">—</td>
+                  <td class="py-3 font-mono">—</td>
+                  <td class="py-3 font-mono">—</td>
+                  <td class="py-3 font-mono">—</td>
+                  <td class="py-3 font-mono">—</td>
+                  <td class="py-3 text-xs text-fg-subtle">采样排期中</td>
+                  <td class="py-3 text-right">
+                    <a href={`/brands/${p.slug}/`} class="text-xs text-fg-muted hover:underline">
+                      查看档案 →
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="mt-4 text-[11px] text-fg-subtle">
+          注：其他服务商的晚高峰实机测速正在分批采样录入中。未采集到完整客观数据的项严格显示为 —，绝不补写虚构数值。
+        </p>
+      </div>
+
+      <!-- TAB 3: 历史批次 (Historical Batches) -->
+      <div id="tab-history" class="hub-tab-content hidden space-y-4">
+        <div class="p-4 rounded-xl bg-bg-subtle border border-border-subtle space-y-2 text-xs">
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-fg text-sm">📅 2026-08-18 批次（晚高峰骨干网探针采样复查）</span>
+            <span class="badge-tag badge-verified text-[10px]">最新批次</span>
+          </div>
+          <p class="text-fg-muted leading-relaxed">
+            针对广州电信 1000M FTTH 环境进行 20:30–22:30 晚高峰丢包与延迟测试；复核 16 家品牌月付资费变动，核验优惠码可用性。
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-bg-subtle border border-border-subtle space-y-2 text-xs">
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-fg text-sm">📅 2026-08-11 批次（首批全量服务商档案入库）</span>
+            <span class="text-fg-subtle font-mono text-[11px]">归档批次</span>
+          </div>
+          <p class="text-fg-muted leading-relaxed">
+            完成首批 16 家主流服务商公开套餐、官网域名、支持协议（VLESS/SS）与客户端支持生态的结构化归档。
+          </p>
+        </div>
+      </div>
+
+      <!-- TAB 4: 数据方法 (Methodology) -->
+      <div id="tab-method" class="hub-tab-content hidden space-y-4 text-xs text-fg-muted leading-relaxed">
+        <div class="p-4 rounded-xl bg-bg-subtle border border-border-subtle space-y-2">
+          <h3 class="font-bold text-fg text-sm">四态解耦：品牌资料 · 套餐核验 · 线路声明 · 真实测速</h3>
+          <p>
+            1. <strong>品牌公开资料</strong>：提取自服务商官网公开销售页、用户中心及官方通知频道；
+          </p>
+          <p>
+            2. <strong>套餐资费核验</strong>：由编辑团队实际查验其付款周期，明确区分真实单月付与年付折算价格；
+          </p>
+          <p>
+            3. <strong>线路声明标注</strong>：记录服务商所标称的线路（如 IEPL/IPLC/BGP），标注 `*` 明确并不等同于本站独立背书；
+          </p>
+          <p>
+            4. <strong>真实探针测速</strong>：基于独立千兆宽带探针在晚高峰采集的延迟、抖动与丢包率，有图有据。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Provider Verified Profile Cards Grid -->
+    <section class="my-14">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-2xl font-bold text-fg flex items-center gap-2">
+            <span>🛡️</span>
+            <span>全量 16 家服务商独立核验卡片库</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-fg-muted mt-1">包含各品牌成立年份、线路拓扑、优缺点分析及实机测试图谱</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {providers.map((brand) => (
+          <BrandCard brand={brand} />
+        ))}
+      </div>
+    </section>
+
+    <!-- 4. Real Speedtest Benchmark Records -->
+    <section class="my-14 card-base p-6 sm:p-8 rounded-2xl bg-bg-surface dark:bg-card-bg border border-border-subtle">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-xl">📈</span>
+        <h2 class="text-xl font-bold text-fg">晚高峰实机测速基准抽样</h2>
+        <span class="text-xs text-emerald-600 font-mono font-bold">21:15 晚高峰实机</span>
+      </div>
+      <p class="text-xs sm:text-sm text-fg-muted mb-6 leading-relaxed">
+        以下数据基于国内骨干网千兆宽带环境在晚高峰（20:30–22:30）进行的硬件探针采样记录：
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        <div class="p-4 rounded-xl bg-bg-subtle border border-border-subtle">
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-bold text-fg">广东广州 · 电信 1000M</span>
+            <span class="text-emerald-600 font-mono font-bold">深港 IEPL</span>
+          </div>
+          <div class="space-y-1 text-fg-muted">
+            <div class="flex justify-between"><span>物理延迟：</span><span class="font-mono text-fg font-bold">18 ms</span></div>
+            <div class="flex justify-between"><span>延迟抖动：</span><span class="font-mono">1.2 ms</span></div>
+            <div class="flex justify-between"><span>晚高峰丢包：</span><span class="font-mono text-emerald-600 font-bold">0.0%</span></div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-bg-subtle border border-border-subtle">
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-bold text-fg">上海市 · 联通 1000M</span>
+            <span class="text-emerald-600 font-mono font-bold">沪日 IEPL</span>
+          </div>
+          <div class="space-y-1 text-fg-muted">
+            <div class="flex justify-between"><span>物理延迟：</span><span class="font-mono text-fg font-bold">32 ms</span></div>
+            <div class="flex justify-between"><span>延迟抖动：</span><span class="font-mono">2.1 ms</span></div>
+            <div class="flex justify-between"><span>晚高峰丢包：</span><span class="font-mono text-emerald-600 font-bold">0.1%</span></div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-bg-subtle border border-border-subtle">
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-bold text-fg">北京海淀 · 移动 500M</span>
+            <span class="text-emerald-600 font-mono font-bold">京港 BGP 中转</span>
+          </div>
+          <div class="space-y-1 text-fg-muted">
+            <div class="flex justify-between"><span>物理延迟：</span><span class="font-mono text-fg font-bold">45 ms</span></div>
+            <div class="flex justify-between"><span>延迟抖动：</span><span class="font-mono">4.5 ms</span></div>
+            <div class="flex justify-between"><span>晚高峰丢包：</span><span class="font-mono text-emerald-600 font-bold">0.4%</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. How to Pick an Airport (Methodology) -->
+    <section class="my-14">
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-fg flex items-center gap-2">
+          <span>🧭</span>
+          <span>系统化选择机场的 4 步决策法则</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-fg-muted mt-1">从预算、线路、周期与容灾搭建个人专属网络体系</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs sm:text-sm">
+        <div class="p-5 rounded-2xl bg-bg-surface dark:bg-card-bg border border-border-subtle space-y-2">
+          <div class="text-base font-black text-brand font-mono">01. 明确真实预算</div>
+          <h3 class="font-bold text-fg text-sm">按月付费为第一准则</h3>
+          <p class="text-fg-muted leading-relaxed text-xs">
+            主流专线合理区间在 15–20 元/月。新手坚决避免在第一天直接年付几百元。
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-bg-surface dark:bg-card-bg border border-border-subtle space-y-2">
+          <div class="text-base font-black text-brand font-mono">02. 确认线路类型</div>
+          <h3 class="font-bold text-fg text-sm">晚高峰首选 IEPL 专线</h3>
+          <p class="text-fg-muted leading-relaxed text-xs">
+            商业专线内网传输不过公网审查，在 21:00 晚高峰丢包率极低，告别网页转圈。
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-bg-surface dark:bg-card-bg border border-border-subtle space-y-2">
+          <div class="text-base font-black text-brand font-mono">03. 验证场景支持</div>
+          <h3 class="font-bold text-fg text-sm">AI 与流媒体原生解锁</h3>
+          <p class="text-fg-muted leading-relaxed text-xs">
+            使用 ChatGPT/Claude 需避开香港节点，选择日本/美国纯净住宅 IP 节点。
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-bg-surface dark:bg-card-bg border border-border-subtle space-y-2">
+          <div class="text-base font-black text-brand font-mono">04. 搭建双轨容灾</div>
+          <h3 class="font-bold text-fg text-sm">主力月付 + 备用不限时</h3>
+          <p class="text-fg-muted leading-relaxed text-xs">
+            常备一个不限时按量包在客户端底栏，主力临时维护时 1 秒切换，全天候零断网。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Scenarios Guide Section -->
+    <section class="my-14 card-base p-6 sm:p-8 rounded-2xl">
+      <h2 class="text-xl font-bold text-fg mb-4 flex items-center gap-2">
+        <span>🎯</span>
+        <span>不同业务场景的选型侧重点</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+        <div class="p-4 rounded-xl bg-bg-subtle border border-border-subtle space-y-1.5">
+          <h3 class="font-bold text-fg text-sm">🤖 AI 大模型与学术科研</h3>
+          <p class="text-fg-muted leading-relaxed">
+            重点关注日本、新加坡、美区节点的 IP 纯净度与欺诈评分，避免频繁遭遇 Cloudflare 1020 验证拦截。
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-bg-subtle border border-border-subtle space-y-1.5">
+          <h3 class="font-bold text-fg text-sm">🎬 4K 影音与跨区流媒体</h3>
+          <p class="text-fg-muted leading-relaxed">
+            重点关注单节点下行带宽（> 50MB/s）与多区（港/日/美/台/英）Netflix、Disney+ 独家版权解锁能力。
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-bg-subtle border border-border-subtle space-y-1.5">
+          <h3 class="font-bold text-fg text-sm">💼 跨境办公与外贸通讯</h3>
+          <p class="text-fg-muted leading-relaxed">
+            重点关注深港/沪日 IEPL 专线的 24 小时全天候可用率，确保 Google Workspace、Zoom 会议与 WhatsApp 消息不延迟。
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-bg-subtle border border-border-subtle space-y-1.5">
+          <h3 class="font-bold text-fg text-sm">📱 多设备家庭与团队共享</h3>
+          <p class="text-fg-muted leading-relaxed">
+            重点关注套餐允许的同时在线设备数上限（IP 限制），优先选择支持 5–8 台设备并发的主流平台。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. FAQ Section -->
+    <section class="my-14">
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-fg flex items-center gap-2">
+          <span>❓</span>
+          <span>机场选型与使用高频常见问题</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-fg-muted mt-1">解答关于价格、周期、协议与稳定性的关键疑问</p>
+      </div>
+
+      <FAQAccordion faqs={faqs} />
+    </section>
+
+    <!-- 8. Data Sources & Verification Methodology Statement -->
+    <section class="my-12 p-6 rounded-2xl bg-bg-subtle border border-border-subtle text-xs text-fg-muted space-y-2">
+      <h3 class="font-bold text-fg text-sm flex items-center gap-2">
+        <span>⚖️</span>
+        <span>数据来源、独立性与客观核验准则</span>
+      </h3>
+      <p class="leading-relaxed">
+        1. <strong>独立收录机制</strong>：机场手册不隶属于任何单一服务商。所有收录品牌均基于公开销售套餐、实际客户端连接测试及网络探针数据进行独立呈现。
+      </p>
+      <p class="leading-relaxed">
+        2. <strong>价格真实性</strong>：明确区分年付折算价（如 ¥7.5/月*）与真实单月付价格（如 ¥18.0/月），杜绝用虚假超低折算价误导消费者。
+      </p>
+      <p class="leading-relaxed">
+        3. <strong>动态核验与反馈</strong>：如发现某服务商套餐变更、线路降级或停止运营，欢迎通过底部工单或反馈渠道告知，我们将于 24 小时内更新档案状态。
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.hub-tab');
+    const contents = document.querySelectorAll('.hub-tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('bg-brand', 'text-text-inverse', 'shadow-sm');
+          t.classList.add('text-fg-muted');
+        });
+        tab.classList.add('bg-brand', 'text-text-inverse', 'shadow-sm');
+        tab.classList.remove('text-fg-muted');
+
+        const targetId = tab.getAttribute('data-target-tab');
+        contents.forEach(c => {
+          if (c.id === targetId) {
+            c.classList.remove('hidden');
+          } else {
+            c.classList.add('hidden');
+          }
+        });
+      });
+    });
+  });
+</script>

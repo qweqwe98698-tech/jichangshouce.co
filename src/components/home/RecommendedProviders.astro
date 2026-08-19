@@ -1,0 +1,30 @@
+---
+import BrandCard from '../cards/BrandCard.astro';
+import guangsuyun from '../../data/providers/guangsuyun.json';
+import xingdaomeng from '../../data/providers/xingdaomeng.json';
+import ermaoyun from '../../data/providers/ermaoyun.json';
+import yuzhouyun from '../../data/providers/yuzhouyun.json';
+
+const providers = [guangsuyun, xingdaomeng, ermaoyun, yuzhouyun];
+---
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <h2 class="text-xl sm:text-2xl font-black text-fg flex items-center gap-2">
+        <span>🛡️</span>
+        热门服务商资料与核验档案
+      </h2>
+      <p class="text-xs text-fg-muted mt-0.5">严格依据公开资费与网络实测记录，不含主观虚构评分</p>
+    </div>
+    <a href="/brands/" class="text-xs font-bold text-brand hover:underline">
+      进入品牌资料库 →
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {providers.map((brand) => (
+      <BrandCard brand={brand} />
+    ))}
+  </div>
+</section>

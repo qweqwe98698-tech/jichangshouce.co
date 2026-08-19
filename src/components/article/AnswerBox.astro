@@ -1,0 +1,42 @@
+---
+interface Props {
+  answer: string;
+  symptom?: string;
+  points?: string[];
+  className?: string;
+}
+
+const { answer, symptom, points = [], className = '' } = Astro.props;
+---
+
+<div class={`card-answer-box my-8 bg-brand-50/50 dark:bg-brand-900/10 border-l-4 border-l-brand rounded-r-xl p-5 shadow-sm ${className}`}>
+  <div class="flex items-center gap-2 mb-2">
+    <div class="w-6 h-6 rounded-full bg-brand text-text-inverse flex items-center justify-center text-xs font-bold shadow-sm">
+      ⚡
+    </div>
+    <span class="text-sm font-bold text-fg">
+      30 秒快速答案 (TL;DR)
+    </span>
+  </div>
+
+  {symptom && (
+    <div class="text-xs font-medium text-amber-700 dark:text-amber-300 mb-2">
+      ⚠️ 典型症状：{symptom}
+    </div>
+  )}
+
+  <p class="text-sm text-fg leading-relaxed mb-3">
+    {answer}
+  </p>
+
+  {points.length > 0 && (
+    <ul class="space-y-1.5 mt-3 pt-3 border-t border-border-subtle text-xs text-fg-muted">
+      {points.map((point, index) => (
+        <li class="flex items-start gap-2">
+          <span class="font-bold text-brand">{index + 1}.</span>
+          <span>{point}</span>
+        </li>
+      ))}
+    </ul>
+  )}
+</div>

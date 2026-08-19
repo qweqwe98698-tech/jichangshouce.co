@@ -1,0 +1,56 @@
+{
+  "id": "guangnianti",
+  "slug": "guangnianti",
+  "name": "光年梯",
+  "founded": 2025,
+  "status": "active",
+  "tagline": "18元档综合型 VLESS 专线，110GB 充沛流量与多端支持",
+  "pricing": {
+    "minPrice": "18.0",
+    "cycle": "月 (真实月付)",
+    "priceType": "真实月付价",
+    "traffic": "110GB",
+    "plans": [
+      { "name": "标准月付", "price": 18, "cycle": "月付", "traffic": "110GB/月" },
+      { "name": "高级月付", "price": 30, "cycle": "月付", "traffic": "200GB/月" }
+    ]
+  },
+  "routes": "IEPL 专线",
+  "protocols": ["VLESS", "Shadowsocks"],
+  "clients": ["自研客户端", "Clash", "Shadowrocket", "v2rayN", "Sing-box"],
+  "aiSupport": "品牌资料显示支持常见 AI 工具使用场景，实际可用性结合节点测试。",
+  "streamingSupport": "品牌资料显示支持主流流媒体使用场景，具体解锁状态以实测为准。",
+  "suitableFor": [
+    "希望在中低价位选择 VLESS 专线、需要 100GB+ 流量的用户",
+    "兼顾 AI、视频与多端协同的综合型用户"
+  ],
+  "unsuitableFor": [
+    "仅接受运营超过 5 年以上老牌机场的保守型用户"
+  ],
+  "pros": [
+    "18 元月付提供 110GB 专线流量",
+    "支持 VLESS 协议与全平台自研客户端",
+    "节点分布均衡，覆盖香港、日本、新加坡与美国"
+  ],
+  "cons": [
+    "2025 年新上线品牌，需持续关注长期表现"
+  ],
+  "coupon": {
+    "code": "gnt6666",
+    "desc": "新用户专享优惠码"
+  },
+  "affiliateUrl": "https://guangs.gntaff.com/#/?code=X1FoxjGE",
+  "website": "https://guangs.gntaff.com/#/?code=X1FoxjGE",
+  "speedtestImage": "/images/benchmarks/光年梯-节点测速实测.png",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "IEPL 专线实测下载平稳，VLESS 协议连接无明显抖动。"
+  },
+  "faq": [
+    {
+      "q": "光年梯主要优势是什么？",
+      "a": "18 元档位提供了 110GB 流量（比常规 100GB 稍多），并配备现代 VLESS 专线和自研客户端。"
+    }
+  ]
+}

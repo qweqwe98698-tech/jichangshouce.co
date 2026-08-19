@@ -1,0 +1,232 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import ArticleCard from '../../components/cards/ArticleCard.astro';
+import { formatDate } from '../../utils/dates';
+
+const allGuides = await getCollection('guides', ({ data }) => !data.draft);
+allGuides.sort((a, b) => (b.data.pubDate?.getTime() || 0) - (a.data.pubDate?.getTime() || 0));
+
+// Featured Top 3 Guides for Beginners
+const featuredSlugs = [
+  'what-is-airport',
+  'how-to-choose-airport',
+  'first-time-setup-flow',
+];
+const featuredGuides = allGuides.filter(g => featuredSlugs.includes(g.id));
+
+const categories = [
+  { id: 'all', name: '全部指南', icon: '📚' },
+  { id: '新手入门', name: '新手入门', icon: '🌱' },
+  { id: '选择指南', name: '机场选择', icon: '🧭' },
+  { id: '订阅与套餐', name: '订阅套餐', icon: '💳' },
+  { id: '客户端入门', name: '客户端选型', icon: '💻' },
+  { id: '线路基础', name: '线路与网络', icon: '⚡' },
+  { id: '风险避坑', name: '风险与排障', icon: '🛡️' },
+];
+
+const learningPath = [
+  { step: '01', title: '先了解机场是什么', desc: '搞清节点、订阅与客户端本质', link: '/guides/what-is-airport/' },
+  { step: '02', title: '学会科学选择机场', desc: '看懂 IEPL 专线与月付防跑路', link: '/guides/how-to-choose-airport/' },
+  { step: '03', title: '获取并理解订阅', desc: '搞懂订阅链接与流量重置机制', link: '/guides/what-is-airport-subscription/' },
+  { step: '04', title: '选择对应平台客户端', desc: 'Win/Mac/iOS/安卓选型指南', link: '/guides/how-to-use-airport-clients/' },
+  { step: '05', title: '完成导入并连通', desc: '6 步图文标准化连接测试', link: '/guides/first-time-setup-flow/' },
+  { step: '06', title: '学会日常故障排查', desc: '网络突发中断 5 步自救法', link: '/guides/what-to-do-when-airport-stops-working/' },
+];
+
+const breadcrumbs = [
+  { name: '新手指南与进阶手册', url: '/guides/' },
+];
+---
+
+<BaseLayout
+  title="新手指南与进阶手册 - 从零入门到选型排错完整知识路径"
+  description="机场手册官方知识中心：构建「从零入门 → 学会选择 → 学会使用 → 线路理解 → 风险避坑」的完整学习闭环。涵盖 24+ 篇系统化深度指南。"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Page Header -->
+    <header class="mb-10 text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-900/30 text-brand mb-3 border border-brand-200 dark:border-brand-800">
+        <span>🚀 体系化知识库</span>
+        <span class="w-1 h-1 rounded-full bg-brand"></span>
+        <span>已收录 24 篇核验指南</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight">
+        新手指南与进阶手册
+      </h1>
+      <p class="text-base sm:text-lg text-fg-muted max-w-3xl leading-relaxed">
+        系统梳理跨境网络底层原理、专线选型方法论与客户端实操规范，带你从零基础新手快速成长为能够独立决策、熟练排障的资深网络玩家。
+      </p>
+    </header>
+
+    <!-- Top: 第一次来？推荐学习路径 (Learning Path Section) -->
+    <section class="mb-14 bg-bg-surface dark:bg-card-bg border border-border-subtle rounded-2xl p-6 sm:p-8 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-border-subtle">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-brand">Learning Roadmap</span>
+          <h2 class="text-xl sm:text-2xl font-black text-fg flex items-center gap-2">
+            🧭 第一次来？推荐 6 步通关学习路径
+          </h2>
+        </div>
+        <a
+          href="/guides/what-is-airport/"
+          class="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand text-text-inverse hover:bg-brand-600 transition-colors shadow-sm self-start sm:self-auto"
+        >
+          从第 1 篇开始阅读 →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {learningPath.map((item) => (
+          <a
+            href={item.link}
+            class="group relative p-4 rounded-xl border border-border-subtle bg-bg-base hover:border-brand hover:shadow-md transition-all duration-200"
+          >
+            <div class="flex items-start gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-brand-50 dark:bg-brand-900/30 text-brand font-black text-xs flex items-center justify-center border border-brand-200 dark:border-brand-800">
+                {item.step}
+              </span>
+              <div>
+                <h3 class="text-sm font-bold text-fg group-hover:text-brand transition-colors line-clamp-1">
+                  {item.title}
+                </h3>
+                <p class="text-xs text-fg-muted mt-1 line-clamp-1">
+                  {item.desc}
+                </p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Top 3 Featured Essential Cards -->
+    <section class="mb-14">
+      <div class="flex items-center gap-2 mb-6">
+        <span class="w-2 h-6 rounded-full bg-brand"></span>
+        <h2 class="text-xl sm:text-2xl font-black text-fg">
+          ⭐ 新手必读旗舰指南 (Top Picks)
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {featuredGuides.map((guide) => (
+          <div class="relative bg-bg-surface dark:bg-card-bg border-2 border-brand-200 dark:border-brand-900/50 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="badge-tag bg-brand text-text-inverse text-xs font-bold">
+                  {guide.data.category}
+                </span>
+                <span class="text-xs text-fg-subtle">
+                  {formatDate(guide.data.updatedDate || guide.data.pubDate)}
+                </span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-fg mb-2 leading-snug hover:text-brand transition-colors">
+                <a href={`/guides/${guide.id}/`}>
+                  {guide.data.title}
+                </a>
+              </h3>
+              <p class="text-xs sm:text-sm text-fg-muted leading-relaxed line-clamp-3 mb-4">
+                {guide.data.description}
+              </p>
+            </div>
+            <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+              <span class="text-xs text-brand font-semibold">约 8-12 分钟阅读</span>
+              <a href={`/guides/${guide.id}/`} class="text-xs font-bold text-brand hover:underline flex items-center gap-1">
+                立即阅读 ➔
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Cluster Articles Grid with Category Filter -->
+    <section id="all-articles">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-fg flex items-center gap-2">
+            📖 完整指南专题库
+          </h2>
+          <p class="text-xs sm:text-sm text-fg-muted mt-1">按 6 大分类探索全部 24 篇系统教程</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap gap-1.5 p-1 bg-bg-surface dark:bg-card-bg border border-border-subtle rounded-xl" id="guide-filter-container">
+          {categories.map((cat, idx) => (
+            <button
+              class={`filter-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${idx === 0 ? 'bg-brand text-text-inverse shadow-sm' : 'text-fg-muted hover:text-fg hover:bg-bg-hover'}`}
+              data-category={cat.id}
+            >
+              <span class="mr-1">{cat.icon}</span>
+              <span>{cat.name}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Articles Grid (3 Cols x N Rows) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="guides-grid">
+        {allGuides.map((guide) => (
+          <div class="guide-item" data-category={guide.data.category}>
+            <ArticleCard
+              title={guide.data.title}
+              description={guide.data.description}
+              href={`/guides/${guide.id}/`}
+              category={guide.data.category}
+              pubDate={guide.data.pubDate}
+              updatedDate={guide.data.updatedDate}
+              tags={guide.data.tags}
+              cover={guide.data.cover}
+            />
+          </div>
+        ))}
+      </div>
+
+      <!-- Empty State Indicator -->
+      <div id="no-results" class="hidden text-center py-12">
+        <p class="text-sm text-fg-muted">该分类下暂无文章</p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.filter-tab');
+    const items = document.querySelectorAll('.guide-item');
+    const noResults = document.getElementById('no-results');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Switch tab active classes
+        tabs.forEach(t => {
+          t.classList.remove('bg-brand', 'text-text-inverse', 'shadow-sm');
+          t.classList.add('text-fg-muted');
+        });
+        tab.classList.add('bg-brand', 'text-text-inverse', 'shadow-sm');
+        tab.classList.remove('text-fg-muted');
+
+        const selectedCat = tab.getAttribute('data-category');
+        let visibleCount = 0;
+
+        items.forEach(item => {
+          const itemCat = item.getAttribute('data-category');
+          if (selectedCat === 'all' || itemCat === selectedCat) {
+            item.style.display = 'block';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        if (noResults) {
+          noResults.classList.toggle('hidden', visibleCount > 0);
+        }
+      });
+    });
+  });
+</script>

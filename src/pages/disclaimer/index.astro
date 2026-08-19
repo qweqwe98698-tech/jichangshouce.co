@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import siteData from '../../data/site/site.json';
+
+const breadcrumbs = [
+  { name: '免责声明', url: '/disclaimer/' },
+];
+---
+
+<BaseLayout
+  title="免责声明 (Disclaimer)"
+  description="《机场手册》合规与技术信息免责声明。"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="mb-8">
+      <h1 class="text-3xl font-black text-fg mb-3">
+        免责声明
+      </h1>
+      <p class="text-sm text-fg-muted">
+        生效日期：2026年08月18日
+      </p>
+    </header>
+
+    <div class="card-base p-6 sm:p-8 rounded-2xl text-sm text-fg-muted space-y-4 leading-relaxed">
+      <p>
+        1. <strong>信息目的</strong>：{siteData.name} ({siteData.domain}) 登载的所有技术文章、软件使用指南、网络拓扑解析与服务商数据，仅用于计算机网络技术探讨、开源软件配置学习及公开数据整理。
+      </p>
+      <p>
+        2. <strong>服务非提供者</strong>：本站本身<strong>不提供、不销售、不托管</strong>任何网络代理服务器、VPN 或翻墙节点服务。
+      </p>
+      <p>
+        3. <strong>合法合规使用</strong>：用户应当自觉遵守所在国家和地区的相关法律法规，不得利用本站介绍的技术从事任何违反法律法规的活动。
+      </p>
+      <p>
+        4. <strong>第三方服务变动</strong>：第三方服务商的资费、套餐与服务质量可能随时变更，本站力求信息准确但不对其变更造成的任何商业损失承担责任。
+      </p>
+    </div>
+  </div>
+</BaseLayout>

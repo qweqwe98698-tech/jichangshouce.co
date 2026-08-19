@@ -1,0 +1,154 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import navData from '../../data/navigation/nav.json';
+import topicsData from '../../data/topics/topics.json';
+import guangsuyun from '../../data/providers/guangsuyun.json';
+import xingdaomeng from '../../data/providers/xingdaomeng.json';
+import ermaoyun from '../../data/providers/ermaoyun.json';
+import yuzhouyun from '../../data/providers/yuzhouyun.json';
+
+const allGuides = await getCollection('guides');
+const allTutorials = await getCollection('tutorials');
+const allAnswers = await getCollection('answers');
+const allComparisons = await getCollection('comparisons');
+const providers = [guangsuyun, xingdaomeng, ermaoyun, yuzhouyun];
+
+const breadcrumbs = [
+  { name: '站点地图', url: '/sitemap/' },
+];
+---
+
+<BaseLayout
+  title="HTML 站点地图 (Sitemap) - 全站索引导航"
+  description="机场手册全站 HTML 站点地图，提供清晰的专题结构、客户端教程、排错解答与品牌数据库完整索引。"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-black text-fg mb-3">
+        网站全站地图 (Sitemap)
+      </h1>
+      <p class="text-base text-fg-muted">
+        分类检索全站所有公开可访问的教程、答案、专题与服务商档案。
+      </p>
+    </header>
+
+    <div class="space-y-10">
+      <!-- 1. 核心频道 -->
+      <section class="card-base p-6 rounded-2xl">
+        <h2 class="text-lg font-bold text-fg mb-4 flex items-center gap-2">
+          <span>🧭</span> 核心频道与导航
+        </h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
+          {navData.mainNav.map(item => (
+            <a href={item.href} class="p-2.5 bg-bg-subtle hover:bg-border-default text-fg font-medium rounded-lg transition-colors">
+              {item.label}
+            </a>
+          ))}
+          <a href="/tools/" class="p-2.5 bg-bg-subtle hover:bg-border-default text-fg font-medium rounded-lg transition-colors">实用工具箱</a>
+          <a href="/search/" class="p-2.5 bg-bg-subtle hover:bg-border-default text-fg font-medium rounded-lg transition-colors">全站搜索</a>
+        </div>
+      </section>
+
+      <!-- 2. 核心专题 Pillar -->
+      <section class="card-base p-6 rounded-2xl">
+        <h2 class="text-lg font-bold text-fg mb-4 flex items-center gap-2">
+          <span>📑</span> 核心专题 (Topic Pillar Hubs)
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          {topicsData.map(t => (
+            <a href={`/topics/${t.slug}/`} class="p-3 bg-bg-subtle hover:bg-border-default rounded-lg transition-colors block">
+              <div class="font-bold text-fg">{t.name}</div>
+              <div class="text-fg-subtle truncate mt-0.5">{t.tagline}</div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- 3. 新手与客户端教程 -->
+      <section class="card-base p-6 rounded-2xl">
+        <h2 class="text-lg font-bold text-fg mb-4 flex items-center gap-2">
+          <span>💻</span> 教程与指南
+        </h2>
+        <ul class="space-y-2 text-xs">
+          {allGuides.map(g => (
+            <li>
+              <a href={`/guides/${g.id}/`} class="text-brand hover:underline font-medium">
+                [新手指南] {g.data.title}
+              </a>
+            </li>
+          ))}
+          {allTutorials.map(t => (
+            <li>
+              <a href={`/tutorials/${t.id}/`} class="text-brand hover:underline font-medium">
+                [客户端] {t.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- 4. 网络排错中心 -->
+      <section class="card-base p-6 rounded-2xl">
+        <h2 class="text-lg font-bold text-fg mb-4 flex items-center gap-2">
+          <span>🔧</span> 故障诊断与极速答案
+        </h2>
+        <ul class="space-y-2 text-xs">
+          {allAnswers.map(a => (
+            <li>
+              <a href={`/answers/${a.id}/`} class="text-brand hover:underline font-medium">
+                [故障排错] {a.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- 5. 品牌与对比 -->
+      <section class="card-base p-6 rounded-2xl">
+        <h2 class="text-lg font-bold text-fg mb-4 flex items-center gap-2">
+          <span>🛡️</span> 服务商品牌档案与对比
+        </h2>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs mb-4">
+          {providers.map(b => (
+            <a href={`/brands/${b.slug}/`} class="p-2.5 bg-bg-subtle hover:bg-border-default rounded-lg text-center font-bold text-fg transition-colors">
+              {b.name} 档案
+            </a>
+          ))}
+        </div>
+        <ul class="space-y-2 text-xs pt-3 border-t border-border-subtle">
+          {allComparisons.map(c => (
+            <li>
+              <a href={`/compare/${c.id}/`} class="text-brand hover:underline font-medium">
+                [对比] {c.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- 6. 站点规范与关于 -->
+      <section class="card-base p-6 rounded-2xl">
+        <h2 class="text-lg font-bold text-fg mb-4 flex items-center gap-2">
+          <span>⚖️</span> 网站规范与法律政策
+        </h2>
+        <div class="flex flex-wrap gap-3 text-xs">
+          <a href="/about/" class="text-fg-muted hover:text-brand">关于我们</a>
+          <span class="text-fg-subtle">·</span>
+          <a href="/authors/" class="text-fg-muted hover:text-brand">作者团队</a>
+          <span class="text-fg-subtle">·</span>
+          <a href="/editorial-policy/" class="text-fg-muted hover:text-brand">编辑规范</a>
+          <span class="text-fg-subtle">·</span>
+          <a href="/disclaimer/" class="text-fg-muted hover:text-brand">免责声明</a>
+          <span class="text-fg-subtle">·</span>
+          <a href="/privacy/" class="text-fg-muted hover:text-brand">隐私政策</a>
+          <span class="text-fg-subtle">·</span>
+          <a href="/rss.xml" class="text-fg-muted hover:text-brand">RSS 订阅</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

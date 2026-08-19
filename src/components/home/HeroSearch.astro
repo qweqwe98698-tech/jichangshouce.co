@@ -1,0 +1,76 @@
+---
+import navData from '../../data/navigation/nav.json';
+---
+
+<section class="py-12 sm:py-16 text-center max-w-4xl mx-auto px-4">
+  <!-- Eyebrow Tag -->
+  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary-subtle text-brand text-xs font-bold mb-5 border border-brand/20">
+    <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
+    中文网络工具与机场知识库 5.0
+  </div>
+
+  <!-- H1 Headline -->
+  <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-fg tracking-tight mb-4 leading-tight">
+    找到答案，也找到下一步
+  </h1>
+
+  <!-- Subtitle -->
+  <p class="text-base sm:text-lg text-fg-muted max-w-2xl mx-auto mb-8 leading-relaxed">
+    从机场选择、客户端配置到网络排障，快速找到适合当前问题的解决方案与客观资料。
+  </p>
+
+  <!-- Large Interactive Search Box -->
+  <div class="max-w-2xl mx-auto mb-6">
+    <form action="/search/" method="GET" class="relative group">
+      <div class="relative flex items-center shadow-lg rounded-2xl bg-surface border-2 border-border-default group-focus-within:border-brand transition-all overflow-hidden p-1.5">
+        <span class="pl-4 text-fg-subtle">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </span>
+        <input
+          type="search"
+          name="q"
+          placeholder="搜索 Clash、Shadowrocket、机场选择、AI、排错…"
+          class="w-full py-3 px-3.5 text-sm sm:text-base text-fg bg-transparent focus:outline-none placeholder:text-fg-subtle"
+          autocomplete="off"
+        />
+        <button
+          type="submit"
+          class="px-5 py-2.5 bg-brand hover:bg-brand-600 text-text-inverse font-bold text-xs sm:text-sm rounded-xl transition-colors flex-shrink-0"
+        >
+          搜索
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Hot Search Badges -->
+  <div class="flex flex-wrap items-center justify-center gap-2 text-xs text-fg-subtle mb-8">
+    <span class="font-bold text-fg">热门搜索：</span>
+    {navData.hotSearches.map((item) => (
+      <a
+        href={item.href}
+        class="px-2.5 py-1 rounded-md bg-bg-subtle hover:bg-border-default text-fg-muted hover:text-brand transition-colors border border-border-subtle"
+      >
+        {item.keyword}
+      </a>
+    ))}
+  </div>
+
+  <!-- Main CTAs -->
+  <div class="flex flex-wrap items-center justify-center gap-3">
+    <a
+      href="/recommend/#selector"
+      class="px-6 py-3 bg-brand hover:bg-brand-600 text-text-inverse font-bold text-sm rounded-xl shadow-md transition-all hover:scale-[1.02]"
+    >
+      🎯 开始智能选择
+    </a>
+    <a
+      href="/topics/"
+      class="px-6 py-3 bg-surface hover:bg-bg-subtle text-fg font-bold text-sm rounded-xl border border-border-default transition-all"
+    >
+      📚 浏览全部专题
+    </a>
+  </div>
+</section>

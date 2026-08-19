@@ -1,0 +1,190 @@
+---
+const hotSearches = [
+  { keyword: '机场怎么选', href: '/guides/how-to-choose-airport/' },
+  { keyword: 'Clash连不上', href: '/answers/clash-connected-no-internet/' },
+  { keyword: '小火箭订阅', href: '/tutorials/shadowrocket/import-subscription/' },
+  { keyword: 'v2rayN教程', href: '/tutorials/v2rayn/starter-guide/' },
+  { keyword: 'IEPL是什么', href: '/compare/iepl-vs-iplc/' },
+  { keyword: 'ChatGPT打不开', href: '/answers/chatgpt-blocked-solution/' },
+];
+
+const quickProblems = [
+  {
+    icon: '🧭',
+    title: '机场怎么选择',
+    desc: '从预算与稳定性快速判断方案',
+    href: '/guides/how-to-choose-airport/'
+  },
+  {
+    icon: '⚡',
+    title: 'Clash 连不上怎么办',
+    desc: '有延迟无网速 / TUN 模式排查',
+    href: '/answers/clash-connected-no-internet/'
+  },
+  {
+    icon: '📱',
+    title: '小火箭怎么添加订阅',
+    desc: '一键导入与节点更新技巧',
+    href: '/tutorials/shadowrocket/import-subscription/'
+  },
+  {
+    icon: '🖥️',
+    title: 'v2rayN 使用教程',
+    desc: 'Windows 客户端快速上手指南',
+    href: '/tutorials/v2rayn/starter-guide/'
+  },
+  {
+    icon: '🤖',
+    title: 'ChatGPT 打不开',
+    desc: 'IP 风控与原生解锁排查',
+    href: '/answers/chatgpt-blocked-solution/'
+  }
+];
+---
+
+<section class="max-w-[1280px] mx-auto px-4 sm:px-8 pt-8 pb-12 sm:pt-10 sm:pb-14">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+    
+    <!-- LEFT: Hero Search & Action Area (7 cols on lg) -->
+    <div class="lg:col-span-7 flex flex-col justify-between">
+      <div>
+        <!-- Pill Badge -->
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#E6F7F0] dark:bg-[#16A37A]/15 text-[#0E7856] dark:text-[#34D399] text-xs font-bold mb-4 border border-[#16A37A]/20 shadow-2xs">
+          中文网络工具与机场知识库
+        </div>
+
+        <!-- H1 Headline (Normal kerning, keyword emphasis) -->
+        <h1 class="text-[32px] sm:text-[44px] lg:text-[48px] font-[800] text-fg tracking-tight leading-[1.18] mb-3.5">
+          找到<span class="text-[#0E7856] dark:text-[#34D399] relative inline-block">答案<span class="absolute bottom-1 left-0 w-full h-[3px] bg-[#16A37A]/25 rounded-full"></span></span>，也找到<span class="text-[#0E7856] dark:text-[#34D399] relative inline-block">下一步<span class="absolute bottom-1 left-0 w-full h-[3px] bg-[#16A37A]/25 rounded-full"></span></span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-[15px] sm:text-[15.5px] text-fg-muted leading-relaxed mb-6 max-w-xl">
+          从机场选择、客户端配置到网络故障排查，<br class="hidden sm:inline" />
+          用清晰教程和实用指南快速找到解决方案。
+        </p>
+
+        <!-- Hero Search Box (Height 60px, refined hover/focus state) -->
+        <form action="/search/" method="GET" class="relative mb-4 group/search">
+          <div class="relative flex items-center h-[60px] rounded-[14px] bg-surface border border-border group-hover/search:border-primary/60 focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10 transition-all p-2 shadow-xs">
+            <span class="pl-3.5 pr-1 text-fg-subtle group-hover/search:text-primary transition-colors">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </span>
+            <input
+              type="search"
+              name="q"
+              placeholder="搜索机场推荐、Clash、Shadowrocket、v2rayN、AI、网络问题…"
+              class="w-full py-2 px-3 text-sm text-fg bg-transparent focus:outline-none placeholder:text-fg-subtle/80 font-medium"
+              autocomplete="off"
+            />
+            <kbd class="hidden sm:inline-flex items-center justify-center mr-2 px-2.5 py-1 text-xs font-mono font-semibold bg-bg-subtle border border-border rounded-[8px] text-fg-subtle shadow-2xs">
+              /
+            </kbd>
+          </div>
+        </form>
+
+        <!-- Hot Searches -->
+        <div class="flex flex-wrap items-center gap-1.5 text-xs text-fg-subtle mb-6">
+          <span class="text-fg-muted font-semibold mr-1 text-[12.5px]">热门搜索:</span>
+          {hotSearches.map((item) => (
+            <a
+              href={item.href}
+              class="px-2.5 py-1 rounded-[8px] bg-bg-subtle hover:bg-border/80 text-fg-muted hover:text-primary border border-border/60 transition-all text-xs font-medium hover:-translate-y-0.5"
+            >
+              {item.keyword}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Action Buttons & Trust Line -->
+      <div class="space-y-4 pt-1">
+        <div class="flex flex-wrap items-center gap-3">
+          <a
+            href="/recommend/#selector"
+            class="inline-flex items-center justify-center min-w-[140px] h-[44px] px-6 text-[14px] font-bold text-text-inverse bg-[#16A37A] hover:bg-[#128764] rounded-[10px] transition-all shadow-sm hover:shadow hover:-translate-y-0.5"
+          >
+            开始选择机场
+          </a>
+          <a
+            href="/topics/"
+            class="inline-flex items-center justify-center h-[44px] px-5 text-[14px] font-medium text-fg bg-surface hover:bg-bg-subtle rounded-[10px] border border-border transition-colors hover:border-border-strong"
+          >
+            浏览全部专题 →
+          </a>
+        </div>
+
+        <!-- Trust Information Line -->
+        <div class="text-[12px] text-fg-subtle flex flex-wrap items-center gap-2 pt-1 font-medium">
+          <span>新手指南</span>
+          <span class="text-border-strong">·</span>
+          <span>客户端教程</span>
+          <span class="text-border-strong">·</span>
+          <span>故障排查</span>
+          <span class="text-border-strong">·</span>
+          <span>协议百科</span>
+          <span class="text-border-strong">·</span>
+          <span>机场评测</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Dynamic Knowledge & Problem Navigator Panel (5 cols on lg) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="card-base p-5 sm:p-6 flex-1 flex flex-col justify-between bg-surface border border-border shadow-xs hover:border-border-strong transition-all">
+        <div>
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-3.5 mb-3 border-b border-border/80">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              <h3 class="text-[15px] font-bold text-fg tracking-tight">
+                今天你想解决什么？
+              </h3>
+            </div>
+            <span class="text-[11.5px] text-fg-subtle font-medium">
+              快速直达
+            </span>
+          </div>
+
+          <!-- Problem List Navigation -->
+          <div class="space-y-1.5">
+            {quickProblems.map((p) => (
+              <a
+                href={p.href}
+                class="group flex items-center justify-between p-2.5 rounded-[10px] hover:bg-bg-subtle border border-transparent hover:border-border transition-all"
+              >
+                <div class="flex items-center gap-3 min-w-0">
+                  <div class="w-8 h-8 rounded-lg bg-bg-subtle group-hover:bg-surface flex items-center justify-center text-sm flex-shrink-0 transition-colors shadow-2xs">
+                    {p.icon}
+                  </div>
+                  <div class="min-w-0">
+                    <h4 class="text-[13px] font-bold text-fg group-hover:text-primary transition-colors truncate">
+                      {p.title}
+                    </h4>
+                    <p class="text-[11px] text-fg-subtle truncate">
+                      {p.desc}
+                    </p>
+                  </div>
+                </div>
+                <div class="text-fg-subtle group-hover:text-primary group-hover:translate-x-0.5 transition-all text-xs font-bold pl-2">
+                  →
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="pt-3.5 mt-2 border-t border-border/80 flex items-center justify-between text-xs text-fg-subtle">
+          <span class="font-medium">热门问题 50+</span>
+          <a href="/answers/" class="text-primary hover:underline font-semibold inline-flex items-center gap-0.5">
+            最近更新 2026-08-18 →
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+import { getTopicsWithStats } from '../../utils/topicStats';
+import TopicCard from '../cards/TopicCard.astro';
+
+const topics = await getTopicsWithStats();
+---
+
+<section class="max-w-[1280px] mx-auto px-4 sm:px-8 py-12">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 pb-4 border-b border-border-subtle">
+    <div>
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-900/30 text-brand mb-2 border border-brand-200 dark:border-brand-800">
+        <span>📑 Pillar & Cluster</span>
+        <span class="w-1 h-1 rounded-full bg-brand"></span>
+        <span>6 大核心知识主题</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-black text-fg tracking-tight">
+        核心专题聚合中心
+      </h2>
+      <p class="text-xs sm:text-sm text-fg-muted mt-1.5 max-w-2xl leading-relaxed">
+        以主题 Pillar 为核心，聚合系统教程、故障排查与知识百科，从入门使用到进阶配置，快速进入完整知识路径。
+      </p>
+    </div>
+    <a
+      href="/topics/"
+      class="text-xs sm:text-sm font-bold text-brand hover:underline flex items-center gap-1 self-start sm:self-auto group"
+    >
+      <span>查看全部专题</span>
+      <span class="inline-block transition-transform duration-150 group-hover:translate-x-1">→</span>
+    </a>
+  </div>
+
+  <!-- 3x2 Grid for the 6 Core Topic Hubs -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {topics.map((t) => (
+      <TopicCard
+        name={t.name}
+        tagline={t.tagline}
+        href={`/topics/${t.slug}/`}
+        articleCount={t.articleCount}
+        answersCount={t.answersCount}
+        tags={t.tags}
+        subtopics={t.subtopics}
+        footerDesc={t.footerDesc}
+        icon={t.icon}
+        iconBg={t.iconBg}
+      />
+    ))}
+  </div>
+</section>

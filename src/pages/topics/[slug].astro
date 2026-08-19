@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import TopicLayout from '../../layouts/TopicLayout.astro';
+import topicsData from '../../data/topics/topics.json';
+
+export async function getStaticPaths() {
+  return topicsData.map((topic) => ({
+    params: { slug: topic.slug },
+    props: { topic },
+  }));
+}
+
+const { topic } = Astro.props;
+
+const [guides, tutorials, answers, glossary, comparisons] = await Promise.all([
+  getCollection('guides', ({ data }) => !data.draft),
+  getCollection('tutorials', ({ data }) => !data.draft),
+  getCollection('answers', ({ data }) => !data.draft),
+  getCollection('glossary', ({ data }) => !data.draft),
+  getCollection('comparisons', ({ data }) => !data.draft),
+]);
+
+let allArticles: any[] = [];
+let topicAnswers: any[] = [];
+
+if (topic.slug === 'clash') {
+  const tuts = tutorials.filter(t => t.data.client === 'clash' || t.id.startsWith('clash/'));
+  const gds = guides.filter(g => g.data.topic === 'clash' || g.data.tags?.includes('Clash') || g.id.includes('clash'));
+  const comps = comparisons.filter(c => c.id.includes('clash'));
+  allArticles = [...tuts, ...gds, ...comps];
+  topicAnswers = answers.filter(a => a.data.client === 'clash' || a.id.includes('clash'));
+} else if (topic.slug === 'shadowrocket') {
+  const tuts = tutorials.filter(t => t.data.client === 'shadowrocket' || t.id.startsWith('shadowrocket/'));
+  const gds = guides.filter(g => g.data.topic === 'shadowrocket' || g.data.tags?.includes('Shadowrocket') || g.data.tags?.includes('小火箭') || g.id.includes('shadowrocket'));
+  allArticles = [...tuts, ...gds];
+  topicAnswers = answers.filter(a => a.data.client === 'shadowrocket' || a.id.includes('shadowrocket'));
+} else if (topic.slug === 'v2rayn') {
+  const tuts = tutorials.filter(t => t.data.client === 'v2rayn' || t.id.startsWith('v2rayn/'));
+  const gds = guides.filter(g => g.data.topic === 'v2rayn' || g.data.tags?.includes('v2rayN') || g.id.includes('v2rayn'));
+  allArticles = [...tuts, ...gds];
+  topicAnswers = answers.filter(a => a.data.client === 'v2rayn' || a.id.includes('v2rayn'));
+} else if (topic.slug === 'airport-selection') {
+  const gds = guides.filter(g => 
+    g.data.pillar === 'selection' || 
+    g.data.pillar === 'pricing' || 
+    g.data.pillar === 'security' ||
+    g.data.category === '选择指南' || 
+    g.data.category === '订阅与套餐' || 
+    g.data.category === '风险避坑' ||
+    g.data.tags?.some(tag => ['机场选择', '避坑清单', '月付', '防跑路'].some(k => tag.includes(k)))
+  );
+  allArticles = [...gds];
+  topicAnswers = answers.filter(a => a.data.topic === 'selection' || a.data.pillar === 'selection' || a.id.includes('lag') || a.id.includes('risk'));
+} else if (topic.slug === 'ai-tools') {
+  const gds = guides.filter(g => g.data.tags?.some(tag => ['ChatGPT', 'AI', 'OpenAI'].some(k => tag.includes(k))));
+  const ans = answers.filter(a => a.id.includes('chatgpt') || a.data.pillar === 'ai-tools' || a.data.topic === 'ai-tools' || a.data.tags?.includes('ChatGPT'));
+  allArticles = [...gds, ...ans.slice(1)];
+  topicAnswers = ans;
+} else if (topic.slug === 'protocols') {
+  const comps = comparisons.filter(c => c.id.includes('iepl') || c.id.includes('iplc'));
+  const gds = guides.filter(g => g.data.category === '线路基础' || g.id.includes('relay') || g.id.includes('latency') || g.id.includes('speedtest'));
+  allArticles = [...glossary, ...comps, ...gds];
+  topicAnswers = answers.filter(a => a.id.includes('peak-hours') || a.id.includes('latency'));
+}
+---
+
+<TopicLayout
+  name={topic.name}
+  tagline={topic.tagline}
+  description={topic.description}
+  subtopics={topic.subtopics}
+  articles={allArticles}
+  answers={topicAnswers}
+  updatedDate={topic.updatedDate}
+/>

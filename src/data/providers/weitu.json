@@ -1,0 +1,56 @@
+{
+  "id": "weitu",
+  "slug": "weitu",
+  "name": "唯兔云",
+  "founded": 2023,
+  "status": "active",
+  "tagline": "60+ 丰富节点与三网优化，14.9元高性价比智能负载均衡",
+  "pricing": {
+    "minPrice": "14.9",
+    "cycle": "月 (真实月付)",
+    "priceType": "真实月付价",
+    "traffic": "100GB",
+    "plans": [
+      { "name": "基础月付", "price": 14.9, "cycle": "月付", "traffic": "100GB/月" },
+      { "name": "大流量月付", "price": 28.0, "cycle": "月付", "traffic": "200GB/月" }
+    ]
+  },
+  "routes": "三网优化直连 / BGP 多线中继",
+  "protocols": ["VLESS", "Shadowsocks"],
+  "clients": ["Clash", "Shadowrocket", "v2rayN", "Sing-box"],
+  "aiSupport": "当前资料未提供统一实测结果，建议结合节点实际测试。",
+  "streamingSupport": "当前资料未提供统一实测结果，具体解锁情况以实际测试为准。",
+  "suitableFor": [
+    "注重节点数量多、覆盖地区广（60+节点）的用户",
+    "电信、联通、移动不同宽带环境下需要灵活切换节点的用户"
+  ],
+  "unsuitableFor": [
+    "非专线不用的极度专线偏好者"
+  ],
+  "pros": [
+    "14.9 元真实月付提供 100GB 流量，门槛极低",
+    "拥有 60+ 全球多地区节点，支持智能负载均衡",
+    "三网专属优化，跨运营商连接兼容性好"
+  ],
+  "cons": [
+    "AI 与流媒体没有统一的永久解锁承诺"
+  ],
+  "coupon": {
+    "code": "rabbit",
+    "desc": "新用户 9 折优惠码"
+  },
+  "affiliateUrl": "https://guangs.v2yunvipaff.com/#/?code=xIutqOBA",
+  "website": "https://guangs.v2yunvipaff.com/#/?code=xIutqOBA",
+  "speedtestImage": "/images/benchmarks/唯兔云-节点测速实测.png",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "多节点负载均衡测试正常，三网优化节点延迟分布均匀。"
+  },
+  "faq": [
+    {
+      "q": "唯兔云主要适合什么场景？",
+      "a": "唯兔云拥有 60+ 节点和智能负载均衡，非常适合经常出差切换不同网络环境或需要冷门国家节点的用户。"
+    }
+  ]
+}

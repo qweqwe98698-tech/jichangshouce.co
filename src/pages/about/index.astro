@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import siteData from '../../data/site/site.json';
+
+const breadcrumbs = [
+  { name: '关于我们', url: '/about/' },
+];
+---
+
+<BaseLayout
+  title="关于我们 - 机场手册编辑部与使命"
+  description="机场手册 (jichangshouce.co) 是专注于中文网络工具、客户端配置与客观服务商资料核验的公益知识库。"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="mb-10">
+      <span class="badge-tag badge-topic mb-3">
+        📖 平台定位与使命
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-black text-fg mb-4">
+        关于 {siteData.name} ({siteData.domain})
+      </h1>
+      <p class="text-base text-fg-muted leading-relaxed">
+        旨在消除网络代理与客户端工具之间的信息差，为中文用户提供客观、真实、无虚假夸大的实用参考。
+      </p>
+    </header>
+
+    <div class="prose-custom space-y-8">
+      <section class="card-base p-6 sm:p-8 rounded-2xl">
+        <h2 class="text-xl font-bold text-fg mb-3">1. 为什么创立《机场手册》？</h2>
+        <p class="text-sm text-fg-muted leading-relaxed">
+          长久以来，代理工具生态充斥着水军推介、单次峰值虚假跑分以及参差不齐的过时教程。很多用户在寻找科学上网方案时屡屡遭遇跑路、晚高峰断流或无法访问 ChatGPT 等痛点。《机场手册》致力于通过**实机测试数据**、**公开资费核验**以及**清晰的排错流程**，让每一次选择都有据可循。
+        </p>
+      </section>
+
+      <section class="card-base p-6 sm:p-8 rounded-2xl">
+        <h2 class="text-xl font-bold text-fg mb-3">2. 我们的核心原则</h2>
+        <ul class="space-y-3 text-sm text-fg-muted">
+          <li class="flex items-start gap-2">
+            <span class="text-emerald-500 font-bold">✓</span>
+            <div><strong class="text-fg">真实性第一</strong>：绝不为了充实版面虚构测速带宽、在线率或主观评分，未核验字段明确标注“待核验”。</div>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-emerald-500 font-bold">✓</span>
+            <div><strong class="text-fg">实机验证每一个步骤</strong>：全站所有客户端教程均由编辑团队在真机环境（Windows 11 / macOS / iOS）逐项复核通过。</div>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-emerald-500 font-bold">✓</span>
+            <div><strong class="text-fg">用户路径闭环</strong>：每一个页面既解决当前痛点，也为用户提供明确的下一步建议。</div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card-base p-6 sm:p-8 rounded-2xl">
+        <h2 class="text-xl font-bold text-fg mb-3">3. 联系与反馈</h2>
+        <p class="text-sm text-fg-muted leading-relaxed">
+          如果你在阅读教程时发现了任何失效步骤，或者服务商公开资费发生了变更，欢迎向我们提交修正建议。
+        </p>
+        <div class="mt-4 pt-4 border-t border-border-subtle flex items-center gap-4 text-xs">
+          <a href="/editorial-policy/" class="text-brand font-bold hover:underline">查看编辑与核验规范 →</a>
+          <a href="/authors/" class="text-brand font-bold hover:underline">了解作者团队 →</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

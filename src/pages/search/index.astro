@@ -1,0 +1,287 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import navData from '../../data/navigation/nav.json';
+import guangsuyun from '../../data/providers/guangsuyun.json';
+import xingdaomeng from '../../data/providers/xingdaomeng.json';
+import ermaoyun from '../../data/providers/ermaoyun.json';
+import yuzhouyun from '../../data/providers/yuzhouyun.json';
+import topicsData from '../../data/topics/topics.json';
+
+// Build search corpus
+const allGuides = await getCollection('guides');
+const allTutorials = await getCollection('tutorials');
+const allAnswers = await getCollection('answers');
+const allComparisons = await getCollection('comparisons');
+
+const searchIndex = [
+  ...allGuides.map(g => ({
+    title: g.data.title,
+    desc: g.data.description,
+    category: '新手指南',
+    url: `/guides/${g.id}/`,
+    tags: g.data.tags || [],
+  })),
+  ...allTutorials.map(t => ({
+    title: t.data.title,
+    desc: t.data.description,
+    category: '客户端教程',
+    url: `/tutorials/${t.id}/`,
+    tags: t.data.tags || [],
+  })),
+  ...allAnswers.map(a => ({
+    title: a.data.title,
+    desc: a.data.description,
+    category: '网络排错',
+    url: `/answers/${a.id}/`,
+    tags: a.data.tags || [],
+  })),
+  ...allComparisons.map(c => ({
+    title: c.data.title,
+    desc: c.data.description,
+    category: '对比分析',
+    url: `/compare/${c.id}/`,
+    tags: c.data.tags || [],
+  })),
+  ...topicsData.map(tp => ({
+    title: tp.name,
+    desc: tp.tagline + ' ' + tp.description,
+    category: '专题百科',
+    url: `/topics/${tp.slug}/`,
+    tags: tp.subtopics || [],
+  })),
+  ...[guangsuyun, xingdaomeng, ermaoyun, yuzhouyun].map(b => ({
+    title: `${b.name} (${b.routes})`,
+    desc: b.positioning + ' ' + b.description,
+    category: '品牌资料',
+    url: `/brands/${b.slug}/`,
+    tags: b.protocols || [],
+  })),
+];
+
+const breadcrumbs = [
+  { name: '全站搜索', url: '/search/' },
+];
+---
+
+<BaseLayout
+  title="全站搜索中心 - 快速查找教程、排错与专题"
+  description="机场手册全站知识库即时搜索。支持按关键词、客户端、故障症状、协议及服务商品牌进行高亮检索。"
+  noindex={true}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="mb-8 text-center">
+      <h1 class="text-2xl sm:text-3xl font-black text-fg mb-3">
+        全站知识库搜索
+      </h1>
+      <p class="text-sm text-fg-muted">
+        输入关键词即时检索全部教程、排错方案、专题 Pillar 与品牌核验档案
+      </p>
+    </header>
+
+    <!-- Search Input Box -->
+    <div class="mb-6">
+      <div class="relative flex items-center shadow-md rounded-2xl bg-surface border-2 border-border-default focus-within:border-brand transition-all p-1.5">
+        <span class="pl-4 text-fg-subtle">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </span>
+        <input
+          id="search-input"
+          type="search"
+          placeholder="输入 Clash、小火箭、连不上、IEPL、ChatGPT 试试…"
+          class="w-full py-3 px-3.5 text-sm sm:text-base text-fg bg-transparent focus:outline-none placeholder:text-fg-subtle"
+          autocomplete="off"
+          autofocus
+        />
+        <button
+          id="search-clear-btn"
+          type="button"
+          class="hidden px-3 py-1.5 text-xs text-fg-subtle hover:text-fg font-bold"
+        >
+          清空
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="flex flex-wrap items-center gap-1.5 mb-6" id="search-filter-categories">
+      <button class="cat-filter-btn active px-3 py-1 text-xs font-bold rounded-lg border transition-all" data-cat="all">
+        全部结果
+      </button>
+      <button class="cat-filter-btn px-3 py-1 text-xs font-medium text-fg-muted hover:text-fg rounded-lg border border-border-default transition-all" data-cat="客户端教程">
+        客户端教程
+      </button>
+      <button class="cat-filter-btn px-3 py-1 text-xs font-medium text-fg-muted hover:text-fg rounded-lg border border-border-default transition-all" data-cat="网络排错">
+        网络排错
+      </button>
+      <button class="cat-filter-btn px-3 py-1 text-xs font-medium text-fg-muted hover:text-fg rounded-lg border border-border-default transition-all" data-cat="品牌资料">
+        品牌资料
+      </button>
+      <button class="cat-filter-btn px-3 py-1 text-xs font-medium text-fg-muted hover:text-fg rounded-lg border border-border-default transition-all" data-cat="专题百科">
+        专题百科
+      </button>
+      <button class="cat-filter-btn px-3 py-1 text-xs font-medium text-fg-muted hover:text-fg rounded-lg border border-border-default transition-all" data-cat="对比分析">
+        对比分析
+      </button>
+    </div>
+
+    <!-- Hot Search Tags -->
+    <div class="flex flex-wrap items-center gap-2 text-xs text-fg-subtle mb-8 pb-6 border-b border-border-subtle">
+      <span class="font-bold text-fg">大家常搜：</span>
+      {navData.hotSearches.map((item) => (
+        <button
+          type="button"
+          class="hot-tag-btn px-2 py-0.5 rounded bg-bg-subtle hover:bg-border-default text-fg-muted hover:text-brand transition-colors"
+          data-kw={item.keyword}
+        >
+          {item.keyword}
+        </button>
+      ))}
+    </div>
+
+    <!-- Search Results Container -->
+    <div id="search-stats" class="text-xs font-medium text-fg-subtle mb-4"></div>
+    <div id="search-results-list" class="space-y-4">
+      <!-- Injected via client-side script -->
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline define:vars={{ searchIndex }}>
+  const data = searchIndex;
+  const input = document.getElementById('search-input');
+  const clearBtn = document.getElementById('search-clear-btn');
+  const statsEl = document.getElementById('search-stats');
+  const listEl = document.getElementById('search-results-list');
+  const catBtns = document.querySelectorAll('#search-filter-categories .cat-filter-btn');
+  const hotTagBtns = document.querySelectorAll('.hot-tag-btn');
+
+  let activeCategory = 'all';
+
+  function renderResults(query = '') {
+    const q = query.trim().toLowerCase();
+    
+    let filtered = data.filter(item => {
+      const matchCat = activeCategory === 'all' || item.category === activeCategory;
+      if (!matchCat) return false;
+      if (!q) return true;
+      const inTitle = item.title.toLowerCase().includes(q);
+      const inDesc = item.desc.toLowerCase().includes(q);
+      const inTags = item.tags.some(t => t.toLowerCase().includes(q));
+      return inTitle || inDesc || inTags;
+    });
+
+    if (statsEl) {
+      statsEl.textContent = q ? `共找到 ${filtered.length} 条与 “${q}” 相关的结果` : `展示全部 ${filtered.length} 篇收录内容`;
+    }
+
+    if (filtered.length === 0) {
+      if (listEl) {
+        listEl.innerHTML = `
+          <div class="card-base p-8 text-center rounded-2xl">
+            <div class="text-3xl mb-2">🔍</div>
+            <h3 class="text-base font-bold text-fg mb-1">未找到相关内容</h3>
+            <p class="text-xs text-fg-muted mb-4">你可以尝试更换关键词，或者浏览下方热门专题：</p>
+            <div class="flex justify-center gap-2">
+              <a href="/recommend/" class="text-xs text-brand font-bold hover:underline">机场推荐</a>
+              <span class="text-fg-subtle">·</span>
+              <a href="/tutorials/" class="text-xs text-brand font-bold hover:underline">客户端教程</a>
+              <span class="text-fg-subtle">·</span>
+              <a href="/answers/" class="text-xs text-brand font-bold hover:underline">网络排错</a>
+            </div>
+          </div>
+        `;
+      }
+      return;
+    }
+
+    if (listEl) {
+      listEl.innerHTML = filtered.map(item => {
+        return `
+          <div class="card-base card-hover p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge-tag badge-topic">${item.category}</span>
+              </div>
+              <h3 class="text-base font-bold text-fg group-hover:text-brand transition-colors mb-1.5">
+                <a href="${item.url}">${item.title}</a>
+              </h3>
+              <p class="text-xs text-fg-muted leading-relaxed line-clamp-2">${item.desc}</p>
+            </div>
+            <a href="${item.url}" class="text-xs font-bold text-brand hover:underline mt-3 inline-flex items-center gap-1">
+              查看详情 →
+            </a>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  // Parse URL query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialQuery = urlParams.get('q') || '';
+  if (input && initialQuery) {
+    input.value = initialQuery;
+    clearBtn?.classList.remove('hidden');
+  }
+
+  input?.addEventListener('input', (e) => {
+    const val = e.target.value;
+    if (val) {
+      clearBtn?.classList.remove('hidden');
+    } else {
+      clearBtn?.classList.add('hidden');
+    }
+    renderResults(val);
+  });
+
+  clearBtn?.addEventListener('click', () => {
+    if (input) {
+      input.value = '';
+      clearBtn.classList.add('hidden');
+      input.focus();
+      renderResults('');
+    }
+  });
+
+  catBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      catBtns.forEach(b => {
+        b.classList.remove('active', 'bg-brand', 'text-text-inverse', 'font-bold');
+        b.classList.add('text-fg-muted', 'font-medium');
+      });
+      btn.classList.add('active', 'bg-brand', 'text-text-inverse', 'font-bold');
+      btn.classList.remove('text-fg-muted', 'font-medium');
+      activeCategory = btn.getAttribute('data-cat') || 'all';
+      renderResults(input ? input.value : '');
+    });
+  });
+
+  hotTagBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const kw = btn.getAttribute('data-kw') || '';
+      if (input) {
+        input.value = kw;
+        clearBtn?.classList.remove('hidden');
+        renderResults(kw);
+      }
+    });
+  });
+
+  // Initial render
+  renderResults(initialQuery);
+</script>
+
+<style>
+  .cat-filter-btn.active {
+    background-color: var(--brand-primary);
+    color: var(--text-inverse);
+    border-color: var(--brand-primary);
+    font-weight: 700;
+  }
+</style>

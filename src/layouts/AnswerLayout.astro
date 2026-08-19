@@ -1,0 +1,110 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/seo/Breadcrumb.astro';
+import AnswerBox from '../components/article/AnswerBox.astro';
+import NextStep from '../components/article/NextStep.astro';
+import FAQAccordion from '../components/article/FAQAccordion.astro';
+import { formatDate } from '../utils/dates';
+import { generateArticleSchema, generateFAQSchema } from '../utils/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  category?: string;
+  symptom?: string;
+  answer: string;
+  pubDate: Date | string;
+  updatedDate?: Date | string;
+  faq?: Array<{ q: string; a: string }>;
+  nextStep?: {
+    title: string;
+    description: string;
+    link: string;
+    linkText: string;
+  };
+}
+
+const {
+  title,
+  description,
+  category = '故障排查与极速解答',
+  symptom,
+  answer,
+  pubDate,
+  updatedDate,
+  faq = [],
+  nextStep,
+} = Astro.props;
+
+const breadcrumbs = [
+  { name: '网络排错中心', url: '/answers/' },
+  { name: title, url: Astro.url.pathname },
+];
+
+const articleSchema = generateArticleSchema({
+  title,
+  description,
+  pathname: Astro.url.pathname,
+  pubDate,
+  updatedDate,
+});
+const faqSchema = generateFAQSchema(faq);
+const schemas = faqSchema ? [articleSchema, faqSchema] : [articleSchema];
+---
+
+<BaseLayout
+  title={`${title} - 快速诊断与解决方案`}
+  description={description}
+  schema={schemas}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="mb-6">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="badge-tag badge-red-bg text-badge-red-text">
+          🚨 快速排查
+        </span>
+        <span class="text-xs text-fg-subtle">
+          更新于: <time class="font-mono">{formatDate(updatedDate || pubDate)}</time>
+        </span>
+      </div>
+
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-fg mb-4">
+        {title}
+      </h1>
+
+      <p class="text-sm sm:text-base text-fg-muted leading-relaxed">
+        {description}
+      </p>
+    </header>
+
+    <!-- Top Answer Box -->
+    <AnswerBox answer={answer} symptom={symptom} />
+
+    <!-- Article Content -->
+    <article class="prose-custom">
+      <slot />
+    </article>
+
+    <!-- FAQ Section -->
+    {faq.length > 0 && <FAQAccordion faqs={faq} />}
+
+    <!-- Next Step Action -->
+    {nextStep ? (
+      <NextStep
+        title={nextStep.title}
+        description={nextStep.description}
+        link={nextStep.link}
+        linkText={nextStep.linkText}
+      />
+    ) : (
+      <NextStep
+        title="问题仍未解决？"
+        description="如果是特定客户端或节点协议问题，建议查看客户端专用教程或使用智能选型器测试其他可用节点。"
+        link="/tutorials/"
+        linkText="查看全部客户端教程 →"
+      />
+    )}
+  </div>
+</BaseLayout>

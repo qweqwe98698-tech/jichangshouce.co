@@ -1,0 +1,126 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/seo/Breadcrumb.astro';
+import ArticleCard from '../../../components/cards/ArticleCard.astro';
+
+const v2raynTutorials = await getCollection('tutorials', ({ data, id }) => data.client === 'v2rayn' || id.startsWith('v2rayn/'));
+
+const learningSteps = [
+  { step: '01', title: '安装 .NET 8 与内核', desc: '解压 with-Core 完整包与环境准备', link: '/tutorials/v2rayn/starter-guide/#二前置环境与下载准备' },
+  { step: '02', title: '添加订阅分组', desc: '导入机场链接并批量拉取节点', link: '/tutorials/v2rayn/starter-guide/#第一步添加订阅分组' },
+  { step: '03', title: '真连接批量测速', desc: '按 Ctrl+O 测试真实 Web 延迟', link: '/tutorials/v2rayn/starter-guide/#第三步批量测试真实连接延迟' },
+  { step: '04', title: '开启系统代理与分流', desc: '自动配置系统代理与绕过大陆', link: '/tutorials/v2rayn/v2rayn-routing-and-pac-guide/' },
+];
+
+const faqs = [
+  { q: '运行 v2rayN 提示缺少 .NET Desktop Runtime 怎么办？', a: 'v2rayN 7.x 基于微软 .NET 8 开发。访问微软官方网站下载安装「.NET Desktop Runtime 8.0.x (x64)」即可正常启动。' },
+  { q: '所有节点按 Ctrl+O 测试延迟全部显示 -1 怎么办？', a: '常见于本地系统时间偏差超过 60 秒。打开 Windows 设置点击「立即同步时间」，确保本地时间与北京标准时间一致。' },
+  { q: '底部的路由规则选择哪一个最好？', a: '推荐选择「绕过大陆 (Whitelist)」。这样所有国内 IP 与域名均直接走本地宽带直连，仅海外请求走专线代理。' }
+];
+
+const breadcrumbs = [
+  { name: '客户端中心', url: '/tutorials/' },
+  { name: 'v2rayN 专题中心', url: '/tutorials/v2rayn/' },
+];
+---
+
+<BaseLayout
+  title="v2rayN 专题中心：Windows 7.x 客户端配置、Xray 内核与分流实战指南"
+  description="v2rayN 官方知识专题：Windows 经典代理工具。详解 .NET 8 环境、Xray 内核更新、VLESS 订阅导入、真连接测速、路由分流与全红排错指南。"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Hero Header -->
+    <header class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 mb-3 border border-purple-200 dark:border-purple-800">
+        <span>⚙️ Windows 经典工作站</span>
+        <span class="w-1 h-1 rounded-full bg-purple-500"></span>
+        <span>Xray / Sing-box 原生双内核</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight">
+        v2rayN 专题与实战手册
+      </h1>
+      <p class="text-base sm:text-lg text-fg-muted max-w-3xl leading-relaxed">
+        Windows 经典极客级工具：直接下载带宽测速、全协议原生支持、多机场独立分组管理与精细化 PAC 路由。
+      </p>
+    </header>
+
+    <!-- Roadmap -->
+    <section class="mb-12 bg-bg-surface dark:bg-card-bg border border-border-subtle rounded-2xl p-6 sm:p-8 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-border-subtle">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-brand">Getting Started</span>
+          <h2 class="text-xl sm:text-2xl font-black text-fg">
+            🧭 新手从这里开始：v2rayN 4 步通关路径
+          </h2>
+        </div>
+        <a
+          href="/tutorials/v2rayn/starter-guide/"
+          class="inline-flex items-center gap-1 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand text-text-inverse hover:bg-brand-600 transition-colors shadow-sm self-start sm:self-auto"
+        >
+          从入门教程开始 ➔
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {learningSteps.map((item) => (
+          <a
+            href={item.link}
+            class="group p-4 rounded-xl border border-border-subtle bg-bg-base hover:border-brand hover:shadow-md transition-all duration-200"
+          >
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-brand-50 dark:bg-brand-900/30 text-brand font-black text-xs mb-2">
+              {item.step}
+            </span>
+            <h3 class="text-sm font-bold text-fg group-hover:text-brand transition-colors">
+              {item.title}
+            </h3>
+            <p class="text-xs text-fg-muted mt-1">
+              {item.desc}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Tutorials List -->
+    <section class="mb-14">
+      <div class="flex items-center gap-2 mb-6">
+        <span class="w-2 h-6 rounded-full bg-brand"></span>
+        <h2 class="text-xl sm:text-2xl font-black text-fg">
+          📚 v2rayN 核心教程与进阶指南
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {v2raynTutorials.map((tut) => (
+          <ArticleCard
+            title={tut.data.title}
+            description={tut.data.description}
+            href={`/tutorials/${tut.id}/`}
+            category={tut.data.category}
+            pubDate={tut.data.pubDate}
+            updatedDate={tut.data.updatedDate}
+            tags={tut.data.tags}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12 bg-bg-surface dark:bg-card-bg border border-border-subtle rounded-2xl p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-fg mb-6 flex items-center gap-2">
+        <span>💬 v2rayN 常见问题答疑 (FAQ)</span>
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((f) => (
+          <div class="p-4 rounded-xl bg-bg-base border border-border-subtle">
+            <h3 class="text-sm font-bold text-fg mb-2">Q: {f.q}</h3>
+            <p class="text-xs sm:text-sm text-fg-muted leading-relaxed">A: {f.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

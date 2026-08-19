@@ -1,0 +1,56 @@
+{
+  "id": "kuaili",
+  "slug": "kuaili",
+  "name": "快狸",
+  "founded": 2023,
+  "status": "active",
+  "tagline": "25元档综合型 VLESS 专线，全场景流媒体与 AI 双重覆盖",
+  "pricing": {
+    "minPrice": "25.0",
+    "cycle": "月 (真实月付)",
+    "priceType": "真实月付价",
+    "traffic": "150GB",
+    "plans": [
+      { "name": "综合月付", "price": 25, "cycle": "月付", "traffic": "150GB/月" },
+      { "name": "至尊季付", "price": 68, "cycle": "季付", "traffic": "260GB/月" }
+    ]
+  },
+  "routes": "IEPL 专线",
+  "protocols": ["VLESS", "Shadowsocks"],
+  "clients": ["自研客户端", "Clash", "Shadowrocket", "v2rayN", "Sing-box"],
+  "aiSupport": "品牌资料显示覆盖常见 AI 服务场景，实际可用性结合节点测试。",
+  "streamingSupport": "品牌资料显示覆盖常见海外流媒体场景，具体解锁情况以实际节点为准。",
+  "suitableFor": [
+    "影音、AI 和日常上网需求兼备的均衡型用户",
+    "需要 150GB 中等偏大流量、偏好专线保障的用户"
+  ],
+  "unsuitableFor": [
+    "追求极端低价（<15元）的用户"
+  ],
+  "pros": [
+    "VLESS + IEPL 专线架构，25 元提供 150GB 月流量",
+    "同时支持自研一键登录客户端与第三方订阅",
+    "节点可用率高，晚高峰测速稳定"
+  ],
+  "cons": [
+    "无免费试用套餐"
+  ],
+  "coupon": {
+    "code": "kkk2222",
+    "desc": "新用户专享优惠码"
+  },
+  "affiliateUrl": "https://guangs.kuailicloud.cc/#/register?code=AiqyM8oG",
+  "website": "https://guangs.kuailicloud.cc/#/register?code=AiqyM8oG",
+  "speedtestImage": "/images/benchmarks/快狸-节点测速实测.png",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "VLESS 专线测速平稳达标，影音与日常网页秒开。"
+  },
+  "faq": [
+    {
+      "q": "快狸支持哪些操作系统？",
+      "a": "快狸提供 Windows、macOS 和 Android 自研客户端，iOS 用户可使用 Shadowrocket 扫码导入。"
+    }
+  ]
+}

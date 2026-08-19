@@ -1,0 +1,126 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/seo/Breadcrumb.astro';
+import ArticleCard from '../../../components/cards/ArticleCard.astro';
+
+const srTutorials = await getCollection('tutorials', ({ data, id }) => data.client === 'shadowrocket' || id.startsWith('shadowrocket/'));
+
+const learningSteps = [
+  { step: '01', title: '认识 Shadowrocket', desc: '正版辨别防骗与 iOS 核心特性', link: '/tutorials/shadowrocket/what-is-shadowrocket/' },
+  { step: '02', title: '外区商店下载获取', desc: '美区 Apple ID 购买与安装指引', link: '/tutorials/shadowrocket/import-subscription/#二前置条件与正版获取指南' },
+  { step: '03', title: '导入机场订阅', desc: '一键添加 Subscribe 并测试连通性', link: '/tutorials/shadowrocket/import-subscription/#第二步在-app-中添加订阅' },
+  { step: '04', title: '配置智能分流与规则', desc: '配置模式与 ACL4SSR 广告拦截', link: '/tutorials/shadowrocket/shadowrocket-routing-rules/' },
+];
+
+const faqs = [
+  { q: '为什么中国大陆 App Store 搜索不到小火箭？', a: '因政策原因仅在海外区（美区/港区/日区等）App Store 上架。只需注册或租用一个外区 Apple ID 即可下载（约 $2.99 买断）。' },
+  { q: '小火箭订阅更新失败提示 404 怎么办？', a: '检查订阅链接是否复制完整，或切换为手机 5G 移动网络重试（避开本地 Wi-Fi 的 DNS 污染）。' },
+  { q: '开启后国内微信或网页变慢怎么解决？', a: '确保全局路由设置为「配置 (Config)」而不是「代理 (Proxy)」，并在配置页面更新最新的国内直连规则。' }
+];
+
+const breadcrumbs = [
+  { name: '客户端中心', url: '/tutorials/' },
+  { name: 'Shadowrocket 专题中心', url: '/tutorials/shadowrocket/' },
+];
+---
+
+<BaseLayout
+  title="Shadowrocket 小火箭专题中心：iOS 正版下载、订阅导入与分流实战指南"
+  description="Shadowrocket 官方知识专题：iPhone / iPad 苹果用户首选代理工具。详解正版获取、订阅导入、连通性测速、远程规则集配置与排障指南。"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Hero Header -->
+    <header class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mb-3 border border-indigo-200 dark:border-indigo-800">
+        <span>🚀 iOS 统治级神器</span>
+        <span class="w-1 h-1 rounded-full bg-indigo-500"></span>
+        <span>iPhone / iPad 苹果生态首选</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight">
+        Shadowrocket 专题与实战手册
+      </h1>
+      <p class="text-base sm:text-lg text-fg-muted max-w-3xl leading-relaxed">
+        iOS 平台出海标配：低至 $2.99 买断、极低待机耗电、全协议硬件加速支持与一键智能规则分流。
+      </p>
+    </header>
+
+    <!-- Roadmap -->
+    <section class="mb-12 bg-bg-surface dark:bg-card-bg border border-border-subtle rounded-2xl p-6 sm:p-8 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-border-subtle">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-brand">Getting Started</span>
+          <h2 class="text-xl sm:text-2xl font-black text-fg">
+            🧭 新手从这里开始：小火箭 4 步通关路径
+          </h2>
+        </div>
+        <a
+          href="/tutorials/shadowrocket/import-subscription/"
+          class="inline-flex items-center gap-1 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand text-text-inverse hover:bg-brand-600 transition-colors shadow-sm self-start sm:self-auto"
+        >
+          从入门教程开始 ➔
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {learningSteps.map((item) => (
+          <a
+            href={item.link}
+            class="group p-4 rounded-xl border border-border-subtle bg-bg-base hover:border-brand hover:shadow-md transition-all duration-200"
+          >
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-brand-50 dark:bg-brand-900/30 text-brand font-black text-xs mb-2">
+              {item.step}
+            </span>
+            <h3 class="text-sm font-bold text-fg group-hover:text-brand transition-colors">
+              {item.title}
+            </h3>
+            <p class="text-xs text-fg-muted mt-1">
+              {item.desc}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Tutorials List -->
+    <section class="mb-14">
+      <div class="flex items-center gap-2 mb-6">
+        <span class="w-2 h-6 rounded-full bg-brand"></span>
+        <h2 class="text-xl sm:text-2xl font-black text-fg">
+          📚 Shadowrocket 核心教程与进阶指南
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {srTutorials.map((tut) => (
+          <ArticleCard
+            title={tut.data.title}
+            description={tut.data.description}
+            href={`/tutorials/${tut.id}/`}
+            category={tut.data.category}
+            pubDate={tut.data.pubDate}
+            updatedDate={tut.data.updatedDate}
+            tags={tut.data.tags}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12 bg-bg-surface dark:bg-card-bg border border-border-subtle rounded-2xl p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-fg mb-6 flex items-center gap-2">
+        <span>💬 Shadowrocket 常见问题答疑 (FAQ)</span>
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((f) => (
+          <div class="p-4 rounded-xl bg-bg-base border border-border-subtle">
+            <h3 class="text-sm font-bold text-fg mb-2">Q: {f.q}</h3>
+            <p class="text-xs sm:text-sm text-fg-muted leading-relaxed">A: {f.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

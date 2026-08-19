@@ -1,0 +1,56 @@
+{
+  "id": "u1s1",
+  "slug": "u1s1",
+  "name": "U1S1",
+  "founded": 2023,
+  "status": "active",
+  "tagline": "20元档纯月付 IEPL 专线，120GB 均衡流量与 VLESS 协议",
+  "pricing": {
+    "minPrice": "20.0",
+    "cycle": "月 (真实月付)",
+    "priceType": "真实月付价",
+    "traffic": "120GB",
+    "plans": [
+      { "name": "月付标准", "price": 20, "cycle": "月付", "traffic": "120GB/月" },
+      { "name": "进阶季付", "price": 55, "cycle": "季付", "traffic": "150GB/月" }
+    ]
+  },
+  "routes": "IEPL 专线",
+  "protocols": ["VLESS", "Shadowsocks"],
+  "clients": ["自研客户端", "Clash", "Shadowrocket", "v2rayN", "Sing-box"],
+  "aiSupport": "可用于常见海外网络及 AI 使用场景，具体能力建议以实际节点测试为准。",
+  "streamingSupport": "品牌资料显示支持常见流媒体访问场景，具体解锁情况以实际测试为准。",
+  "suitableFor": [
+    "希望购买标准月付套餐（不想一次性年付）的理性用户",
+    "重视 IEPL 专线质量、需要 100GB+ 充足月流量的用户"
+  ],
+  "unsuitableFor": [
+    "预算极度严苛（仅愿付 <10 元）的用户"
+  ],
+  "pros": [
+    "20 元真实月付，无长期捆绑风险",
+    "提供 120GB 充裕月流量，支持现代 VLESS 协议",
+    "全专线 IEPL，晚高峰连接平稳"
+  ],
+  "cons": [
+    "年付优惠折扣相对较温和"
+  ],
+  "coupon": {
+    "code": "akaka",
+    "desc": "新人专项优惠码"
+  },
+  "affiliateUrl": "https://guangs.vipaff.cc/#/?code=xhX5X22f",
+  "website": "https://guangs.vipaff.cc/#/?code=xhX5X22f",
+  "speedtestImage": "/images/benchmarks/U1S1-节点测速实测.png",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "广州电信实测 IEPL 专线满速达标，Shadowsocks 与 VLESS 协议稳定性优良。"
+  },
+  "faq": [
+    {
+      "q": "U1S1 是否支持按月续费？",
+      "a": "支持。U1S1 主打 20 元真实月付套餐，用户可以按月灵活订购和取消，无需承担跑路风险。"
+    }
+  ]
+}

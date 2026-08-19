@@ -1,0 +1,466 @@
+---
+import { getAllProviders } from '../../data/providers';
+
+const allProviders = getAllProviders();
+---
+
+<section id="selector" class="my-8 scroll-mt-20">
+  <div class="card-base p-6 sm:p-10 rounded-2xl bg-surface dark:bg-card-bg border-2 border-brand/20 shadow-sm">
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand text-xs font-bold mb-3 border border-brand-200 dark:border-brand-800">
+        <span>🧭</span>
+        <span>30 秒智能选型</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-black text-fg mb-2">
+        机场与服务方案智能选择指南
+      </h2>
+      <p class="text-xs sm:text-sm text-fg-muted">
+        根据你的核心诉求、预算、设备、流量与场景，综合计算最契合的线路方向与参考服务商。
+      </p>
+    </div>
+
+    <!-- 5-Step Filter Selectors Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+      <!-- 1. Priority -->
+      <div class="p-4 bg-bg-surface dark:bg-bg-subtle rounded-xl border border-border-subtle">
+        <label class="block text-xs font-bold text-fg uppercase tracking-wider mb-2.5 flex items-center justify-between">
+          <span>1. 最重视什么？</span>
+          <span class="text-[10px] text-brand font-mono">STEP 1</span>
+        </label>
+        <div class="space-y-1.5" id="filter-priority">
+          <button
+            type="button"
+            data-val="stability"
+            class="selector-opt active w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">🛡️ 更重视线路质量与晚高峰稳定</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">优先比较专线/中转实现与实测丢包</div>
+          </button>
+          <button
+            type="button"
+            data-val="budget"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">💰 更重视性价比与流量配额</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">单 GB 成本低，适合大流量使用</div>
+          </button>
+          <button
+            type="button"
+            data-val="ai"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">🤖 更重视 AI 工具访问体验</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">针对 ChatGPT / Claude / Gemini 优化</div>
+          </button>
+          <button
+            type="button"
+            data-val="streaming"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">🎬 更重视流媒体与多地区节点</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">Netflix / YouTube / Disney+ 跨区解锁</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. Budget -->
+      <div class="p-4 bg-bg-surface dark:bg-bg-subtle rounded-xl border border-border-subtle">
+        <label class="block text-xs font-bold text-fg uppercase tracking-wider mb-2.5 flex items-center justify-between">
+          <span>2. 预期每月预算？</span>
+          <span class="text-[10px] text-brand font-mono">STEP 2</span>
+        </label>
+        <div class="space-y-1.5" id="filter-budget">
+          <button
+            type="button"
+            data-val="under15"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">🪙 15 元以内</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">预算优先 · 基础轻量套餐</div>
+          </button>
+          <button
+            type="button"
+            data-val="15to30"
+            class="selector-opt active w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">💳 15 – 30 元</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">日常使用预算 · 专线月付</div>
+          </button>
+          <button
+            type="button"
+            data-val="30to50"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">💎 30 – 50 元</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">更高预算 · 大流量与原生住宅 IP</div>
+          </button>
+          <button
+            type="button"
+            data-val="above50"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">👑 50 元以上</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">高流量 · 多设备 · 特殊团队需求</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. Device -->
+      <div class="p-4 bg-bg-surface dark:bg-bg-subtle rounded-xl border border-border-subtle">
+        <label class="block text-xs font-bold text-fg uppercase tracking-wider mb-2.5 flex items-center justify-between">
+          <span>3. 主力使用设备？</span>
+          <span class="text-[10px] text-brand font-mono">STEP 3</span>
+        </label>
+        <div class="space-y-1.5" id="filter-device">
+          <button
+            type="button"
+            data-val="windows"
+            class="selector-opt active w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">🪟 Windows 桌面设备</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">查看兼容客户端与配置</div>
+          </button>
+          <button
+            type="button"
+            data-val="macos"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">🍏 macOS 苹果电脑</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">查看兼容客户端与配置</div>
+          </button>
+          <button
+            type="button"
+            data-val="iphone"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">📱 iPhone / iPad</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">查看兼容客户端与配置</div>
+          </button>
+          <button
+            type="button"
+            data-val="android"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">🤖 Android 安卓设备</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">查看兼容客户端与配置</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- 4. Monthly Traffic -->
+      <div class="p-4 bg-bg-surface dark:bg-bg-subtle rounded-xl border border-border-subtle">
+        <label class="block text-xs font-bold text-fg uppercase tracking-wider mb-2.5 flex items-center justify-between">
+          <span>4. 每月预估流量？</span>
+          <span class="text-[10px] text-brand font-mono">STEP 4</span>
+        </label>
+        <div class="space-y-1.5" id="filter-traffic">
+          <button
+            type="button"
+            data-val="traffic_50"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">50GB 以内</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">日常轻度网页、社交与文献检索</div>
+          </button>
+          <button
+            type="button"
+            data-val="traffic_100"
+            class="selector-opt active w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">50 – 100GB</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">标准主力办公、AI 交互与日常影音</div>
+          </button>
+          <button
+            type="button"
+            data-val="traffic_200"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">100 – 200GB</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">重度 4K 追剧、开发下载与多端共享</div>
+          </button>
+          <button
+            type="button"
+            data-val="traffic_any"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">不确定 / 随用随走</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">优先考虑不限时按量流量包</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- 5. Main Scenario -->
+      <div class="p-4 bg-bg-surface dark:bg-bg-subtle rounded-xl border border-border-subtle md:col-span-2 lg:col-span-2">
+        <label class="block text-xs font-bold text-fg uppercase tracking-wider mb-2.5 flex items-center justify-between">
+          <span>5. 主要使用场景？</span>
+          <span class="text-[10px] text-brand font-mono">STEP 5</span>
+        </label>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="filter-scene">
+          <button
+            type="button"
+            data-val="scene_web"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">🌐 日常网页与社交通讯</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">Google 搜索、GitHub、Telegram</div>
+          </button>
+          <button
+            type="button"
+            data-val="scene_ai"
+            class="selector-opt active w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">🤖 AI 工具与科研生产力</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">ChatGPT、Claude、Midjourney、论文检索</div>
+          </button>
+          <button
+            type="button"
+            data-val="scene_media"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">🎬 4K 影音与跨区流媒体</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">YouTube 4K、Netflix 港日美区、Disney+</div>
+          </button>
+          <button
+            type="button"
+            data-val="scene_all"
+            class="selector-opt w-full text-left p-2.5 text-xs rounded-lg border transition-all cursor-pointer"
+          >
+            <div class="font-bold text-fg">⚡ 综合均衡多设备需求</div>
+            <div class="text-[11px] text-fg-subtle mt-0.5">办公、影音、多端同时在线</div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Match Result Output Box -->
+    <div id="selector-result-box" class="p-6 bg-surface dark:bg-card-bg rounded-xl border border-border shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border-subtle mb-5">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <span class="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-brand-50 dark:bg-brand-900/30 text-brand border border-brand-200 dark:border-brand-800">
+              符合当前条件的参考方案
+            </span>
+            <span class="text-xs text-fg-subtle">基于实际条件实时计算</span>
+          </div>
+          <h3 id="result-direction" class="text-lg sm:text-xl font-black text-fg">
+            匹配方向：优先比较专线与高质量中转方案
+          </h3>
+          <p id="result-explanation" class="text-xs sm:text-sm text-fg-muted mt-1 leading-relaxed">
+            根据你对稳定性、预算和使用场景的选择，优先筛选线路资料较完整、预算范围匹配的服务商。
+          </p>
+        </div>
+      </div>
+
+      <!-- Matched Providers List (Strictly rendered with zero undefined/null) -->
+      <div class="space-y-4" id="result-provider-list">
+        <!-- Dynamically injected via inline JS -->
+      </div>
+
+      <!-- Price Footnote Note -->
+      <div class="mt-4 pt-3 border-t border-border-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-fg-subtle">
+        <span>* 折算价用于横向比较，实际付款周期与金额以服务商资料为准。</span>
+        <span>结果仅依据站内公开资料与筛选条件即时计算，不代表绝对性能排名。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ allProviders }}>
+  const providersData = allProviders || [];
+
+  let state = {
+    priority: 'stability',
+    budget: '15to30',
+    device: 'windows',
+    traffic: 'traffic_100',
+    scene: 'scene_ai'
+  };
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function getStatusText(status) {
+    if (status === 'verified') return '已核验';
+    if (status === 'partial') return '部分核验';
+    if (status === 'pending') return '待复核';
+    return '已核验';
+  }
+
+  function updateSelector() {
+    let dirTitle = '匹配方向：优先比较专线与高质量中转方案';
+    let dirDesc = '根据你对稳定性、预算和使用场景的选择，优先筛选线路资料较完整、预算范围匹配的服务商。';
+    
+    // Dynamic matching algorithm based on criteria
+    let matched = [...providersData];
+
+    if (state.priority === 'stability') {
+      matched = matched.filter(p => (p.routes && (p.routes.includes('专线') || p.routes.includes('IEPL') || p.routes.includes('IPLC'))));
+      dirTitle = '匹配方向：优先比较专线与高质量中转方案';
+      dirDesc = '适合对跨境网络稳定性、晚高峰低丢包有明确要求的用户，保障日常流畅访问。';
+    } else if (state.priority === 'budget') {
+      matched = matched.sort((a, b) => parseFloat(a.pricing?.minPrice || 0) - parseFloat(b.pricing?.minPrice || 0));
+      dirTitle = '高性价比大流量方向';
+      dirDesc = '优先在预算内寻找单 GB 单价更实惠、流量配额充沛的服务商。';
+    } else if (state.priority === 'ai') {
+      matched = matched.filter(p => (p.aiSupport && (p.aiSupport.includes('优') || p.aiSupport.includes('支持'))) || p.slug === 'guangsuyun' || p.slug === 'ermaoyun' || p.slug === 'sujie');
+      dirTitle = '匹配方向：AI 原生解锁与低风控专线方案';
+      dirDesc = '针对 ChatGPT, Claude 与 Midjourney 路由进行优化，规避公共机房 IP 拦截。';
+    } else if (state.priority === 'streaming') {
+      matched = matched.filter(p => (p.streamingSupport && (p.streamingSupport.includes('4K') || p.streamingSupport.includes('奈飞'))) || p.slug === 'yuzhouyun' || p.slug === 'lingmao' || p.slug === 'xingdaomeng');
+      dirTitle = '匹配方向：4K 原生流媒体解锁方案';
+      dirDesc = '支持港、日、美、新等多区 Netflix、Disney+ 与 YouTube 4K 流畅播放。';
+    }
+
+    // Budget filtering
+    if (state.budget === 'under15') {
+      matched = matched.filter(p => parseFloat(p.pricing?.minPrice || 99) <= 15 || (p.pricing?.priceType && p.pricing.priceType.includes('年付折算')));
+    } else if (state.budget === '15to30') {
+      matched = matched.filter(p => parseFloat(p.pricing?.minPrice || 0) >= 14 && parseFloat(p.pricing?.minPrice || 0) <= 30);
+    } else if (state.budget === '30to50' || state.budget === 'above50') {
+      matched = matched.filter(p => parseFloat(p.pricing?.minPrice || 0) >= 20);
+    }
+
+    if (matched.length === 0) {
+      matched = providersData.slice(0, 3);
+    } else {
+      matched = matched.slice(0, 3);
+    }
+
+    // Device map
+    const deviceLabels = {
+      windows: 'Windows 桌面环境',
+      macos: 'macOS 苹果系统',
+      iphone: 'iOS 苹果移动端',
+      android: 'Android 安卓系统'
+    };
+    const currentDeviceName = deviceLabels[state.device] || '当前设备';
+
+    // Update DOM
+    const dirTitleEl = document.getElementById('result-direction');
+    const dirDescEl = document.getElementById('result-explanation');
+    const listEl = document.getElementById('result-provider-list');
+
+    if (dirTitleEl) dirTitleEl.textContent = dirTitle;
+    if (dirDescEl) dirDescEl.textContent = dirDesc;
+
+    if (listEl) {
+      listEl.innerHTML = matched.map(p => {
+        const name = escapeHtml(p.name || '服务商');
+        const routes = escapeHtml(p.routes || 'IEPL 专线 / 优质中转');
+        const statusText = getStatusText(p.verification?.status);
+        const minPrice = escapeHtml(p.pricing?.minPrice || '15');
+        const priceType = p.pricing?.priceType || '';
+        const isYearlyDiscount = priceType.includes('年付');
+        const traffic = escapeHtml(p.pricing?.traffic || '100GB');
+        const tagline = p.tagline ? escapeHtml(p.tagline) : (p.suitableFor && p.suitableFor.length > 0 ? escapeHtml(p.suitableFor[0]) : '');
+        const notes = p.verification?.notes ? escapeHtml(p.verification.notes) : '线路类型来自已核验资料，建议按月付费测试';
+        const affUrl = p.affiliateUrl || p.website || `/brands/${p.slug}/`;
+
+        return `
+          <div class="p-5 bg-bg-surface dark:bg-bg-subtle rounded-xl border border-border-subtle space-y-3.5">
+            <!-- Header row: Name, Route, Verification Badge, Price & Buttons -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-border-subtle">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-black text-base text-fg">${name}</span>
+                  <span class="text-[11px] px-2 py-0.5 rounded-md bg-brand-50 dark:bg-brand-900/30 text-brand font-medium border border-brand-200 dark:border-brand-800">${routes}</span>
+                  <span class="text-[11px] font-medium text-emerald-600 dark:text-emerald-400">✓ ${statusText}</span>
+                </div>
+                ${tagline ? `<p class="text-xs text-fg-muted mt-1 leading-snug">${tagline}</p>` : ''}
+              </div>
+
+              <div class="flex items-center gap-3 self-end sm:self-center flex-shrink-0">
+                <div class="text-right">
+                  <div class="text-base font-black text-brand font-mono">
+                    ¥${minPrice}/月${isYearlyDiscount ? '*' : ''}
+                  </div>
+                  <span class="text-[10px] ${isYearlyDiscount ? 'text-fg-subtle' : 'text-emerald-600 dark:text-emerald-400 font-semibold'} block">
+                    ${isYearlyDiscount ? '年付套餐折算' : '真实月付'}
+                  </span>
+                </div>
+                <!-- Main Button: View Verification Profile -->
+                <a href="/brands/${p.slug}/" class="px-3 py-1.5 text-xs font-bold bg-brand hover:bg-brand-600 text-text-inverse rounded-lg transition-colors shadow-sm">
+                  查看核验档案
+                </a>
+                <!-- Secondary Button: Official Website -->
+                <a href="${affUrl}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-xs font-medium bg-surface border border-border-subtle hover:bg-bg-hover text-fg rounded-lg transition-colors inline-flex items-center gap-0.5">
+                  <span>访问官网</span>
+                  <span class="text-[10px]">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Structured Reasons & Notes -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="space-y-1">
+                <span class="font-bold text-fg block text-[11px] uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                  为什么匹配：
+                </span>
+                <p class="text-fg-muted">• 预算符合筛选范围 (${isYearlyDiscount ? '年付折算档' : '单月付档'})</p>
+                <p class="text-fg-muted">• 支持 ${currentDeviceName} 常见客户端</p>
+                <p class="text-fg-muted">• 线路与流量 (${traffic}/月) 契合当前筛选需求</p>
+              </div>
+
+              <div class="space-y-1">
+                <span class="font-bold text-fg block text-[11px] uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                  需要注意：
+                </span>
+                <p class="text-fg-muted">• ${isYearlyDiscount ? '¥' + minPrice + '/月为年付折算，单月购买以实际套餐为准' : '支持标准单月按月付费'}</p>
+                <p class="text-fg-muted">• ${notes}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  // Setup click listeners for each button group
+  function bindGroup(groupId, stateKey) {
+    const container = document.getElementById(groupId);
+    if (!container) return;
+    const btns = container.querySelectorAll('.selector-opt');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => {
+          b.classList.remove('active', 'border-brand', 'bg-brand-50', 'dark:bg-brand-900/30', 'text-brand');
+          b.classList.add('border-border-subtle', 'bg-bg-surface', 'dark:bg-bg-subtle');
+        });
+        btn.classList.add('active', 'border-brand', 'bg-brand-50', 'dark:bg-brand-900/30', 'text-brand');
+        btn.classList.remove('border-border-subtle', 'bg-bg-surface', 'dark:bg-bg-subtle');
+        state[stateKey] = btn.getAttribute('data-val');
+        updateSelector();
+      });
+    });
+  }
+
+  bindGroup('filter-priority', 'priority');
+  bindGroup('filter-budget', 'budget');
+  bindGroup('filter-device', 'device');
+  bindGroup('filter-traffic', 'traffic');
+  bindGroup('filter-scene', 'scene');
+
+  // Initial render
+  updateSelector();
+</script>
+
+<style>
+  .selector-opt.active {
+    border-color: var(--color-brand, #16a34a);
+    background-color: rgba(22, 163, 74, 0.08);
+  }
+  .selector-opt:not(.active) {
+    border-color: var(--color-border-subtle, #e5e7eb);
+  }
+  .selector-opt:not(.active):hover {
+    border-color: var(--color-brand, #16a34a);
+    background-color: var(--color-bg-hover, #f3f4f6);
+  }
+</style>

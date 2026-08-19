@@ -1,0 +1,126 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/seo/Breadcrumb.astro';
+import ArticleCard from '../../../components/cards/ArticleCard.astro';
+
+const clashTutorials = await getCollection('tutorials', ({ data, id }) => data.client === 'clash' || id.startsWith('clash/'));
+
+const learningSteps = [
+  { step: '01', title: '认识 Clash 架构', desc: 'Mihomo 内核与图形客户端关系', link: '/tutorials/clash/what-is-clash/' },
+  { step: '02', title: '下载正版客户端', desc: 'Clash Verge Rev 安装与环境准备', link: '/tutorials/clash/clash-verge-starter-guide/#二前置条件与下载准备' },
+  { step: '03', title: '导入机场订阅', desc: '一键拉取节点与策略组配置', link: '/tutorials/clash/clash-verge-starter-guide/#第二步在客户端导入配置文件' },
+  { step: '04', title: '开启 TUN 与分流', desc: '系统级虚拟网卡与规则模式', link: '/tutorials/clash/clash-tun-mode-and-dns-guide/' },
+];
+
+const faqs = [
+  { q: '原版 Clash for Windows 停更后推荐用什么？', a: '推荐使用「Clash Verge Rev」或「Clash Nyanpasu」。两者均基于 Rust+Tauri 开发，内存低至 50MB 且内置支持全套现代协议的 Mihomo (Meta) 内核。' },
+  { q: '规则模式 (Rule) 和全局模式 (Global) 怎么选？', a: '日常强烈建议保持在「规则模式」。国内流量自动直连（0 耗费机场流量），仅海外被阻断服务自动走专线加速。' },
+  { q: '测速有延迟但浏览器打不开网页怎么办？', a: '常见于本地系统时钟偏差超过 60 秒或系统代理注册表端口残留。打开 Windows 设置点击「立即同步时间」，并重启 Clash Verge。' }
+];
+
+const breadcrumbs = [
+  { name: '客户端中心', url: '/tutorials/' },
+  { name: 'Clash 专题中心', url: '/tutorials/clash/' },
+];
+---
+
+<BaseLayout
+  title="Clash 专题中心：Clash Verge Rev、Mihomo 内核与分流规则全流程实战指南"
+  description="Clash 官方知识专题：系统化掌握新一代 Clash Verge Rev 客户端的核心功能：从订阅导入、节点分组、DNS 分流防污染到 TUN 虚拟网卡与排障指南。"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Hero Header -->
+    <header class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-3 border border-blue-200 dark:border-blue-800">
+        <span>💻 跨平台全能王者</span>
+        <span class="w-1 h-1 rounded-full bg-blue-500"></span>
+        <span>Windows / macOS / Linux 深度适配</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight">
+        Clash 专题与实战手册
+      </h1>
+      <p class="text-base sm:text-lg text-fg-muted max-w-3xl leading-relaxed">
+        基于现代化 Mihomo 内核与 Tauri 框架：系统级 TUN 虚拟网卡透明接管、精准策略组规则分流与本地 DNS 防污染。
+      </p>
+    </header>
+
+    <!-- Roadmap -->
+    <section class="mb-12 bg-bg-surface dark:bg-card-bg border border-border-subtle rounded-2xl p-6 sm:p-8 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-border-subtle">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-brand">Getting Started</span>
+          <h2 class="text-xl sm:text-2xl font-black text-fg">
+            🧭 新手从这里开始：Clash 4 步通关路径
+          </h2>
+        </div>
+        <a
+          href="/tutorials/clash/clash-verge-starter-guide/"
+          class="inline-flex items-center gap-1 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand text-text-inverse hover:bg-brand-600 transition-colors shadow-sm self-start sm:self-auto"
+        >
+          从入门教程开始 ➔
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {learningSteps.map((item) => (
+          <a
+            href={item.link}
+            class="group p-4 rounded-xl border border-border-subtle bg-bg-base hover:border-brand hover:shadow-md transition-all duration-200"
+          >
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-brand-50 dark:bg-brand-900/30 text-brand font-black text-xs mb-2">
+              {item.step}
+            </span>
+            <h3 class="text-sm font-bold text-fg group-hover:text-brand transition-colors">
+              {item.title}
+            </h3>
+            <p class="text-xs text-fg-muted mt-1">
+              {item.desc}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Tutorials List -->
+    <section class="mb-14">
+      <div class="flex items-center gap-2 mb-6">
+        <span class="w-2 h-6 rounded-full bg-brand"></span>
+        <h2 class="text-xl sm:text-2xl font-black text-fg">
+          📚 Clash 核心教程与进阶指南
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {clashTutorials.map((tut) => (
+          <ArticleCard
+            title={tut.data.title}
+            description={tut.data.description}
+            href={`/tutorials/${tut.id}/`}
+            category={tut.data.category}
+            pubDate={tut.data.pubDate}
+            updatedDate={tut.data.updatedDate}
+            tags={tut.data.tags}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12 bg-bg-surface dark:bg-card-bg border border-border-subtle rounded-2xl p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-fg mb-6 flex items-center gap-2">
+        <span>💬 Clash 常见问题答疑 (FAQ)</span>
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((f) => (
+          <div class="p-4 rounded-xl bg-bg-base border border-border-subtle">
+            <h3 class="text-sm font-bold text-fg mb-2">Q: {f.q}</h3>
+            <p class="text-xs sm:text-sm text-fg-muted leading-relaxed">A: {f.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

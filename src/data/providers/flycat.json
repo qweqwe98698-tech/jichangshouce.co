@@ -1,0 +1,58 @@
+{
+  "id": "flycat",
+  "slug": "flycat",
+  "name": "飞猫云",
+  "founded": 2023,
+  "status": "active",
+  "tagline": "主打 IEPL 专线与超低价轻度年付套餐，适合低预算日常代理",
+  "pricing": {
+    "minPrice": "7.0",
+    "cycle": "月 (年付折算)",
+    "priceType": "年付折算价",
+    "traffic": "50GB",
+    "plans": [
+      { "name": "轻度年付 (年付折算)", "price": 84, "cycle": "年付 (约 7 元/月)", "traffic": "50GB/月" },
+      { "name": "标准季付", "price": 36, "cycle": "季付", "traffic": "100GB/月" }
+    ]
+  },
+  "routes": "IEPL 专线",
+  "protocols": ["Shadowsocks", "VMess"],
+  "clients": ["自研客户端", "Clash", "Shadowrocket", "v2rayN"],
+  "aiSupport": "品牌资料显示覆盖常见 AI 工具使用场景，具体可用性结合节点测试。",
+  "streamingSupport": "品牌资料显示覆盖常见流媒体场景，具体解锁情况以实际测试为准。",
+  "suitableFor": [
+    "日常流量不大（<50GB）、预算较低的轻度上网用户",
+    "主要用于查阅网页、社交软件和轻度 AI 对话的用户"
+  ],
+  "unsuitableFor": [
+    "重度 4K 视频追剧或大文件下载用户",
+    "不愿接受年付周期的用户"
+  ],
+  "pros": [
+    "IEPL 专线接入，年付折算仅 7 元/月",
+    "提供全平台自研客户端，开箱即用",
+    "网络延迟低，网页加载迅速"
+  ],
+  "cons": [
+    "基础套餐月流量较小 (50GB)",
+    "超低价格需要按年付一次性结算"
+  ],
+  "coupon": {
+    "code": "flycat888",
+    "desc": "季付及以上套餐 8 折优惠"
+  },
+  "affiliateUrl": "https://guangs.flycataff.com/#/?code=6uq0Xe9y",
+  "website": "https://guangs.flycataff.com/#/?code=6uq0Xe9y",
+  "speedtestImage": "/images/benchmarks/飞猫云-节点测速实测.png",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "IEPL 节点延迟平稳，丢包率极低，适合日常网页和文字 AI 交互。"
+  },
+  "faq": [
+    {
+      "q": "飞猫云 50GB 流量够用吗？",
+      "a": "对于主要查资料、微信/Telegram、刷推特以及轻度 ChatGPT 问答的文字型用户，50GB 完全足够；如果每天观看数小时 4K 视频则建议选更大流量套餐。"
+    }
+  ]
+}
