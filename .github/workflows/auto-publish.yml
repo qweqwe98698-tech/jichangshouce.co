@@ -1,0 +1,68 @@
+name: Auto Publish SEO/GEO Matrix Pillar Article
+
+on:
+  schedule:
+    # 每 4 天触发一次，时间设为 UTC 02:00（北京时间 10:00）
+    - cron: '0 2 */4 * *'
+  workflow_dispatch: # 支持在 GitHub Actions 控制台手动一键运行
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-publish-pipeline
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate In-depth SEO/GEO Article & Validate Safety Gate
+        id: publish_step
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          node scripts/auto-publish-article.mjs
+
+      - name: Commit and Push to Main
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 添加生成的新文章与基准计数文件
+          git add src/content/guides/ src/data/seo/
+          
+          if ! git diff --staged --quiet; then
+            SLUG="${{ steps.publish_step.outputs.slug }}"
+            if [ -z "$SLUG" ]; then
+              COMMIT_MSG="feat(content): 自动发布 SEO/GEO 深度主线专栏文章"
+            else
+              COMMIT_MSG="feat(content): 自动发布 SEO/GEO 深度主线专栏文章 - ${SLUG}"
+            fi
+            echo "Committing with message: $COMMIT_MSG"
+            # 严格遵守规范：绝对不添加 [skip ci]，确保正常触发生产环境自动部署流水线
+            git commit -m "$COMMIT_MSG"
+            git push origin main
+          else
+            echo "未检测到内容变更，无需提交。"
+          fi
