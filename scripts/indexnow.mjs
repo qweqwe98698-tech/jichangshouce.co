@@ -44,30 +44,37 @@ const payload = {
   host: HOST,
   key: INDEXNOW_KEY,
   keyLocation: KEY_LOCATION,
-  urlList: priorityUrls
+  urlList: allUrls
 };
 
-console.log(`🚀 准备向 api.indexnow.org 提交 ${payload.urlList.length} 个核心 URL...`);
-console.log('Payload:', JSON.stringify(payload, null, 2));
+console.log(`🚀 准备向 IndexNow API 提交全部 ${payload.urlList.length} 个最新生产 URL...`);
 
-// Perform HTTP POST to IndexNow endpoint
+// Perform HTTP POST to IndexNow endpoints (api.indexnow.org and www.bing.com)
 async function submitIndexNow() {
-  try {
-    const response = await fetch('https://api.indexnow.org/indexnow', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-      },
-      body: JSON.stringify(payload)
-    });
+  const endpoints = [
+    'https://api.indexnow.org/indexnow',
+    'https://www.bing.com/indexnow'
+  ];
 
-    if (response.status === 200 || response.status === 202) {
-      console.log(`✅ IndexNow 提交成功！HTTP 状态码: ${response.status}`);
-    } else {
-      console.log(`⚠️ IndexNow 响应: HTTP ${response.status} ${response.statusText}`);
+  for (const endpoint of endpoints) {
+    try {
+      console.log(`📡 正在推送至: ${endpoint}`);
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.status === 200 || response.status === 202) {
+        console.log(`✅ [${endpoint}] 提交成功！HTTP 状态码: ${response.status}`);
+      } else {
+        console.log(`⚠️ [${endpoint}] 响应状态: HTTP ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log(`⚠️ [${endpoint}] 异常: ${err.message}`);
     }
-  } catch (err) {
-    console.log(`ℹ️ IndexNow 网络通知完成（本地环境或离线跳过）: ${err.message}`);
   }
 }
 
