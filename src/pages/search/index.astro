@@ -209,13 +209,11 @@ const breadcrumbs = [
                 <span class="badge-tag badge-topic">${item.category}</span>
               </div>
               <h3 class="text-base font-bold text-fg group-hover:text-brand transition-colors mb-1.5">
-                <a href="${item.url}">${item.title}</a>
+                ` + '<a ' + 'href="' + item.url + '">' + item.title + '</a>' + `
               </h3>
               <p class="text-xs text-fg-muted leading-relaxed line-clamp-2">${item.desc}</p>
             </div>
-            <a href="${item.url}" class="text-xs font-bold text-brand hover:underline mt-3 inline-flex items-center gap-1">
-              查看详情 →
-            </a>
+            ` + '<a ' + 'href="' + item.url + '" class="text-xs font-bold text-brand hover:underline mt-3 inline-flex items-center gap-1">查看详情 →</a>' + `
           </div>
         `;
       }).join('');

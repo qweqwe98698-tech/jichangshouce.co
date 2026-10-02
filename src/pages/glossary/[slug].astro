@@ -14,8 +14,8 @@ export async function getStaticPaths() {
 const { item } = Astro.props;
 const { Content } = await render(item);
 
-const title = `${item.data.term} 是什么意思？网络技术与机场专线协议深度百科`;
-const description = item.data.shortDefinition || `${item.data.term} 详细百科释义、技术原理、优缺点分析及在出海代理网络中的应用场景。`;
+const title = `${item.data.term} 详解：${item.data.category}原理、优缺点与选型实战分析`;
+const description = item.data.shortDefinition ? `${item.data.term}技术深度解析：${item.data.shortDefinition} 包含核心优势、适用场景与选型建议。` : `${item.data.term} 详细百科释义、技术原理、优缺点分析及在代理网络中的应用场景。`;
 
 const breadcrumbs = [
   { name: '网络术语百科', url: '/glossary/' },

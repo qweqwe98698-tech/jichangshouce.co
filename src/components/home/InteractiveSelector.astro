@@ -386,14 +386,9 @@ const allProviders = getAllProviders();
                   </span>
                 </div>
                 <!-- Main Button: View Verification Profile -->
-                <a href="/brands/${p.slug}/" class="px-3 py-1.5 text-xs font-bold bg-brand hover:bg-brand-600 text-text-inverse rounded-lg transition-colors shadow-sm">
-                  查看核验档案
-                </a>
+                ` + '<a ' + 'href="/brands/' + p.slug + '/" class="px-3 py-1.5 text-xs font-bold bg-brand hover:bg-brand-600 text-text-inverse rounded-lg transition-colors shadow-sm">查看核验档案</a>' + `
                 <!-- Secondary Button: Official Website -->
-                <a href="${affUrl}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-xs font-medium bg-surface border border-border-subtle hover:bg-bg-hover text-fg rounded-lg transition-colors inline-flex items-center gap-0.5">
-                  <span>访问官网</span>
-                  <span class="text-[10px]">↗</span>
-                </a>
+                ` + '<a ' + 'href="' + affUrl + '" target="_blank" rel="noopener noreferrer nofollow sponsored" class="px-2.5 py-1.5 text-xs font-medium bg-surface border border-border-subtle hover:bg-bg-hover text-fg rounded-lg transition-colors inline-flex items-center gap-0.5"><span>访问官网</span><span class="text-[10px]">↗</span></a>' + `
               </div>
             </div>
 

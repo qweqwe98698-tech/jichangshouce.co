@@ -26,11 +26,16 @@ const schema = {
     "offerCount": brand.pricing.plans.length
   }
 };
+const dynamicTitle = brand.tagline
+  ? `${brand.name}：${brand.tagline} - 实机测试与配置核验档案`
+  : `${brand.name} 深度档案：${brand.routes} 实机表现与资费详解`;
+
+const dynamicDesc = `${brand.name}技术核验档案：主打${brand.routes}，支持${brand.protocols.join('/')}。入门资费 ¥${brand.pricing.minPrice} (${brand.pricing.traffic})，${brand.suitableFor?.[0] ? '重点适合' + brand.suitableFor[0] + '。' : ''}提供晚高峰实测延迟与配置方案。`;
 ---
 
 <BaseLayout
-  title={`${brand.name} 怎么样？2026 真实评测、测速数据与核验档案`}
-  description={`${brand.name} 详细资料档案与实机测速报告。线路类型：${brand.routes}，协议支持：${brand.protocols.join(', ')}，起步资费 ¥${brand.pricing.minPrice} (${brand.pricing.priceType})。`}
+  title={dynamicTitle}
+  description={dynamicDesc}
   schema={schema}
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -59,7 +64,7 @@ const schema = {
           <a
             href={brand.affiliateUrl || brand.website}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer nofollow sponsored"
             class="btn-primary px-5 py-2.5 text-sm font-bold inline-flex items-center gap-1.5 shadow-sm rounded-xl"
           >
             前往官方网站
@@ -228,7 +233,7 @@ const schema = {
             <a
               href={brand.affiliateUrl || brand.website}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow sponsored"
               class="btn-primary block w-full py-2.5 text-center text-xs font-bold rounded-lg shadow-sm"
             >
               前往官网了解更多 →
