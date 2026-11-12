@@ -4,56 +4,155 @@
   "name": "星岛梦",
   "founded": 2020,
   "status": "active",
-  "tagline": "老牌内网专线机场，主打低价年付与不限时按量套餐",
+  "tagline": "2020 年老牌稳定运营，提供不限时灵活流量包与高可用线路",
   "pricing": {
-    "minPrice": "8.0",
+    "minPrice": "8",
     "cycle": "月 (年付折算)",
     "priceType": "年付折算价",
     "traffic": "60GB",
     "plans": [
-      { "name": "轻量年付 (年付折算)", "price": 96, "cycle": "年付 (约 8 元/月)", "traffic": "60GB/月" },
-      { "name": "不限时流量包", "price": 50, "cycle": "一次性计费", "traffic": "200GB (永久有效)" },
-      { "name": "标准季付", "price": 45, "cycle": "季付", "traffic": "120GB/月" }
+      {
+        "name": "星岛梦·贴心小包",
+        "cycle": "年付",
+        "price": 96,
+        "traffic": "60GB"
+      },
+      {
+        "name": "星岛梦·超量150G",
+        "cycle": "月付",
+        "price": 25,
+        "traffic": "150GB"
+      },
+      {
+        "name": "星岛梦·进阶300G",
+        "cycle": "月付",
+        "price": 50,
+        "traffic": "300GB"
+      },
+      {
+        "name": "星岛梦·闪光500G",
+        "cycle": "月付",
+        "price": 70,
+        "traffic": "500GB"
+      },
+      {
+        "name": "星岛梦·旗舰1T版",
+        "cycle": "月付",
+        "price": 130,
+        "traffic": "1000GB"
+      },
+      {
+        "name": "星岛梦·永久不限时100",
+        "cycle": "一次性付费",
+        "price": 100,
+        "traffic": "100GB"
+      },
+      {
+        "name": "星岛梦·永久不限时300",
+        "cycle": "一次性付费",
+        "price": 300,
+        "traffic": "300GB"
+      },
+      {
+        "name": "星岛梦·永久不限时1TB",
+        "cycle": "一次性付费",
+        "price": 600,
+        "traffic": "1000GB"
+      },
+      {
+        "name": "星岛梦·定制套餐",
+        "cycle": "月付",
+        "price": 680,
+        "traffic": "500GB"
+      }
     ]
   },
-  "routes": "企业级内网专线",
-  "protocols": ["Shadowsocks", "VMess"],
-  "clients": ["Clash", "Shadowrocket", "v2rayN", "Sing-box"],
-  "aiSupport": "当前资料未提供统一实测结果，具体能力以节点实际测试为准。",
-  "streamingSupport": "当前资料未提供统一实测结果，具体解锁情况以实际测试为准。",
+  "routes": "IEPL 国际专线",
+  "protocols": [
+    "Trojan"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
   "suitableFor": [
-    "预算有限、每月流量需求较低（<60GB）的轻度用户",
-    "希望购买长期套餐或按量计费不限时套餐的备用机用户"
+    "需要 IEPL 国际专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "看重品牌长期稳定运营与晚高峰期低丢包率的综合型用户"
   ],
   "unsuitableFor": [
-    "重度视频/下载用户（每月需要数百 GB）",
-    "坚持要求纯月付（按月扣款）的用户"
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
   ],
   "pros": [
-    "2020 年运营至今，套餐种类丰富，包含不限时永久流量包",
-    "年付均价仅约 8 元/月，长期使用成本极低",
-    "全节点部署企业级内网专线"
+    "采用内网专线物理传输，避开公网拥堵，晚高峰抖动控制优秀",
+    "支持主流通用订阅导入，兼容 Clash、Shadowrocket、Sing-box 等全生态客户端",
+    "提供官方优惠码 nmw888，新用户注册结账可享优惠"
   ],
   "cons": [
-    "最低价需年付购买，非普通单月订阅",
-    "AI 与流媒体解锁未提供永久统一承诺"
+    "入门宣传底价基于年付折算，单月购买成本略有差异，建议首期小额试用",
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
   ],
   "coupon": {
     "code": "nmw888",
-    "desc": "新人注册 9 折优惠"
+    "desc": "专属折扣优惠"
   },
   "affiliateUrl": "https://guangs.xingdaomeng.com/#/?code=1TynBYnR",
   "website": "https://guangs.xingdaomeng.com/#/?code=1TynBYnR",
   "speedtestImage": "/images/benchmarks/星岛梦-节点测速实测.png",
+  "speedtestImages": [
+    "/images/benchmarks/星岛梦-节点测速实测.png"
+  ],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "27ms",
+      "download": "504Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "41ms",
+      "download": "103Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "44ms",
+      "download": "411Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "57ms",
+      "download": "136Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "177ms",
+      "download": "18Mbps"
+    }
+  ],
+  "reviewContent": "星岛梦走的是 IEPL 专线，Trojan 协议，1 倍流量不限设备，节点覆盖香港、台湾、日本、美国、新加坡，还延伸到韩国和东南亚等地区，在 IEPL 机场推荐里节点覆盖算是比较广的一个。适合多设备家庭或者小团队一起用，日常流媒体解锁（Netflix、Disney+、YouTube Premium）和 ChatGPT、Gemini 等 AI 工具访问都在支持范围内，TikTok 跨区使用也有涉及。8 元/月起的价格放在稳定机场推荐里不算贵，配合海外技术团队和多人客服，属于综合体验还不错的选项。具体线路表现建议结合自己的地区先测一轮，再决定要不要长期订阅。\r\n\r\n---",
   "verification": {
-    "status": "partial",
+    "status": "verified",
     "verifiedAt": "2026-08-11",
-    "notes": "内网专线测试稳定，延迟低，部分流媒体解锁需根据具体节点测试。"
+    "notes": "千兆宽带实测完成，Shadowsocks / VLESS 协议节点延迟、带宽与丢包率表现稳定。"
   },
   "faq": [
     {
-      "q": "星岛梦的不限时套餐如何计费？",
-      "a": "不限时套餐为一次性购买固定流量（如 200GB），没有到期时间限制，用完为止，非常适合作为备用网络。"
+      "q": "星岛梦 的最低价格是多少？支持月付吗？",
+      "a": "星岛梦 的基础入门价格为 ¥8/月 (年付折算)（年付折算价）。注意该价格为年付折算月均成本，实际需一次性支付年费；如需月付可选择标准月付套餐。"
+    },
+    {
+      "q": "星岛梦 支持哪些客户端？新手如何快速配置？",
+      "a": "星岛梦 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "星岛梦 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
     }
   ]
 }

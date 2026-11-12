@@ -9,7 +9,11 @@ interface Props {
 const { answer, symptom, points = [], className = '' } = Astro.props;
 ---
 
-<div class={`card-answer-box my-8 bg-brand-50/50 dark:bg-brand-900/10 border-l-4 border-l-brand rounded-r-xl p-5 shadow-sm ${className}`}>
+<div
+  class={`quick-answer-card card-answer-box my-8 bg-brand-50/50 dark:bg-brand-900/10 border-l-4 border-l-brand rounded-r-xl p-5 shadow-sm ${className}`}
+  data-geo-answer="direct-solution"
+  itemprop="abstract"
+>
   <div class="flex items-center gap-2 mb-2">
     <div class="w-6 h-6 rounded-full bg-brand text-text-inverse flex items-center justify-center text-xs font-bold shadow-sm">
       ⚡

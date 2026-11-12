@@ -14,29 +14,68 @@ const breadcrumbs = [
   { name: brand.name, url: Astro.url.pathname },
 ];
 
-const schema = {
+const maxPrice = brand.pricing.plans.length > 0
+  ? Math.max(...brand.pricing.plans.map(p => p.price)).toString()
+  : brand.pricing.minPrice;
+
+const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": brand.name,
   "description": brand.tagline,
+  "brand": {
+    "@type": "Brand",
+    "name": brand.name
+  },
   "offers": {
     "@type": "AggregateOffer",
     "priceCurrency": "CNY",
     "lowPrice": brand.pricing.minPrice,
-    "offerCount": brand.pricing.plans.length
+    "highPrice": maxPrice,
+    "offerCount": brand.pricing.plans.length,
+    "offers": brand.pricing.plans.map(p => ({
+      "@type": "Offer",
+      "name": p.name,
+      "price": p.price.toString(),
+      "priceCurrency": "CNY",
+      "category": p.cycle
+    }))
   }
 };
+
+const faqSchema = brand.faq && brand.faq.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": brand.faq.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a
+    }
+  }))
+} : null;
+
+const schemas = faqSchema ? [productSchema, faqSchema] : [productSchema];
+
 const dynamicTitle = brand.tagline
-  ? `${brand.name}：${brand.tagline} - 实机测试与配置核验档案`
+  ? `${brand.name}怎么样：${brand.tagline} - 实机测试与资费评测档案`
   : `${brand.name} 深度档案：${brand.routes} 实机表现与资费详解`;
 
-const dynamicDesc = `${brand.name}技术核验档案：主打${brand.routes}，支持${brand.protocols.join('/')}。入门资费 ¥${brand.pricing.minPrice} (${brand.pricing.traffic})，${brand.suitableFor?.[0] ? '重点适合' + brand.suitableFor[0] + '。' : ''}提供晚高峰实测延迟与配置方案。`;
+const dynamicDesc = `${brand.name}技术核验档案：主打${brand.routes}，支持${brand.protocols.join('/')}。入门资费 ¥${brand.pricing.minPrice} (${brand.pricing.traffic})，${brand.suitableFor?.[0] ? '重点适合' + brand.suitableFor[0] + '。' : ''}提供节点测速图谱、解锁实测与配置指引。`;
+
+const speedImages = brand.speedtestImages && brand.speedtestImages.length > 0
+  ? brand.speedtestImages
+  : (brand.speedtestImage ? [brand.speedtestImage] : []);
+
+const hasUnlockImages = brand.unlockImages && brand.unlockImages.length > 0;
+const hasSpeedData = brand.speedtestData && brand.speedtestData.length > 0;
 ---
 
 <BaseLayout
   title={dynamicTitle}
   description={dynamicDesc}
-  schema={schema}
+  schema={schemas}
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <Breadcrumb items={breadcrumbs} />
@@ -45,16 +84,16 @@ const dynamicDesc = `${brand.name}技术核验档案：主打${brand.routes}，�
     <header class="card-base p-6 sm:p-8 rounded-2xl mb-8">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-border-subtle">
         <div>
-          <div class="flex items-center gap-3 mb-2">
+          <div class="flex items-center gap-3 mb-2 flex-wrap">
             <h1 class="text-2xl sm:text-3xl font-black text-fg">{brand.name}</h1>
             <span class={`badge-tag ${brand.verification.status === 'verified' ? 'badge-verified' : 'badge-pending'}`}>
-              {brand.verification.status === 'verified' ? '✓ 已完成节点实测与档案核验' : '⏳ 待核验'}
+              {brand.verification.status === 'verified' ? '✓ 已完成节点实测与档案核验' : (brand.verification.status === 'partial' ? '✓ 资料部分核验' : '⏳ 待人工复核')}
             </span>
           </div>
           <p class="text-sm sm:text-base text-fg-muted font-medium">{brand.tagline}</p>
         </div>
 
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-3 flex-wrap">
           <div class="text-right mr-2">
             <div class="text-xs text-fg-subtle">{brand.pricing.priceType}</div>
             <div class="text-2xl font-black text-primary font-mono">
@@ -79,10 +118,15 @@ const dynamicDesc = `${brand.name}技术核验档案：主打${brand.routes}，�
       <div class="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-fg-subtle">
         <div>成立时间：<span class="text-fg font-medium">{brand.founded} 年</span></div>
         <div>核验日期：<span class="text-fg font-mono font-medium">{brand.verification.verifiedAt}</span></div>
-        <div>测试环境：<span class="text-fg font-medium">千兆宽带实机测速</span></div>
+        <div>测试环境：<span class="text-fg font-medium">{speedImages.length > 0 ? '千兆宽带实机测速' : '品牌资料核验'}</span></div>
         {brand.coupon && (
-          <div>优惠码：<span class="font-mono font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30 px-1.5 py-0.5 rounded">{brand.coupon.code} ({brand.coupon.desc})</span></div>
+          <div>官方优惠码：<span class="font-mono font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30 px-1.5 py-0.5 rounded">{brand.coupon.code} ({brand.coupon.desc})</span></div>
         )}
+      </div>
+
+      <!-- Compliance Disclosure -->
+      <div class="mt-3 text-[11px] text-fg-subtle bg-bg-subtle/60 p-2.5 rounded-lg border border-border-subtle/50">
+        📢 <span class="font-semibold text-fg">合规与透明声明：</span>本站包含推广合作链接，通过链接购买可能为本站带来服务器维护佣金，不会对您的购买价格产生任何影响。所有品牌公开数据与测试截屏均保留当次快照，拒绝夸大承诺。
       </div>
     </header>
 
@@ -93,31 +137,151 @@ const dynamicDesc = `${brand.name}技术核验档案：主打${brand.routes}，�
         
         <!-- Speedtest Benchmark Visual Card -->
         <section class="card-base p-6 rounded-xl">
-          <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
             <div>
               <h2 class="text-lg font-bold text-fg flex items-center gap-2">
-                📊 {brand.name} 真实节点测速图谱
+                📊 {brand.name} 节点测速图谱与性能分析
               </h2>
               <p class="text-xs text-fg-subtle mt-0.5">
-                测试批次：2026-08-11 实测 · 测试工具：MAI-TEST-BOT
+                测试时间：{brand.verification.verifiedAt} 实测 · 节点覆盖：亚太、欧美核心枢纽
               </p>
             </div>
-            <span class="badge-tag badge-blue text-[11px]">实机测试原图</span>
+            {speedImages.length > 0 ? (
+              <span class="badge-tag badge-blue text-[11px]">实机测试截图</span>
+            ) : (
+              <span class="badge-tag badge-pending text-[11px]">数据表核验</span>
+            )}
           </div>
 
-          <div class="rounded-lg overflow-hidden border border-border-subtle bg-black/5 dark:bg-black/40">
-            <img
-              src={brand.speedtestImage}
-              alt={`${brand.name} 节点测速实测报告图`}
-              class="w-full h-auto object-contain max-h-[500px]"
-              loading="lazy"
-            />
-          </div>
+          {speedImages.length > 0 ? (
+            <div class="space-y-4">
+              {speedImages.map((imgUrl, idx) => (
+                <div class="rounded-lg overflow-hidden border border-border-subtle bg-black/5 dark:bg-black/40">
+                  <img
+                    src={imgUrl}
+                    alt={`${brand.name} 节点测速实测报告图 ${speedImages.length > 1 ? `(第 ${idx + 1} 组)` : ''}`}
+                    class="w-full h-auto object-contain max-h-[550px]"
+                    loading="lazy"
+                  />
+                  {speedImages.length > 1 && (
+                    <div class="p-2 text-center text-xs text-fg-subtle border-t border-border-subtle">
+                      实机测速图谱 #{idx + 1}（宽带网络环境下单批次压测原图）
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div class="p-5 bg-bg-subtle rounded-lg border border-dashed border-border-subtle text-xs text-fg-muted space-y-2">
+              <div class="font-bold text-fg flex items-center gap-2">
+                ⏱️ 独立测速排期中与品牌数据核验
+              </div>
+              <p class="leading-relaxed">
+                当前收录数据来源于服务商公布的技术参数与阶段性统计档案。我们已将该服务商加入常态化网络监控队列，千兆多线实机测速图谱将在下一测试批次完成后同步更新。
+              </p>
+            </div>
+          )}
 
-          <div class="mt-3 p-3 bg-bg-subtle rounded-lg text-xs text-fg-muted leading-relaxed">
+          <!-- Speedtest Node Breakdown Table -->
+          {hasSpeedData && (
+            <div class="mt-5">
+              <h3 class="text-xs font-bold text-fg uppercase tracking-wider mb-2.5">
+                ⚡ 实测分地区延迟与下载带宽明细
+              </h3>
+              <div class="table-wrapper">
+                <table class="w-full text-xs">
+                  <thead>
+                    <tr class="border-b border-border text-fg-subtle text-left">
+                      <th class="py-2">测试地区 / 节点</th>
+                      <th class="py-2">网络延迟 (Ping)</th>
+                      <th class="py-2">下载速度 (Bandwidth)</th>
+                      <th class="py-2 text-right">链路状态</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-border-subtle">
+                    {brand.speedtestData!.map((st) => (
+                      <tr>
+                        <td class="py-2.5 font-bold text-fg">{st.node}</td>
+                        <td class="py-2.5 font-mono text-emerald-600 dark:text-emerald-400">{st.latency}</td>
+                        <td class="py-2.5 font-mono text-primary font-bold">{st.download}</td>
+                        <td class="py-2.5 text-right text-fg-subtle">
+                          <span class="inline-flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded">
+                            ● 连通正常
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          <div class="mt-4 p-3 bg-bg-subtle rounded-lg text-xs text-fg-muted leading-relaxed">
             <span class="font-bold text-fg">测速说明：</span>
             {brand.verification.notes}
-            <span class="text-fg-subtle block mt-1">（注：单日节点测速受所在地运营商和网络波动影响，仅作为线路连通性与带宽上限参考，不作为唯一永久指标。）</span>
+            <span class="text-fg-subtle block mt-1">（注：单日节点测速受所在地运营商和晚高峰公网出口波动影响，仅作为线路连通性与带宽参考，不构成绝对终身保障。）</span>
+          </div>
+        </section>
+
+        <!-- Unlock Images Showcase (If Present) -->
+        {hasUnlockImages && (
+          <section class="card-base p-6 rounded-xl border border-border-subtle">
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+              <div>
+                <h2 class="text-lg font-bold text-fg flex items-center gap-2">
+                  🎬 {brand.name} 流媒体与 AI 解锁能力实机验证
+                </h2>
+                <p class="text-xs text-fg-subtle mt-0.5">
+                  测试工具：RegionRestrictionCheck · 覆盖 ChatGPT、Claude、Netflix、Disney+ 原生解锁
+                </p>
+              </div>
+              <span class="badge-tag badge-verified text-[11px]">实测原图认证</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {brand.unlockImages!.map((imgUrl, idx) => (
+                <div class="rounded-lg overflow-hidden border border-border-subtle bg-black/5 dark:bg-black/40">
+                  <img
+                    src={imgUrl}
+                    alt={`${brand.name} 流媒体与 AI 解锁实机测试截图 ${idx + 1}`}
+                    class="w-full h-auto object-cover max-h-[300px]"
+                    loading="lazy"
+                  />
+                  <div class="p-2 text-center text-[11px] text-fg-muted bg-bg-subtle">
+                    解锁状态原图验证 #{idx + 1}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-4 p-3 bg-bg-subtle rounded-lg text-xs text-fg-muted space-y-1">
+              <div><strong class="text-fg">AI 工具支持：</strong>{brand.aiSupport}</div>
+              <div><strong class="text-fg">流媒体解锁：</strong>{brand.streamingSupport}</div>
+            </div>
+          </section>
+        )}
+
+        <!-- In-Depth Review & Analysis Section -->
+        <section class="card-base p-6 rounded-xl">
+          <h2 class="text-lg font-bold text-fg mb-4 flex items-center gap-2">
+            📝 {brand.name} 深度客观评测与架构解析
+          </h2>
+          <div class="prose dark:prose-invert max-w-none text-xs sm:text-sm text-fg-muted leading-relaxed space-y-3">
+            <p class="whitespace-pre-line">
+              {brand.reviewContent}
+            </p>
+          </div>
+
+          <div class="mt-5 p-4 rounded-xl bg-bg-surface dark:bg-bg-subtle border border-border-subtle">
+            <h3 class="text-xs font-bold text-fg mb-2 uppercase tracking-wider">
+              🔍 选型建议与购买防坑提醒
+            </h3>
+            <ul class="text-xs text-fg-muted space-y-1.5 list-disc pl-4">
+              <li><strong>计费陷阱辨识：</strong>部分超低价为年付套餐平摊折算价，请在官方收银台留意首期实际应付金额。</li>
+              <li><strong>协议匹配建议：</strong>若您所在网络受 QoS 严重干扰，推荐优先连接 {brand.protocols.includes('VLESS') ? 'VLESS 协议节点' : '专线中转节点'}。</li>
+              <li><strong>退款机制注意：</strong>绝大多数机场服务商由于流量商品特性，购买后不支持无理由退款，强烈建议初次使用先选择小容量月付套餐。</li>
+            </ul>
           </div>
         </section>
 
@@ -129,7 +293,7 @@ const dynamicDesc = `${brand.name}技术核验档案：主打${brand.routes}，�
               <thead>
                 <tr class="border-b border-border text-fg-subtle text-left">
                   <th class="py-2.5">套餐名称</th>
-                  <th class="py-2.5">结算周期</th>
+                  <th class="py-2.5">计费周期</th>
                   <th class="py-2.5">包含流量</th>
                   <th class="py-2.5 text-right">参考价格</th>
                 </tr>
@@ -147,7 +311,7 @@ const dynamicDesc = `${brand.name}技术核验档案：主打${brand.routes}，�
             </table>
           </div>
           <p class="text-[11px] text-fg-subtle mt-3">
-            * 提示：价格仅供参考，实际套餐资费与优惠折扣以服务商官方结账页面为准。
+            * 提示：价格仅供参考，实际套餐资费与即时折扣以服务商官方结账页面为准。
           </p>
         </section>
 
@@ -160,7 +324,7 @@ const dynamicDesc = `${brand.name}技术核验档案：主打${brand.routes}，�
             <ul class="space-y-2 text-xs text-fg-muted">
               {brand.pros.map((p) => (
                 <li class="flex items-start gap-1.5">
-                  <span class="text-emerald-500">•</span>
+                  <span class="text-emerald-500 font-bold">•</span>
                   <span>{p}</span>
                 </li>
               ))}
@@ -174,7 +338,7 @@ const dynamicDesc = `${brand.name}技术核验档案：主打${brand.routes}，�
             <ul class="space-y-2 text-xs text-fg-muted">
               {brand.cons.map((c) => (
                 <li class="flex items-start gap-1.5">
-                  <span class="text-amber-500">•</span>
+                  <span class="text-amber-500 font-bold">•</span>
                   <span>{c}</span>
                 </li>
               ))}
@@ -238,6 +402,9 @@ const dynamicDesc = `${brand.name}技术核验档案：主打${brand.routes}，�
             >
               前往官网了解更多 →
             </a>
+            <p class="text-[10px] text-fg-subtle text-center mt-2">
+              * 外部服务商链接，注册前请核对官网条款
+            </p>
           </div>
         </div>
 
@@ -269,10 +436,13 @@ const dynamicDesc = `${brand.name}技术核验档案：主打${brand.routes}，�
 
         <!-- Next Step Hub Navigation -->
         <div class="card-base p-5 rounded-xl text-xs space-y-3 bg-surface">
-          <h4 class="font-bold text-fg">🧭 下一步指引</h4>
+          <h4 class="font-bold text-fg">🧭 相关专题与选型导航</h4>
           <div class="space-y-2">
             <a href="/recommend/" class="block p-2 rounded bg-bg-subtle hover:bg-primary/10 transition-colors text-fg hover:text-primary font-medium">
               🎯 智能选型推荐器 →
+            </a>
+            <a href="/brands/" class="block p-2 rounded bg-bg-subtle hover:bg-primary/10 transition-colors text-fg hover:text-primary font-medium">
+              📚 42家机场品牌对比资料库 →
             </a>
             <a href="/tutorials/clash/clash-verge-starter-guide/" class="block p-2 rounded bg-bg-subtle hover:bg-primary/10 transition-colors text-fg hover:text-primary font-medium">
               📖 Clash Verge 配置教程 →

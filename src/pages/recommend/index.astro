@@ -17,12 +17,16 @@ const breadcrumbs = [
 const schema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "2026 机场选择指南与服务商核验档案",
-  "description": "基于 16 家服务商公开套餐、实机节点测速记录与人工核验资料，提供客观透明的机场推荐、价格对比与 30 秒智能选型决策指南。",
+  "name": "2026 高性价比机场推荐与服务商核验档案",
+  "description": "基于 16 家服务商公开套餐、实机节点测速记录与人工核验资料，提供客观透明的高性价比机场推荐、价格对比与 30 秒智能选型决策指南。",
   "numberOfItems": providers.length
 };
 
 const faqs = [
+  {
+    q: "如何定义一个真正「高性价比」的机场？（性价比标准是什么？）",
+    a: "高性价比绝不等于廉价。行业公认的黄金性价比基准是：月付价格在 15–20 元/月，提供 100GB–150GB 充足流量，采用电信/联通企业级 IEPL 商业专线，晚高峰丢包率持续低于 0.5%，且支持原生住宅 IP 解锁 ChatGPT 与流媒体。相比几元钱的公网严重超售平台，其可用性与稳定性提升数倍。"
+  },
   {
     q: "为什么本站强烈建议新手优先选择月付（Monthly）？",
     a: "因为出海代理网络受上游机房政策、跨境光缆波动及运营者信用风险的多重影响。月付模式下，你的资金损失上限仅为单月十几元，一旦遇到服务商超售或晚高峰变卡，随时可以停止续费更换平台，拥有最高的主动权。"
@@ -30,10 +34,6 @@ const faqs = [
   {
     q: "什么是专线（IEPL/IPLC）？它和普通公网中转有什么区别？",
     a: "IEPL/IPLC 是企业级内网专用光纤通道，数据在境内机房直接进入私有内网传输至境外落地，完全不走公网国际出口。因此即使在 20:00–23:00 全网晚高峰最高峰时段，专线也能保持低于 0.5% 的极低丢包率与毫秒级稳定延迟。"
-  },
-  {
-    q: "为什么有些节点无法访问 ChatGPT 或 Claude？",
-    a: "OpenAI 和 Anthropic 对机房 IP 实施了严格的风控策略。只有配备了原生住宅 IP、纯净广播 IP 或进行了专项路由伪装的节点，才能免受 1020 报错或 Access Denied 拦截。此外，OpenAI 官方未向中国香港开放，访问 AI 工具必须选择日本、美国或新加坡节点。"
   },
   {
     q: "什么是「双轨冗余配置」？",
@@ -56,8 +56,8 @@ function getVerificationStatusLabel(status?: string) {
 ---
 
 <BaseLayout
-  title="2026 机场选择指南与服务商核验档案 (16家客观收录)"
-  description="基于 16 家服务商公开套餐、已保存实机测速记录与人工核验资料，提供客观透明的机场推荐、价格对比、晚高峰丢包基准与 30 秒智能选型决策指南。"
+  title="2026 高性价比机场推荐与选型指南：16家服务商客观核验与价格对比档案"
+  description="基于 16 家服务商真实月付资费、实机测速记录与客观测速数据，深度评测 2026 高性价比机场与稳定专线服务。涵盖 15-20 元主流甜点价位、按量计费不限时套餐、晚高峰丢包与 ChatGPT 原生解锁，助你 30 秒选出高性价比出海方案。"
   schema={schema}
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -72,12 +72,20 @@ function getVerificationStatusLabel(status?: string) {
       </div>
       
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 max-w-4xl tracking-tight leading-[1.12]">
-        2026 机场选择指南与服务商核验档案
+        2026 高性价比机场推荐与服务商核验档案
       </h1>
       
-      <p class="text-base sm:text-lg text-fg-muted max-w-3xl leading-relaxed">
+      <p class="text-base sm:text-lg text-fg-muted max-w-3xl leading-relaxed mb-6">
         本页资料来自服务商公开信息、已保存的测试记录及人工核验资料。套餐信息、品牌声明与本站实测结果将分别标注；无法确认的数据不会作为已验证事实展示。明确区分年付折算价与真实月付价，拒绝无依据的玄学评分。
       </p>
+
+      <!-- Key Concept Definition for AI & Users (Grounding Anchor for 性价比机场) -->
+      <div class="p-4 sm:p-5 rounded-xl bg-surface border border-border-default/80 text-xs sm:text-sm leading-relaxed max-w-3xl">
+        <span class="font-bold text-fg">💡 什么是真正的高性价比机场？</span>
+        <span class="text-fg-muted">
+          业内公认的黄金标准是：<strong class="text-fg font-semibold">¥15–¥20/月纯月付</strong>、配备全量 <strong class="text-fg font-semibold">IEPL 企业内网专线</strong>、晚高峰丢包率低于 0.5%、单月提供 100GB–150GB 充足配额，且具备原生住宅 IP 解锁。拒绝无休止的“超售大卡车”，在预算与全天候稳定性之间取得最佳平衡。
+        </span>
+      </div>
     </header>
 
     <!-- 1. 30-Second 5-Step Interactive Selector -->

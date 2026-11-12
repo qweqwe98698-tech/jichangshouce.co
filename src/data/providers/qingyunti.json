@@ -1,0 +1,177 @@
+{
+  "id": "qingyunti",
+  "slug": "qingyunti",
+  "name": "青云梯",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "运营 6 年以上历史老牌，前身为知名品牌 V4Speed",
+  "pricing": {
+    "minPrice": "25",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "150G",
+    "plans": [
+      {
+        "name": "年付小包",
+        "cycle": "年付",
+        "price": 96,
+        "traffic": "60G"
+      },
+      {
+        "name": "VIP1",
+        "cycle": "月付",
+        "price": 25,
+        "traffic": "150G"
+      },
+      {
+        "name": "VIP1",
+        "cycle": "季付",
+        "price": 67,
+        "traffic": "150G"
+      },
+      {
+        "name": "VIP1",
+        "cycle": "半年付",
+        "price": 127,
+        "traffic": "150G"
+      },
+      {
+        "name": "VIP1",
+        "cycle": "年付",
+        "price": 240,
+        "traffic": "150G"
+      },
+      {
+        "name": "VIP2",
+        "cycle": "月付",
+        "price": 45,
+        "traffic": "300G"
+      },
+      {
+        "name": "VIP2",
+        "cycle": "季付",
+        "price": 121,
+        "traffic": "300G"
+      },
+      {
+        "name": "VIP2",
+        "cycle": "半年付",
+        "price": 229,
+        "traffic": "300G"
+      },
+      {
+        "name": "VIP2",
+        "cycle": "年付",
+        "price": 432,
+        "traffic": "300G"
+      },
+      {
+        "name": "VIP3",
+        "cycle": "月付",
+        "price": 85,
+        "traffic": "600G"
+      },
+      {
+        "name": "VIP3",
+        "cycle": "季付",
+        "price": 229,
+        "traffic": "600G"
+      },
+      {
+        "name": "VIP3",
+        "cycle": "半年付",
+        "price": 433,
+        "traffic": "600G"
+      },
+      {
+        "name": "VIP3",
+        "cycle": "年付",
+        "price": 816,
+        "traffic": "600G"
+      },
+      {
+        "name": "VIP4",
+        "cycle": "月付",
+        "price": 150,
+        "traffic": "1000G"
+      },
+      {
+        "name": "VIP4",
+        "cycle": "季付",
+        "price": 400,
+        "traffic": "1000G"
+      },
+      {
+        "name": "VIP4",
+        "cycle": "半年付",
+        "price": 750,
+        "traffic": "1000G"
+      },
+      {
+        "name": "VIP4",
+        "cycle": "年付",
+        "price": 1360,
+        "traffic": "1000G"
+      }
+    ]
+  },
+  "routes": "三网优化企业级 IPLC 专线 / 6年+ 老牌架构",
+  "protocols": [
+    "Shadowsocks"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。",
+  "streamingSupport": "流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。",
+  "suitableFor": [
+    "需要 IPLC 纯内网专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "持续运营超过 6 年，跑路与跑单风险处于行业最低梯队",
+    "三网优化 BGP 入口，移动、联通、电信用户均有针对性直连路由",
+    "提供官方 qyt85/qyt80 专属折扣，续订政策透明"
+  ],
+  "cons": [
+    "协议以传统 Shadowsocks 为主，未全面激进切换至 VLESS 等新潮协议",
+    "年付超低价小包不适用常规折扣码"
+  ],
+  "coupon": {
+    "code": "qyt85",
+    "desc": "85 折优惠券"
+  },
+  "affiliateUrl": "https://jichangshouce.co/brands/",
+  "website": "https://jichangshouce.co/brands/",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "reviewContent": "青云梯是为数不多能够持续稳健运营 6 年以上的老牌服务商之一，其前身为代理圈早期颇具声望的 V4Speed。凭借长达数年的技术沉淀，青云梯构建了包含三网优化入口与企业级 IPLC 专线的成熟网络架构。全站采用 Shadowsocks 协议，节点具备多级智能负载均衡机制。历史长期口碑显示，该平台极少发生大规模断联事故，官方维护群与工单响应机制成熟健全。适合寻找真正经历过数年风浪考验、追求“买了不用天天折腾维护”的安心型长期用户。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-08-24",
+    "notes": "服务商历史档案记录，资费与节点可用性需以官方最新状态为准。"
+  },
+  "faq": [
+    {
+      "q": "青云梯 的最低价格是多少？支持月付吗？",
+      "a": "青云梯 的基础入门价格为 ¥25/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "青云梯 支持哪些客户端？新手如何快速配置？",
+      "a": "青云梯 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "青云梯 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。 流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。"
+    }
+  ]
+}

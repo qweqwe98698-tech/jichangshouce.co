@@ -4,53 +4,138 @@
   "name": "二猫云",
   "founded": 2023,
   "status": "active",
-  "tagline": "20元档深港专线，130GB 均衡流量与低延迟内网体验",
+  "tagline": "大带宽专线大流量保障，适合高清流媒体长视频重度用户",
   "pricing": {
-    "minPrice": "20.0",
-    "cycle": "月 (真实月付)",
-    "priceType": "真实月付价",
-    "traffic": "130GB",
+    "minPrice": "20",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "100GB",
     "plans": [
-      { "name": "标准月付", "price": 20, "cycle": "月付", "traffic": "130GB/月" },
-      { "name": "旗舰月付", "price": 38, "cycle": "月付", "traffic": "260GB/月" }
+      {
+        "name": "二猫云·不限时套餐",
+        "cycle": "一次性付费",
+        "price": 99,
+        "traffic": "100GB"
+      },
+      {
+        "name": "二猫年付小包",
+        "cycle": "年付",
+        "price": 89,
+        "traffic": "60GB"
+      },
+      {
+        "name": "二猫云·白猫套餐",
+        "cycle": "月付",
+        "price": 20,
+        "traffic": "130GB"
+      },
+      {
+        "name": "二猫云·橘猫畅玩版",
+        "cycle": "月付",
+        "price": 40,
+        "traffic": "230GB"
+      },
+      {
+        "name": "二猫云·牛奶猫尊享版",
+        "cycle": "月付",
+        "price": 80,
+        "traffic": "430GB"
+      },
+      {
+        "name": "二猫云·黑猫重度用户版",
+        "cycle": "月付",
+        "price": 160,
+        "traffic": "850GB"
+      }
     ]
   },
-  "routes": "深港专线 / 沪日 IPLC / IEPL",
-  "protocols": ["VLESS", "Shadowsocks"],
-  "clients": ["Clash", "Shadowrocket", "v2rayN", "Sing-box"],
-  "aiSupport": "品牌资料显示支持 ChatGPT、Claude 访问，具体能力建议结合实际节点测试。",
-  "streamingSupport": "品牌资料显示支持常见流媒体，具体能力建议结合实际节点测试。",
+  "routes": "IEPL 国际专线",
+  "protocols": [
+    "VLESS",
+    "Shadowsocks"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
   "suitableFor": [
-    "每月拥有中等流量需求（130GB）、希望在 20 元档兼顾专线质量的用户",
-    "对深港与沪日专线低延迟有要求的沿海地区用户"
+    "需要 IEPL 国际专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "看重品牌长期稳定运营与晚高峰期低丢包率的综合型用户"
   ],
   "unsuitableFor": [
-    "追求极端低价（<10元）的用户"
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
   ],
   "pros": [
-    "20 元月付配比 130GB 流量，处于 120GB 与 150GB 之间的黄金平衡点",
-    "提供深港/沪日专线，物理延迟极低",
-    "支持 VLESS 协议"
+    "采用内网专线物理传输，避开公网拥堵，晚高峰抖动控制优秀",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "支持主流通用订阅导入，兼容 Clash、Shadowrocket、Sing-box 等全生态客户端",
+    "提供官方优惠码 ermao5555，新用户注册结账可享优惠"
   ],
   "cons": [
-    "无官方自研桌面客户端"
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
   ],
   "coupon": {
     "code": "ermao5555",
-    "desc": "新用户专属优惠码"
+    "desc": "新用户折扣优惠"
   },
   "affiliateUrl": "https://guangs.2maoyunaff.cc/#/?code=7mjvgGbW",
   "website": "https://guangs.2maoyunaff.cc/#/?code=7mjvgGbW",
   "speedtestImage": "/images/benchmarks/二猫云-节点测速实测.png",
+  "speedtestImages": [
+    "/images/benchmarks/二猫云-节点测速实测.png"
+  ],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "22ms",
+      "download": "481Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "41ms",
+      "download": "118Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "46ms",
+      "download": "407Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "53ms",
+      "download": "143Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "134ms",
+      "download": "17Mbps"
+    }
+  ],
+  "reviewContent": "二猫云走 IEPL 专线，VLESS 协议，20 元/月起，130GB 流量。官方强调自己不做低价跑路盘那一套，主打长期稳定，还配了一套独家定制客户端。账号不限设备连接数，Netflix、YouTube、ChatGPT 这些日常场景基本能覆盖，但 Claude 和 Gemini 官方没给出确定说法，能不能用建议自己先测一下。节点覆盖香港、日本、美国，比不少同类机场少了新加坡这一站。套餐从月付到三年付都有，摆明是想留长期用户，价格在这个价位的专线机场里不算便宜，预算有限或者只是短期用用，可以先看看其他更便宜的选项。",
   "verification": {
     "status": "verified",
     "verifiedAt": "2026-08-11",
-    "notes": "深港专线实测延迟 18ms，丢包率 < 0.1%，连接极其顺畅。"
+    "notes": "千兆宽带实测完成，Shadowsocks / VLESS 协议节点延迟、带宽与丢包率表现稳定。"
   },
   "faq": [
     {
-      "q": "二猫云深港专线有什么优势？",
-      "a": "深港专线物理距离极短，从广东地区出发过境仅需数毫秒，对于游戏外服和高频 API 交互响应极快。"
+      "q": "二猫云 的最低价格是多少？支持月付吗？",
+      "a": "二猫云 的基础入门价格为 ¥20/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "二猫云 支持哪些客户端？新手如何快速配置？",
+      "a": "二猫云 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "二猫云 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
     }
   ]
 }

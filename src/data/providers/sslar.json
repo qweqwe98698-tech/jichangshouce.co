@@ -1,0 +1,149 @@
+{
+  "id": "sslar",
+  "slug": "sslar",
+  "name": "sslar",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "技术极客流定位，企业级 IEPL+BGP 与 Eons/Dler 架构同源",
+  "pricing": {
+    "minPrice": "17",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "100G",
+    "plans": [
+      {
+        "name": "Basic",
+        "cycle": "月付",
+        "price": 17,
+        "traffic": "100G"
+      },
+      {
+        "name": "Basic",
+        "cycle": "季付",
+        "price": 46,
+        "traffic": "100G"
+      },
+      {
+        "name": "Basic",
+        "cycle": "半年付",
+        "price": 87,
+        "traffic": "100G"
+      },
+      {
+        "name": "Basic",
+        "cycle": "年付",
+        "price": 163,
+        "traffic": "100G"
+      },
+      {
+        "name": "Standard",
+        "cycle": "月付",
+        "price": 28,
+        "traffic": "200G"
+      },
+      {
+        "name": "Standard",
+        "cycle": "季付",
+        "price": 76,
+        "traffic": "200G"
+      },
+      {
+        "name": "Standard",
+        "cycle": "半年付",
+        "price": 143,
+        "traffic": "200G"
+      },
+      {
+        "name": "Standard",
+        "cycle": "年付",
+        "price": 268,
+        "traffic": "200G"
+      },
+      {
+        "name": "Premium",
+        "cycle": "月付",
+        "price": 36,
+        "traffic": "300G"
+      },
+      {
+        "name": "Premium",
+        "cycle": "季付",
+        "price": 97,
+        "traffic": "300G"
+      },
+      {
+        "name": "Premium",
+        "cycle": "半年付",
+        "price": 183,
+        "traffic": "300G"
+      },
+      {
+        "name": "Premium",
+        "cycle": "年付",
+        "price": 345,
+        "traffic": "300G"
+      }
+    ]
+  },
+  "routes": "企业级 IEPL + 多线 BGP / 极客级架构",
+  "protocols": [
+    "VLESS",
+    "Shadowsocks"
+  ],
+  "clients": [
+    "自研一键客户端 (Windows/macOS/Android/iOS)",
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。",
+  "streamingSupport": "流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。",
+  "suitableFor": [
+    "需要 IEPL 国际专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 自研一键客户端 (Windows/macOS/Android/iOS) 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "技术架构扎实，承袭知名老牌极客服务商的路由控制逻辑",
+    "支持 SS 与 VLESS 灵活自适应，兼顾极简配置与高防封锁",
+    "支持专属 8 折优惠码 ko3eTt0w，季付与年付折扣梯次完整"
+  ],
+  "cons": [
+    "目前不提供面向散客的公开主站入口，主要通过历史社群与推荐邀请流通",
+    "缺乏一键傻瓜式自研客户端，完全依赖第三方开源客户端配置"
+  ],
+  "coupon": {
+    "code": "ko3eTt0w",
+    "desc": "8 折优惠券"
+  },
+  "affiliateUrl": "https://jichangshouce.co/brands/",
+  "website": "https://jichangshouce.co/brands/",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "reviewContent": "sslar 在代理极客圈中属于较为硬核的技术流服务商，其底层网络与早期知名项目 Eons/Akari/Dler 的技术栈架构同源。系统采用企业级 IEPL 专线融合多线 BGP 智能中继，并支持 Shadowsocks 与 VLESS 协议按需自适应切换。该平台以协议纯正、节点路由无多余冗杂跳转而受到技术型用户青睐，支持使用 ko3eTt0w 专属 8 折优惠码。适合具备一定网络基础、追求纯净原始连接与低延迟稳定性的中高级用户。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-08-24",
+    "notes": "服务商历史档案记录，资费与节点可用性需以官方最新状态为准。"
+  },
+  "faq": [
+    {
+      "q": "sslar 的最低价格是多少？支持月付吗？",
+      "a": "sslar 的基础入门价格为 ¥17/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "sslar 支持哪些客户端？新手如何快速配置？",
+      "a": "sslar 完整兼容 自研一键客户端 (Windows/macOS/Android/iOS)、Clash、Shadowrocket 等客户端。新手可直接下载官方一键客户端登录即连，亦可在用户后台一键导入订阅到第三方软件。"
+    },
+    {
+      "q": "sslar 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。 流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。"
+    }
+  ]
+}

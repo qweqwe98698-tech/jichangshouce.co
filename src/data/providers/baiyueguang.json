@@ -1,0 +1,144 @@
+{
+  "id": "baiyueguang",
+  "slug": "baiyueguang",
+  "name": "白月光",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "百节点海量冷门地区覆盖，主打季付大容量与多地区代理",
+  "pricing": {
+    "minPrice": "66",
+    "cycle": "季付",
+    "priceType": "季付折算价",
+    "traffic": "每月100GB高速流量",
+    "plans": [
+      {
+        "name": "小包",
+        "cycle": "季付",
+        "price": 66,
+        "traffic": "每月100GB高速流量"
+      },
+      {
+        "name": "中包",
+        "cycle": "季付",
+        "price": 126,
+        "traffic": "每月250GB高速流量"
+      },
+      {
+        "name": "大包",
+        "cycle": "季付",
+        "price": 156,
+        "traffic": "每月400GB高速流量"
+      },
+      {
+        "name": "超大包",
+        "cycle": "季付",
+        "price": 216,
+        "traffic": "每月750GB高速流量"
+      },
+      {
+        "name": "不差钱",
+        "cycle": "季付",
+        "price": 231,
+        "traffic": "每月900GB高速流量"
+      },
+      {
+        "name": "旗舰包",
+        "cycle": "年付",
+        "price": 2500,
+        "traffic": "每月2500GB超大流量"
+      }
+    ]
+  },
+  "routes": "全球多线 BGP 隧道中继",
+  "protocols": [
+    "Shadowsocks"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "测试显示 ChatGPT / Claude 可在特定优化节点使用，部分节点或遇阻断，建议结合多节点灵活切换。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
+  "suitableFor": [
+    "需要 商业中继与企业级专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "节点涉及 70+ 全球地区，涵盖大量东南亚与南亚冷门落地节点",
+    "季付 66 元起门槛较低，套餐档位覆盖 100GB 至 2500GB 宽幅区间",
+    "Shadowsocks 协议兼容性极强，适配所有主流代理客户端"
+  ],
+  "cons": [
+    "部分边缘冷门节点延迟较高，晚高峰存在带宽波动",
+    "不提供单月购买选项，需按季度或年度付费"
+  ],
+  "affiliateUrl": "https://sibker.com/register?invite_code=gg6puAId",
+  "website": "https://sibker.com/register?invite_code=gg6puAId",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "160.7ms",
+      "download": "114.94Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "302.6ms",
+      "download": "70.53Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "202.4ms",
+      "download": "77.65Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "—",
+      "download": "0.03Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "186.8ms",
+      "download": "85.22Mbps"
+    },
+    {
+      "node": "加拿大",
+      "latency": "344ms",
+      "download": "62Mbps"
+    },
+    {
+      "node": "韩国",
+      "latency": "358ms",
+      "download": "31.28Mbps"
+    }
+  ],
+  "reviewContent": "白月光是一家在代理圈内以“超多地区节点名目”著称的特色机场。历史测试记录覆盖了 108 个节点，地区多达 79 个，除常见的港台新美日韩外，还延伸至孟加拉、尼泊尔、柬埔寨、越南等冷门亚洲出海节点。资费方面采取季付 66 元起（每月 100GB）的阶梯大包模式，一次性资金门槛相对平易。香港、马来西亚和泰国节点在实测中表现出较好的连通率，非常适合需要抓取全球多地区区域数据、跨境电商多站点店铺巡检或收集冷门网络环境的用户。需要注意的是其节点命名繁多，部分偏远小众节点依赖公网中转，晚高峰稳定性存在一定波动。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-10-19",
+    "notes": "包含实机节点延迟与测速明细记录，晚高峰长期稳定性待持续复核。"
+  },
+  "faq": [
+    {
+      "q": "白月光 的最低价格是多少？支持月付吗？",
+      "a": "白月光 的基础入门价格为 ¥66/季付（季付折算价）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "白月光 支持哪些客户端？新手如何快速配置？",
+      "a": "白月光 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "白月光 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "测试显示 ChatGPT / Claude 可在特定优化节点使用，部分节点或遇阻断，建议结合多节点灵活切换。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
+    }
+  ]
+}

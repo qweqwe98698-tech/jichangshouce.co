@@ -1,0 +1,142 @@
+{
+  "id": "weifeng",
+  "slug": "weifeng",
+  "name": "微风网络",
+  "founded": 2023,
+  "status": "active",
+  "tagline": "低门槛高性价比均衡型节点，兼顾学生与日常办公预算",
+  "pricing": {
+    "minPrice": "7",
+    "cycle": "月 (年付折算)",
+    "priceType": "年付折算价",
+    "traffic": "100GB",
+    "plans": [
+      {
+        "name": "清风 (Breeze)",
+        "cycle": "年付",
+        "price": 137,
+        "traffic": "100GB"
+      },
+      {
+        "name": "乘风 (Riding)",
+        "cycle": "月付",
+        "price": 27,
+        "traffic": "200GB"
+      },
+      {
+        "name": "破风 (Breaking)",
+        "cycle": "月付",
+        "price": 57,
+        "traffic": "500GB"
+      },
+      {
+        "name": "御风 (Mastery)",
+        "cycle": "月付",
+        "price": 127,
+        "traffic": "1200GB"
+      },
+      {
+        "name": "信风·不限时",
+        "cycle": "一次性付费",
+        "price": 200,
+        "traffic": "270GB"
+      },
+      {
+        "name": "长风·不限时",
+        "cycle": "一次性付费",
+        "price": 370,
+        "traffic": "570GB"
+      }
+    ]
+  },
+  "routes": "IEPL 国际专线",
+  "protocols": [
+    "VLESS",
+    "Shadowsocks"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
+  "suitableFor": [
+    "需要 IEPL 国际专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "看重品牌长期稳定运营与晚高峰期低丢包率的综合型用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "采用内网专线物理传输，避开公网拥堵，晚高峰抖动控制优秀",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "支持主流通用订阅导入，兼容 Clash、Shadowrocket、Sing-box 等全生态客户端",
+    "提供官方优惠码 flat888，新用户注册结账可享优惠"
+  ],
+  "cons": [
+    "入门宣传底价基于年付折算，单月购买成本略有差异，建议首期小额试用",
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
+  ],
+  "coupon": {
+    "code": "flat888",
+    "desc": "专属 9 折优惠码"
+  },
+  "affiliateUrl": "https://edp01.breezenetaff.com/#/?code=t3huofyI",
+  "website": "https://edp01.breezenetaff.com/#/?code=t3huofyI",
+  "speedtestImage": "/images/benchmarks/微风-节点测速实测.png",
+  "speedtestImages": [
+    "/images/benchmarks/微风-节点测速实测.png"
+  ],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "25ms",
+      "download": "546Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "40ms",
+      "download": "115Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "43ms",
+      "download": "384Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "54ms",
+      "download": "131Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "167ms",
+      "download": "17Mbps"
+    }
+  ],
+  "reviewContent": "微风网络在便宜机场推荐里经常被提到，价格是它最直接的优势——11 元/月起，比不少同类 IEPL 机场推荐都要低，对学生党和轻度用户比较友好。走的是 IEPL 专线而不是纯中转，所以稳定性比一些更便宜的中转机场要好一点，日常刷网页、看视频、用 ChatGPT 基本没问题，节点也覆盖了香港、新加坡、日本、美国这几个热门地区。客服口碑在这个价位段里算是不错的，第一次用机场遇到问题至少有地方问，这对刚接触机场的新手来说挺重要。不过 100GB 的流量对重度用户可能不太够，属于入门够用但称不上顶配的类型，如果每天长时间在线，可能需要额外留意用量。",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "千兆宽带实测完成，Shadowsocks / VLESS 协议节点延迟、带宽与丢包率表现稳定。"
+  },
+  "faq": [
+    {
+      "q": "微风网络 的最低价格是多少？支持月付吗？",
+      "a": "微风网络 的基础入门价格为 ¥7/月 (年付折算)（年付折算价）。注意该价格为年付折算月均成本，实际需一次性支付年费；如需月付可选择标准月付套餐。"
+    },
+    {
+      "q": "微风网络 支持哪些客户端？新手如何快速配置？",
+      "a": "微风网络 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "微风网络 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
+    }
+  ]
+}

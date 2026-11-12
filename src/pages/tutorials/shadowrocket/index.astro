@@ -7,16 +7,17 @@ import ArticleCard from '../../../components/cards/ArticleCard.astro';
 const srTutorials = await getCollection('tutorials', ({ data, id }) => data.client === 'shadowrocket' || id.startsWith('shadowrocket/'));
 
 const learningSteps = [
-  { step: '01', title: '认识 Shadowrocket', desc: '正版辨别防骗与 iOS 核心特性', link: '/tutorials/shadowrocket/what-is-shadowrocket/' },
-  { step: '02', title: '外区商店下载获取', desc: '美区 Apple ID 购买与安装指引', link: '/tutorials/shadowrocket/import-subscription/#二前置条件与正版获取指南' },
-  { step: '03', title: '导入机场订阅', desc: '一键添加 Subscribe 并测试连通性', link: '/tutorials/shadowrocket/import-subscription/#第二步在-app-中添加订阅' },
-  { step: '04', title: '配置智能分流与规则', desc: '配置模式与 ACL4SSR 广告拦截', link: '/tutorials/shadowrocket/shadowrocket-routing-rules/' },
+  { step: '01', title: '认识苹果小火箭', desc: '正版辨别防骗、节点购买须知与 iOS 核心特性', link: '/tutorials/shadowrocket/what-is-shadowrocket/' },
+  { step: '02', title: '外区商店下载获取', desc: '美区 Apple ID 购买与安装指引（约 $2.99 买断）', link: '/tutorials/shadowrocket/import-subscription/#二前置条件与正版获取指南' },
+  { step: '03', title: '节点购买与导入', desc: '挑选专线节点、一键添加 Subscribe 并测试连通性', link: '/tutorials/shadowrocket/import-subscription/#第一步获取或购买小火箭机场节点订阅' },
+  { step: '04', title: '配置智能分流与规则', desc: '全局路由必须选「配置」，导入 ACL4SSR 广告拦截', link: '/tutorials/shadowrocket/shadowrocket-routing-rules/' },
 ];
 
 const faqs = [
-  { q: '为什么中国大陆 App Store 搜索不到小火箭？', a: '因政策原因仅在海外区（美区/港区/日区等）App Store 上架。只需注册或租用一个外区 Apple ID 即可下载（约 $2.99 买断）。' },
-  { q: '小火箭订阅更新失败提示 404 怎么办？', a: '检查订阅链接是否复制完整，或切换为手机 5G 移动网络重试（避开本地 Wi-Fi 的 DNS 污染）。' },
-  { q: '开启后国内微信或网页变慢怎么解决？', a: '确保全局路由设置为「配置 (Config)」而不是「代理 (Proxy)」，并在配置页面更新最新的国内直连规则。' }
+  { q: '为什么中国大陆 App Store 搜索不到苹果小火箭？', a: '因政策原因仅在海外区（美区/港区/日区等）App Store 上架。只需注册或租用一个外区 Apple ID 即可下载（约 $2.99 买断，无后续强制续费）。' },
+  { q: '苹果小火箭自带网络节点吗？节点怎么购买？', a: '小火箭本身是纯客户端工具，不自带任何节点。用户需在第三方可靠的专线服务商处购买套餐获取订阅链接，详见本站「机场推荐」板块的 16 家客观核验服务商。' },
+  { q: '小火箭全局路由选什么最好？', a: '日常 100% 推荐选择「配置 (Config)」模式！国内应用直连、国外服务走专线加速，避免流量快速消耗且不影响微信图片加载。' },
+  { q: '小火箭订阅更新失败提示 404 怎么办？', a: '检查订阅链接是否复制完整，或切换为手机 5G 移动网络重试（避开本地 Wi-Fi 的 DNS 污染）。' }
 ];
 
 const breadcrumbs = [
@@ -26,8 +27,8 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Shadowrocket 小火箭专题中心：iOS 正版下载、订阅导入与分流实战指南"
-  description="Shadowrocket 官方知识专题：iPhone / iPad 苹果用户首选代理工具。详解正版获取、订阅导入、连通性测速、远程规则集配置与排障指南。"
+  title="Shadowrocket 苹果小火箭专题中心：正版下载、节点购买与使用教程全景指南"
+  description="专为 iPhone / iPad 苹果小火箭 (Shadowrocket) 用户打造的官方知识中心。涵盖外区 App Store 正版辨别下载、节点购买须知、一键导入订阅、全局路由配置模式与 4 步排错实战。"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <Breadcrumb items={breadcrumbs} />
@@ -35,15 +36,15 @@ const breadcrumbs = [
     <!-- Hero Header -->
     <header class="mb-10">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mb-3 border border-indigo-200 dark:border-indigo-800">
-        <span>🚀 iOS 统治级神器</span>
+        <span>🚀 iOS 苹果生态标配工具</span>
         <span class="w-1 h-1 rounded-full bg-indigo-500"></span>
-        <span>iPhone / iPad 苹果生态首选</span>
+        <span>Shadowrocket / 苹果小火箭实战</span>
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight">
-        Shadowrocket 专题与实战手册
+        Shadowrocket (苹果小火箭) 专题与实战指南
       </h1>
       <p class="text-base sm:text-lg text-fg-muted max-w-3xl leading-relaxed">
-        iOS 平台出海标配：低至 $2.99 买断、极低待机耗电、全协议硬件加速支持与一键智能规则分流。
+        iOS 平台出海标配：低至 $2.99 买断、极低待机耗电、全协议硬件加速支持。本专题提供正版辨别、节点购买、订阅导入与分流配置的一站式指引。
       </p>
     </header>
 
@@ -81,6 +82,40 @@ const breadcrumbs = [
             </p>
           </a>
         ))}
+      </div>
+    </section>
+
+    <!-- Hot Search Entry Bento -->
+    <section class="mb-12 p-6 sm:p-8 bg-surface border border-border rounded-2xl">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">Fast Access</span>
+        <h2 class="text-xl font-bold text-fg">苹果小火箭热门搜索直达与避坑指引</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="/tutorials/shadowrocket/what-is-shadowrocket/" class="p-4 rounded-xl border border-border-subtle bg-bg-base hover:border-brand transition-colors">
+          <h3 class="text-sm font-bold text-fg mb-1">Shadowrocket 是什么？</h3>
+          <p class="text-xs text-fg-muted">正版辨别防骗、底层架构与 $2.99 买断机制解析</p>
+        </a>
+        <a href="/tutorials/shadowrocket/import-subscription/" class="p-4 rounded-xl border border-border-subtle bg-bg-base hover:border-brand transition-colors">
+          <h3 class="text-sm font-bold text-fg mb-1">小火箭使用教程（官方正版）</h3>
+          <p class="text-xs text-fg-muted">4 步极速上手：外区下载、节点导入与连通性测速</p>
+        </a>
+        <a href="/tutorials/shadowrocket/shadowrocket-routing-rules/" class="p-4 rounded-xl border border-border-subtle bg-bg-base hover:border-brand transition-colors">
+          <h3 class="text-sm font-bold text-fg mb-1">小火箭全局路由选什么？</h3>
+          <p class="text-xs text-fg-muted">「配置」「代理」「直连」深度解析与 ACL4SSR 导入</p>
+        </a>
+        <a href="/recommend/" class="p-4 rounded-xl border border-border-subtle bg-bg-base hover:border-brand transition-colors">
+          <h3 class="text-sm font-bold text-fg mb-1">小火箭节点购买怎么选？</h3>
+          <p class="text-xs text-fg-muted">小火箭不自带节点，查看 16 家客观测速专线推荐</p>
+        </a>
+        <a href="/answers/shadowrocket-subscription-error/" class="p-4 rounded-xl border border-border-subtle bg-bg-base hover:border-brand transition-colors">
+          <h3 class="text-sm font-bold text-fg mb-1">小火箭订阅更新失败 404</h3>
+          <p class="text-xs text-fg-muted">Wi-Fi DNS 污染、格式错误与移动网络 30 秒排障</p>
+        </a>
+        <a href="/topics/shadowrocket/" class="p-4 rounded-xl border border-border-subtle bg-bg-base hover:border-brand transition-colors">
+          <h3 class="text-sm font-bold text-fg mb-1">Shadowrocket 知识全景</h3>
+          <p class="text-xs text-fg-muted">进入小火箭知识库总览，获取全量关联内容</p>
+        </a>
       </div>
     </section>
 

@@ -1,19 +1,20 @@
 ---
-title: "Clash 有节点但无法上网怎么办？延迟正常但网页打不开的 5 大原因与 4 步深度排查指南"
-description: "全面解决 Clash / Clash Verge 节点测速有延迟绿色正常、但浏览器打不开网页或提示无法访问互联网的问题。系统排查系统代理残留、DNS 污染劫持、TUN 虚拟网卡冲突、时钟不同步及规则分流配置错误。"
+title: "Clash Verge / Clash 有节点但无法上网怎么办？延迟正常但网页打不开的 5 大原因与 4 步深度排查指南"
+description: "专为 Clash Verge / Clash Verge Rev 用户打造的极速排障手册。系统排查节点测速全绿正常但浏览器打不开网页、ERR_PROXY_CONNECTION_FAILED、系统代理残留、TUN 模式冲突与 DNS 污染问题。"
 pubDate: 2026-08-18
 updatedDate: 2026-08-18
 category: "故障排查"
-tags: ["Clash有节点无法上网", "Clash有延迟连不上", "TUN模式冲突", "系统代理残留", "DNS污染", "排错指南"]
+tags: ["Clash Verge无法上网", "Clash无法上网", "Clash Verge有节点无法上网", "Clash有延迟连不上", "TUN模式冲突", "系统代理残留", "DNS污染", "排错指南"]
 author: "机场手册编辑部"
 pillar: "clash"
 intent: "troubleshooting"
 difficulty: "beginner"
-answer: "Clash 有节点但无法上网最常见的原因是「系统代理端口未正确注入」或「TUN 模式网卡冲突」。极速 4 步解决法：1. 重启系统代理：在 Clash Verge 设置中关闭「系统代理」，等待 5 秒重新开启；2. 同步系统时钟：进入 Windows 设置 ➔ 时间和语言 ➔ 点击「立即同步」；3. 检查分流模式：在 Proxies 页面将模式切换为「Rule (规则)」，确保 PROXY 组中选中了可用专线节点；4. 修复 DNS：在设置中开启 Built-in DNS 并将 Nameserver 设为 223.5.5.5。"
-symptom: "Clash 界面中所有节点测速均显示 30ms-60ms 绿色延迟，但打开 Chrome 提示 ERR_CONNECTION_CLOSED、ERR_PROXY_CONNECTION_FAILED 或无网速。"
+answer: "Clash Verge / Clash 节点测速全绿但无法上网最常见的原因是「系统代理端口未正确注入/注册表残留」或「电脑本地时间与北京时间误差超过 60 秒」。极速 4 步解决法：1. 重启系统代理：在 Clash Verge 设置中关闭「系统代理」，等待 5 秒重新开启；若仍不行按 Win+R 输入 inetcpl.cpl 重置 LAN 代理；2. 强制同步时钟：Windows 设置 ➔ 时间和语言 ➔ 点击「立即同步」；3. 检查分流模式：在 Proxies 页面将模式切换为「Rule (规则)」，并切换备用专线节点测试；4. 修复 TUN 与 DNS：若开启 TUN 模式，务必在设置中安装 Service 服务，并将内置 DNS 设为 223.5.5.5。"
+symptom: "Clash 界面中所有节点测速均显示 30ms-60ms 绿色延迟（包括 Clash Verge / Verge Rev 客户端），但打开 Chrome 提示 ERR_CONNECTION_CLOSED、ERR_PROXY_CONNECTION_FAILED 或无网速。"
 quickCheck:
-  - "检查 Clash 右下角托盘图标是否处于激活状态（绿色或蓝色）"
-  - "检查浏览器是否安装了冲突的 SwitchyOmega 插件"
+  - "检查 Clash Verge 右下角托盘图标是否处于激活状态（绿色或蓝色）"
+  - "检查系统托盘时间是否与手机标准北京时间完全一致（秒级校验）"
+  - "检查浏览器是否安装了冲突的 SwitchyOmega 等代理插件"
   - "测试国内网站（如 baidu.com）是否可以正常访问"
 nextStep:
   title: "阅读 Clash Verge Rev 完整实战教程"
@@ -21,16 +22,16 @@ nextStep:
   link: "/tutorials/clash/clash-verge-starter-guide/"
   linkText: "查看完整教程 →"
 faq:
-  - q: "为什么测速有延迟却依然无法上网？"
-    a: "因为节点列表测速（Ping）只测试了你的电脑到机场落地节点的 TCP 握手通畅，并不代表落地节点能够正常转发 Web 流量，也不代表你的操作系统正确将浏览器的 HTTP 请求交给了 Clash 核心处理。"
-  - q: "为什么微信和 QQ 能发消息，但浏览器打不开海外网页？"
-    a: "因为微信、QQ 等国内应用不经过代理直接走直连网络；当海外网页打不开时，说明代理核心或落地节点的外部访问能力中断。"
+  - q: "为什么 Clash Verge 节点测速全绿却依然无法上网？"
+    a: "因为节点列表测速（Ping）只测试了你的电脑到机场落地节点的 TCP 握手通畅，并不代表落地节点能够正常转发 Web 流量，也不代表你的 Windows/macOS 操作系统正确将浏览器的 HTTP 请求交给了 Clash Verge 内核处理。"
+  - q: "为什么微信和 QQ 能正常发消息，但浏览器打不开任何海外网页？"
+    a: "因为微信、QQ 等国内应用走本地直连网络，不经过代理核心；当海外网页打不开时，说明代理核心未能成功转发流量，或者所选节点的海外落地机房脱网故障。"
   - q: "遇到 ERR_PROXY_CONNECTION_FAILED 怎么解决？"
-    a: "这是 Windows 系统代理注册表残留导致的。按 Win+I 打开系统设置 ➔ 网络和 Internet ➔ 代理 ➔ 关闭手动代理设置，然后重新在 Clash Verge 中勾选「系统代理」。"
+    a: "这是 Windows 系统代理注册表残留导致的。按 Win+I 打开系统设置 ➔ 网络和 Internet ➔ 代理 ➔ 关闭手动代理设置，或者按 Win+R 输入 inetcpl.cpl ➔ 连接 ➔ 局域网设置 ➔ 取消勾选代理服务器，然后重新在 Clash Verge 中勾选「系统代理」。"
   - q: "如何判断是不是落地节点自身失效？"
-    a: "在 Clash「代理」页面切换至其他地区（如日本、新加坡、台湾）的节点，如果其他节点可以正常上网，说明原先选择的节点服务器正在维护或被目标平台临时风控。"
-  - q: "电脑安装了杀毒软件会导致 Clash 无法联网吗？"
-    a: "会。部分杀毒软件（如 360、火绒或卡巴斯基）可能会拦截 Clash.Meta 内核的本地 127.0.0.1 端口监听或拦截 TUN 虚拟网卡驱动。建议将 Clash 目录加入杀毒软件白名单。"
+    a: "在 Clash Verge「代理」页面切换至其他地区（如日本、新加坡、台湾）的节点，如果其他节点可以正常上网，说明原先选择的节点服务器正在维护或被目标平台临时风控。"
+  - q: "电脑安装了杀毒软件会导致 Clash Verge 无法联网吗？"
+    a: "会。部分杀毒软件（如 360、火绒或卡巴斯基）可能会拦截 Mihomo/Clash.Meta 内核的本地 127.0.0.1 端口监听或拦截 TUN 虚拟网卡驱动。建议将 Clash Verge 目录加入杀毒软件白名单。"
   - q: "开启 TUN 模式后电脑无法解析国内域名怎么办？"
     a: "这是 DNS 泄漏或劫持导致的。在 Clash Verge 设置中找到 DNS 配置，将 Fallback DNS 改为 119.29.29.29，并在 Direct-nameserver 中加入本地局域网网关地址。"
 ---

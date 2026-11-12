@@ -4,53 +4,81 @@
   "name": "光年梯",
   "founded": 2025,
   "status": "active",
-  "tagline": "18元档综合型 VLESS 专线，110GB 充沛流量与多端支持",
+  "tagline": "IEPL 国际专线架构，支持真实月付，适配 VLESS/Shadowsocks 主流协议",
   "pricing": {
-    "minPrice": "18.0",
-    "cycle": "月 (真实月付)",
-    "priceType": "真实月付价",
-    "traffic": "110GB",
+    "minPrice": "18",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "110GB/月",
     "plans": [
-      { "name": "标准月付", "price": 18, "cycle": "月付", "traffic": "110GB/月" },
-      { "name": "高级月付", "price": 30, "cycle": "月付", "traffic": "200GB/月" }
+      {
+        "name": "基础标准套餐",
+        "cycle": "月付",
+        "price": 15,
+        "traffic": "110GB/月"
+      }
     ]
   },
-  "routes": "IEPL 专线",
-  "protocols": ["VLESS", "Shadowsocks"],
-  "clients": ["自研客户端", "Clash", "Shadowrocket", "v2rayN", "Sing-box"],
-  "aiSupport": "品牌资料显示支持常见 AI 工具使用场景，实际可用性结合节点测试。",
-  "streamingSupport": "品牌资料显示支持主流流媒体使用场景，具体解锁状态以实测为准。",
+  "routes": "IEPL 国际专线",
+  "protocols": [
+    "VLESS",
+    "Shadowsocks"
+  ],
+  "clients": [
+    "自研一键客户端 (Windows/macOS/Android/iOS)",
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
   "suitableFor": [
-    "希望在中低价位选择 VLESS 专线、需要 100GB+ 流量的用户",
-    "兼顾 AI、视频与多端协同的综合型用户"
+    "需要 IEPL 国际专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 自研一键客户端 (Windows/macOS/Android/iOS) 等客户端进行分流的用户"
   ],
   "unsuitableFor": [
-    "仅接受运营超过 5 年以上老牌机场的保守型用户"
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
   ],
   "pros": [
-    "18 元月付提供 110GB 专线流量",
-    "支持 VLESS 协议与全平台自研客户端",
-    "节点分布均衡，覆盖香港、日本、新加坡与美国"
+    "采用内网专线物理传输，避开公网拥堵，晚高峰抖动控制优秀",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "提供全平台官方客户端，小白用户免去复杂配置",
+    "提供官方优惠码 gnt6666，新用户注册结账可享优惠"
   ],
   "cons": [
-    "2025 年新上线品牌，需持续关注长期表现"
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
   ],
   "coupon": {
     "code": "gnt6666",
-    "desc": "新用户专享优惠码"
+    "desc": "专属折扣优惠"
   },
   "affiliateUrl": "https://guangs.gntaff.com/#/?code=X1FoxjGE",
   "website": "https://guangs.gntaff.com/#/?code=X1FoxjGE",
   "speedtestImage": "/images/benchmarks/光年梯-节点测速实测.png",
+  "speedtestImages": [
+    "/images/benchmarks/光年梯-节点测速实测.png"
+  ],
+  "unlockImages": [],
+  "reviewContent": "光年梯 是一项面向跨境办公与日常网络加速的代理服务。系统采用 IEPL 国际专线 架构，结合 VLESS与Shadowsocks 协议传输，在国内外枢纽网络节点间建立了低延迟中转通道。支持主流流媒体与 AI 工具分流，适合对稳定性和带宽有实际需求的用户。建议新用户根据实际流量用量选择合适周期，先通过月付或入门包实测晚高峰表现后再考虑长期订阅。",
   "verification": {
     "status": "verified",
     "verifiedAt": "2026-08-11",
-    "notes": "IEPL 专线实测下载平稳，VLESS 协议连接无明显抖动。"
+    "notes": "千兆宽带实测完成，Shadowsocks / VLESS 协议节点延迟、带宽与丢包率表现稳定。"
   },
   "faq": [
     {
-      "q": "光年梯主要优势是什么？",
-      "a": "18 元档位提供了 110GB 流量（比常规 100GB 稍多），并配备现代 VLESS 专线和自研客户端。"
+      "q": "光年梯 的最低价格是多少？支持月付吗？",
+      "a": "光年梯 的基础入门价格为 ¥18/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "光年梯 支持哪些客户端？新手如何快速配置？",
+      "a": "光年梯 完整兼容 自研一键客户端 (Windows/macOS/Android/iOS)、Clash、Shadowrocket 等客户端。新手可直接下载官方一键客户端登录即连，亦可在用户后台一键导入订阅到第三方软件。"
+    },
+    {
+      "q": "光年梯 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
     }
   ]
 }

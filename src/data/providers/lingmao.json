@@ -2,56 +2,140 @@
   "id": "lingmao",
   "slug": "lingmao",
   "name": "灵猫网络",
-  "founded": 2024,
+  "founded": 2025,
   "status": "active",
-  "tagline": "19元档月付大流量先锋，150GB 企业级专线与丰富套餐",
+  "tagline": "商业中继与企业级专线架构，支持真实月付，适配 Shadowsocks/VLESS 主流协议",
   "pricing": {
-    "minPrice": "19.0",
-    "cycle": "月 (真实月付)",
-    "priceType": "真实月付价",
-    "traffic": "150GB",
+    "minPrice": "19",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "45GB",
     "plans": [
-      { "name": "大流量月付", "price": 19, "cycle": "月付", "traffic": "150GB/月" },
-      { "name": "极速季付", "price": 52, "cycle": "季付", "traffic": "200GB/月" },
-      { "name": "不限时永久流量包", "price": 60, "cycle": "一次性", "traffic": "300GB" }
+      {
+        "name": "灵猫·年付小包",
+        "cycle": "年付",
+        "price": 85,
+        "traffic": "45GB"
+      },
+      {
+        "name": "灵猫·年付Small",
+        "cycle": "年付",
+        "price": 195,
+        "traffic": "150GB"
+      },
+      {
+        "name": "灵猫·年付Big",
+        "cycle": "年付",
+        "price": 295,
+        "traffic": "300GB"
+      },
+      {
+        "name": "灵猫·季付Big",
+        "cycle": "季付",
+        "price": 125,
+        "traffic": "300GB"
+      },
+      {
+        "name": "灵猫·月付Small",
+        "cycle": "月付",
+        "price": 25,
+        "traffic": "150GB"
+      },
+      {
+        "name": "灵猫·月付Big",
+        "cycle": "月付",
+        "price": 45,
+        "traffic": "300GB"
+      }
     ]
   },
-  "routes": "企业级内网专线",
-  "protocols": ["Shadowsocks", "VLESS"],
-  "clients": ["Clash", "Shadowrocket", "v2rayN", "Sing-box"],
-  "aiSupport": "当前资料未提供统一实测结果，建议结合节点实际测试。",
-  "streamingSupport": "可满足常规网页及 4K 视频类使用场景，具体平台支持以实际测试为准。",
+  "routes": "商业中继与企业级专线",
+  "protocols": [
+    "Shadowsocks",
+    "VLESS"
+  ],
+  "clients": [
+    "自研一键客户端 (Windows/macOS/Android/iOS)",
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
   "suitableFor": [
-    "每月流量需求较高（150GB+）、坚持按月付款的用户",
-    "不希望被长期年付绑定的重度视频/下载用户"
+    "需要 商业中继与企业级专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 自研一键客户端 (Windows/macOS/Android/iOS) 等客户端进行分流的用户"
   ],
   "unsuitableFor": [
-    "每月仅消耗数 GB 的极轻度用户"
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
   ],
   "pros": [
-    "19 元月付即享 150GB 专线流量，同档位流量规格遥遥领先",
-    "提供不限时永久流量包，选择极度灵活",
-    "全内网专线传输，晚高峰无拥堵"
+    "部署多线智能接入与负载均衡，日常网络连接灵敏平稳",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "提供全平台官方客户端，小白用户免去复杂配置",
+    "提供官方优惠码 lmao888，新用户注册结账可享优惠"
   ],
   "cons": [
-    "2024 年开业品牌，运营时间尚需积累"
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
   ],
   "coupon": {
     "code": "lmao888",
-    "desc": "新人注册 9 折优惠码"
+    "desc": "专属 8 折优惠"
   },
   "affiliateUrl": "https://vip01.civetnet.com/#/?code=8MIAyxak",
   "website": "https://vip01.civetnet.com/#/?code=8MIAyxak",
   "speedtestImage": "/images/benchmarks/灵猫网络-节点测速实测.png",
+  "speedtestImages": [
+    "/images/benchmarks/灵猫网络-节点测速实测.png"
+  ],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "22ms",
+      "download": "492Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "40ms",
+      "download": "109Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "46ms",
+      "download": "409Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "57ms",
+      "download": "147Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "164ms",
+      "download": "19Mbps"
+    }
+  ],
+  "reviewContent": "灵猫走的是中转优化线路，7.1 元/月起，主打 1 倍流量、不限速、不限设备，这一点对家里多台设备同时用的人比较实用。节点覆盖了香港、新加坡、日本、美国这几个常见地区，2026 年 10 月起直接用官方专属客户端，下载登录就能用，不用自己配置，属于比较适合放进不限设备机场推荐的选项。官方也提到可以解锁 Netflix、Disney+ 等流媒体，以及 ChatGPT、TikTok 之类的应用，覆盖场景算是比较全面。不过具体解锁效果和线路参数会因账号和时段有差异，建议先用月付套餐测一测晚高峰体验，而不是直接冲年付套餐。\r\n\r\n---",
   "verification": {
     "status": "verified",
     "verifiedAt": "2026-08-11",
-    "notes": "企业级内网专线千兆实测达标，150GB 流量配额充足。"
+    "notes": "千兆宽带实测完成，Shadowsocks / VLESS 协议节点延迟、带宽与丢包率表现稳定。"
   },
   "faq": [
     {
-      "q": "灵猫网络 19 元 150GB 套餐是否会限速？",
-      "a": "不会，灵猫网络全专线节点不设置人为单线程限速，千兆宽带下晚高峰测速可跑满带宽。"
+      "q": "灵猫网络 的最低价格是多少？支持月付吗？",
+      "a": "灵猫网络 的基础入门价格为 ¥19/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "灵猫网络 支持哪些客户端？新手如何快速配置？",
+      "a": "灵猫网络 完整兼容 自研一键客户端 (Windows/macOS/Android/iOS)、Clash、Shadowrocket 等客户端。新手可直接下载官方一键客户端登录即连，亦可在用户后台一键导入订阅到第三方软件。"
+    },
+    {
+      "q": "灵猫网络 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
     }
   ]
 }

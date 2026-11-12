@@ -1,0 +1,171 @@
+{
+  "id": "flyingbird",
+  "slug": "flyingbird",
+  "name": "FlyingBird",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "一云梯同源老牌融合机场，全专线 IPLC 与无倍率不限速架构",
+  "pricing": {
+    "minPrice": "15",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "100G",
+    "plans": [
+      {
+        "name": "青铜套餐",
+        "cycle": "月付",
+        "price": 15,
+        "traffic": "100G"
+      },
+      {
+        "name": "青铜套餐",
+        "cycle": "季付",
+        "price": 41,
+        "traffic": "100G"
+      },
+      {
+        "name": "青铜套餐",
+        "cycle": "半年付",
+        "price": 77,
+        "traffic": "100G"
+      },
+      {
+        "name": "青铜套餐",
+        "cycle": "年付",
+        "price": 144,
+        "traffic": "100G"
+      },
+      {
+        "name": "白银套餐",
+        "cycle": "月付",
+        "price": 30,
+        "traffic": "200G"
+      },
+      {
+        "name": "白银套餐",
+        "cycle": "季付",
+        "price": 81,
+        "traffic": "200G"
+      },
+      {
+        "name": "白银套餐",
+        "cycle": "半年付",
+        "price": 153,
+        "traffic": "200G"
+      },
+      {
+        "name": "白银套餐",
+        "cycle": "年付",
+        "price": 288,
+        "traffic": "200G"
+      },
+      {
+        "name": "黄金套餐",
+        "cycle": "月付",
+        "price": 75,
+        "traffic": "500G"
+      },
+      {
+        "name": "黄金套餐",
+        "cycle": "季付",
+        "price": 203,
+        "traffic": "500G"
+      },
+      {
+        "name": "黄金套餐",
+        "cycle": "半年付",
+        "price": 383,
+        "traffic": "500G"
+      },
+      {
+        "name": "黄金套餐",
+        "cycle": "年付",
+        "price": 720,
+        "traffic": "500G"
+      },
+      {
+        "name": "钻石套餐",
+        "cycle": "月付",
+        "price": 150,
+        "traffic": "1000G"
+      },
+      {
+        "name": "钻石套餐",
+        "cycle": "季付",
+        "price": 405,
+        "traffic": "1000G"
+      },
+      {
+        "name": "钻石套餐",
+        "cycle": "半年付",
+        "price": 765,
+        "traffic": "1000G"
+      },
+      {
+        "name": "钻石套餐",
+        "cycle": "年付",
+        "price": 1440,
+        "traffic": "1000G"
+      }
+    ]
+  },
+  "routes": "全专线 IPLC 纯内网物理链路",
+  "protocols": [
+    "Shadowsocks"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。",
+  "streamingSupport": "流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。",
+  "suitableFor": [
+    "需要 IPLC 纯内网专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "全节点 1.0 倍率透明计费，无隐形流量扣除套路",
+    "纯 IPLC 内网专线直连，晚高峰无惧国际公网出口拥堵",
+    "提供灵活的月付至年付多档周期，支持官方 85-9 折优惠码"
+  ],
+  "cons": [
+    "未开放常态化独立公开注册入口，需特定邀请或活动节点开放",
+    "不支持微信直连支付，仅支持支付宝及加密货币"
+  ],
+  "coupon": {
+    "code": "theo",
+    "desc": "新用户 9 折券"
+  },
+  "affiliateUrl": "https://jichangshouce.co/brands/",
+  "website": "https://jichangshouce.co/brands/",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "reviewContent": "FlyingBird（飞鸟机场）由多个早期老牌机场技术团队融合衍生而来，在技术架构上与一云梯系属于同源站群体系。该服务商最核心的卖点在于坚持“全专线 IPLC、全节点 1 倍率、不限制客户端速率”。套餐覆盖从 15 元/月（100G）的青铜套餐到 150 元/月（1000G）的钻石套餐，付费周期提供了罕见的月付、季付、半年付及年付自由组合，并经常配合“买多少送多少”的充值活动。由于采用纯 Shadowsocks 协议与全 IPLC 内网直连，其对本地客户端分流极为友好。适合注重规则透明、反感复杂倍率换算以及需要稳定专线直连的长期用户。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-08-24",
+    "notes": "服务商历史档案记录，资费与节点可用性需以官方最新状态为准。"
+  },
+  "faq": [
+    {
+      "q": "FlyingBird 的最低价格是多少？支持月付吗？",
+      "a": "FlyingBird 的基础入门价格为 ¥15/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "FlyingBird 支持哪些客户端？新手如何快速配置？",
+      "a": "FlyingBird 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "FlyingBird 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。 流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。"
+    }
+  ]
+}

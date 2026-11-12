@@ -1,0 +1,174 @@
+{
+  "id": "fatcat",
+  "slug": "fatcat",
+  "name": "FATCAT",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "专注企业级抗封锁架构，IEPL/IPLC 高防内网纯净专线",
+  "pricing": {
+    "minPrice": "20",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "120G",
+    "plans": [
+      {
+        "name": "年付加强版",
+        "cycle": "年付",
+        "price": 96,
+        "traffic": "60G"
+      },
+      {
+        "name": "基础套餐",
+        "cycle": "月付",
+        "price": 20,
+        "traffic": "120G"
+      },
+      {
+        "name": "基础套餐",
+        "cycle": "季付",
+        "price": 54,
+        "traffic": "120G"
+      },
+      {
+        "name": "基础套餐",
+        "cycle": "半年付",
+        "price": 102,
+        "traffic": "120G"
+      },
+      {
+        "name": "基础套餐",
+        "cycle": "年付",
+        "price": 192,
+        "traffic": "120G"
+      },
+      {
+        "name": "标准套餐",
+        "cycle": "月付",
+        "price": 40,
+        "traffic": "300G"
+      },
+      {
+        "name": "标准套餐",
+        "cycle": "季付",
+        "price": 108,
+        "traffic": "300G"
+      },
+      {
+        "name": "标准套餐",
+        "cycle": "半年付",
+        "price": 204,
+        "traffic": "300G"
+      },
+      {
+        "name": "标准套餐",
+        "cycle": "年付",
+        "price": 384,
+        "traffic": "300G"
+      },
+      {
+        "name": "旗舰套餐",
+        "cycle": "月付",
+        "price": 100,
+        "traffic": "700G"
+      },
+      {
+        "name": "旗舰套餐",
+        "cycle": "季付",
+        "price": 270,
+        "traffic": "700G"
+      },
+      {
+        "name": "旗舰套餐",
+        "cycle": "半年付",
+        "price": 510,
+        "traffic": "700G"
+      },
+      {
+        "name": "旗舰套餐",
+        "cycle": "年付",
+        "price": 960,
+        "traffic": "700G"
+      },
+      {
+        "name": "企业套餐",
+        "cycle": "月付",
+        "price": 180,
+        "traffic": "1500G"
+      },
+      {
+        "name": "企业套餐",
+        "cycle": "季付",
+        "price": 486,
+        "traffic": "1500G"
+      },
+      {
+        "name": "企业套餐",
+        "cycle": "半年付",
+        "price": 918,
+        "traffic": "1500G"
+      },
+      {
+        "name": "企业套餐",
+        "cycle": "年付",
+        "price": 1728,
+        "traffic": "1500G"
+      }
+    ]
+  },
+  "routes": "企业级 IEPL / IPLC 纯物理内网专线",
+  "protocols": [
+    "Shadowsocks",
+    "VLESS"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。",
+  "streamingSupport": "流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。",
+  "suitableFor": [
+    "需要 全专线 IEPL / 企业级内网专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "企业级物理内网专线，有效规避公网波动与流量特征探测",
+    "出口 IP 纯净度高，契合海外电商与跨境业务风控环境",
+    "全天候节点负载均衡，节点故障自动秒级切换"
+  ],
+  "cons": [
+    "套餐价格整体偏向商务级别，缺乏 10 元以内的入门走量包",
+    "官方节点命名较为克制，无夸张的节点数量堆叠"
+  ],
+  "affiliateUrl": "https://jichangshouce.co/brands/",
+  "website": "https://jichangshouce.co/brands/",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "reviewContent": "FATCAT（肥猫网络）定位为企业级抗封锁与跨国业务专用专线服务商。其技术架构完全摒弃了可能被识别干扰的普通公网隧道，全量采用 IEPL / IPLC 内网专线进行跨境流量封装。在历次大型网络安全审查与公网拥堵期，FATCAT 均展现出高抗封锁韧性。该品牌不追求庞杂的花哨营销，全线节点均经过原生住宅 IP 筛选，重点服务于跨境电商多店铺管理、海外独立站运维及企业远程桌面。适合对网络连通安全感要求极高、预算充足的商业客户。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-08-24",
+    "notes": "服务商历史档案记录，资费与节点可用性需以官方最新状态为准。"
+  },
+  "faq": [
+    {
+      "q": "FATCAT 的最低价格是多少？支持月付吗？",
+      "a": "FATCAT 的基础入门价格为 ¥20/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "FATCAT 支持哪些客户端？新手如何快速配置？",
+      "a": "FATCAT 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "FATCAT 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。 流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。"
+    }
+  ]
+}

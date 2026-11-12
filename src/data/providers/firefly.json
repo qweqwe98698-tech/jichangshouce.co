@@ -1,0 +1,140 @@
+{
+  "id": "firefly",
+  "slug": "firefly",
+  "name": "Firefly",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "纯专线 IPLC 极速直连，不限速架构与免翻墙官网维护",
+  "pricing": {
+    "minPrice": "8",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "60GB",
+    "plans": [
+      {
+        "name": "Firefly 年付版",
+        "cycle": "年付",
+        "price": 96,
+        "traffic": "60GB"
+      },
+      {
+        "name": "Firefly Lite",
+        "cycle": "月付",
+        "price": 25,
+        "traffic": "150GB"
+      },
+      {
+        "name": "Firefly Plus",
+        "cycle": "月付",
+        "price": 45,
+        "traffic": "300GB"
+      },
+      {
+        "name": "Firefly Blaze",
+        "cycle": "月付",
+        "price": 85,
+        "traffic": "600GB"
+      },
+      {
+        "name": "Firefly Nova",
+        "cycle": "月付",
+        "price": 150,
+        "traffic": "1000GB"
+      },
+      {
+        "name": "Firefly 不限时",
+        "cycle": "一次性付费",
+        "price": 100,
+        "traffic": "100GB"
+      }
+    ]
+  },
+  "routes": "IPLC 纯内网专线",
+  "protocols": [
+    "VLESS",
+    "Shadowsocks"
+  ],
+  "clients": [
+    "自研一键客户端 (Windows/macOS/Android/iOS)",
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
+  "suitableFor": [
+    "需要 IPLC 纯内网专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 自研一键客户端 (Windows/macOS/Android/iOS) 等客户端进行分流的用户",
+    "看重品牌长期稳定运营与晚高峰期低丢包率的综合型用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "采用内网专线物理传输，避开公网拥堵，晚高峰抖动控制优秀",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "提供全平台官方客户端，小白用户免去复杂配置",
+    "提供官方优惠码 firefly，新用户注册结账可享优惠"
+  ],
+  "cons": [
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
+  ],
+  "coupon": {
+    "code": "firefly",
+    "desc": "新用户 8 折优惠"
+  },
+  "affiliateUrl": "https://vip02.fireflyaff.com/#/?code=2n7VURre",
+  "website": "https://vip02.fireflyaff.com/#/?code=2n7VURre",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "27ms",
+      "download": "547Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "39ms",
+      "download": "135Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "42ms",
+      "download": "445Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "57ms",
+      "download": "147Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "143ms",
+      "download": "30Mbps"
+    }
+  ],
+  "reviewContent": "如果你在找 2026 年靠谱的 IPLC 机场推荐，Firefly 算是专线机场推荐里性价比不错的一个选择。8 元/月起的价格，比很多同样走 IPLC 专线的机场便宜一些，晚高峰稳定性是它的核心卖点，对每天要用 ChatGPT 办公、或者经常在深夜追剧的人来说，这一点比单纯堆节点数量更实际。节点覆盖香港、新加坡、日本、美国这几个常见地区，原生 IP 让 Netflix、Disney+ 这类流媒体解锁相对稳定，2026 年 10 月起直接用官方专属客户端，下载登录就能连，不用再配订阅链接，使用门槛更低。不限设备数量也算是个加分项，家里几台设备一起用不会受限制。当然，专线机场的价格门槛终归比中转线路高，如果只是偶尔上网、预算有限，没必要非选它不可。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-10-19",
+    "notes": "包含实机节点延迟与测速明细记录，晚高峰长期稳定性待持续复核。"
+  },
+  "faq": [
+    {
+      "q": "Firefly 的最低价格是多少？支持月付吗？",
+      "a": "Firefly 的基础入门价格为 ¥8/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "Firefly 支持哪些客户端？新手如何快速配置？",
+      "a": "Firefly 完整兼容 自研一键客户端 (Windows/macOS/Android/iOS)、Clash、Shadowrocket 等客户端。新手可直接下载官方一键客户端登录即连，亦可在用户后台一键导入订阅到第三方软件。"
+    },
+    {
+      "q": "Firefly 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
+    }
+  ]
+}

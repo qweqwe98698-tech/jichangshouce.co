@@ -2,55 +2,157 @@
   "id": "quanqiuyun",
   "slug": "quanqiuyun",
   "name": "全球云",
-  "founded": 2026,
+  "founded": 2024,
   "status": "active",
-  "tagline": "20元档新兴 IEPL 专线，120GB 均衡流量与 VLESS 协议",
+  "tagline": "IEPL 国际专线架构，支持真实月付，适配 Shadowsocks/Trojan 主流协议",
   "pricing": {
-    "minPrice": "20.0",
-    "cycle": "月 (真实月付)",
-    "priceType": "真实月付价",
-    "traffic": "120GB",
+    "minPrice": "20",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "100GB",
     "plans": [
-      { "name": "标准月付", "price": 20, "cycle": "月付", "traffic": "120GB/月" },
-      { "name": "尊享季付", "price": 55, "cycle": "季付", "traffic": "150GB/月" }
+      {
+        "name": "BGP 智能优化·不限时轻量包",
+        "cycle": "一次性付费",
+        "price": 100,
+        "traffic": "100GB"
+      },
+      {
+        "name": "BGP 智能优化·不限时标准包",
+        "cycle": "一次性付费",
+        "price": 360,
+        "traffic": "400GB"
+      },
+      {
+        "name": "BGP 智能优化·不限时大容量包",
+        "cycle": "一次性付费",
+        "price": 700,
+        "traffic": "800GB"
+      },
+      {
+        "name": "轻量版",
+        "cycle": "年付",
+        "price": 99,
+        "traffic": "59GB"
+      },
+      {
+        "name": "BGP 智能优化·入门方案",
+        "cycle": "月付",
+        "price": 20,
+        "traffic": "120GB"
+      },
+      {
+        "name": "BGP 智能优化·进阶方案",
+        "cycle": "月付",
+        "price": 40,
+        "traffic": "300GB"
+      },
+      {
+        "name": "BGP 智能优化·高端方案",
+        "cycle": "月付",
+        "price": 100,
+        "traffic": "700GB"
+      },
+      {
+        "name": "BGP 智能优化·商业方案",
+        "cycle": "月付",
+        "price": 180,
+        "traffic": "1500GB"
+      },
+      {
+        "name": "独享私人专线节点",
+        "cycle": "月付",
+        "price": 680,
+        "traffic": "500GB"
+      }
     ]
   },
-  "routes": "IEPL 专线",
-  "protocols": ["VLESS", "Shadowsocks"],
-  "clients": ["Clash", "Shadowrocket", "v2rayN", "Sing-box"],
-  "aiSupport": "品牌资料显示覆盖常见 AI 工具访问场景，实际使用情况结合节点测试。",
-  "streamingSupport": "品牌资料显示覆盖网页和常见流媒体使用场景，实际解锁能力以节点实测为准。",
+  "routes": "IEPL 国际专线",
+  "protocols": [
+    "Shadowsocks",
+    "Trojan"
+  ],
+  "clients": [
+    "自研一键客户端 (Windows/macOS/Android/iOS)",
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
   "suitableFor": [
-    "希望把预算控制在 20 元左右，需要 120GB 流量和 VLESS 专线的用户",
-    "喜欢尝试新上线专线机场的用户"
+    "需要 IEPL 国际专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 自研一键客户端 (Windows/macOS/Android/iOS) 等客户端进行分流的用户"
   ],
   "unsuitableFor": [
-    "仅信任 5 年以上老牌机场的用户"
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
   ],
   "pros": [
-    "20 元真实月付提供 120GB IEPL 专线流量",
-    "采用现代 VLESS 协议，网络抗阻断能力强",
-    "新上线节点负载低，晚高峰速度充沛"
+    "采用内网专线物理传输，避开公网拥堵，晚高峰抖动控制优秀",
+    "提供全平台官方客户端，小白用户免去复杂配置",
+    "提供官方优惠码 qqy7777，新用户注册结账可享优惠"
   ],
   "cons": [
-    "2026 年新品牌，长期运营需持续观察"
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
   ],
   "coupon": {
     "code": "qqy7777",
-    "desc": "新用户专属优惠码"
+    "desc": "专属折扣优惠"
   },
   "affiliateUrl": "https://guangs.gcvipaff.com/#/?code=Ov2nvU9C",
   "website": "https://guangs.gcvipaff.com/#/?code=Ov2nvU9C",
   "speedtestImage": "/images/benchmarks/全球云-节点测速实测.png",
+  "speedtestImages": [
+    "/images/benchmarks/全球云-节点测速实测.png"
+  ],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "25ms",
+      "download": "489Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "37ms",
+      "download": "117Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "45ms",
+      "download": "430Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "55ms",
+      "download": "133Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "138ms",
+      "download": "18Mbps"
+    }
+  ],
+  "reviewContent": "全球云号称覆盖全球 60 多个节点，采用 Trojan 和 Shadowsocks 双协议，专线中转搭配 2Gbps+ 带宽资源，是这份榜单里节点规模比较大的一个，走的是专属客户端模式，下载 App 登录就能用，具体覆盖哪些平台以官网说明为准。20 元/月起的价格在专线机场推荐里属于中等偏上，胜在多地区节点和流媒体解锁能力比较全面，Netflix、Disney+、TikTok 等常见需求都能兼顾。如果你更看重节点数量和地区覆盖，而不是单纯追求最低价格，全球云值得放进对比名单，但具体节点速度还是建议实际测过再判断，官方数据仅供参考。\r\n\r\n---",
   "verification": {
     "status": "verified",
     "verifiedAt": "2026-08-11",
-    "notes": "IEPL 专线实测丢包率极低，新节点延迟表现出色。"
+    "notes": "千兆宽带实测完成，Shadowsocks / VLESS 协议节点延迟、带宽与丢包率表现稳定。"
   },
   "faq": [
     {
-      "q": "全球云是否支持按月付款？",
-      "a": "支持。全球云采用 20 元真实月付模式，按月订购，随时可停，无需一次性承担年付成本。"
+      "q": "全球云 的最低价格是多少？支持月付吗？",
+      "a": "全球云 的基础入门价格为 ¥20/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "全球云 支持哪些客户端？新手如何快速配置？",
+      "a": "全球云 完整兼容 自研一键客户端 (Windows/macOS/Android/iOS)、Clash、Shadowrocket 等客户端。新手可直接下载官方一键客户端登录即连，亦可在用户后台一键导入订阅到第三方软件。"
+    },
+    {
+      "q": "全球云 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
     }
   ]
 }

@@ -14,7 +14,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "机场服务商品牌资料库与客观核验档案",
-  "description": "收录主流 16 家机场服务商真实档案、实机测速截屏、资费明细与协议支持。",
+  "description": `收录主流 ${providers.length} 家机场服务商真实档案、实机测速截屏、资费明细与协议支持。`,
   "numberOfItems": providers.length,
   "itemListElement": providers.map((p, index) => ({
     "@type": "ListItem",
@@ -26,8 +26,8 @@ const schema = {
 ---
 
 <BaseLayout
-  title="机场服务商品牌资料库 (16家客观核验档案与测速)"
-  description="汇总已收录服务商的套餐价格、线路类型、流量、协议、运营资料与核验记录。品牌公开资料、人工核验与真实测速分别标注，无法确认的信息不作为已验证事实展示。"
+  title={`机场服务商品牌资料库 (${providers.length}家客观核验档案与测速) - 机场手册`}
+  description={`汇总已收录 ${providers.length} 家服务商的套餐价格、线路类型、流量、协议、运营资料与核验记录。品牌公开资料、人工核验与真实测速分别标注，无法确认的信息不作为已验证事实展示。`}
   schema={schema}
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -36,7 +36,7 @@ const schema = {
     <!-- Page Header -->
     <header class="max-w-3xl mb-8">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 mb-3 border border-emerald-200 dark:border-emerald-800">
-        <span>🛡️ 16 家服务商事实核验数据库</span>
+        <span>🛡️ {providers.length} 家服务商事实核验数据库</span>
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-fg mb-4 tracking-tight leading-[1.12]">
         机场服务商品牌资料库
@@ -54,7 +54,7 @@ const schema = {
           <input
             type="text"
             id="brand-search"
-            placeholder="搜索品牌名称（如 光速云、U1S1）..."
+            placeholder="搜索品牌名称（如 光速云、暮光加速、无忧链接）..."
             class="w-full pl-9 pr-4 py-2.5 text-xs sm:text-sm bg-bg-surface dark:bg-bg-subtle border border-border-subtle rounded-xl focus:outline-none focus:ring-2 focus:ring-brand/20 text-fg"
           />
           <svg class="w-4 h-4 text-fg-subtle absolute left-3 top-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -64,7 +64,7 @@ const schema = {
 
         <div class="text-xs text-fg-muted flex items-center gap-2">
           <span>当前筛选结果：</span>
-          <span id="result-counter" class="font-bold text-brand font-mono text-sm">16</span>
+          <span id="result-counter" class="font-bold text-brand font-mono text-sm">{providers.length}</span>
           <span>家服务商</span>
           <button id="reset-filters-btn" class="ml-2 text-xs text-brand hover:underline cursor-pointer hidden">
             重置全部筛选

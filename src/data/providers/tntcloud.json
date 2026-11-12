@@ -1,0 +1,190 @@
+{
+  "id": "tntcloud",
+  "slug": "tntcloud",
+  "name": "TNTCloud",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "曾用名 3A 加速器，老牌分站团队运营与特色季付限量专线",
+  "pricing": {
+    "minPrice": "20",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "110G",
+    "plans": [
+      {
+        "name": "轻量包",
+        "cycle": "季付",
+        "price": 30,
+        "traffic": "60G"
+      },
+      {
+        "name": "轻量包",
+        "cycle": "半年付",
+        "price": 56,
+        "traffic": "60G"
+      },
+      {
+        "name": "轻量包",
+        "cycle": "年付",
+        "price": 98,
+        "traffic": "60G"
+      },
+      {
+        "name": "VIP1",
+        "cycle": "月付",
+        "price": 20,
+        "traffic": "110G"
+      },
+      {
+        "name": "VIP1",
+        "cycle": "季付",
+        "price": 54,
+        "traffic": "110G"
+      },
+      {
+        "name": "VIP1",
+        "cycle": "半年付",
+        "price": 102,
+        "traffic": "110G"
+      },
+      {
+        "name": "VIP1",
+        "cycle": "年付",
+        "price": 192,
+        "traffic": "110G"
+      },
+      {
+        "name": "VIP2",
+        "cycle": "月付",
+        "price": 40,
+        "traffic": "220G"
+      },
+      {
+        "name": "VIP2",
+        "cycle": "季付",
+        "price": 108,
+        "traffic": "220G"
+      },
+      {
+        "name": "VIP2",
+        "cycle": "半年付",
+        "price": 204,
+        "traffic": "220G"
+      },
+      {
+        "name": "VIP2",
+        "cycle": "年付",
+        "price": 336,
+        "traffic": "220G"
+      },
+      {
+        "name": "VIP3",
+        "cycle": "月付",
+        "price": 80,
+        "traffic": "460G"
+      },
+      {
+        "name": "VIP3",
+        "cycle": "季付",
+        "price": 216,
+        "traffic": "460G"
+      },
+      {
+        "name": "VIP3",
+        "cycle": "半年付",
+        "price": 408,
+        "traffic": "460G"
+      },
+      {
+        "name": "VIP3",
+        "cycle": "年付",
+        "price": 768,
+        "traffic": "460G"
+      },
+      {
+        "name": "VIP4",
+        "cycle": "月付",
+        "price": 160,
+        "traffic": "1100G"
+      },
+      {
+        "name": "VIP4",
+        "cycle": "季付",
+        "price": 432,
+        "traffic": "1100G"
+      },
+      {
+        "name": "VIP4",
+        "cycle": "半年付",
+        "price": 816,
+        "traffic": "1100G"
+      },
+      {
+        "name": "VIP4",
+        "cycle": "年付",
+        "price": 1536,
+        "traffic": "1100G"
+      }
+    ]
+  },
+  "routes": "IPLC 内网高带宽专线 (2000Mbps 骨干)",
+  "protocols": [
+    "Shadowsocks",
+    "VLESS"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。",
+  "streamingSupport": "流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。",
+  "suitableFor": [
+    "需要 IPLC 纯内网专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "通过限量售卖机制控制节点负载，节点晚高峰实际体验充裕",
+    "承袭 3A 加速器老牌运维技术，网络故障恢复响应迅速",
+    "支持官方 85 折优惠券与多周期弹性续订"
+  ],
+  "cons": [
+    "限量套餐经常处于售罄状态，需要等待批次补仓",
+    "不限时大包不参与常规折扣活动"
+  ],
+  "coupon": {
+    "code": "TNT85",
+    "desc": "85 折优惠券"
+  },
+  "affiliateUrl": "https://jichangshouce.co/brands/",
+  "website": "https://jichangshouce.co/brands/",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "reviewContent": "TNTCloud 曾用名为 3A 加速器（AAA Speed），属于业界老牌机场的分站衍生团队。该品牌主打 IPLC 内网专线与 2000Mbps 级网络骨干，其最知名的营销特征是提供“季付限量特惠包”，通过阶段性限制总用户注册数来严格保障单节点带宽冗余。在历次网络测速中，TNTCloud 的香港和日本节点表现出极强的晚高峰抗压能力，4K 视频秒开率表现抢眼。支持使用 TNT85 专属 85 折优惠码。适合看重单节点人均独享带宽、反感“千人同挤一节点”的高清影音与下载用户。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-08-24",
+    "notes": "服务商历史档案记录，资费与节点可用性需以官方最新状态为准。"
+  },
+  "faq": [
+    {
+      "q": "TNTCloud 的最低价格是多少？支持月付吗？",
+      "a": "TNTCloud 的基础入门价格为 ¥20/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "TNTCloud 支持哪些客户端？新手如何快速配置？",
+      "a": "TNTCloud 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "TNTCloud 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。 流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "id": "shandianshu",
+  "slug": "shandianshu",
+  "name": "闪电鼠",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "IEPL 国际专线架构，年付高性价比，适配 VLESS/Shadowsocks 主流协议",
+  "pricing": {
+    "minPrice": "5.6",
+    "cycle": "月 (年付折算)",
+    "priceType": "年付折算价",
+    "traffic": "60GB/月",
+    "plans": [
+      {
+        "name": "基础标准套餐",
+        "cycle": "年付折算",
+        "price": 5.6,
+        "traffic": "60GB/月"
+      }
+    ]
+  },
+  "routes": "IEPL 国际专线",
+  "protocols": [
+    "VLESS",
+    "Shadowsocks"
+  ],
+  "clients": [
+    "自研一键客户端 (Windows/macOS/Android/iOS)",
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
+  "suitableFor": [
+    "需要 IEPL 国际专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 自研一键客户端 (Windows/macOS/Android/iOS) 等客户端进行分流的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "采用内网专线物理传输，避开公网拥堵，晚高峰抖动控制优秀",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "提供全平台官方客户端，小白用户免去复杂配置",
+    "提供官方优惠码 sd88，新用户注册结账可享优惠"
+  ],
+  "cons": [
+    "入门宣传底价基于年付折算，单月购买成本略有差异，建议首期小额试用",
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
+  ],
+  "coupon": {
+    "code": "sd88",
+    "desc": "超低折扣码"
+  },
+  "affiliateUrl": "https://qwerty.shandianshuaff.com/#/?code=rUE75iYh",
+  "website": "https://qwerty.shandianshuaff.com/#/?code=rUE75iYh",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "reviewContent": "闪电鼠 是一项面向跨境办公与日常网络加速的代理服务。系统采用 IEPL 国际专线 架构，结合 VLESS与Shadowsocks 协议传输，在国内外枢纽网络节点间建立了低延迟中转通道。支持主流流媒体与 AI 工具分流，适合对稳定性和带宽有实际需求的用户。建议新用户根据实际流量用量选择合适周期，先通过月付或入门包实测晚高峰表现后再考虑长期订阅。",
+  "verification": {
+    "status": "pending",
+    "verifiedAt": "2026-10-19",
+    "notes": "品牌公开资料已收录，独立千兆宽带网络测试排期中。"
+  },
+  "faq": [
+    {
+      "q": "闪电鼠 的最低价格是多少？支持月付吗？",
+      "a": "闪电鼠 的基础入门价格为 ¥5.6/月 (年付折算)（年付折算价）。注意该价格为年付折算月均成本，实际需一次性支付年费；如需月付可选择标准月付套餐。"
+    },
+    {
+      "q": "闪电鼠 支持哪些客户端？新手如何快速配置？",
+      "a": "闪电鼠 完整兼容 自研一键客户端 (Windows/macOS/Android/iOS)、Clash、Shadowrocket 等客户端。新手可直接下载官方一键客户端登录即连，亦可在用户后台一键导入订阅到第三方软件。"
+    },
+    {
+      "q": "闪电鼠 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
+    }
+  ]
+}

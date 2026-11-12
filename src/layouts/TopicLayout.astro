@@ -13,6 +13,7 @@ interface Props {
   articles: ContentItem[];
   answers: ContentItem[];
   updatedDate: Date | string;
+  slug?: string;
 }
 
 const {
@@ -23,7 +24,17 @@ const {
   articles,
   answers,
   updatedDate,
+  slug,
 } = Astro.props;
+
+const hubLinks: Record<string, { label: string; href: string }> = {
+  clash: { label: '前往 Clash Verge 实战配置专区 →', href: '/tutorials/clash/' },
+  shadowrocket: { label: '前往苹果小火箭 (Shadowrocket) 教程中心 →', href: '/tutorials/shadowrocket/' },
+  v2rayn: { label: '前往 v2rayN Windows 教程专区 →', href: '/tutorials/v2rayn/' },
+  'airport-selection': { label: '查看 2026 高性价比机场推荐与核验档案 →', href: '/recommend/' },
+};
+
+const linkedHub = slug ? hubLinks[slug] : null;
 
 const breadcrumbs = [
   { name: '专题百科', url: '/topics/' },
@@ -53,6 +64,17 @@ const breadcrumbs = [
         <p class="text-sm text-fg-subtle leading-relaxed mb-6">
           {description}
         </p>
+
+        {linkedHub && (
+          <div class="mb-6">
+            <a
+              href={linkedHub.href}
+              class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-primary text-text-inverse hover:bg-primary-600 transition-colors shadow-xs"
+            >
+              <span>{linkedHub.label}</span>
+            </a>
+          </div>
+        )}
 
         <!-- Subtopics badges -->
         <div class="flex flex-wrap gap-2 pt-4 border-t border-border-subtle">

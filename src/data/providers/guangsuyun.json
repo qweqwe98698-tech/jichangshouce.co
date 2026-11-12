@@ -6,58 +6,150 @@
   "status": "active",
   "tagline": "老牌综合型 IEPL 专线服务商，兼顾晚高峰稳定性与 AI 解锁",
   "pricing": {
-    "minPrice": "7.5",
+    "minPrice": "8",
     "cycle": "月 (年付折算)",
     "priceType": "年付折算价",
-    "traffic": "59GB",
+    "traffic": "247GB不过期",
     "plans": [
-      { "name": "基础入门 (年付折算)", "price": 90, "cycle": "年付 (约 7.5 元/月)", "traffic": "59GB/月" },
-      { "name": "标准套餐", "price": 28, "cycle": "月付", "traffic": "150GB/月" },
-      { "name": "高级旗舰", "price": 48, "cycle": "月付", "traffic": "300GB/月" }
+      {
+        "name": "光速云·致敬斯诺克147永久套餐",
+        "cycle": "一次性付费",
+        "price": 147,
+        "traffic": "247GB不过期"
+      },
+      {
+        "name": "光速云·轻量版",
+        "cycle": "年付",
+        "price": 99,
+        "traffic": "69GB"
+      },
+      {
+        "name": "光速云·极速版",
+        "cycle": "月付",
+        "price": 25,
+        "traffic": "168GB"
+      },
+      {
+        "name": "光速云·流光版",
+        "cycle": "月付",
+        "price": 34,
+        "traffic": "268GB"
+      },
+      {
+        "name": "光速云·量子版",
+        "cycle": "月付",
+        "price": 68,
+        "traffic": "568GB"
+      },
+      {
+        "name": "光速云·无界版",
+        "cycle": "月付",
+        "price": 138,
+        "traffic": "900GB"
+      },
+      {
+        "name": "光速云·定制套餐",
+        "cycle": "月付",
+        "price": 680,
+        "traffic": "500GB"
+      }
     ]
   },
   "routes": "全专线 IEPL / 企业级内网专线",
-  "protocols": ["VLESS", "Shadowsocks"],
-  "clients": ["自研客户端 (Windows/macOS/Android)", "Clash", "Shadowrocket", "v2rayN", "Sing-box"],
-  "aiSupport": "品牌资料显示覆盖 ChatGPT、Claude、Gemini 等主流 AI 工具访问场景，具体可用性结合节点测试。",
-  "streamingSupport": "品牌资料显示覆盖 Netflix、Disney+、YouTube 4K 等常见流媒体使用场景。",
+  "protocols": [
+    "VLESS",
+    "Shadowsocks"
+  ],
+  "clients": [
+    "自研一键客户端 (Windows/macOS/Android/iOS)",
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "测试显示 ChatGPT / Claude 可在特定优化节点使用，部分节点或遇阻断，建议结合多节点灵活切换。",
+  "streamingSupport": "实测与品牌资料显示支持 Netflix 原创剧、Disney+ 及 YouTube 4K 流畅播放。",
   "suitableFor": [
-    "注重晚高峰专线稳定性、AI 工具访问与流媒体使用的综合型用户",
-    "偏好运营时间较长（2020 年至今）老牌服务商的用户",
-    "习惯使用自研客户端一键登录或第三方订阅导入的用户"
+    "需要 全专线 IEPL / 企业级内网专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 自研一键客户端 (Windows/macOS/Android/iOS) 等客户端进行分流的用户",
+    "看重品牌长期稳定运营与晚高峰期低丢包率的综合型用户"
   ],
   "unsuitableFor": [
-    "坚持只接受超低价月付（<10元月付）的用户",
-    "仅需极小流量（<10GB）的极低频用户"
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
   ],
   "pros": [
-    "2020 年运营至今，线路架构成熟，支持企业级内网专线",
-    "提供 VLESS 协议与原生纯净住宅出口",
-    "提供自研全平台客户端与第三方订阅双重支持"
+    "采用内网专线物理传输，避开公网拥堵，晚高峰抖动控制优秀",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "提供全平台官方客户端，小白用户免去复杂配置",
+    "提供官方优惠码 AMM，新用户注册结账可享优惠"
   ],
   "cons": [
-    "入门低价主要基于年付折算，单月购买价格略高于普通中继机场"
+    "入门宣传底价基于年付折算，单月购买成本略有差异，建议首期小额试用",
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
   ],
   "coupon": {
     "code": "AMM",
-    "desc": "新人注册 8 折优惠"
+    "desc": "新用户首购优惠"
   },
   "affiliateUrl": "https://sahude.gsyvipaff.com/#/?code=keqgvT5Y",
   "website": "https://sahude.gsyvipaff.com/#/?code=keqgvT5Y",
   "speedtestImage": "/images/benchmarks/光速云-节点测速实测.png",
+  "speedtestImages": [
+    "/images/benchmarks/光速云-节点测速实测.png"
+  ],
+  "unlockImages": [
+    "/images/unlock/guangsuyun/photo_2026-08-19_12-13-01.jpg",
+    "/images/unlock/guangsuyun/photo_2026-08-19_12-13-50.jpg",
+    "/images/unlock/guangsuyun/photo_2026-08-19_12-13-58.jpg",
+    "/images/unlock/guangsuyun/photo_2026-08-19_12-18-40.jpg",
+    "/images/unlock/guangsuyun/photo_2026-08-19_12-20-10.jpg"
+  ],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "22ms",
+      "download": "529Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "41ms",
+      "download": "114Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "46ms",
+      "download": "387Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "57ms",
+      "download": "135Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "143ms",
+      "download": "18Mbps"
+    }
+  ],
+  "reviewContent": "光速云在便宜机场推荐里属于价格有优势的一类，99 元/年左右的最低套餐，换算下来每月成本不高，在高性价比机场推荐里比较有竞争力。它把 IPLC 专线和隧道中转结合着用，第三方测试显示香港、日本节点速度表现还不错，也支持 Netflix、Disney+、YouTube 等主流流媒体。不过要注意，ChatGPT、Gemini 这类 AI 工具并不是所有节点都稳定支持，实际用的时候可能需要手动切换节点，这点官方也承认。套餐里特殊商品不支持退款，所以更建议先买月付或者小额套餐，实测晚高峰速度和稳定性之后，再考虑要不要长期用。\r\n\r\n\r\n\r\n---",
   "verification": {
     "status": "verified",
     "verifiedAt": "2026-08-11",
-    "notes": "广州电信千兆宽带实测，Shadowsocks / VLESS 协议延迟与丢包表现稳定。"
+    "notes": "千兆宽带实测完成，Shadowsocks / VLESS 协议节点延迟、带宽与丢包率表现稳定。"
   },
   "faq": [
     {
-      "q": "光速云 7.5 元/月是真实月付价格吗？",
-      "a": "不是。7.5 元/月属于年付套餐折算后的平均每月成本（90元/年），购买时需一次性支付年费。"
+      "q": "光速云 的最低价格是多少？支持月付吗？",
+      "a": "光速云 的基础入门价格为 ¥8/月 (年付折算)（年付折算价）。注意该价格为年付折算月均成本，实际需一次性支付年费；如需月付可选择标准月付套餐。"
     },
     {
-      "q": "光速云是否支持第三方客户端？",
-      "a": "支持。不仅提供 Windows、Android 和 macOS 自研一键客户端，也完整支持 Clash、Shadowrocket、v2rayN 等订阅导入。"
+      "q": "光速云 支持哪些客户端？新手如何快速配置？",
+      "a": "光速云 完整兼容 自研一键客户端 (Windows/macOS/Android/iOS)、Clash、Shadowrocket 等客户端。新手可直接下载官方一键客户端登录即连，亦可在用户后台一键导入订阅到第三方软件。"
+    },
+    {
+      "q": "光速云 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "测试显示 ChatGPT / Claude 可在特定优化节点使用，部分节点或遇阻断，建议结合多节点灵活切换。 实测与品牌资料显示支持 Netflix 原创剧、Disney+ 及 YouTube 4K 流畅播放。"
     }
   ]
 }

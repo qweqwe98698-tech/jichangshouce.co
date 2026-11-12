@@ -1,0 +1,184 @@
+{
+  "id": "edgenova",
+  "slug": "edgenova",
+  "name": "EdgeNova",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "面向跨境出海与远程协同，高速直连与专线混合调度",
+  "pricing": {
+    "minPrice": "15",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "72G",
+    "plans": [
+      {
+        "name": "限时月付",
+        "cycle": "月付",
+        "price": 15,
+        "traffic": "72G"
+      },
+      {
+        "name": "限时年付",
+        "cycle": "年付",
+        "price": 108,
+        "traffic": "45G"
+      },
+      {
+        "name": "极界·标准",
+        "cycle": "月付",
+        "price": 25,
+        "traffic": "120G"
+      },
+      {
+        "name": "极界·标准",
+        "cycle": "季付",
+        "price": 70,
+        "traffic": "120G"
+      },
+      {
+        "name": "极界·标准",
+        "cycle": "半年付",
+        "price": 130,
+        "traffic": "120G"
+      },
+      {
+        "name": "极界·标准",
+        "cycle": "年付",
+        "price": 270,
+        "traffic": "120G"
+      },
+      {
+        "name": "极界·进阶",
+        "cycle": "月付",
+        "price": 50,
+        "traffic": "250G"
+      },
+      {
+        "name": "极界·进阶",
+        "cycle": "季付",
+        "price": 145,
+        "traffic": "250G"
+      },
+      {
+        "name": "极界·进阶",
+        "cycle": "半年付",
+        "price": 280,
+        "traffic": "250G"
+      },
+      {
+        "name": "极界·进阶",
+        "cycle": "年付",
+        "price": 570,
+        "traffic": "250G"
+      },
+      {
+        "name": "极界·高级",
+        "cycle": "月付",
+        "price": 100,
+        "traffic": "500G"
+      },
+      {
+        "name": "极界·高级",
+        "cycle": "季付",
+        "price": 290,
+        "traffic": "500G"
+      },
+      {
+        "name": "极界·高级",
+        "cycle": "半年付",
+        "price": 580,
+        "traffic": "500G"
+      },
+      {
+        "name": "极界·高级",
+        "cycle": "年付",
+        "price": 1100,
+        "traffic": "500G"
+      },
+      {
+        "name": "极界·极限",
+        "cycle": "月付",
+        "price": 200,
+        "traffic": "1000G"
+      },
+      {
+        "name": "极界·极限",
+        "cycle": "季付",
+        "price": 580,
+        "traffic": "1000G"
+      },
+      {
+        "name": "极界·极限",
+        "cycle": "半年付",
+        "price": 1150,
+        "traffic": "1000G"
+      },
+      {
+        "name": "极界·极限",
+        "cycle": "年付",
+        "price": 2300,
+        "traffic": "1000G"
+      }
+    ]
+  },
+  "routes": "多线 BGP 直连 + 核心 IPLC 混合调度",
+  "protocols": [
+    "Shadowsocks",
+    "VLESS"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。",
+  "streamingSupport": "流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。",
+  "suitableFor": [
+    "需要 IPLC 纯内网专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "支持官方专属 8 折优惠券 TH888，降低初次采购门槛",
+    "混合调度架构兼顾日常低延迟与专项业务高可用",
+    "支持多平台多设备同时登录，满足团队小规模共享"
+  ],
+  "cons": [
+    "非全节点纯专线，部分非核心冷门节点采用普通中继",
+    "退款条款严格，建议使用测试周期进行可用性评估"
+  ],
+  "coupon": {
+    "code": "TH888",
+    "desc": "8 折优惠券"
+  },
+  "affiliateUrl": "https://work.edgenovaaff.cc/#/register?code=cl3iB5YG",
+  "website": "https://work.edgenovaaff.cc/#/register?code=cl3iB5YG",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "reviewContent": "EdgeNova 是一家面向跨境电商卖家、远程出海团队与极客用户的网络连接平台。其架构融合了高速直连路由与关键节点的 IPLC 专线调度，支持智能根据访问目标切换最优链路。在资费方面支持官方 TH888 专属 8 折优惠码，性价比在出海办公领域具备一定竞争力。支持多设备并发在线，并在控制面板中集成了较为完备的流量消耗统计与节点延迟实时状态看板。适合对跨平台办公协作有刚性需求的用户。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-08-24",
+    "notes": "服务商历史档案记录，资费与节点可用性需以官方最新状态为准。"
+  },
+  "faq": [
+    {
+      "q": "EdgeNova 的最低价格是多少？支持月付吗？",
+      "a": "EdgeNova 的基础入门价格为 ¥15/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "EdgeNova 支持哪些客户端？新手如何快速配置？",
+      "a": "EdgeNova 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "EdgeNova 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。 流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。"
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "id": "lingdongyun",
+  "slug": "lingdongyun",
+  "name": "灵动云",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "2025 年新晋专线品牌，实测全面采用 VLESS 现代协议",
+  "pricing": {
+    "minPrice": "20",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "100G/月",
+    "plans": [
+      {
+        "name": "灵动·拂风",
+        "cycle": "月付",
+        "price": 20,
+        "traffic": "100G/月"
+      },
+      {
+        "name": "灵动·拂风",
+        "cycle": "季付",
+        "price": 57,
+        "traffic": "100G/月"
+      },
+      {
+        "name": "灵动·拂风",
+        "cycle": "半年付",
+        "price": 108,
+        "traffic": "100G/月"
+      },
+      {
+        "name": "灵动·拂风",
+        "cycle": "年付",
+        "price": 204,
+        "traffic": "100G/月"
+      },
+      {
+        "name": "灵动·拂风",
+        "cycle": "两年付",
+        "price": 384,
+        "traffic": "100G/月"
+      },
+      {
+        "name": "灵动·拂风",
+        "cycle": "三年付",
+        "price": 540,
+        "traffic": "100G/月"
+      },
+      {
+        "name": "灵动·驭浪",
+        "cycle": "月付",
+        "price": 50,
+        "traffic": "300G/月"
+      },
+      {
+        "name": "灵动·驭浪",
+        "cycle": "季付",
+        "price": 142.5,
+        "traffic": "300G/月"
+      },
+      {
+        "name": "灵动·驭浪",
+        "cycle": "半年付",
+        "price": 270,
+        "traffic": "300G/月"
+      },
+      {
+        "name": "灵动·驭浪",
+        "cycle": "年付",
+        "price": 510,
+        "traffic": "300G/月"
+      },
+      {
+        "name": "灵动·驭浪",
+        "cycle": "两年付",
+        "price": 960,
+        "traffic": "300G/月"
+      },
+      {
+        "name": "灵动·驭浪",
+        "cycle": "三年付",
+        "price": 1350,
+        "traffic": "300G/月"
+      },
+      {
+        "name": "灵动·破晓",
+        "cycle": "月付",
+        "price": 100,
+        "traffic": "700G/月"
+      },
+      {
+        "name": "灵动·破晓",
+        "cycle": "季付",
+        "price": 285,
+        "traffic": "700G/月"
+      },
+      {
+        "name": "灵动·破晓",
+        "cycle": "半年付",
+        "price": 540,
+        "traffic": "700G/月"
+      },
+      {
+        "name": "灵动·破晓",
+        "cycle": "年付",
+        "price": 1020,
+        "traffic": "700G/月"
+      },
+      {
+        "name": "灵动·破晓",
+        "cycle": "两年付",
+        "price": 1920,
+        "traffic": "700G/月"
+      },
+      {
+        "name": "灵动·破晓",
+        "cycle": "三年付",
+        "price": 2700,
+        "traffic": "700G/月"
+      },
+      {
+        "name": "灵动·凌霄",
+        "cycle": "月付",
+        "price": 180,
+        "traffic": "1.5T/月"
+      },
+      {
+        "name": "灵动·凌霄",
+        "cycle": "季付",
+        "price": 513,
+        "traffic": "1.5T/月"
+      },
+      {
+        "name": "灵动·凌霄",
+        "cycle": "半年付",
+        "price": 972,
+        "traffic": "1.5T/月"
+      },
+      {
+        "name": "灵动·凌霄",
+        "cycle": "年付",
+        "price": 1836,
+        "traffic": "1.5T/月"
+      },
+      {
+        "name": "灵动·凌霄",
+        "cycle": "两年付",
+        "price": 3456,
+        "traffic": "1.5T/月"
+      },
+      {
+        "name": "灵动·凌霄",
+        "cycle": "三年付",
+        "price": 4860,
+        "traffic": "1.5T/月"
+      },
+      {
+        "name": "灵动·穿云",
+        "cycle": "年付",
+        "price": 99,
+        "traffic": "70G/月"
+      },
+      {
+        "name": "灵动·闲云（小流量包）",
+        "cycle": "一次性付费",
+        "price": 199,
+        "traffic": "150G"
+      },
+      {
+        "name": "灵动·惊云（标准流量包）",
+        "cycle": "一次性付费",
+        "price": 499,
+        "traffic": "400G"
+      },
+      {
+        "name": "灵动·飞云（精英流量包）",
+        "cycle": "一次性付费",
+        "price": 899,
+        "traffic": "800G"
+      },
+      {
+        "name": "灵动云·至尊私人定制",
+        "cycle": "月付",
+        "price": 620,
+        "traffic": "截图遮挡"
+      }
+    ]
+  },
+  "routes": "全专线跨境直连 / VLESS 现代架构",
+  "protocols": [
+    "VLESS",
+    "Shadowsocks",
+    "Trojan"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
+  "suitableFor": [
+    "需要 IEPL 国际专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "原生采用新一代 VLESS 协议，网络特征隐蔽，抗干扰能力强",
+    "亚洲近端节点针对性优化，跨域交互 RTT 表现优良",
+    "节点池持续更新维护，新开业期间人均带宽冗余充沛"
+  ],
+  "cons": [
+    "运营时间相对较新（2025年开业），品牌长期历史穿越周期有待持续观察",
+    "目前公开的长期优惠码较少，优惠政策尚未常态化"
+  ],
+  "affiliateUrl": "https://varnexa.lingdongaff.com/#/?code=wZvEhEoI",
+  "website": "https://varnexa.lingdongaff.com/#/?code=wZvEhEoI",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "reviewContent": "灵动云是 2025 年新开业的现代化专线型代理服务商。与老牌机场普遍沿用 Shadowsocks 协议不同，灵动云从建站之初便全面拥抱了新一代 VLESS 协议，在流量伪装、抗 Active Probing 探测以及 TLS 握手特征混淆方面具备天然优势。线路主打全专线跨境直连，重点优化了香港、日本、新加坡等亚洲近端区域的交互延迟。对于经常使用 Clash Verge Rev、Sing-box 以及重视协议现代化的技术型用户而言，灵动云是一个极具代表性的新势力选择。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-08-24",
+    "notes": "服务商历史档案记录，资费与节点可用性需以官方最新状态为准。"
+  },
+  "faq": [
+    {
+      "q": "灵动云 的最低价格是多少？支持月付吗？",
+      "a": "灵动云 的基础入门价格为 ¥20/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "灵动云 支持哪些客户端？新手如何快速配置？",
+      "a": "灵动云 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "灵动云 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
+    }
+  ]
+}

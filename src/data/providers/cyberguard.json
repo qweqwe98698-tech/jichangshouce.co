@@ -1,0 +1,146 @@
+{
+  "id": "cyberguard",
+  "slug": "cyberguard",
+  "name": "CyberGuard",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "Trojan/VLESS 现代双协议支撑，提供大容量不限时流量包",
+  "pricing": {
+    "minPrice": "15.83",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "150GB/月",
+    "plans": [
+      {
+        "name": "150G｜轻量套餐",
+        "cycle": "半年付",
+        "price": 95,
+        "traffic": "150GB/月"
+      },
+      {
+        "name": "350G｜标准套餐",
+        "cycle": "月付",
+        "price": 32,
+        "traffic": "350GB/月"
+      },
+      {
+        "name": "650G｜高速套餐",
+        "cycle": "月付",
+        "price": 55,
+        "traffic": "650GB/月"
+      },
+      {
+        "name": "220G流量包｜不限时",
+        "cycle": "一次性付费",
+        "price": 79,
+        "traffic": "220GB"
+      },
+      {
+        "name": "840G流量包｜不限时",
+        "cycle": "一次性付费",
+        "price": 188,
+        "traffic": "840GB"
+      },
+      {
+        "name": "2050G｜企业套餐",
+        "cycle": "月付",
+        "price": 200,
+        "traffic": "2050GB/月"
+      }
+    ]
+  },
+  "routes": "BGP 智能接入与专线级跨国出口",
+  "protocols": [
+    "VLESS",
+    "Shadowsocks",
+    "Trojan"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
+  "suitableFor": [
+    "需要 商业中继与企业级专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "提供一次性不限时流量包，流量不随月份清零，极度契合备用需求",
+    "月付 32 元即可获得 350GB 丰沛配额，单位 GB 性价比出众",
+    "支持现代 VLESS 与 Trojan 协议，抗网络 QoS 识别能力强"
+  ],
+  "cons": [
+    "部分远距离欧美节点物理延迟偏高，游戏加速需手动甄选节点",
+    "历史测速表明单节点可用性存在周期性轮换，需依赖订阅定时更新"
+  ],
+  "affiliateUrl": "https://cyberguard.best/#/register?code=AxXNNYng",
+  "website": "https://cyberguard.best/#/register?code=AxXNNYng",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "日本",
+      "latency": "123.8ms",
+      "download": "488.83Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "614ms",
+      "download": "245.6Mbps"
+    },
+    {
+      "node": "澳大利亚",
+      "latency": "277ms",
+      "download": "279.64Mbps"
+    },
+    {
+      "node": "韩国",
+      "latency": "6000ms",
+      "download": "552.8Mbps"
+    },
+    {
+      "node": "德国",
+      "latency": "390.5ms",
+      "download": "159.96Mbps"
+    },
+    {
+      "node": "法国",
+      "latency": "384ms",
+      "download": "204.08Mbps"
+    },
+    {
+      "node": "阿联酋",
+      "latency": "345ms",
+      "download": "342.76Mbps"
+    }
+  ],
+  "reviewContent": "CyberGuard 是一项主打现代混淆协议与长周期灵活计费的代理服务。与传统月付订阅不同，CyberGuard 除提供 32 元/月（350GB）的标准月付档位外，还专门设立了 79 元（220GB）与 188 元（840GB）的一次性永久不过期流量包。技术上采用 Trojan 与 VLESS 双协议混编，节点覆盖澳大利亚、阿联酋、韩国、法德等 12 个重点国家。在历史测速中，其日本和韩国节点展现了超过 400Mbps 的突发吞吐能力。该品牌尤其适合作为日常轻度办公、差旅出差以及突发大流量传输的备用方案，无需担心每月固定续订流量被清零浪费。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-10-19",
+    "notes": "包含实机节点延迟与测速明细记录，晚高峰长期稳定性待持续复核。"
+  },
+  "faq": [
+    {
+      "q": "CyberGuard 的最低价格是多少？支持月付吗？",
+      "a": "CyberGuard 的基础入门价格为 ¥15.83/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "CyberGuard 支持哪些客户端？新手如何快速配置？",
+      "a": "CyberGuard 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "CyberGuard 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
+    }
+  ]
+}

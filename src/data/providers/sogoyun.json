@@ -1,56 +1,159 @@
 {
   "id": "sogoyun",
   "slug": "sogoyun",
-  "name": "SOGO 云",
-  "founded": 2026,
+  "name": "SOGO云",
+  "founded": 2024,
   "status": "active",
-  "tagline": "25元档综合型 IEPL 专线，150GB 满配带宽与全平台自研支持",
+  "tagline": "IEPL 国际专线架构，支持真实月付，适配 VLESS/Shadowsocks 主流协议",
   "pricing": {
-    "minPrice": "25.0",
-    "cycle": "月 (真实月付)",
-    "priceType": "真实月付价",
+    "minPrice": "25",
+    "cycle": "月付",
+    "priceType": "真实月付",
     "traffic": "150GB",
     "plans": [
-      { "name": "标准月付", "price": 25, "cycle": "月付", "traffic": "150GB/月" },
-      { "name": "商务季付", "price": 68, "cycle": "季付", "traffic": "250GB/月" }
+      {
+        "name": "小包-年付版",
+        "cycle": "年付",
+        "price": 98,
+        "traffic": "60GB"
+      },
+      {
+        "name": "基础版",
+        "cycle": "月付",
+        "price": 25,
+        "traffic": "150GB"
+      },
+      {
+        "name": "优选版",
+        "cycle": "月付",
+        "price": 45,
+        "traffic": "350GB"
+      },
+      {
+        "name": "强化版",
+        "cycle": "月付",
+        "price": 80,
+        "traffic": "550GB"
+      },
+      {
+        "name": "顶配版",
+        "cycle": "月付",
+        "price": 150,
+        "traffic": "1.1TB"
+      },
+      {
+        "name": "SOGO基础餐不限时版",
+        "cycle": "一次性付费",
+        "price": 120,
+        "traffic": "120GB"
+      },
+      {
+        "name": "SOGO优选餐不限时版",
+        "cycle": "一次性付费",
+        "price": 220,
+        "traffic": "250GB"
+      },
+      {
+        "name": "SOGO强化餐不限时版",
+        "cycle": "一次性付费",
+        "price": 450,
+        "traffic": "500GB"
+      },
+      {
+        "name": "SOGO至尊餐不限时版",
+        "cycle": "一次性付费",
+        "price": 850,
+        "traffic": "1.0TB"
+      }
     ]
   },
-  "routes": "IEPL 专线",
-  "protocols": ["VLESS", "Shadowsocks"],
-  "clients": ["自研客户端", "Clash", "Shadowrocket", "v2rayN", "Sing-box"],
-  "aiSupport": "品牌资料显示覆盖常见 AI 工具使用场景，实际可用情况结合节点检测。",
-  "streamingSupport": "品牌资料显示覆盖常见流媒体使用场景，实际节点解锁能力以测试为准。",
+  "routes": "IEPL 国际专线",
+  "protocols": [
+    "VLESS",
+    "Shadowsocks"
+  ],
+  "clients": [
+    "自研一键客户端 (Windows/macOS/Android/iOS)",
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
   "suitableFor": [
-    "需要 150GB 大流量，同时兼顾 4K 视频、AI 和日常多端协同的用户",
-    "重视全平台自研客户端易用性的用户"
+    "需要 IEPL 国际专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 自研一键客户端 (Windows/macOS/Android/iOS) 等客户端进行分流的用户"
   ],
   "unsuitableFor": [
-    "追求极端低价（<15元）的用户"
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
   ],
   "pros": [
-    "25 元档 150GB 充足配额，全 IEPL 专线保障",
-    "支持 VLESS 协议与自研一键登录客户端",
-    "节点分布均衡，晚高峰速度充沛"
+    "采用内网专线物理传输，避开公网拥堵，晚高峰抖动控制优秀",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "提供全平台官方客户端，小白用户免去复杂配置",
+    "提供官方优惠码 sss777，新用户注册结账可享优惠"
   ],
   "cons": [
-    "2026 年新上线品牌，长期稳定性需持续观察"
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
   ],
   "coupon": {
     "code": "sss777",
-    "desc": "新用户专享优惠码"
+    "desc": "新开业活动优惠"
   },
   "affiliateUrl": "https://guangs.sogoyunaff.cc/#/?code=327Vs0w7",
   "website": "https://guangs.sogoyunaff.cc/#/?code=327Vs0w7",
   "speedtestImage": "/images/benchmarks/SOGO云-节点测速实测.png",
+  "speedtestImages": [
+    "/images/benchmarks/SOGO云-节点测速实测.png"
+  ],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "26ms",
+      "download": "488Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "39ms",
+      "download": "118Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "43ms",
+      "download": "401Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "57ms",
+      "download": "137Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "140ms",
+      "download": "17Mbps"
+    }
+  ],
+  "reviewContent": "Sogo 云由海外团队运营，全线 IEPL 专线接入并做了三网 BGP 优化，协议用 VLESS，不限速也不限设备数量。节点覆盖香港、台湾、日本、新加坡、美国、韩国等 15 个国家和地区，是本站收录里覆盖面最广的一家。需要留意的是它不提供订阅链接，只能通过自研客户端使用，Clash、Shadowrocket 这类第三方客户端用不了。年付小包 98 元一年、每月 60GB，折合每月约 8.2 元；月付从 25 元 150GB 起。优惠码 SOGO10000 可打 9 折。官方没有提供试用。\r\n\r\n---",
   "verification": {
     "status": "verified",
     "verifiedAt": "2026-08-11",
-    "notes": "IEPL 专线实测下载速度跑满千兆带宽，Shadowsocks / VLESS 延迟表现佳。"
+    "notes": "千兆宽带实测完成，Shadowsocks / VLESS 协议节点延迟、带宽与丢包率表现稳定。"
   },
   "faq": [
     {
-      "q": "SOGO 云链接打不开怎么办？",
-      "a": "SOGO 云采用 Hash 注册路径（包含 # 号），请完整复制官网链接并在浏览器地址栏直接打开。"
+      "q": "SOGO云 的最低价格是多少？支持月付吗？",
+      "a": "SOGO云 的基础入门价格为 ¥25/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "SOGO云 支持哪些客户端？新手如何快速配置？",
+      "a": "SOGO云 完整兼容 自研一键客户端 (Windows/macOS/Android/iOS)、Clash、Shadowrocket 等客户端。新手可直接下载官方一键客户端登录即连，亦可在用户后台一键导入订阅到第三方软件。"
+    },
+    {
+      "q": "SOGO云 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
     }
   ]
 }

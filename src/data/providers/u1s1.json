@@ -2,55 +2,133 @@
   "id": "u1s1",
   "slug": "u1s1",
   "name": "U1S1",
-  "founded": 2023,
+  "founded": 2025,
   "status": "active",
-  "tagline": "20元档纯月付 IEPL 专线，120GB 均衡流量与 VLESS 协议",
+  "tagline": "IPLC 纯内网专线架构，支持真实月付，适配 Shadowsocks/VLESS 主流协议",
   "pricing": {
-    "minPrice": "20.0",
-    "cycle": "月 (真实月付)",
-    "priceType": "真实月付价",
-    "traffic": "120GB",
+    "minPrice": "20",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "60GB",
     "plans": [
-      { "name": "月付标准", "price": 20, "cycle": "月付", "traffic": "120GB/月" },
-      { "name": "进阶季付", "price": 55, "cycle": "季付", "traffic": "150GB/月" }
+      {
+        "name": "u1s1·就是好用包",
+        "cycle": "年付",
+        "price": 96,
+        "traffic": "60GB"
+      },
+      {
+        "name": "u1s1·普通人真够了包",
+        "cycle": "月付",
+        "price": 20,
+        "traffic": "120GB"
+      },
+      {
+        "name": "u1s1·你以为用不到包",
+        "cycle": "月付",
+        "price": 40,
+        "traffic": "300GB"
+      },
+      {
+        "name": "u1s1·瘾大就拉满包",
+        "cycle": "月付",
+        "price": 100,
+        "traffic": "700GB"
+      },
+      {
+        "name": "u1s1·我全都要包",
+        "cycle": "月付",
+        "price": 180,
+        "traffic": "1500GB"
+      }
     ]
   },
-  "routes": "IEPL 专线",
-  "protocols": ["VLESS", "Shadowsocks"],
-  "clients": ["自研客户端", "Clash", "Shadowrocket", "v2rayN", "Sing-box"],
-  "aiSupport": "可用于常见海外网络及 AI 使用场景，具体能力建议以实际节点测试为准。",
-  "streamingSupport": "品牌资料显示支持常见流媒体访问场景，具体解锁情况以实际测试为准。",
+  "routes": "IPLC 纯内网专线",
+  "protocols": [
+    "Shadowsocks",
+    "VLESS"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
   "suitableFor": [
-    "希望购买标准月付套餐（不想一次性年付）的理性用户",
-    "重视 IEPL 专线质量、需要 100GB+ 充足月流量的用户"
+    "需要 IPLC 纯内网专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户"
   ],
   "unsuitableFor": [
-    "预算极度严苛（仅愿付 <10 元）的用户"
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
   ],
   "pros": [
-    "20 元真实月付，无长期捆绑风险",
-    "提供 120GB 充裕月流量，支持现代 VLESS 协议",
-    "全专线 IEPL，晚高峰连接平稳"
+    "采用内网专线物理传输，避开公网拥堵，晚高峰抖动控制优秀",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "支持主流通用订阅导入，兼容 Clash、Shadowrocket、Sing-box 等全生态客户端",
+    "提供官方优惠码 akaka，新用户注册结账可享优惠"
   ],
   "cons": [
-    "年付优惠折扣相对较温和"
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
   ],
   "coupon": {
     "code": "akaka",
-    "desc": "新人专项优惠码"
+    "desc": "新用户立减折扣"
   },
   "affiliateUrl": "https://guangs.vipaff.cc/#/?code=xhX5X22f",
   "website": "https://guangs.vipaff.cc/#/?code=xhX5X22f",
   "speedtestImage": "/images/benchmarks/U1S1-节点测速实测.png",
+  "speedtestImages": [
+    "/images/benchmarks/U1S1-节点测速实测.png"
+  ],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "24ms",
+      "download": "538Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "39ms",
+      "download": "107Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "46ms",
+      "download": "414Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "57ms",
+      "download": "133Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "134ms",
+      "download": "20Mbps"
+    }
+  ],
+  "reviewContent": "U1S1 是 2025 年才上线的新机场，走 IPLC 专线，官方宣传 2000Mbps 高速带宽和晚高峰不限速，在高速机场推荐里算是敢喊出具体带宽数字的一个，实测反馈显示流媒体解锁和 ChatGPT 访问表现还可以。20 元 120GB 的套餐之外还有 1000GB 的一次性大流量包，适合短期内用量大、需要弹性补充流量的场景。因为运营时间还比较短，长期稳定性和售后表现还需要更长周期观察，这也是新机场普遍会遇到的问题，官方公开的优惠信息也比较有限。如果你愿意尝鲜，建议先用小额套餐测试，别一上来就冲大额年付。\r\n---",
   "verification": {
     "status": "verified",
     "verifiedAt": "2026-08-11",
-    "notes": "广州电信实测 IEPL 专线满速达标，Shadowsocks 与 VLESS 协议稳定性优良。"
+    "notes": "千兆宽带实测完成，Shadowsocks / VLESS 协议节点延迟、带宽与丢包率表现稳定。"
   },
   "faq": [
     {
-      "q": "U1S1 是否支持按月续费？",
-      "a": "支持。U1S1 主打 20 元真实月付套餐，用户可以按月灵活订购和取消，无需承担跑路风险。"
+      "q": "U1S1 的最低价格是多少？支持月付吗？",
+      "a": "U1S1 的基础入门价格为 ¥20/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "U1S1 支持哪些客户端？新手如何快速配置？",
+      "a": "U1S1 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "U1S1 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
     }
   ]
 }

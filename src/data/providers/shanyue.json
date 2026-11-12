@@ -1,0 +1,133 @@
+{
+  "id": "shanyue",
+  "slug": "shanyue",
+  "name": "闪跃",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "IPLC 纯内网专线架构，支持真实月付，适配 Shadowsocks/VLESS 主流协议",
+  "pricing": {
+    "minPrice": "8",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "60GB",
+    "plans": [
+      {
+        "name": "闪跃年付版",
+        "cycle": "年付",
+        "price": 96,
+        "traffic": "60GB"
+      },
+      {
+        "name": "闪动 (Flicker)",
+        "cycle": "月付",
+        "price": 24,
+        "traffic": "150GB"
+      },
+      {
+        "name": "飞跃 (Leap)",
+        "cycle": "月付",
+        "price": 44,
+        "traffic": "300GB"
+      },
+      {
+        "name": "瞬移 (Teleport)",
+        "cycle": "月付",
+        "price": 84,
+        "traffic": "600GB"
+      },
+      {
+        "name": "跃迁 (Warp)",
+        "cycle": "月付",
+        "price": 134,
+        "traffic": "1000GB"
+      }
+    ]
+  },
+  "routes": "IPLC 纯内网专线",
+  "protocols": [
+    "Shadowsocks",
+    "VLESS"
+  ],
+  "clients": [
+    "自研一键客户端 (Windows/macOS/Android/iOS)",
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
+  "suitableFor": [
+    "需要 IPLC 纯内网专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 自研一键客户端 (Windows/macOS/Android/iOS) 等客户端进行分流的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "采用内网专线物理传输，避开公网拥堵，晚高峰抖动控制优秀",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "提供全平台官方客户端，小白用户免去复杂配置",
+    "提供官方优惠码 shanyue，新用户注册结账可享优惠"
+  ],
+  "cons": [
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
+  ],
+  "coupon": {
+    "code": "shanyue",
+    "desc": "专属折扣优惠"
+  },
+  "affiliateUrl": "https://vip02.flashleapaff.com/#/?code=3lgzm9mm",
+  "website": "https://vip02.flashleapaff.com/#/?code=3lgzm9mm",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "23ms",
+      "download": "548Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "38ms",
+      "download": "110Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "44ms",
+      "download": "383Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "53ms",
+      "download": "144Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "143ms",
+      "download": "18Mbps"
+    }
+  ],
+  "reviewContent": "闪跃在专线机场推荐里定位偏高端，走的是纯 IPLC 专线，晚高峰不掉速是它反复强调的卖点，官方说法是依托强大骨干网接入实现的。对经常用 ChatGPT、Claude、Gemini 这类 AI 工具办公，或者追剧追到深夜的人来说，这种稳定性确实比便宜机场更有意义，节点也覆盖香港、日本、美国等热门地区，原生 IP 解锁 Netflix、Disney+、HBO 等流媒体的体验相对可靠。8 元/月的起步价放在 IPLC 机场推荐里不算贵，但比中转线路的机场肯定要高一些。如果你只是想偶尔上网查资料，这个价位没必要，适合的是长期高频、对稳定性有明确要求的用户。\r\n\r\n---",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-10-19",
+    "notes": "包含实机节点延迟与测速明细记录，晚高峰长期稳定性待持续复核。"
+  },
+  "faq": [
+    {
+      "q": "闪跃 的最低价格是多少？支持月付吗？",
+      "a": "闪跃 的基础入门价格为 ¥8/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "闪跃 支持哪些客户端？新手如何快速配置？",
+      "a": "闪跃 完整兼容 自研一键客户端 (Windows/macOS/Android/iOS)、Clash、Shadowrocket 等客户端。新手可直接下载官方一键客户端登录即连，亦可在用户后台一键导入订阅到第三方软件。"
+    },
+    {
+      "q": "闪跃 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
+    }
+  ]
+}

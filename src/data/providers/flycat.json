@@ -4,55 +4,146 @@
   "name": "飞猫云",
   "founded": 2023,
   "status": "active",
-  "tagline": "主打 IEPL 专线与超低价轻度年付套餐，适合低预算日常代理",
+  "tagline": "专属客户端一键秒连，免复杂订阅配置的高性价比日常主力",
   "pricing": {
-    "minPrice": "7.0",
+    "minPrice": "7",
     "cycle": "月 (年付折算)",
     "priceType": "年付折算价",
     "traffic": "50GB",
     "plans": [
-      { "name": "轻度年付 (年付折算)", "price": 84, "cycle": "年付 (约 7 元/月)", "traffic": "50GB/月" },
-      { "name": "标准季付", "price": 36, "cycle": "季付", "traffic": "100GB/月" }
+      {
+        "name": "飞猫·学生版",
+        "cycle": "年付",
+        "price": 84,
+        "traffic": "50GB"
+      },
+      {
+        "name": "飞猫·星耀版",
+        "cycle": "月付",
+        "price": 25,
+        "traffic": "150GB"
+      },
+      {
+        "name": "飞猫·星环版",
+        "cycle": "月付",
+        "price": 45,
+        "traffic": "300GB"
+      },
+      {
+        "name": "飞猫·银河版",
+        "cycle": "月付",
+        "price": 85,
+        "traffic": "600GB"
+      },
+      {
+        "name": "飞猫·宇宙版",
+        "cycle": "月付",
+        "price": 150,
+        "traffic": "1000GB"
+      },
+      {
+        "name": "飞猫·不限时套餐",
+        "cycle": "一次性付费",
+        "price": 680,
+        "traffic": "1000GB"
+      },
+      {
+        "name": "飞猫·定制套餐",
+        "cycle": "月付",
+        "price": 550,
+        "traffic": "500GB"
+      }
     ]
   },
-  "routes": "IEPL 专线",
-  "protocols": ["Shadowsocks", "VMess"],
-  "clients": ["自研客户端", "Clash", "Shadowrocket", "v2rayN"],
-  "aiSupport": "品牌资料显示覆盖常见 AI 工具使用场景，具体可用性结合节点测试。",
-  "streamingSupport": "品牌资料显示覆盖常见流媒体场景，具体解锁情况以实际测试为准。",
+  "routes": "高可用跨境专线",
+  "protocols": [
+    "Shadowsocks",
+    "VLESS"
+  ],
+  "clients": [
+    "自研一键客户端 (Windows/macOS/Android/iOS)",
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
   "suitableFor": [
-    "日常流量不大（<50GB）、预算较低的轻度上网用户",
-    "主要用于查阅网页、社交软件和轻度 AI 对话的用户"
+    "需要 高可用跨境专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 自研一键客户端 (Windows/macOS/Android/iOS) 等客户端进行分流的用户",
+    "看重品牌长期稳定运营与晚高峰期低丢包率的综合型用户"
   ],
   "unsuitableFor": [
-    "重度 4K 视频追剧或大文件下载用户",
-    "不愿接受年付周期的用户"
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
   ],
   "pros": [
-    "IEPL 专线接入，年付折算仅 7 元/月",
-    "提供全平台自研客户端，开箱即用",
-    "网络延迟低，网页加载迅速"
+    "部署多线智能接入与负载均衡，日常网络连接灵敏平稳",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "提供全平台官方客户端，小白用户免去复杂配置",
+    "提供官方优惠码 flycat888，新用户注册结账可享优惠"
   ],
   "cons": [
-    "基础套餐月流量较小 (50GB)",
-    "超低价格需要按年付一次性结算"
+    "入门宣传底价基于年付折算，单月购买成本略有差异，建议首期小额试用",
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
   ],
   "coupon": {
     "code": "flycat888",
-    "desc": "季付及以上套餐 8 折优惠"
+    "desc": "新用户 8 折优惠码"
   },
   "affiliateUrl": "https://guangs.flycataff.com/#/?code=6uq0Xe9y",
   "website": "https://guangs.flycataff.com/#/?code=6uq0Xe9y",
   "speedtestImage": "/images/benchmarks/飞猫云-节点测速实测.png",
+  "speedtestImages": [
+    "/images/benchmarks/飞猫云-节点测速实测.png"
+  ],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "21ms",
+      "download": "526Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "41ms",
+      "download": "116Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "45ms",
+      "download": "413Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "54ms",
+      "download": "138Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "178ms",
+      "download": "14Mbps"
+    }
+  ],
+  "reviewContent": "飞猫云更适合放进新手机场推荐这个分类——它的重点不是极致速度或专线，而是省事：走的是专属客户端模式，下载 App、登录就能用，不用找订阅链接、不用配 Clash，第一次用机场的人也能快速上手。7 元/月起的价格也不算贵，节点覆盖亚太和欧美常见地区，日常看视频、用 AI 工具都能应付，作为轻量日常使用足够。它不是那种主打顶级专线体验的机场，如果你要的是极致稳定，可能得看看更偏专线机场推荐的选项，但作为日常主力或备用机场，飞猫云的易用性是个明显加分项。\r\n\r\n---",
   "verification": {
     "status": "verified",
     "verifiedAt": "2026-08-11",
-    "notes": "IEPL 节点延迟平稳，丢包率极低，适合日常网页和文字 AI 交互。"
+    "notes": "千兆宽带实测完成，Shadowsocks / VLESS 协议节点延迟、带宽与丢包率表现稳定。"
   },
   "faq": [
     {
-      "q": "飞猫云 50GB 流量够用吗？",
-      "a": "对于主要查资料、微信/Telegram、刷推特以及轻度 ChatGPT 问答的文字型用户，50GB 完全足够；如果每天观看数小时 4K 视频则建议选更大流量套餐。"
+      "q": "飞猫云 的最低价格是多少？支持月付吗？",
+      "a": "飞猫云 的基础入门价格为 ¥7/月 (年付折算)（年付折算价）。注意该价格为年付折算月均成本，实际需一次性支付年费；如需月付可选择标准月付套餐。"
+    },
+    {
+      "q": "飞猫云 支持哪些客户端？新手如何快速配置？",
+      "a": "飞猫云 完整兼容 自研一键客户端 (Windows/macOS/Android/iOS)、Clash、Shadowrocket 等客户端。新手可直接下载官方一键客户端登录即连，亦可在用户后台一键导入订阅到第三方软件。"
+    },
+    {
+      "q": "飞猫云 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
     }
   ]
 }

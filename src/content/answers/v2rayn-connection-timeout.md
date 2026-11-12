@@ -4,7 +4,7 @@ description: "全面解决 Windows v2rayN 客户端节点测速全部超时 (Tim
 pubDate: 2026-08-18
 updatedDate: 2026-08-18
 category: "故障排查"
-tags: ["v2rayN节点全红", "v2rayN超时", "v2rayN延迟-1", "Windows代理排错", "Xray内核", "时钟同步"]
+tags: ["v2rayn延迟全是-1", "v2rayN节点全红", "v2rayN超时", "v2rayN延迟-1", "Windows代理排错", "Xray内核", "时钟同步"]
 author: "机场手册编辑部"
 pillar: "v2rayn"
 intent: "troubleshooting"

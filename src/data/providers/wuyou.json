@@ -1,0 +1,152 @@
+{
+  "id": "wuyou",
+  "slug": "wuyou",
+  "name": "无忧链接",
+  "founded": 2025,
+  "status": "active",
+  "tagline": "通用原生订阅即导即用，专注跨境电商与远程生产力",
+  "pricing": {
+    "minPrice": "19",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "40GB",
+    "plans": [
+      {
+        "name": "MINI链接",
+        "cycle": "年付",
+        "price": 79,
+        "traffic": "40GB"
+      },
+      {
+        "name": "舒心链接",
+        "cycle": "月付",
+        "price": 19,
+        "traffic": "100GB"
+      },
+      {
+        "name": "省心链接",
+        "cycle": "月付",
+        "price": 33,
+        "traffic": "200GB"
+      },
+      {
+        "name": "随心链接",
+        "cycle": "月付",
+        "price": 77,
+        "traffic": "500GB"
+      },
+      {
+        "name": "忘忧链接",
+        "cycle": "月付",
+        "price": 117,
+        "traffic": "1000GB"
+      },
+      {
+        "name": "100G永久不限时 无忧链接",
+        "cycle": "一次性付费",
+        "price": 108,
+        "traffic": "100GB"
+      },
+      {
+        "name": "300G永久不限时 无忧链接",
+        "cycle": "一次性付费",
+        "price": 298,
+        "traffic": "300GB"
+      }
+    ]
+  },
+  "routes": "商业中继与企业级专线",
+  "protocols": [
+    "Shadowsocks",
+    "VLESS"
+  ],
+  "clients": [
+    "自研一键客户端 (Windows/macOS/Android/iOS)",
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
+  "suitableFor": [
+    "需要 商业中继与企业级专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 自研一键客户端 (Windows/macOS/Android/iOS) 等客户端进行分流的用户",
+    "看重品牌长期稳定运营与晚高峰期低丢包率的综合型用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "部署多线智能接入与负载均衡，日常网络连接灵敏平稳",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "提供全平台官方客户端，小白用户免去复杂配置",
+    "提供官方优惠码 wuyou666，新用户注册结账可享优惠"
+  ],
+  "cons": [
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
+  ],
+  "coupon": {
+    "code": "wuyou666",
+    "desc": "专属折扣优惠"
+  },
+  "affiliateUrl": "https://wep01.worryfreeaff.com/#/?code=4ZoSbLdL",
+  "website": "https://wep01.worryfreeaff.com/#/?code=4ZoSbLdL",
+  "speedtestImage": "/images/benchmarks/无忧链接-节点测速实测.jpg",
+  "speedtestImages": [
+    "/images/benchmarks/无忧链接-节点测速实测.jpg",
+    "/images/benchmarks/无忧链接2.jpg"
+  ],
+  "unlockImages": [
+    "/images/unlock/wuyou/photo_2026-09-07_12-51-58.jpg",
+    "/images/unlock/wuyou/photo_2026-09-07_12-51-59.jpg"
+  ],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "23ms",
+      "download": "531Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "41ms",
+      "download": "107Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "42ms",
+      "download": "418Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "55ms",
+      "download": "147Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "145ms",
+      "download": "17Mbps"
+    }
+  ],
+  "reviewContent": "如果你要找便宜机场推荐里价格最低的那一档，无忧链接大概率会出现——6.5 元/月起，是这份榜单里门槛最低的机场之一，主打的是跨境电商和轻度用户场景，TikTok 跨区直连和直播支持是它比较突出的点。2026 年 10 月起直接用官方专属客户端，下载登录就能用，不用折腾订阅和复杂配置，对新手比较友好。同时也能解锁 Netflix、Disney+ 和 YouTube 等主流流媒体，日常刷视频基本够用。不过流量只有 40GB，节点覆盖也偏基础，如果你的使用场景是重度办公或者多设备同时在线，这个价位的套餐大概率撑不了太久，更适合当作低成本的备用机场或者电商运营的辅助工具。",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "千兆宽带实测完成，Shadowsocks / VLESS 协议节点延迟、带宽与丢包率表现稳定。"
+  },
+  "faq": [
+    {
+      "q": "无忧链接 的最低价格是多少？支持月付吗？",
+      "a": "无忧链接 的基础入门价格为 ¥19/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "无忧链接 支持哪些客户端？新手如何快速配置？",
+      "a": "无忧链接 完整兼容 自研一键客户端 (Windows/macOS/Android/iOS)、Clash、Shadowrocket 等客户端。新手可直接下载官方一键客户端登录即连，亦可在用户后台一键导入订阅到第三方软件。"
+    },
+    {
+      "q": "无忧链接 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
+    }
+  ]
+}

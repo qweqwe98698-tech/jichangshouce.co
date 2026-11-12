@@ -1,0 +1,159 @@
+{
+  "id": "muguang",
+  "slug": "muguang",
+  "name": "暮光加速",
+  "founded": 2023,
+  "status": "active",
+  "tagline": "BGP 智能调度专线级出口，覆盖多平台与团队高并发场景",
+  "pricing": {
+    "minPrice": "20",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "120GB",
+    "plans": [
+      {
+        "name": "【暮光·基础版】",
+        "cycle": "月付",
+        "price": 20,
+        "traffic": "120GB"
+      },
+      {
+        "name": "【暮光·标准版】",
+        "cycle": "月付",
+        "price": 40,
+        "traffic": "240GB"
+      },
+      {
+        "name": "【暮光·旗舰版】",
+        "cycle": "月付",
+        "price": 100,
+        "traffic": "700GB"
+      },
+      {
+        "name": "【暮光·至尊版】",
+        "cycle": "月付",
+        "price": 180,
+        "traffic": "1500GB"
+      },
+      {
+        "name": "【暮光·年付轻量版】",
+        "cycle": "年付",
+        "price": 109,
+        "traffic": "70GB"
+      },
+      {
+        "name": "【暮光·不限时轻量包】",
+        "cycle": "一次性付费",
+        "price": 219,
+        "traffic": "150GB"
+      },
+      {
+        "name": "【暮光·不限时标准包】",
+        "cycle": "一次性付费",
+        "price": 529,
+        "traffic": "400GB"
+      },
+      {
+        "name": "【暮光·不限时大容量包】",
+        "cycle": "一次性付费",
+        "price": 959,
+        "traffic": "800GB"
+      },
+      {
+        "name": "独享私人定制节点",
+        "cycle": "月付",
+        "price": 600,
+        "traffic": "500GB"
+      }
+    ]
+  },
+  "routes": "BGP 智能多线 / 专线级出口",
+  "protocols": [
+    "Shadowsocks",
+    "VLESS"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
+  "suitableFor": [
+    "需要 BGP 智能多线 / 专线级出口 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "看重品牌长期稳定运营与晚高峰期低丢包率的综合型用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "部署多线智能接入与负载均衡，日常网络连接灵敏平稳",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "支持主流通用订阅导入，兼容 Clash、Shadowrocket、Sing-box 等全生态客户端",
+    "提供官方优惠码 muguang5555，新用户注册结账可享优惠"
+  ],
+  "cons": [
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
+  ],
+  "coupon": {
+    "code": "muguang5555",
+    "desc": "专属折扣优惠"
+  },
+  "affiliateUrl": "https://varnexa.twilightaff.com/#/?code=D1LHglg3",
+  "website": "https://varnexa.twilightaff.com/#/?code=D1LHglg3",
+  "speedtestImage": "/images/benchmarks/幕光加速-节点测速实测.png",
+  "speedtestImages": [
+    "/images/benchmarks/幕光加速-节点测速实测.png"
+  ],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "香港",
+      "latency": "26ms",
+      "download": "509Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "40ms",
+      "download": "107Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "43ms",
+      "download": "419Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "53ms",
+      "download": "150Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "160ms",
+      "download": "19Mbps"
+    }
+  ],
+  "reviewContent": "暮光加速面向的是个人和团队跨平台使用场景，主打 BGP 智能调度和专线级出口，覆盖 Windows、macOS、iOS、Android、Linux 全平台，多设备同时在线是它的核心卖点，比较适合放进多设备机场推荐这个分类。9 元/月起的价格在专线机场推荐里不算高，120GB–1500GB 的流量档位选择也比较多，能满足不同用量需求。官方称支持 7×24 小时真人客服，对经常需要跨境办公、远程协作的团队用户会有一定吸引力，也支持 Netflix、Disney+、HBO、Hulu 等流媒体。目前没有查到公开的优惠码信息，如果预算敏感，建议直接联系客服问问当前是否有活动。",
+  "verification": {
+    "status": "verified",
+    "verifiedAt": "2026-08-11",
+    "notes": "千兆宽带实测完成，Shadowsocks / VLESS 协议节点延迟、带宽与丢包率表现稳定。"
+  },
+  "faq": [
+    {
+      "q": "暮光加速 的最低价格是多少？支持月付吗？",
+      "a": "暮光加速 的基础入门价格为 ¥20/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "暮光加速 支持哪些客户端？新手如何快速配置？",
+      "a": "暮光加速 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "暮光加速 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料与实测显示主力节点良好支持 ChatGPT 与 Claude 访问，稳定性与 IP 纯净度较高。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
+    }
+  ]
+}

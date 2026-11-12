@@ -1,0 +1,232 @@
+{
+  "id": "yinghuochong",
+  "slug": "yinghuochong",
+  "name": "萤火虫",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "IPLC+VLESS 技术流架构，老牌 Firefly 历史同源分流体系",
+  "pricing": {
+    "minPrice": "25",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "150G/月",
+    "plans": [
+      {
+        "name": "Firefly年付版",
+        "cycle": "年付",
+        "price": 96,
+        "traffic": "60G/月"
+      },
+      {
+        "name": "Firefly Lite",
+        "cycle": "月付",
+        "price": 25,
+        "traffic": "150G/月"
+      },
+      {
+        "name": "Firefly Lite",
+        "cycle": "季付",
+        "price": 67,
+        "traffic": "150G/月"
+      },
+      {
+        "name": "Firefly Lite",
+        "cycle": "半年付",
+        "price": 127,
+        "traffic": "150G/月"
+      },
+      {
+        "name": "Firefly Lite",
+        "cycle": "年付",
+        "price": 240,
+        "traffic": "150G/月"
+      },
+      {
+        "name": "Firefly Lite",
+        "cycle": "两年付",
+        "price": 420,
+        "traffic": "150G/月"
+      },
+      {
+        "name": "Firefly Lite",
+        "cycle": "三年付",
+        "price": 540,
+        "traffic": "150G/月"
+      },
+      {
+        "name": "Firefly Plus",
+        "cycle": "月付",
+        "price": 45,
+        "traffic": "300G/月"
+      },
+      {
+        "name": "Firefly Plus",
+        "cycle": "季付",
+        "price": 121,
+        "traffic": "300G/月"
+      },
+      {
+        "name": "Firefly Plus",
+        "cycle": "半年付",
+        "price": 229,
+        "traffic": "300G/月"
+      },
+      {
+        "name": "Firefly Plus",
+        "cycle": "年付",
+        "price": 432,
+        "traffic": "300G/月"
+      },
+      {
+        "name": "Firefly Plus",
+        "cycle": "两年付",
+        "price": 756,
+        "traffic": "300G/月"
+      },
+      {
+        "name": "Firefly Plus",
+        "cycle": "三年付",
+        "price": 972,
+        "traffic": "300G/月"
+      },
+      {
+        "name": "Firefly Blaze",
+        "cycle": "月付",
+        "price": 85,
+        "traffic": "600G/月"
+      },
+      {
+        "name": "Firefly Blaze",
+        "cycle": "季付",
+        "price": 229,
+        "traffic": "600G/月"
+      },
+      {
+        "name": "Firefly Blaze",
+        "cycle": "半年付",
+        "price": 433,
+        "traffic": "600G/月"
+      },
+      {
+        "name": "Firefly Blaze",
+        "cycle": "年付",
+        "price": 816,
+        "traffic": "600G/月"
+      },
+      {
+        "name": "Firefly Blaze",
+        "cycle": "两年付",
+        "price": 1428,
+        "traffic": "600G/月"
+      },
+      {
+        "name": "Firefly Blaze",
+        "cycle": "三年付",
+        "price": 1836,
+        "traffic": "600G/月"
+      },
+      {
+        "name": "Firefly Nova",
+        "cycle": "月付",
+        "price": 150,
+        "traffic": "1000G/月"
+      },
+      {
+        "name": "Firefly Nova",
+        "cycle": "季付",
+        "price": 400,
+        "traffic": "1000G/月"
+      },
+      {
+        "name": "Firefly Nova",
+        "cycle": "半年付",
+        "price": 750,
+        "traffic": "1000G/月"
+      },
+      {
+        "name": "Firefly Nova",
+        "cycle": "年付",
+        "price": 1360,
+        "traffic": "1000G/月"
+      },
+      {
+        "name": "Firefly Nova",
+        "cycle": "两年付",
+        "price": 2399,
+        "traffic": "1000G/月"
+      },
+      {
+        "name": "Firefly Nova",
+        "cycle": "三年付",
+        "price": 3119,
+        "traffic": "1000G/月"
+      },
+      {
+        "name": "Firefly不限时",
+        "cycle": "一次性付费",
+        "price": 100,
+        "traffic": "100G"
+      }
+    ]
+  },
+  "routes": "IPLC 专线 + VLESS 协议自适应",
+  "protocols": [
+    "VLESS",
+    "Shadowsocks"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
+  "suitableFor": [
+    "需要 IPLC 纯内网专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "成熟的 IPLC + VLESS 线路配置，抗封锁和高带宽兼备",
+    "支持新用户专属 8 折优惠码 firefly，长期订阅折扣达 64 折",
+    "主要节点 AI 工具与流媒体解锁策略维护频繁"
+  ],
+  "cons": [
+    "品牌命名与市面上多家同名工作室易混淆，需认准专属接入入口",
+    "节点总数适中，不追求百节点虚高数量"
+  ],
+  "coupon": {
+    "code": "firefly",
+    "desc": "新用户 8 折优惠"
+  },
+  "affiliateUrl": "https://vip02.fireflyaff.com/#/?code=jTp9wSgZ",
+  "website": "https://vip02.fireflyaff.com/#/?code=jTp9wSgZ",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "reviewContent": "萤火虫在技术架构与节点布局上与知名服务商 Firefly 具备深厚的渊源，采用成熟的 IPLC 专线搭配新一代 VLESS 协议。其特点在于重点保障香港、新加坡、美国核心枢纽的可用性与纯净住宅 IP 分配，同时支持官方 firefly 专属新用户 8 折优惠码。平台在流媒体解锁与 AI 对话工具分流方面进行了专项策略路由，适合对主流海外云服务访问有持续稳定需求的用户。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-08-24",
+    "notes": "服务商历史档案记录，资费与节点可用性需以官方最新状态为准。"
+  },
+  "faq": [
+    {
+      "q": "萤火虫 的最低价格是多少？支持月付吗？",
+      "a": "萤火虫 的基础入门价格为 ¥25/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "萤火虫 支持哪些客户端？新手如何快速配置？",
+      "a": "萤火虫 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "萤火虫 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
+    }
+  ]
+}

@@ -32,6 +32,6 @@ test.describe('品牌资料与对比页面测试', () => {
 
     // Clear search
     await searchInput.fill('');
-    await expect(counter).toHaveText('16');
+    await expect(counter).toHaveText('43');
   });
 });

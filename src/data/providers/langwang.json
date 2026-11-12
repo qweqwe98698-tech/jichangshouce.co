@@ -1,0 +1,246 @@
+{
+  "id": "langwang",
+  "slug": "langwang",
+  "name": "浪网",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "专注晚高峰高并发吞吐，纯内网 IEPL 专线保障",
+  "pricing": {
+    "minPrice": "30",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "截150G",
+    "plans": [
+      {
+        "name": "浪网 高端",
+        "cycle": "月付",
+        "price": 120,
+        "traffic": "800G"
+      },
+      {
+        "name": "浪网 高端",
+        "cycle": "季付",
+        "price": 342,
+        "traffic": "800G"
+      },
+      {
+        "name": "浪网 高端",
+        "cycle": "半年付",
+        "price": 648,
+        "traffic": "800G"
+      },
+      {
+        "name": "浪网 高端",
+        "cycle": "年付",
+        "price": 1224,
+        "traffic": "800G"
+      },
+      {
+        "name": "浪网 高端",
+        "cycle": "两年付",
+        "price": 2304,
+        "traffic": "800G"
+      },
+      {
+        "name": "浪网 高端",
+        "cycle": "三年付",
+        "price": 3240,
+        "traffic": "800G"
+      },
+      {
+        "name": "浪网 商业",
+        "cycle": "月付",
+        "price": 200,
+        "traffic": "2000G"
+      },
+      {
+        "name": "浪网 商业",
+        "cycle": "季付",
+        "price": 570,
+        "traffic": "2000G"
+      },
+      {
+        "name": "浪网 商业",
+        "cycle": "半年付",
+        "price": 1080,
+        "traffic": "2000G"
+      },
+      {
+        "name": "浪网 商业",
+        "cycle": "年付",
+        "price": 2040,
+        "traffic": "2000G"
+      },
+      {
+        "name": "浪网 商业",
+        "cycle": "两年付",
+        "price": 3840,
+        "traffic": "2000G"
+      },
+      {
+        "name": "浪网 商业",
+        "cycle": "三年付",
+        "price": 5400,
+        "traffic": "2000G"
+      },
+      {
+        "name": "浪网 年付标准",
+        "cycle": "年付",
+        "price": 119,
+        "traffic": "80G"
+      },
+      {
+        "name": "浪网 小流量包",
+        "cycle": "一次性付费",
+        "price": 239,
+        "traffic": "180G"
+      },
+      {
+        "name": "浪网 标准流量包",
+        "cycle": "一次性付费",
+        "price": 569,
+        "traffic": "450G"
+      },
+      {
+        "name": "浪网 定制线路包",
+        "cycle": "月付",
+        "price": 640,
+        "traffic": "500G"
+      },
+      {
+        "name": "浪网 精英流量包",
+        "cycle": "一次性付费",
+        "price": 1099,
+        "traffic": "900G"
+      },
+      {
+        "name": "浪网 进阶",
+        "cycle": "月付",
+        "price": 70,
+        "traffic": "450G"
+      },
+      {
+        "name": "浪网 进阶",
+        "cycle": "季付",
+        "price": 199.5,
+        "traffic": "450G"
+      },
+      {
+        "name": "浪网 进阶",
+        "cycle": "半年付",
+        "price": 378,
+        "traffic": "450G"
+      },
+      {
+        "name": "浪网 进阶",
+        "cycle": "年付",
+        "price": 714,
+        "traffic": "450G"
+      },
+      {
+        "name": "浪网 进阶",
+        "cycle": "两年付",
+        "price": 1344,
+        "traffic": "450G"
+      },
+      {
+        "name": "浪网 进阶",
+        "cycle": "三年付",
+        "price": 1890,
+        "traffic": "450G"
+      },
+      {
+        "name": "浪网 入门",
+        "cycle": "月付",
+        "price": 30,
+        "traffic": "截150G"
+      },
+      {
+        "name": "浪网 入门",
+        "cycle": "季付",
+        "price": 85.5,
+        "traffic": "截150G"
+      },
+      {
+        "name": "浪网 入门",
+        "cycle": "半年付",
+        "price": 162,
+        "traffic": "截150G"
+      },
+      {
+        "name": "浪网 入门",
+        "cycle": "年付",
+        "price": 306,
+        "traffic": "截150G"
+      },
+      {
+        "name": "浪网 入门",
+        "cycle": "两年付",
+        "price": 576,
+        "traffic": "截150G"
+      },
+      {
+        "name": "浪网 入门",
+        "cycle": "三年付",
+        "price": 810,
+        "traffic": "截150G"
+      }
+    ]
+  },
+  "routes": "纯内网 IEPL 国际高速专线",
+  "protocols": [
+    "Shadowsocks",
+    "VLESS"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
+  "suitableFor": [
+    "需要 IEPL 国际专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "全程内网专线传输，晚高峰网络抗抖动与防 QoS 特征突出",
+    "多线程吞吐释放彻底，适合大带宽长视频下载与串流",
+    "全平台订阅一键转换导入，适配 Clash/Surge/Sing-box 全生态"
+  ],
+  "cons": [
+    "资费体系定位于专线均价，不主打几元钱的廉价价格战",
+    "官方客服支持渠道以网页工单为主，缺少实时社群聊天"
+  ],
+  "affiliateUrl": "https://varnexa.wavenetaff.com/#/?code=xwAM4tTd",
+  "website": "https://varnexa.wavenetaff.com/#/?code=xwAM4tTd",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "reviewContent": "浪网（WaveNet）是一家专注于解决“晚高峰断流与抖动”的 IEPL 专线服务商。在网络架构上，浪网完全采用物理内网专线对接香港与东京核心机房，跳过了容易发生拥堵的国际公网出海节点。其核心特点在于对高并发 TCP 吞吐的针对性调优，多线程下载时速度爬升极快。适合在晚间 20:00–23:00 高峰期需要进行高清流媒体追剧、大体积科研资料同步或多端同时办公的高需求用户。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-08-24",
+    "notes": "服务商历史档案记录，资费与节点可用性需以官方最新状态为准。"
+  },
+  "faq": [
+    {
+      "q": "浪网 的最低价格是多少？支持月付吗？",
+      "a": "浪网 的基础入门价格为 ¥30/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "浪网 支持哪些客户端？新手如何快速配置？",
+      "a": "浪网 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "浪网 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
+    }
+  ]
+}

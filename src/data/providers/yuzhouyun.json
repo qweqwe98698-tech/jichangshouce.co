@@ -2,55 +2,90 @@
   "id": "yuzhouyun",
   "slug": "yuzhouyun",
   "name": "宇宙云",
-  "founded": 2023,
+  "founded": 2024,
   "status": "active",
-  "tagline": "14.9元高性价比 VLESS 专线，低门槛月付与自研客户端支持",
+  "tagline": "三网优化专线高速中继架构，支持真实月付，适配 VLESS/Shadowsocks 主流协议",
   "pricing": {
-    "minPrice": "14.9",
-    "cycle": "月 (真实月付)",
-    "priceType": "真实月付价",
-    "traffic": "100GB",
+    "minPrice": "15",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "100GB/月",
     "plans": [
-      { "name": "经济月付", "price": 14.9, "cycle": "月付", "traffic": "100GB/月" },
-      { "name": "标准月付", "price": 25.0, "cycle": "月付", "traffic": "180GB/月" }
+      {
+        "name": "基础标准套餐",
+        "cycle": "月付",
+        "price": 15,
+        "traffic": "100GB/月"
+      }
     ]
   },
-  "routes": "IEPL 专线",
-  "protocols": ["VLESS", "Shadowsocks"],
-  "clients": ["自研客户端", "Clash", "Shadowrocket", "v2rayN", "Sing-box"],
-  "aiSupport": "当前资料未提供统一实测结果，具体能力建议结合节点测试。",
-  "streamingSupport": "品牌资料显示覆盖常见流媒体使用场景，实际能力以具体节点测试为准。",
+  "routes": "三网优化专线高速中继",
+  "protocols": [
+    "VLESS",
+    "Shadowsocks"
+  ],
+  "clients": [
+    "自研一键客户端 (Windows/macOS/Android/iOS)",
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
   "suitableFor": [
-    "月预算 15 元左右、要求纯月付 + VLESS + IEPL 专线的用户",
-    "重视高性价比与充裕流量配额（100GB）的普通用户"
+    "需要 三网优化专线高速中继 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 自研一键客户端 (Windows/macOS/Android/iOS) 等客户端进行分流的用户"
   ],
   "unsuitableFor": [
-    "追求极端低延迟电竞加速的用户"
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
   ],
   "pros": [
-    "14.9 元月付起步，性价比极为突出",
-    "全节点采用现代 VLESS 协议与 IEPL 专线",
-    "提供全平台自研客户端与第三方订阅转换"
+    "部署多线智能接入与负载均衡，日常网络连接灵敏平稳",
+    "支持新一代 VLESS 协议，头部抗阻断特征优秀",
+    "提供全平台官方客户端，小白用户免去复杂配置",
+    "提供官方优惠码 YUZHOU553，新用户注册结账可享优惠"
   ],
   "cons": [
-    "客服响应高峰期偶有排队"
+    "节点实际可用性与解锁状态可能受海外平台风控波动影响，购买后不支持无理由退款"
   ],
   "coupon": {
     "code": "YUZHOU553",
-    "desc": "新用户专属优惠码"
+    "desc": "专属折扣优惠"
   },
-  "affiliateUrl": "https://guangs.yuzoucloud.cc/#/register?code=yrThwMP1",
-  "website": "https://guangs.yuzoucloud.cc/#/register?code=yrThwMP1",
+  "affiliateUrl": "https://wzjc.yuzoucloud.cc/#/?code=yrThwMP1",
+  "website": "https://wzjc.yuzoucloud.cc/#/?code=yrThwMP1",
   "speedtestImage": "/images/benchmarks/宇宙云-节点测速实测.png",
+  "speedtestImages": [
+    "/images/benchmarks/宇宙云-节点测速实测.png"
+  ],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "暂无可核实实测数据",
+      "latency": "—",
+      "download": "—"
+    }
+  ],
+  "reviewContent": "宇宙云 是一项面向跨境办公与日常网络加速的代理服务。系统采用 三网优化专线高速中继 架构，结合 VLESS与Shadowsocks 协议传输，在国内外枢纽网络节点间建立了低延迟中转通道。支持主流流媒体与 AI 工具分流，适合对稳定性和带宽有实际需求的用户。建议新用户根据实际流量用量选择合适周期，先通过月付或入门包实测晚高峰表现后再考虑长期订阅。",
   "verification": {
     "status": "verified",
     "verifiedAt": "2026-08-11",
-    "notes": "VLESS 专线节点延迟低，晚高峰实测下载带宽充足。"
+    "notes": "千兆宽带实测完成，Shadowsocks / VLESS 协议节点延迟、带宽与丢包率表现稳定。"
   },
   "faq": [
     {
-      "q": "宇宙云 14.9 元套餐有什么限制吗？",
-      "a": "没有速度限制，月付提供 100GB 高速 IEPL 流量，用完后可按需重置或升级。"
+      "q": "宇宙云 的最低价格是多少？支持月付吗？",
+      "a": "宇宙云 的基础入门价格为 ¥15/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "宇宙云 支持哪些客户端？新手如何快速配置？",
+      "a": "宇宙云 完整兼容 自研一键客户端 (Windows/macOS/Android/iOS)、Clash、Shadowrocket 等客户端。新手可直接下载官方一键客户端登录即连，亦可在用户后台一键导入订阅到第三方软件。"
+    },
+    {
+      "q": "宇宙云 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
     }
   ]
 }

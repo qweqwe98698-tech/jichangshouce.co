@@ -1,0 +1,167 @@
+{
+  "id": "longmaoyun",
+  "slug": "longmaoyun",
+  "name": "龙猫云",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "海外常驻团队运维，SS+IPLC 全专线与 2000Mbps 大冗余",
+  "pricing": {
+    "minPrice": "15",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "100G",
+    "plans": [
+      {
+        "name": "VIP1",
+        "cycle": "月付",
+        "price": 15,
+        "traffic": "100G"
+      },
+      {
+        "name": "VIP1",
+        "cycle": "季付",
+        "price": 41,
+        "traffic": "100G"
+      },
+      {
+        "name": "VIP1",
+        "cycle": "半年付",
+        "price": 77,
+        "traffic": "100G"
+      },
+      {
+        "name": "VIP1",
+        "cycle": "年付",
+        "price": 144,
+        "traffic": "100G"
+      },
+      {
+        "name": "VIP2",
+        "cycle": "月付",
+        "price": 30,
+        "traffic": "200G"
+      },
+      {
+        "name": "VIP2",
+        "cycle": "季付",
+        "price": 81,
+        "traffic": "200G"
+      },
+      {
+        "name": "VIP2",
+        "cycle": "半年付",
+        "price": 153,
+        "traffic": "200G"
+      },
+      {
+        "name": "VIP2",
+        "cycle": "年付",
+        "price": 288,
+        "traffic": "200G"
+      },
+      {
+        "name": "VIP3",
+        "cycle": "月付",
+        "price": 60,
+        "traffic": "400G"
+      },
+      {
+        "name": "VIP3",
+        "cycle": "季付",
+        "price": 162,
+        "traffic": "400G"
+      },
+      {
+        "name": "VIP3",
+        "cycle": "半年付",
+        "price": 306,
+        "traffic": "400G"
+      },
+      {
+        "name": "VIP3",
+        "cycle": "年付",
+        "price": 576,
+        "traffic": "400G"
+      },
+      {
+        "name": "VIP4",
+        "cycle": "月付",
+        "price": 120,
+        "traffic": "1000G"
+      },
+      {
+        "name": "VIP4",
+        "cycle": "季付",
+        "price": 324,
+        "traffic": "1000G"
+      },
+      {
+        "name": "VIP4",
+        "cycle": "半年付",
+        "price": 697,
+        "traffic": "1000G"
+      },
+      {
+        "name": "VIP4",
+        "cycle": "年付",
+        "price": 1152,
+        "traffic": "1000G"
+      }
+    ]
+  },
+  "routes": "企业级 IPLC 全专线 / 2000Mbps 峰值集群",
+  "protocols": [
+    "Shadowsocks"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。",
+  "streamingSupport": "流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。",
+  "suitableFor": [
+    "需要 IPLC 纯内网专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "技术背景深厚，全专线 IPLC 架构，晚高峰丢包率控制极优",
+    "教程文档体系在业界极为完善，新手排错与软路由配置极度友好",
+    "长期订阅折扣力度大（2年付7折、3年付6折）"
+  ],
+  "cons": [
+    "当前未向公网常态开放散客注册，多通过内部老用户邀请引流",
+    "短期单月购买单价相对专线同行无明显价格战优势"
+  ],
+  "affiliateUrl": "https://jichangshouce.co/brands/",
+  "website": "https://jichangshouce.co/brands/",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "reviewContent": "龙猫云在机场圈内属于技术型低调老牌，公开档案记录显示其核心运维团队常驻海外，具备扎实的数据中心运维背景。服务线路主打 Shadowsocks 协议与企业级 IPLC 纯专线，单节点最高可迸发 2000Mbps 端口带宽。该站的一大特色在于官方用户中心提供了极为详尽的小白至极客级全平台配置教程，从 Clash Verge、Sing-box 到路由器 OpenWrt 固件设置均有 step-by-step 文档。其定价体系主打长期折扣（最高折合约 4.8 折），适合需要高带宽传输、注重海外隐私运维保障并打算长期使用的成熟用户。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-08-24",
+    "notes": "服务商历史档案记录，资费与节点可用性需以官方最新状态为准。"
+  },
+  "faq": [
+    {
+      "q": "龙猫云 的最低价格是多少？支持月付吗？",
+      "a": "龙猫云 的基础入门价格为 ¥15/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "龙猫云 支持哪些客户端？新手如何快速配置？",
+      "a": "龙猫云 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "龙猫云 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "历史档案未附带独立 AI 工具可用性连续监测数据，需视实时节点 IP 纯净度而定。 流媒体支持情况视当期海外落地服务器 IP 分配情况而定，建议首选香港与新加坡原生节点。"
+    }
+  ]
+}

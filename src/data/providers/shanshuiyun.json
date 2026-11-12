@@ -1,0 +1,145 @@
+{
+  "id": "shanshuiyun",
+  "slug": "shanshuiyun",
+  "name": "山水云",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "前身水帘洞云，月付 15 元起的高性价比中继平民方案",
+  "pricing": {
+    "minPrice": "15",
+    "cycle": "月付",
+    "priceType": "真实月付",
+    "traffic": "100GB/月",
+    "plans": [
+      {
+        "name": "64G/轻量套餐",
+        "cycle": "年付",
+        "price": 88,
+        "traffic": "64GB/月"
+      },
+      {
+        "name": "128G/轻量套餐",
+        "cycle": "半年付",
+        "price": 88,
+        "traffic": "128GB/月"
+      },
+      {
+        "name": "256G/轻量套餐",
+        "cycle": "季付",
+        "price": 75,
+        "traffic": "256GB/月"
+      },
+      {
+        "name": "100G/月-琴",
+        "cycle": "月付",
+        "price": 15,
+        "traffic": "100GB/月"
+      },
+      {
+        "name": "200G/月-棋",
+        "cycle": "月付",
+        "price": 25,
+        "traffic": "200GB/月"
+      },
+      {
+        "name": "500G/月-书",
+        "cycle": "月付",
+        "price": 50,
+        "traffic": "500GB/月"
+      }
+    ]
+  },
+  "routes": "优质多线 BGP 隧道高速中继",
+  "protocols": [
+    "Shadowsocks",
+    "VLESS"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
+  "suitableFor": [
+    "需要 商业中继与企业级专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "真实 15 元/月低门槛起付，无需年付捆绑即可体验",
+    "配额充裕（120GB–500GB），日常中度影音与办公无压力",
+    "主流流媒体解锁状态良好，支持港美日原生节点"
+  ],
+  "cons": [
+    "晚高峰国际公网拥堵期，个别长距离欧美节点延迟有所上升",
+    "客服支持以工单为主，夜间响应速度相比主推品牌略慢"
+  ],
+  "affiliateUrl": "https://sldm1.ssyylf.com/#/register?code=YD5iQ888",
+  "website": "https://sldm1.ssyylf.com/#/register?code=YD5iQ888",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "美国",
+      "latency": "349.3ms",
+      "download": "180.29Mbps"
+    },
+    {
+      "node": "日本",
+      "latency": "229.8ms",
+      "download": "160.51Mbps"
+    },
+    {
+      "node": "香港",
+      "latency": "151.4ms",
+      "download": "152.86Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "179.8ms",
+      "download": "142.98Mbps"
+    },
+    {
+      "node": "越南",
+      "latency": "232ms",
+      "download": "87.68Mbps"
+    },
+    {
+      "node": "泰国",
+      "latency": "217ms",
+      "download": "82Mbps"
+    },
+    {
+      "node": "英国",
+      "latency": "328ms",
+      "download": "65.2Mbps"
+    }
+  ],
+  "reviewContent": "山水云（曾用名水帘洞云）是一家主打平民价格与实用路线的高性价比机场。平台以 15 元/月（120GB）作为基础入门主力，节点覆盖香港、日本、美国、台湾、新加坡、澳大利亚及英国等 7 个主流枢纽。历史测速记录显示，其在千兆宽带环境下能够稳定跑满 200Mbps–400Mbps 的日常峰值，对 YouTube 4K、网页快速加载及常规办公支持顺畅。山水云的定位不是追求毫秒级电竞专线，而是为预算在 15 元上下的用户提供稳定、不折腾且配额充足的日常主力工具。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-10-19",
+    "notes": "包含实机节点延迟与测速明细记录，晚高峰长期稳定性待持续复核。"
+  },
+  "faq": [
+    {
+      "q": "山水云 的最低价格是多少？支持月付吗？",
+      "a": "山水云 的基础入门价格为 ¥15/月付（真实月付）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "山水云 支持哪些客户端？新手如何快速配置？",
+      "a": "山水云 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "山水云 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "品牌资料显示支持常见主流 AI 工具（ChatGPT / Claude），具体可用性请以实时节点测试为准。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
+    }
+  ]
+}

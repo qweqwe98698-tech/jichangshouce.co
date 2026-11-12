@@ -1,0 +1,126 @@
+{
+  "id": "wgetcloud",
+  "slug": "wgetcloud",
+  "name": "WgetCloud",
+  "founded": 2024,
+  "status": "active",
+  "tagline": "老牌高端 Trojan 专线服务商，注重亚洲近端低延迟与高吞吐传输",
+  "pricing": {
+    "minPrice": "297",
+    "cycle": "季付",
+    "priceType": "季付折算价",
+    "traffic": "230GB/月",
+    "plans": [
+      {
+        "name": "基础专线服务",
+        "cycle": "季付",
+        "price": 297,
+        "traffic": "230GB/月"
+      },
+      {
+        "name": "优质专线服务",
+        "cycle": "季付",
+        "price": 327,
+        "traffic": "250GB/月"
+      },
+      {
+        "name": "精品专线服务",
+        "cycle": "季付",
+        "price": 357,
+        "traffic": "270GB/月"
+      }
+    ]
+  },
+  "routes": "高端企业级 IPLC / IEPL 专线",
+  "protocols": [
+    "Trojan"
+  ],
+  "clients": [
+    "Clash",
+    "Shadowrocket",
+    "Sing-box",
+    "v2rayN"
+  ],
+  "aiSupport": "测试显示 ChatGPT / Claude 可在特定优化节点使用，部分节点或遇阻断，建议结合多节点灵活切换。",
+  "streamingSupport": "品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。",
+  "suitableFor": [
+    "需要 高可用跨境专线 支撑外贸办公、学术研究与日常跨域访问的用户",
+    "习惯使用 Clash 等客户端进行分流的用户",
+    "对特定冷门节点或特定历史专线有专项定制需求的用户"
+  ],
+  "unsuitableFor": [
+    "寻找完全免费或零成本试用节点的用户",
+    "要求跨国大文件持续 24 小时满负荷 P2P 滥用下载的用户"
+  ],
+  "pros": [
+    "全节点专线物理传输，亚洲近端（港/日/新/台）平均延迟极低",
+    "节点覆盖超过 15 个国家和地区，节点在线冗余充足",
+    "支持 Trojan 高抗封锁加密协议，晚高峰吞吐上限极高"
+  ],
+  "cons": [
+    "起步需季付 297 元以上，无小额月付套餐，个人入门门槛较高",
+    "流量配额相对固定，重度超大流量消耗成本偏高"
+  ],
+  "affiliateUrl": "https://invite.wgetcloud.ltd/auth/register?code=VLG2xb",
+  "website": "https://invite.wgetcloud.ltd/auth/register?code=VLG2xb",
+  "speedtestImage": "",
+  "speedtestImages": [],
+  "unlockImages": [],
+  "speedtestData": [
+    {
+      "node": "日本",
+      "latency": "69.4ms",
+      "download": "462.04Mbps"
+    },
+    {
+      "node": "美国",
+      "latency": "170.2ms",
+      "download": "440.04Mbps"
+    },
+    {
+      "node": "香港",
+      "latency": "25.9ms",
+      "download": "431.24Mbps"
+    },
+    {
+      "node": "新加坡",
+      "latency": "55.6ms",
+      "download": "422.97Mbps"
+    },
+    {
+      "node": "台湾",
+      "latency": "41.3ms",
+      "download": "407.66Mbps"
+    },
+    {
+      "node": "印度",
+      "latency": "95ms",
+      "download": "341.92Mbps"
+    },
+    {
+      "node": "印尼",
+      "latency": "88ms",
+      "download": "318.64Mbps"
+    }
+  ],
+  "reviewContent": "WgetCloud 是网络代理行业中知名度较高的高端专线服务商之一，主要面向对带宽质量和网络抖动有严苛要求的企业与专业团队。从历史实测记录来看，系统采用全专线接入与 Trojan 协议，在 59 个被测节点中均表现出极高的在线连通率。其中日本、美国、香港、新加坡等核心地区的平均下载速率均保持在 50MB/s（约 400Mbps+）以上，香港平均 TLS RTT 维持在 25.9ms 左右。由于该品牌定位偏向高端商务与企业跨国协作，资费门槛以季付 297 元起售（月均约 99 元），不提供超低价月付套餐。适合预算充足、追求晚高峰绝对稳定性和多地区节点覆盖的用户，不适合日常极轻度用量或价格敏感型群体。",
+  "verification": {
+    "status": "partial",
+    "verifiedAt": "2026-10-19",
+    "notes": "包含实机节点延迟与测速明细记录，晚高峰长期稳定性待持续复核。"
+  },
+  "faq": [
+    {
+      "q": "WgetCloud 的最低价格是多少？支持月付吗？",
+      "a": "WgetCloud 的基础入门价格为 ¥297/季付（季付折算价）。支持直接按月订阅付费，灵活无绑缚。"
+    },
+    {
+      "q": "WgetCloud 支持哪些客户端？新手如何快速配置？",
+      "a": "WgetCloud 完整兼容 Clash、Shadowrocket、Sing-box 等客户端。在官网用户中心复制订阅链接后，导入客户端并开启规则模式即可使用。"
+    },
+    {
+      "q": "WgetCloud 是否支持 ChatGPT 与 Netflix 4K？",
+      "a": "测试显示 ChatGPT / Claude 可在特定优化节点使用，部分节点或遇阻断，建议结合多节点灵活切换。 品牌资料显示覆盖主流海外流媒体（Netflix / Disney+ / YouTube 4K）解锁需求。"
+    }
+  ]
+}

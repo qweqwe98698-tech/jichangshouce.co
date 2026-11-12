@@ -51,7 +51,8 @@ function checkMarkdownFile(filePath) {
   }
 
   // Check H1 in body (Rule 41: Body should not have duplicated H1; page template supplies H1)
-  if (/^#\s+[^\n]+/m.test(bodyText)) {
+  const textWithoutCode = bodyText.replace(/```[\s\S]*?```/g, '');
+  if (/^#\s+[^\n]+/m.test(textWithoutCode)) {
     warnings.push(`${filePath}: 正文中检测到 Markdown H1 (#)，建议使用 H2 (##) 保持与页面模板 H1 语义层级`);
   }
 }
